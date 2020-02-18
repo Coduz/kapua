@@ -35,7 +35,7 @@ import org.eclipse.kapua.service.device.management.message.KapuaAppProperties;
 import org.eclipse.kapua.service.device.management.message.notification.KapuaNotifyChannel;
 import org.eclipse.kapua.service.device.management.message.notification.KapuaNotifyMessage;
 import org.eclipse.kapua.service.device.management.message.notification.KapuaNotifyPayload;
-import org.eclipse.kapua.service.device.management.message.notification.OperationStatus;
+import org.eclipse.kapua.service.device.management.message.notification.NotifyStatus;
 import org.eclipse.kapua.service.device.management.packages.message.internal.PackageAppProperties;
 import org.eclipse.kapua.service.device.registry.Device;
 import org.eclipse.kapua.service.device.registry.DeviceRegistryService;
@@ -77,57 +77,57 @@ public class TranslatorAppNotifyKuraKapua extends Translator<KuraNotifyMessage, 
 
         APP_VERSION_DICTIONARY = new HashMap<>();
 
-        APP_VERSION_DICTIONARY.put(AssetMetrics.APP_ID.getName(), DeviceAssetAppProperties.APP_VERSION);
-        APP_VERSION_DICTIONARY.put(BundleMetrics.APP_ID.getName(), DeviceBundleAppProperties.APP_VERSION);
-        APP_VERSION_DICTIONARY.put(CommandMetrics.APP_ID.getName(), CommandAppProperties.APP_VERSION);
-        APP_VERSION_DICTIONARY.put(ConfigurationMetrics.APP_ID.getName(), DeviceConfigurationAppProperties.APP_VERSION);
-        APP_VERSION_DICTIONARY.put(PackageMetrics.APP_ID.getName(), PackageAppProperties.APP_VERSION);
+        APP_VERSION_DICTIONARY.put(AssetMetrics.APP_VERSION.getValue(), DeviceAssetAppProperties.APP_VERSION);
+        APP_VERSION_DICTIONARY.put(BundleMetrics.APP_VERSION.getValue(), DeviceBundleAppProperties.APP_VERSION);
+        APP_VERSION_DICTIONARY.put(CommandMetrics.APP_VERSION.getValue(), CommandAppProperties.APP_VERSION);
+        APP_VERSION_DICTIONARY.put(ConfigurationMetrics.APP_VERSION.getValue(), DeviceConfigurationAppProperties.APP_VERSION);
+        APP_VERSION_DICTIONARY.put(PackageMetrics.APP_VERSION.getValue(), PackageAppProperties.APP_VERSION);
     }
 
     @Override
     public KapuaNotifyMessage translate(KuraNotifyMessage kuraNotifyMessage) throws TranslateException {
 
         try {
-            KapuaNotifyMessage kapuaNotifyMessage = new KapuaNotifyMessageImpl();
-            kapuaNotifyMessage.setChannel(translate(kuraNotifyMessage.getChannel()));
-            kapuaNotifyMessage.setPayload(translate(kuraNotifyMessage.getPayload()));
+        KapuaNotifyMessage kapuaNotifyMessage = new KapuaNotifyMessageImpl();
+        kapuaNotifyMessage.setChannel(translate(kuraNotifyMessage.getChannel()));
+        kapuaNotifyMessage.setPayload(translate(kuraNotifyMessage.getPayload()));
 
             Account account = ACCOUNT_SERVICE.findByName(kuraNotifyMessage.getChannel().getScope());
-            if (account == null) {
-                throw new KapuaEntityNotFoundException(Account.TYPE, kuraNotifyMessage.getChannel().getScope());
-            }
+        if (account == null) {
+            throw new KapuaEntityNotFoundException(Account.TYPE, kuraNotifyMessage.getChannel().getScope());
+        }
 
             Device device = DEVICE_REGISTRY_SERVICE.findByClientId(account.getId(), kuraNotifyMessage.getChannel().getClientId());
-            if (device == null) {
-                throw new KapuaEntityNotFoundException(Device.class.toString(), kuraNotifyMessage.getChannel().getClientId());
-            }
+        if (device == null) {
+            throw new KapuaEntityNotFoundException(Device.class.toString(), kuraNotifyMessage.getChannel().getClientId());
+        }
 
-            kapuaNotifyMessage.setDeviceId(device.getId());
-            kapuaNotifyMessage.setScopeId(account.getId());
-            kapuaNotifyMessage.setCapturedOn(kuraNotifyMessage.getPayload().getTimestamp());
-            kapuaNotifyMessage.setSentOn(kuraNotifyMessage.getPayload().getTimestamp());
-            kapuaNotifyMessage.setReceivedOn(kuraNotifyMessage.getTimestamp());
-            kapuaNotifyMessage.setPosition(TranslatorKuraKapuaUtils.translate(kuraNotifyMessage.getPayload().getPosition()));
+        kapuaNotifyMessage.setDeviceId(device.getId());
+        kapuaNotifyMessage.setScopeId(account.getId());
+        kapuaNotifyMessage.setCapturedOn(kuraNotifyMessage.getPayload().getTimestamp());
+        kapuaNotifyMessage.setSentOn(kuraNotifyMessage.getPayload().getTimestamp());
+        kapuaNotifyMessage.setReceivedOn(kuraNotifyMessage.getTimestamp());
+        kapuaNotifyMessage.setPosition(TranslatorKuraKapuaUtils.translate(kuraNotifyMessage.getPayload().getPosition()));
 
-            return kapuaNotifyMessage;
+        return kapuaNotifyMessage;
         } catch (InvalidChannelException | InvalidPayloadException te) {
             throw te;
         } catch (Exception e) {
             throw new InvalidMessageException(e, kuraNotifyMessage);
-        }
+    }
     }
 
     private KapuaNotifyChannel translate(KuraNotifyChannel kuraNotifyChannel) throws InvalidChannelException {
         try {
-            String kuraAppIdName = kuraNotifyChannel.getAppId().split("-")[0];
+        String kuraAppIdName = kuraNotifyChannel.getAppId().split("-")[0];
             String kuraAppIdVersion = kuraNotifyChannel.getAppId().split("-")[1];
 
-            KapuaNotifyChannel kapuaNotifyChannel = new KapuaNotifyChannelImpl();
-            kapuaNotifyChannel.setAppName(APP_NAME_DICTIONARY.get(kuraAppIdName));
+        KapuaNotifyChannel kapuaNotifyChannel = new KapuaNotifyChannelImpl();
+        kapuaNotifyChannel.setAppName(APP_NAME_DICTIONARY.get(kuraAppIdName));
             kapuaNotifyChannel.setVersion(APP_VERSION_DICTIONARY.get(kuraAppIdVersion));
-            kapuaNotifyChannel.setResources(kuraNotifyChannel.getResources());
+        kapuaNotifyChannel.setResources(kuraNotifyChannel.getResources());
 
-            return kapuaNotifyChannel;
+        return kapuaNotifyChannel;
         } catch (Exception e) {
             throw new InvalidChannelException(e, kuraNotifyChannel);
         }
@@ -135,30 +135,30 @@ public class TranslatorAppNotifyKuraKapua extends Translator<KuraNotifyMessage, 
 
     private KapuaNotifyPayload translate(KuraNotifyPayload kuraNotifyPayload) throws InvalidPayloadException {
         try {
-            KapuaNotifyPayload kapuaNotifyPayload = new KapuaNotifyPayloadImpl();
+        KapuaNotifyPayload kapuaNotifyPayload = new KapuaNotifyPayloadImpl();
 
-            kapuaNotifyPayload.setOperationId(KAPUA_ID_FACTORY.newKapuaId(new BigInteger(kuraNotifyPayload.getOperationId().toString())));
-            kapuaNotifyPayload.setResource(kuraNotifyPayload.getResource());
-            kapuaNotifyPayload.setProgress(kuraNotifyPayload.getProgress());
+        kapuaNotifyPayload.setOperationId(KAPUA_ID_FACTORY.newKapuaId(new BigInteger(kuraNotifyPayload.getOperationId().toString())));
+        kapuaNotifyPayload.setResource(kuraNotifyPayload.getResource());
+        kapuaNotifyPayload.setProgress(kuraNotifyPayload.getProgress());
 
-            switch (kuraNotifyPayload.getStatus()) {
-                case "IN_PROGRESS":
-                    kapuaNotifyPayload.setStatus(OperationStatus.RUNNING);
-                    break;
-                case "COMPLETED":
-                    kapuaNotifyPayload.setStatus(OperationStatus.COMPLETED);
-                    break;
-                case "FAILED":
-                    kapuaNotifyPayload.setStatus(OperationStatus.FAILED);
-                    break;
-            }
+        switch (kuraNotifyPayload.getStatus()) {
+            case "IN_PROGRESS":
+                kapuaNotifyPayload.setStatus(NotifyStatus.RUNNING);
+                break;
+            case "COMPLETED":
+                kapuaNotifyPayload.setStatus(NotifyStatus.COMPLETED);
+                break;
+            case "FAILED":
+                kapuaNotifyPayload.setStatus(NotifyStatus.FAILED);
+                break;
+        }
 
-            kapuaNotifyPayload.setMessage(kuraNotifyPayload.getMessage());
+        kapuaNotifyPayload.setMessage(kuraNotifyPayload.getMessage());
 
-            return kapuaNotifyPayload;
+        return kapuaNotifyPayload;
         } catch (Exception e) {
             throw new InvalidPayloadException(e, kuraNotifyPayload);
-        }
+    }
     }
 
     @Override

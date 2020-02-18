@@ -68,6 +68,21 @@ public class MqttFacade implements TransportFacade<MqttTopic, MqttPayload, MqttM
     // Message management
     //
 
+
+    @Override
+    public MqttMessage sendAndResponse(MqttMessage message, Long timeout) throws TransportTimeoutException, TransportSendException {
+        return sendSync(message, timeout);
+    }
+
+    @Override
+    public void send(MqttMessage message) throws TransportSendException {
+        try {
+            sendAsync(message);
+        } catch (TransportTimeoutException e) {
+            // As per documentation sendAsync cannot throw TransportTimeoutException.
+        }
+    }
+
     @Override
     public void sendAsync(@NotNull MqttMessage mqttMessage) throws TransportTimeoutException, TransportSendException {
         sendSync(mqttMessage, null);

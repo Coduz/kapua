@@ -93,6 +93,10 @@ public class DeviceManagementOperationDAO {
         return ServiceDAO.find(em, DeviceManagementOperationImpl.class, scopeId, entityId);
     }
 
+//    public static DeviceManagementOperation findByOperationId(EntityManager em, KapuaId scopeId, KapuaId operationId) {
+//        return ServiceDAO.findByField(em, DeviceManagementOperationImpl.class, DeviceManagementOperationAttributes.OPERATION_ID, operationId);
+//    }
+
     /**
      * Returns the stepDefinition list matching the provided query
      *

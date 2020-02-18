@@ -14,7 +14,7 @@ package org.eclipse.kapua.service.device.management.registry.operation.notificat
 import org.eclipse.kapua.commons.model.AbstractKapuaEntity;
 import org.eclipse.kapua.commons.model.id.KapuaEid;
 import org.eclipse.kapua.model.id.KapuaId;
-import org.eclipse.kapua.service.device.management.message.notification.OperationStatus;
+import org.eclipse.kapua.service.device.management.registry.operation.DeviceManagementOperationStatus;
 import org.eclipse.kapua.service.device.management.registry.operation.notification.ManagementOperationNotification;
 
 import javax.persistence.AttributeOverride;
@@ -46,7 +46,7 @@ public class ManagementOperationNotificationImpl extends AbstractKapuaEntity imp
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, updatable = false)
-    private OperationStatus status;
+    private DeviceManagementOperationStatus status;
 
     @Basic
     @Column(name = "resource", nullable = false, updatable = false)
@@ -117,12 +117,12 @@ public class ManagementOperationNotificationImpl extends AbstractKapuaEntity imp
     }
 
     @Override
-    public OperationStatus getStatus() {
+    public DeviceManagementOperationStatus getStatus() {
         return status;
     }
 
     @Override
-    public void setStatus(OperationStatus status) {
+    public void setStatus(DeviceManagementOperationStatus status) {
         this.status = status;
     }
 

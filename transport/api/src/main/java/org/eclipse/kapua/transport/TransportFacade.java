@@ -41,26 +41,51 @@ public interface TransportFacade<C extends TransportChannel, P extends Transport
 
     /**
      * Send a request message to a device waiting for the response.
-     * <p>
-     * The timeout is optional. If {@code null} the default one defined by the implementation will be used.
      *
      * @param message The request message to send.
      * @param timeout The timeout for the operation.
      * @return The response to the request message.
      * @throws TransportTimeoutException if waiting of the response goes on timeout.
      * @throws TransportSendException    if sending the request produces any error.
-     * @since 1.0.0
+     * @since 1.2.0
      */
-    MS sendSync(@NotNull MQ message, @Nullable Long timeout) throws TransportTimeoutException, TransportSendException;
+    MS sendAndResponse(@NotNull MQ message, @NotNull Long timeout) throws TransportTimeoutException, TransportSendException;
 
     /**
      * Send a request message to a device without waiting for the response
      *
      * @param message The request message to send.
-     * @throws TransportTimeoutException if waiting of the response goes on timeout.
-     * @throws TransportSendException    if sending the request produces any error.
-     * @since 1.0.0
+     * @throws TransportSendException if sending the request produces any error.
+     * @since 1.2.0
      */
+    void send(@NotNull MQ message) throws TransportSendException;
+
+    /**
+     * Sends a {@link TransportMessage} and waits for the response.
+     * <p>
+     * The timeout is optional. If {@code null} the default one defined by the implementation will be used.
+     *
+     * @param message The {@link TransportMessage} to send.
+     * @param timeout The timeout for the operation.
+     * @return The response to the {@link TransportMessage}.
+     * @throws TransportTimeoutException if waiting of the response goes on timeout.
+     * @throws TransportSendException    if sending the {@link TransportMessage} produces any error.
+     * @since 1.0.0
+     * @deprecated Since 1.2.0. The name of this API method is misleading. Please use {@link #sendAndResponse(TransportMessage, Long)}.
+     */
+    @Deprecated
+    MS sendSync(@NotNull MQ message, @Nullable Long timeout) throws TransportTimeoutException, TransportSendException;
+
+    /**
+     * Sends a {@link TransportMessage}.
+     *
+     * @param message The {@link TransportMessage} to send.
+     * @throws TransportTimeoutException if waiting of the response goes on timeout. This {@link Exception} is never thrown since we are not waiting for the response.
+     * @throws TransportSendException    if sending the {@link TransportMessage} produces any error.
+     * @since 1.0.0
+     * @deprecated Since 1.2.0. The name of this API method is misleading. Please use {@link #send(TransportMessage)}.
+     */
+    @Deprecated
     void sendAsync(@NotNull MQ message) throws TransportTimeoutException, TransportSendException;
 
     //

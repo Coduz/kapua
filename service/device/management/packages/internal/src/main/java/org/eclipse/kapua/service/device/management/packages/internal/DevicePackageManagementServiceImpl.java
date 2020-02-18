@@ -113,7 +113,7 @@ public class DevicePackageManagementServiceImpl extends AbstractDeviceManagement
         //
         // Do get
         DeviceCallExecutor<?, ?, ?, PackageResponseMessage> deviceApplicationCall = new DeviceCallExecutor<>(packageRequestMessage, timeout);
-        PackageResponseMessage responseMessage = deviceApplicationCall.send();
+        PackageResponseMessage responseMessage = deviceApplicationCall.sendAndResponse();
 
         //
         // Create event
@@ -236,7 +236,7 @@ public class DevicePackageManagementServiceImpl extends AbstractDeviceManagement
         DeviceCallExecutor<?, ?, ?, PackageResponseMessage> deviceApplicationCall = new DeviceCallExecutor<>(packageRequestMessage, packageDownloadOptions.getTimeout());
         PackageResponseMessage responseMessage;
         try {
-            responseMessage = deviceApplicationCall.send();
+            responseMessage = deviceApplicationCall.sendAndResponse();
         } catch (Exception e) {
             closeManagementOperation(scopeId, deviceId, operationId);
             throw e;
@@ -288,7 +288,7 @@ public class DevicePackageManagementServiceImpl extends AbstractDeviceManagement
         //
         // Do get
         DeviceCallExecutor<?, ?, ?, PackageResponseMessage> deviceApplicationCall = new DeviceCallExecutor<>(packageRequestMessage, timeout);
-        PackageResponseMessage responseMessage = deviceApplicationCall.send();
+        PackageResponseMessage responseMessage = deviceApplicationCall.sendAndResponse();
 
         //
         // Create event
@@ -344,7 +344,7 @@ public class DevicePackageManagementServiceImpl extends AbstractDeviceManagement
         //
         // Do del
         DeviceCallExecutor<?, ?, ?, PackageResponseMessage> deviceApplicationCall = new DeviceCallExecutor<>(packageRequestMessage, timeout);
-        PackageResponseMessage responseMessage = deviceApplicationCall.send();
+        PackageResponseMessage responseMessage = deviceApplicationCall.sendAndResponse();
 
         //
         // Create event
@@ -419,7 +419,7 @@ public class DevicePackageManagementServiceImpl extends AbstractDeviceManagement
         DeviceCallExecutor<?, ?, ?, PackageResponseMessage> deviceApplicationCall = new DeviceCallExecutor<>(packageRequestMessage, packageInstallOptions.getTimeout());
         PackageResponseMessage responseMessage;
         try {
-            responseMessage = deviceApplicationCall.send();
+            responseMessage = deviceApplicationCall.sendAndResponse();
         } catch (Exception e) {
             closeManagementOperation(scopeId, deviceId, operationId);
             throw e;
@@ -473,7 +473,7 @@ public class DevicePackageManagementServiceImpl extends AbstractDeviceManagement
         //
         // Do get
         DeviceCallExecutor<?, ?, ?, PackageResponseMessage> deviceApplicationCall = new DeviceCallExecutor<>(packageRequestMessage, timeout);
-        PackageResponseMessage responseMessage = deviceApplicationCall.send();
+        PackageResponseMessage responseMessage = deviceApplicationCall.sendAndResponse();
 
         //
         // Create event
@@ -571,7 +571,7 @@ public class DevicePackageManagementServiceImpl extends AbstractDeviceManagement
         DeviceCallExecutor<?, ?, ?, PackageResponseMessage> deviceApplicationCall = new DeviceCallExecutor<>(packageRequestMessage, packageUninstallOptions.getTimeout());
         PackageResponseMessage responseMessage;
         try {
-            responseMessage = deviceApplicationCall.send();
+            responseMessage = deviceApplicationCall.sendAndResponse();
         } catch (Exception e) {
             closeManagementOperation(scopeId, deviceId, operationId);
             throw e;
@@ -625,7 +625,7 @@ public class DevicePackageManagementServiceImpl extends AbstractDeviceManagement
         //
         // Do get
         DeviceCallExecutor<?, ?, ?, PackageResponseMessage> deviceApplicationCall = new DeviceCallExecutor<>(packageRequestMessage, timeout);
-        PackageResponseMessage responseMessage = deviceApplicationCall.send();
+        PackageResponseMessage responseMessage = deviceApplicationCall.sendAndResponse();
 
         //
         // Create event

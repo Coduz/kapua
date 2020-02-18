@@ -30,6 +30,17 @@ public interface DeviceManagementOperationRegistryService extends KapuaEntitySer
      */
     DeviceManagementOperation findByOperationId(KapuaId scopeId, KapuaId operationId) throws KapuaException;
 
+//    /**
+//     * Gets a {@link DeviceManagementOperation} by its {@link DeviceManagementOperation#getOperationId()}.
+//     *
+//     * @param scopeId   The {@link DeviceManagementOperation#getScopeId()}
+//     * @param operation The {@link DeviceManagementOperation#getOperationId()}
+//     * @return The {@link DeviceManagementOperation} found or {@code null}.
+//     * @throws KapuaException
+//     * @since 1.2.0
+//     */
+//    DeviceManagementOperation findByOperationId(KapuaId scopeId, KapuaId operation) throws KapuaException;
+
     /**
      * Returns the {@link DeviceManagementOperationListResult} with elements matching the provided query.
      *

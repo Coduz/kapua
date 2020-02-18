@@ -29,6 +29,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 @Path("{scopeId}/devices/{deviceId}/requests")
 public class DeviceManagementRequests extends AbstractKapuaResource {
@@ -56,9 +57,57 @@ public class DeviceManagementRequests extends AbstractKapuaResource {
             @PathParam("deviceId") EntityId deviceId,
             @QueryParam("timeout") Long timeout,
             GenericRequestMessage requestMessage) throws KapuaException {
+        return sendAndResponse(scopeId, deviceId, timeout, requestMessage);
+    }
+
+    /**
+     * Sends a request message to a device.
+     * This call is generally used to perform remote management of resources
+     * attached to the device such sensors and registries.
+     *
+     * @param scopeId        The {@link ScopeId} of the {@link Device}.
+     * @param deviceId       The {@link Device} ID.
+     * @param timeout        The timeout of the request execution
+     * @param requestMessage The input request
+     * @return The response output.
+     * @throws Exception Whenever something bad happens. See specific {@link KapuaService} exceptions.
+     */
+    @POST
+    @Consumes({MediaType.APPLICATION_XML})
+    @Produces({MediaType.APPLICATION_XML})
+    @Path("_send")
+    public GenericResponseMessage sendAndResponse(
+            @PathParam("scopeId") ScopeId scopeId,
+            @PathParam("deviceId") EntityId deviceId,
+            @QueryParam("timeout") Long timeout,
+            GenericRequestMessage requestMessage) throws KapuaException {
         requestMessage.setScopeId(scopeId);
         requestMessage.setDeviceId(deviceId);
 
         return requestService.exec(scopeId, deviceId, requestMessage, timeout);
+    }
+
+    /**
+     * Sends a request message to a device.
+     *
+     * @param scopeId        The {@link ScopeId} of the {@link Device}.
+     * @param deviceId       The {@link Device} ID.
+     * @param requestMessage The input request
+     * @throws Exception Whenever something bad happens. See specific {@link KapuaService} exceptions.
+     */
+    @POST
+    @Consumes({MediaType.APPLICATION_XML})
+    @Produces({MediaType.APPLICATION_XML})
+    @Path("_submit")
+    public Response send(
+            @PathParam("scopeId") ScopeId scopeId,
+            @PathParam("deviceId") EntityId deviceId,
+            GenericRequestMessage requestMessage) throws Exception {
+        requestMessage.setScopeId(scopeId);
+        requestMessage.setDeviceId(deviceId);
+
+        requestService.submit(scopeId, deviceId, requestMessage);
+
+        return returnOk();
     }
 }

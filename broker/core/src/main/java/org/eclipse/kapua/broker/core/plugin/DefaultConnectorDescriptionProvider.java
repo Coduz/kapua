@@ -16,8 +16,20 @@ import org.eclipse.kapua.broker.core.plugin.ConnectorDescriptor.MessageType;
 import org.eclipse.kapua.broker.core.setting.BrokerSetting;
 import org.eclipse.kapua.broker.core.setting.BrokerSettingKey;
 import org.eclipse.kapua.message.KapuaMessage;
+import org.eclipse.kapua.message.device.data.KapuaDataMessage;
+import org.eclipse.kapua.message.device.lifecycle.KapuaAppsMessage;
+import org.eclipse.kapua.message.device.lifecycle.KapuaBirthMessage;
+import org.eclipse.kapua.message.device.lifecycle.KapuaDisconnectMessage;
+import org.eclipse.kapua.message.device.lifecycle.KapuaMissingMessage;
+import org.eclipse.kapua.message.device.lifecycle.KapuaUnmatchedMessage;
 import org.eclipse.kapua.service.device.call.message.DeviceMessage;
 import org.eclipse.kapua.service.device.call.message.kura.app.notification.KuraNotifyMessage;
+import org.eclipse.kapua.service.device.call.message.kura.data.KuraDataMessage;
+import org.eclipse.kapua.service.device.call.message.kura.lifecycle.KuraAppsMessage;
+import org.eclipse.kapua.service.device.call.message.kura.lifecycle.KuraBirthMessage;
+import org.eclipse.kapua.service.device.call.message.kura.lifecycle.KuraDisconnectMessage;
+import org.eclipse.kapua.service.device.call.message.kura.lifecycle.KuraMissingMessage;
+import org.eclipse.kapua.service.device.call.message.kura.others.KuraUnmatchedMessage;
 import org.eclipse.kapua.service.device.management.message.notification.KapuaNotifyMessage;
 import org.elasticsearch.common.Strings;
 import org.slf4j.Logger;
@@ -156,20 +168,20 @@ class DefaultConnectorDescriptionProvider implements ConnectorDescriptorProvider
      */
     private static ConnectorDescriptor createDefaultDescriptor() {
         Map<MessageType, Class<? extends DeviceMessage<?, ?>>> deviceClass = new EnumMap<>(MessageType.class);
-        deviceClass.put(MessageType.APP, org.eclipse.kapua.service.device.call.message.kura.lifecycle.KuraAppsMessage.class);
-        deviceClass.put(MessageType.BIRTH, org.eclipse.kapua.service.device.call.message.kura.lifecycle.KuraBirthMessage.class);
-        deviceClass.put(MessageType.DISCONNECT, org.eclipse.kapua.service.device.call.message.kura.lifecycle.KuraDisconnectMessage.class);
-        deviceClass.put(MessageType.MISSING, org.eclipse.kapua.service.device.call.message.kura.lifecycle.KuraMissingMessage.class);
+        deviceClass.put(MessageType.APP, KuraAppsMessage.class);
+        deviceClass.put(MessageType.BIRTH, KuraBirthMessage.class);
+        deviceClass.put(MessageType.DISCONNECT, KuraDisconnectMessage.class);
+        deviceClass.put(MessageType.MISSING, KuraMissingMessage.class);
         deviceClass.put(MessageType.NOTIFY, KuraNotifyMessage.class);
-        deviceClass.put(MessageType.DATA, org.eclipse.kapua.service.device.call.message.kura.data.KuraDataMessage.class);
+        deviceClass.put(MessageType.DATA, KuraDataMessage.class);
 
         Map<MessageType, Class<? extends KapuaMessage<?, ?>>> kapuaClass = new EnumMap<>(MessageType.class);
-        kapuaClass.put(MessageType.APP, org.eclipse.kapua.message.device.lifecycle.KapuaAppsMessage.class);
-        kapuaClass.put(MessageType.BIRTH, org.eclipse.kapua.message.device.lifecycle.KapuaBirthMessage.class);
-        kapuaClass.put(MessageType.DISCONNECT, org.eclipse.kapua.message.device.lifecycle.KapuaDisconnectMessage.class);
-        kapuaClass.put(MessageType.MISSING, org.eclipse.kapua.message.device.lifecycle.KapuaMissingMessage.class);
+        kapuaClass.put(MessageType.APP, KapuaAppsMessage.class);
+        kapuaClass.put(MessageType.BIRTH, KapuaBirthMessage.class);
+        kapuaClass.put(MessageType.DISCONNECT, KapuaDisconnectMessage.class);
+        kapuaClass.put(MessageType.MISSING, KapuaMissingMessage.class);
         kapuaClass.put(MessageType.NOTIFY, KapuaNotifyMessage.class);
-        kapuaClass.put(MessageType.DATA, org.eclipse.kapua.message.device.data.KapuaDataMessage.class);
+        kapuaClass.put(MessageType.DATA, KapuaDataMessage.class);
 
         return new ConnectorDescriptor(DEFAULT_TRANSPORT_PROTOCOL, deviceClass, kapuaClass);
     }

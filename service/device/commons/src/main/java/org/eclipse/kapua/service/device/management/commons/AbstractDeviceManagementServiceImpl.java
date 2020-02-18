@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2019 Eurotech and/or its affiliates and others
+ * Copyright (c) 2018, 2020 Eurotech and/or its affiliates and others
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -21,14 +21,15 @@ import org.eclipse.kapua.model.type.ObjectTypeConverter;
 import org.eclipse.kapua.model.type.ObjectValueConverter;
 import org.eclipse.kapua.service.authorization.AuthorizationService;
 import org.eclipse.kapua.service.authorization.permission.PermissionFactory;
-import org.eclipse.kapua.service.device.management.message.notification.OperationStatus;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestMessage;
+import org.eclipse.kapua.service.device.management.message.response.KapuaResponseCode;
 import org.eclipse.kapua.service.device.management.message.response.KapuaResponseMessage;
 import org.eclipse.kapua.service.device.management.registry.operation.DeviceManagementOperation;
 import org.eclipse.kapua.service.device.management.registry.operation.DeviceManagementOperationCreator;
 import org.eclipse.kapua.service.device.management.registry.operation.DeviceManagementOperationFactory;
 import org.eclipse.kapua.service.device.management.registry.operation.DeviceManagementOperationProperty;
 import org.eclipse.kapua.service.device.management.registry.operation.DeviceManagementOperationRegistryService;
+import org.eclipse.kapua.service.device.management.registry.operation.DeviceManagementOperationStatus;
 import org.eclipse.kapua.service.device.registry.event.DeviceEventCreator;
 import org.eclipse.kapua.service.device.registry.event.DeviceEventFactory;
 import org.eclipse.kapua.service.device.registry.event.DeviceEventService;
@@ -69,24 +70,43 @@ public abstract class AbstractDeviceManagementServiceImpl {
      * @throws KapuaException If the creation of the {@link org.eclipse.kapua.service.device.registry.event.DeviceEvent} fails for some reasons
      * @since 1.0.0
      */
-    protected void createDeviceEvent(KapuaId scopeId, KapuaId deviceId, KapuaRequestMessage<?, ?> requestMessage, KapuaResponseMessage responseMessage) throws KapuaException {
+    protected void createDeviceEvent(KapuaId scopeId, KapuaId deviceId, KapuaRequestMessage<?, ?> requestMessage, KapuaResponseMessage<?, ?> responseMessage) throws KapuaException {
 
         DeviceEventCreator deviceEventCreator =
                 DEVICE_EVENT_FACTORY.newCreator(
                         scopeId,
                         deviceId,
-                        responseMessage.getReceivedOn(),
+                        responseMessage != null ? responseMessage.getReceivedOn() : requestMessage.getSentOn(),
                         requestMessage.getChannel().getAppName().getValue());
 
-        deviceEventCreator.setPosition(responseMessage.getPosition());
-        deviceEventCreator.setSentOn(responseMessage.getSentOn());
+        deviceEventCreator.setPosition(responseMessage != null ? responseMessage.getPosition() : null);
+        deviceEventCreator.setSentOn(responseMessage != null ? responseMessage.getSentOn() : requestMessage.getSentOn());
         deviceEventCreator.setAction(requestMessage.getChannel().getMethod());
-        deviceEventCreator.setResponseCode(responseMessage.getResponseCode());
-        deviceEventCreator.setEventMessage(responseMessage.getPayload().toDisplayString());
+        deviceEventCreator.setResponseCode(responseMessage != null ? responseMessage.getResponseCode() : KapuaResponseCode.SENT);
+        deviceEventCreator.setEventMessage(responseMessage != null ? responseMessage.getPayload().toDisplayString() : requestMessage.getPayload().toDisplayString());
 
         KapuaSecurityUtils.doPrivileged(() -> DEVICE_EVENT_SERVICE.create(deviceEventCreator));
     }
 
+    /**
+     * @param scopeId
+     * @param deviceId
+     * @param requestMessage
+     * @throws KapuaException
+     */
+    protected void createDeviceEvent(KapuaId scopeId, KapuaId deviceId, KapuaRequestMessage<?, ?> requestMessage) throws KapuaException {
+        createDeviceEvent(scopeId, deviceId, requestMessage, null);
+    }
+
+    /**
+     * @param scopeId
+     * @param deviceId
+     * @param operationId
+     * @param requestMessage
+     * @return
+     * @throws KapuaException
+     * @since 1.1.0
+     */
     protected KapuaId createManagementOperation(KapuaId scopeId, KapuaId deviceId, KapuaId operationId, KapuaRequestMessage<?, ?> requestMessage) throws KapuaException {
 
         DeviceManagementOperationCreator deviceManagementOperationCreator = DEVICE_MANAGEMENT_OPERATION_FACTORY.newCreator(scopeId);
@@ -96,7 +116,7 @@ public abstract class AbstractDeviceManagementServiceImpl {
         deviceManagementOperationCreator.setAppId(requestMessage.getChannel().getAppName().getValue());
         deviceManagementOperationCreator.setAction(requestMessage.getChannel().getMethod());
         deviceManagementOperationCreator.setResource(!requestMessage.getChannel().getSemanticParts().isEmpty() ? requestMessage.getChannel().getSemanticParts().get(0) : null);
-        deviceManagementOperationCreator.setStatus(OperationStatus.RUNNING);
+        deviceManagementOperationCreator.setStatus(DeviceManagementOperationStatus.RUNNING);
         deviceManagementOperationCreator.setInputProperties(extractInputProperties(requestMessage));
 
         DeviceManagementOperation deviceManagementOperation = KapuaSecurityUtils.doPrivileged(() -> DEVICE_MANAGEMENT_OPERATION_REGISTRY_SERVICE.create(deviceManagementOperationCreator));
@@ -104,10 +124,25 @@ public abstract class AbstractDeviceManagementServiceImpl {
         return deviceManagementOperation.getId();
     }
 
+    /**
+     * @param scopeId
+     * @param deviceId
+     * @param operationId
+     * @throws KapuaException
+     * @since 1.2.0
+     */
     protected void closeManagementOperation(KapuaId scopeId, KapuaId deviceId, KapuaId operationId) throws KapuaException {
         closeManagementOperation(scopeId, deviceId, operationId, null);
     }
 
+    /**
+     * @param scopeId
+     * @param deviceId
+     * @param operationId
+     * @param responseMessageMessage
+     * @throws KapuaException
+     * @since 1.1.0
+     */
     protected void closeManagementOperation(KapuaId scopeId, KapuaId deviceId, KapuaId operationId, KapuaResponseMessage<?, ?> responseMessageMessage) throws KapuaException {
         DeviceManagementOperation deviceManagementOperation = DEVICE_MANAGEMENT_OPERATION_REGISTRY_SERVICE.findByOperationId(scopeId, operationId);
 
@@ -116,10 +151,10 @@ public abstract class AbstractDeviceManagementServiceImpl {
         }
 
         if (responseMessageMessage != null) {
-            deviceManagementOperation.setStatus(responseMessageMessage.getResponseCode().isAccepted() ? OperationStatus.COMPLETED : OperationStatus.FAILED);
+            deviceManagementOperation.setStatus(responseMessageMessage.getResponseCode().isAccepted() ? DeviceManagementOperationStatus.COMPLETED : DeviceManagementOperationStatus.FAILED);
             deviceManagementOperation.setEndedOn(responseMessageMessage.getReceivedOn());
         } else {
-            deviceManagementOperation.setStatus(OperationStatus.FAILED);
+            deviceManagementOperation.setStatus(DeviceManagementOperationStatus.FAILED);
             deviceManagementOperation.setEndedOn(new Date());
         }
 
@@ -127,6 +162,11 @@ public abstract class AbstractDeviceManagementServiceImpl {
     }
 
 
+    /**
+     * @param requestMessage
+     * @return
+     * @since 1.1.0
+     */
     private List<DeviceManagementOperationProperty> extractInputProperties(KapuaRequestMessage<?, ?> requestMessage) {
 
         List<DeviceManagementOperationProperty> inputProperties = new ArrayList<>();

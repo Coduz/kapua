@@ -86,7 +86,7 @@ public class DeviceAssetManagementServiceImpl extends AbstractDeviceManagementSe
         //
         // Do get
         DeviceCallExecutor deviceApplicationCall = new DeviceCallExecutor(assetRequestMessage, timeout);
-        AssetResponseMessage responseMessage = (AssetResponseMessage) deviceApplicationCall.send();
+        AssetResponseMessage responseMessage = (AssetResponseMessage) deviceApplicationCall.sendAndResponse();
 
         //
         // Create event
@@ -148,7 +148,7 @@ public class DeviceAssetManagementServiceImpl extends AbstractDeviceManagementSe
         //
         // Do read
         DeviceCallExecutor deviceApplicationCall = new DeviceCallExecutor(assetRequestMessage, timeout);
-        AssetResponseMessage responseMessage = (AssetResponseMessage) deviceApplicationCall.send();
+        AssetResponseMessage responseMessage = (AssetResponseMessage) deviceApplicationCall.sendAndResponse();
 
         //
         // Create event
@@ -210,7 +210,7 @@ public class DeviceAssetManagementServiceImpl extends AbstractDeviceManagementSe
         //
         // Do write
         DeviceCallExecutor deviceApplicationCall = new DeviceCallExecutor(assetRequestMessage, timeout);
-        AssetResponseMessage responseMessage = (AssetResponseMessage) deviceApplicationCall.send();
+        AssetResponseMessage responseMessage = (AssetResponseMessage) deviceApplicationCall.sendAndResponse();
 
         //
         // Create event

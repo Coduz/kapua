@@ -77,7 +77,7 @@ public class DeviceSnapshotManagementServiceImpl extends AbstractDeviceManagemen
         //
         // Do get
         DeviceCallExecutor deviceApplicationCall = new DeviceCallExecutor(snapshotRequestMessage, timeout);
-        SnapshotResponseMessage responseMessage = (SnapshotResponseMessage) deviceApplicationCall.send();
+        SnapshotResponseMessage responseMessage = (SnapshotResponseMessage) deviceApplicationCall.sendAndResponse();
 
         //
         // Create event
@@ -146,7 +146,7 @@ public class DeviceSnapshotManagementServiceImpl extends AbstractDeviceManagemen
         //
         // Do exec
         DeviceCallExecutor deviceApplicationCall = new DeviceCallExecutor(snapshotRequestMessage, timeout);
-        SnapshotResponseMessage responseMessage = (SnapshotResponseMessage) deviceApplicationCall.send();
+        SnapshotResponseMessage responseMessage = (SnapshotResponseMessage) deviceApplicationCall.sendAndResponse();
 
         //
         // Create event

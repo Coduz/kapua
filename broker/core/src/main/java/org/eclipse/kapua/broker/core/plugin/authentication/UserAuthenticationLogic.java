@@ -43,6 +43,7 @@ public class UserAuthenticationLogic extends AuthenticationLogic {
     protected String aclDataAcc;
     protected String aclDataAccCli;
     protected String aclCtrlAccNotify;
+    protected String aclCtrlAccUpdate;
 
     protected static final int BROKER_CONNECT_IDX = 0;
     protected static final int DEVICE_MANAGE_IDX = 1;
@@ -66,6 +67,7 @@ public class UserAuthenticationLogic extends AuthenticationLogic {
         aclDataAcc = addressPrefix + "{0}.>";
         aclDataAccCli = addressPrefix + "{0}.{1}.>";
         aclCtrlAccNotify = addressPrefix + addressClassifier + ".{0}.*.*.NOTIFY.{1}.>";
+        aclCtrlAccUpdate = addressPrefix + addressClassifier + ".{0}.*.*.UPDATE.{1}.>";
     }
 
     @Override
@@ -108,8 +110,7 @@ public class UserAuthenticationLogic extends AuthenticationLogic {
             logger.debug("Skip device connection status update since is coming from a stealing link condition. Client id: {} - Connection id: {}",
                     kcc.getClientId(),
                     kcc.getConnectionId());
-        }
-        else {
+        } else {
             // update device connection (if the disconnection wasn't caused by a stealing link)
             DeviceConnection deviceConnection;
             try {
@@ -121,8 +122,7 @@ public class UserAuthenticationLogic extends AuthenticationLogic {
             if (deviceConnection != null) {
                 if (kcc.getBrokerIpOrHostName() == null) {
                     logger.warn("Broker Ip or host name is not correctly set! Please check the configuration!");
-                }
-                else if (!kcc.getBrokerIpOrHostName().equals(deviceConnection.getServerIp())) {
+                } else if (!kcc.getBrokerIpOrHostName().equals(deviceConnection.getServerIp())) {
                     //the device is connected to a different node so skip to update the status!
                     deviceOwnedByTheCurrentNode = false;
                     logger.warn("Detected disconnection for client connected to another node: cliend id {} - account id {} - last connection id was {} - current connection id is {} - IP: {} - No disconnection info will be added!",
@@ -136,8 +136,7 @@ public class UserAuthenticationLogic extends AuthenticationLogic {
                     //update status only if the old status wasn't missing
                     if (DeviceConnectionStatus.MISSING.equals(deviceConnection.getStatus())) {
                         logger.warn("Skipping device status update for device {} since last status was MISSING!", deviceConnection.getClientId());
-                    }
-                    else {
+                    } else {
                         deviceConnection.setStatus(error == null && !kcc.isMissing() ? DeviceConnectionStatus.DISCONNECTED : DeviceConnectionStatus.MISSING);
                         try {
                             KapuaSecurityUtils.doPrivileged(() -> deviceConnectionService.update(deviceConnection));
@@ -174,8 +173,9 @@ public class UserAuthenticationLogic extends AuthenticationLogic {
         }
         ael.add(createAuthorizationEntry(kcc, Acl.WRITE_ADMIN, formatAcl(aclCtrlAccReply, kcc)));
 
-        // Write notify to any client Id and any application and operation
+        // Write notify and update to any client Id and any application and operation
         ael.add(createAuthorizationEntry(kcc, Acl.WRITE, formatAclFull(aclCtrlAccNotify, kcc)));
+        ael.add(createAuthorizationEntry(kcc, Acl.WRITE, formatAclFull(aclCtrlAccUpdate, kcc)));
 
         kcc.logAuthDestinationToLog();
 

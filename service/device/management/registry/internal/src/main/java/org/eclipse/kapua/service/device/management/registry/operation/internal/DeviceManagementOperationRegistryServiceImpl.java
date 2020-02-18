@@ -126,6 +126,22 @@ public class DeviceManagementOperationRegistryServiceImpl extends AbstractKapuaS
         return entityManagerSession.doAction(em -> DeviceManagementOperationDAO.find(em, scopeId, entityId));
     }
 
+//    @Override
+//    public DeviceManagementOperation findByOperationId(KapuaId scopeId, KapuaId operationId) throws KapuaException {
+//        //
+//        // Argument Validation
+//        ArgumentValidator.notNull(scopeId, "scopeId");
+//        ArgumentValidator.notNull(operationId, "operationId");
+//
+//        //
+//        // Check Access
+//        AUTHORIZATION_SERVICE.checkPermission(PERMISSION_FACTORY.newPermission(DeviceManagementRegistryDomains.DEVICE_MANAGEMENT_REGISTRY_DOMAIN, Actions.read, scopeId));
+//
+//        //
+//        // Do find
+//        return entityManagerSession.onResult(em -> DeviceManagementOperationDAO.findByOperationId(em, scopeId, operationId));
+//    }
+
     @Override
     public DeviceManagementOperation findByOperationId(KapuaId scopeId, KapuaId operationId) throws KapuaException {
         //

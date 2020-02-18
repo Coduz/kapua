@@ -92,6 +92,15 @@ public interface DeviceCall<RQ extends DeviceRequestMessage<?, ?>, RS extends De
     RS execute(@NotNull RQ requestMessage, @Nullable Long timeout) throws DeviceCallTimeoutException, DeviceCallSendException;
 
     /**
+     * Executes an 'submit' request.
+     *
+     * @param requestMessage The {@link DeviceRequestMessage} to send.
+     * @throws DeviceCallSendException if sending the request produces any error.
+     * @since 1.2.0
+     */
+    void submit(@NotNull RQ requestMessage) throws DeviceCallSendException;
+
+    /**
      * Executes an 'options' request.
      *
      * @param requestMessage The {@link DeviceRequestMessage} to send.

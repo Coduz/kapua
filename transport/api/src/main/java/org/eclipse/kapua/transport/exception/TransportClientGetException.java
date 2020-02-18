@@ -11,7 +11,7 @@
  *******************************************************************************/
 package org.eclipse.kapua.transport.exception;
 
-import javax.validation.constraints.NotNull;
+import javax.annotation.Nullable;
 
 /**
  * The {@link TransportException} to throw when is not possible to get an instance of the {@link org.eclipse.kapua.transport.TransportFacade}
@@ -28,7 +28,7 @@ public class TransportClientGetException extends TransportException {
      * @param serverIp The serverIp to which connect the {@link org.eclipse.kapua.transport.TransportFacade}
      * @since 1.2.0
      */
-    public TransportClientGetException(@NotNull String serverIp) {
+    public TransportClientGetException(@Nullable String serverIp) {
         super(TransportErrorCodes.CLIENT_GET, serverIp);
 
         this.serverIp = serverIp;
@@ -41,7 +41,7 @@ public class TransportClientGetException extends TransportException {
      * @param serverIp The serverIp to which connect the {@link org.eclipse.kapua.transport.TransportFacade}
      * @since 1.2.0
      */
-    public TransportClientGetException(@NotNull Throwable cause, @NotNull String serverIp) {
+    public TransportClientGetException(@Nullable Throwable cause, @Nullable String serverIp) {
         super(TransportErrorCodes.CLIENT_GET, cause, serverIp);
 
         this.serverIp = serverIp;
@@ -53,7 +53,7 @@ public class TransportClientGetException extends TransportException {
      * @return The IP to which we wanted unsuccessfully to connect.
      * @since 1.2.0
      */
-    public String getRequestMessage() {
+    public String getServerIp() {
         return serverIp;
     }
 }

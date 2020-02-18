@@ -15,10 +15,10 @@ import org.eclipse.kapua.commons.model.AbstractKapuaEntityCreator;
 import org.eclipse.kapua.commons.model.id.KapuaEid;
 import org.eclipse.kapua.model.id.KapuaId;
 import org.eclipse.kapua.service.device.management.message.KapuaMethod;
-import org.eclipse.kapua.service.device.management.message.notification.OperationStatus;
 import org.eclipse.kapua.service.device.management.registry.operation.DeviceManagementOperation;
 import org.eclipse.kapua.service.device.management.registry.operation.DeviceManagementOperationCreator;
 import org.eclipse.kapua.service.device.management.registry.operation.DeviceManagementOperationProperty;
+import org.eclipse.kapua.service.device.management.registry.operation.DeviceManagementOperationStatus;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,7 +32,7 @@ public class DeviceManagementOperationCreatorImpl extends AbstractKapuaEntityCre
     private String appId;
     private KapuaMethod action;
     private String resource;
-    private OperationStatus status;
+    private DeviceManagementOperationStatus status;
     private List<DeviceManagementOperationProperty> inputProperties;
 
     public DeviceManagementOperationCreatorImpl(KapuaId scopeId) {
@@ -100,12 +100,12 @@ public class DeviceManagementOperationCreatorImpl extends AbstractKapuaEntityCre
     }
 
     @Override
-    public OperationStatus getStatus() {
+    public DeviceManagementOperationStatus getStatus() {
         return status;
     }
 
     @Override
-    public void setStatus(OperationStatus status) {
+    public void setStatus(DeviceManagementOperationStatus status) {
         this.status = status;
     }
 

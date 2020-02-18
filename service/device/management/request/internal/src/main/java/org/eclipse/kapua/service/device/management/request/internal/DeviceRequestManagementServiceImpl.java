@@ -59,6 +59,7 @@ public class DeviceRequestManagementServiceImpl extends AbstractDeviceManagement
         Actions action;
         switch (requestInput.getChannel().getMethod()) {
             case EXECUTE:
+            case SUBMIT:
                 action = Actions.execute;
                 break;
             case READ:
@@ -100,12 +101,74 @@ public class DeviceRequestManagementServiceImpl extends AbstractDeviceManagement
         //
         // Do exec
         DeviceCallExecutor<?, ?, ?, GenericResponseMessage> deviceApplicationCall = new DeviceCallExecutor<>(genericRequestMessage, timeout);
-        GenericResponseMessage responseMessage = deviceApplicationCall.send();
+        GenericResponseMessage responseMessage = deviceApplicationCall.sendAndResponse();
 
         //
         // Create event
-        createDeviceEvent(scopeId, deviceId, genericRequestMessage, responseMessage);
+        if (responseMessage != null) {
+            createDeviceEvent(scopeId, deviceId, genericRequestMessage, responseMessage);
+        }
 
         return responseMessage;
+    }
+
+    @Override
+    public void submit(KapuaId scopeId, KapuaId deviceId, GenericRequestMessage requestInput) throws KapuaException {
+        //
+        // Argument Validation
+        ArgumentValidator.notNull(requestInput, "requestInput");
+
+        //
+        // Check Access
+        Actions action;
+        switch (requestInput.getChannel().getMethod()) {
+            case EXECUTE:
+            case SUBMIT:
+                action = Actions.execute;
+                break;
+            case READ:
+            case OPTIONS:
+                action = Actions.read;
+                break;
+            case CREATE:
+            case WRITE:
+                action = Actions.write;
+                break;
+            case DELETE:
+                action = Actions.delete;
+                break;
+            default:
+                throw new KapuaRuntimeException(KapuaErrorCodes.OPERATION_NOT_SUPPORTED);
+        }
+        AUTHORIZATION_SERVICE.checkPermission(PERMISSION_FACTORY.newPermission(DeviceManagementDomains.DEVICE_MANAGEMENT_DOMAIN, action, requestInput.getScopeId()));
+
+        //
+        // Prepare the request
+        GenericRequestChannel genericRequestChannel = FACTORY.newRequestChannel();
+        genericRequestChannel.setAppName(requestInput.getChannel().getAppName());
+        genericRequestChannel.setVersion(requestInput.getChannel().getVersion());
+        genericRequestChannel.setMethod(requestInput.getChannel().getMethod());
+        genericRequestChannel.setResources(requestInput.getChannel().getResources());
+
+        GenericRequestPayload genericRequestPayload = FACTORY.newRequestPayload();
+        genericRequestPayload.setMetrics(requestInput.getPayload().getMetrics());
+        genericRequestPayload.setBody(requestInput.getPayload().getBody());
+
+        GenericRequestMessage genericRequestMessage = FACTORY.newRequestMessage();
+        genericRequestMessage.setScopeId(requestInput.getScopeId());
+        genericRequestMessage.setDeviceId(requestInput.getDeviceId());
+        genericRequestMessage.setCapturedOn(new Date());
+        genericRequestMessage.setChannel(genericRequestChannel);
+        genericRequestMessage.setPayload(genericRequestPayload);
+        genericRequestMessage.setPosition(requestInput.getPosition());
+
+        //
+        // Do exec
+        DeviceCallExecutor<?, ?, ?, GenericResponseMessage> deviceApplicationCall = new DeviceCallExecutor<>(genericRequestMessage);
+        deviceApplicationCall.send();
+
+        //
+        // Create event
+        createDeviceEvent(scopeId, deviceId, genericRequestMessage);
     }
 }

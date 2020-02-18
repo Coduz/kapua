@@ -37,16 +37,17 @@ public class MethodDictionaryKapuaKura {
     static {
         DICTIONARY = new EnumMap<>(KapuaMethod.class);
 
-        DICTIONARY.put(KapuaMethod.READ, KuraMethod.GET);
-        DICTIONARY.put(KapuaMethod.GET, KuraMethod.GET);
         DICTIONARY.put(KapuaMethod.CREATE, KuraMethod.POST);
-        DICTIONARY.put(KapuaMethod.POST, KuraMethod.POST);
-        DICTIONARY.put(KapuaMethod.WRITE, KuraMethod.PUT);
-        DICTIONARY.put(KapuaMethod.PUT, KuraMethod.PUT);
         DICTIONARY.put(KapuaMethod.DELETE, KuraMethod.DEL);
         DICTIONARY.put(KapuaMethod.DEL, KuraMethod.DEL);
         DICTIONARY.put(KapuaMethod.EXECUTE, KuraMethod.EXEC);
         DICTIONARY.put(KapuaMethod.EXEC, KuraMethod.EXEC);
+        DICTIONARY.put(KapuaMethod.GET, KuraMethod.GET);
+        DICTIONARY.put(KapuaMethod.POST, KuraMethod.POST);
+        DICTIONARY.put(KapuaMethod.PUT, KuraMethod.PUT);
+        DICTIONARY.put(KapuaMethod.READ, KuraMethod.GET);
+        DICTIONARY.put(KapuaMethod.SUBMIT, KuraMethod.SUBMIT);
+        DICTIONARY.put(KapuaMethod.WRITE, KuraMethod.PUT);
     }
 
     /**

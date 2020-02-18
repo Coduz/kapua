@@ -83,7 +83,7 @@ public class DeviceCommandManagementServiceImpl extends AbstractDeviceManagement
         //
         // Do exec
         DeviceCallExecutor deviceApplicationCall = new DeviceCallExecutor(commandRequestMessage, timeout);
-        CommandResponseMessage responseMessage = (CommandResponseMessage) deviceApplicationCall.send();
+        CommandResponseMessage responseMessage = (CommandResponseMessage) deviceApplicationCall.sendAndResponse();
 
         //
         // Create event

@@ -25,6 +25,7 @@ import org.eclipse.kapua.service.device.management.message.notification.KapuaNot
 import org.eclipse.kapua.service.device.management.message.notification.KapuaNotifyMessage;
 import org.eclipse.kapua.service.device.management.message.notification.KapuaNotifyPayload;
 import org.eclipse.kapua.service.device.management.registry.manager.DeviceManagementRegistryManagerService;
+import org.eclipse.kapua.service.device.management.registry.operation.DeviceManagementOperationStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -78,7 +79,7 @@ public class DeviceManagementNotificationMessageProcessor extends AbstractProces
                     notifyPayload.getOperationId(),
                     MoreObjects.firstNonNull(notifyMessage.getSentOn(), notifyMessage.getReceivedOn()),
                     notifyPayload.getResource() != null ? notifyPayload.getResource() : notifyChannel.getResources()[0],
-                    notifyPayload.getStatus(),
+                    DeviceManagementOperationStatus.readFrom(notifyPayload.getStatus()),
                     notifyPayload.getProgress(),
                     notifyPayload.getMessage());
 
@@ -87,7 +88,7 @@ public class DeviceManagementNotificationMessageProcessor extends AbstractProces
                     notifyPayload.getOperationId(),
                     MoreObjects.firstNonNull(notifyMessage.getSentOn(), notifyMessage.getReceivedOn()),
                     notifyPayload.getResource() != null ? notifyPayload.getResource() : notifyChannel.getResources()[0],
-                    notifyPayload.getStatus());
+                    DeviceManagementOperationStatus.readFrom(notifyPayload.getStatus()));
         } catch (Exception e) {
             LOG.error("Error while processing Device Management Operation Notification message!", e);
             throw e;

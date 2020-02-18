@@ -17,9 +17,9 @@ import org.eclipse.kapua.commons.model.AbstractKapuaUpdatableEntity;
 import org.eclipse.kapua.commons.model.id.KapuaEid;
 import org.eclipse.kapua.model.id.KapuaId;
 import org.eclipse.kapua.service.device.management.message.KapuaMethod;
-import org.eclipse.kapua.service.device.management.message.notification.OperationStatus;
 import org.eclipse.kapua.service.device.management.registry.operation.DeviceManagementOperation;
 import org.eclipse.kapua.service.device.management.registry.operation.DeviceManagementOperationProperty;
+import org.eclipse.kapua.service.device.management.registry.operation.DeviceManagementOperationStatus;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -77,7 +77,7 @@ public class DeviceManagementOperationImpl extends AbstractKapuaUpdatableEntity 
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, updatable = true)
-    private OperationStatus status;
+    private DeviceManagementOperationStatus status;
 
     @ElementCollection
     @CollectionTable(name = "dvcm_device_management_operation_input_property", joinColumns = @JoinColumn(name = "operation_id", referencedColumnName = "id"))
@@ -113,7 +113,7 @@ public class DeviceManagementOperationImpl extends AbstractKapuaUpdatableEntity 
      * @throws KapuaException
      * @since 1.1.0
      */
-    public DeviceManagementOperationImpl(DeviceManagementOperation deviceManagementOperation) throws KapuaException {
+    public DeviceManagementOperationImpl(DeviceManagementOperation deviceManagementOperation) {
         super(deviceManagementOperation);
 
         setStartedOn(deviceManagementOperation.getStartedOn());
@@ -198,12 +198,12 @@ public class DeviceManagementOperationImpl extends AbstractKapuaUpdatableEntity 
     }
 
     @Override
-    public OperationStatus getStatus() {
+    public DeviceManagementOperationStatus getStatus() {
         return status;
     }
 
     @Override
-    public void setStatus(OperationStatus status) {
+    public void setStatus(DeviceManagementOperationStatus status) {
         this.status = status;
     }
 

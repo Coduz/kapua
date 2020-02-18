@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2019 Red Hat Inc and others.
+ * Copyright (c) 2017, 2020 Red Hat Inc and others.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -31,6 +31,11 @@ public final class Payloads {
     private Payloads() {
     }
 
+    /**
+     * @param properties
+     * @return
+     * @since 1.0.0
+     */
     public static String toDisplayString(Map<String, Object> properties) {
         if (properties == null) {
             return "";
@@ -62,6 +67,11 @@ public final class Payloads {
         return sb.toString();
     }
 
+    /**
+     * @param value
+     * @return
+     * @since 1.0.0
+     */
     private static Object forDisplay(Object value) {
         if (value instanceof byte[]) {
             return Base64.getUrlEncoder().withoutPadding().encodeToString((byte[]) value);

@@ -78,7 +78,7 @@ public class DeviceBundleManagementServiceImpl extends AbstractDeviceManagementS
         //
         // Do get
         DeviceCallExecutor<BundleRequestChannel, BundleRequestPayload, BundleRequestMessage, BundleResponseMessage> deviceApplicationCall = new DeviceCallExecutor<>(bundleRequestMessage, timeout);
-        BundleResponseMessage responseMessage = deviceApplicationCall.send();
+        BundleResponseMessage responseMessage = deviceApplicationCall.sendAndResponse();
 
         //
         // Create event
@@ -150,7 +150,7 @@ public class DeviceBundleManagementServiceImpl extends AbstractDeviceManagementS
         //
         // Do start
         DeviceCallExecutor deviceApplicationCall = new DeviceCallExecutor(bundleRequestMessage, timeout);
-        BundleResponseMessage responseMessage = (BundleResponseMessage) deviceApplicationCall.send();
+        BundleResponseMessage responseMessage = (BundleResponseMessage) deviceApplicationCall.sendAndResponse();
 
         //
         // Create event
@@ -199,7 +199,7 @@ public class DeviceBundleManagementServiceImpl extends AbstractDeviceManagementS
         //
         // Do stop
         DeviceCallExecutor deviceApplicationCall = new DeviceCallExecutor(bundleRequestMessage, timeout);
-        BundleResponseMessage responseMessage = (BundleResponseMessage) deviceApplicationCall.send();
+        BundleResponseMessage responseMessage = (BundleResponseMessage) deviceApplicationCall.sendAndResponse();
 
         //
         // Create event

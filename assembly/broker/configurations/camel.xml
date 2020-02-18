@@ -62,6 +62,7 @@
     <bean id="dataStorageMessageProcessor" class="org.eclipse.kapua.broker.core.listener.DataStorageMessageProcessor"></bean>
     <!-- END DATASTORE PERSISTENCE -->
     <bean id="deviceManagementNotificationMessageProcessor" class="org.eclipse.kapua.broker.core.listener.DeviceManagementNotificationMessageProcessor"></bean>
+
     <!-- ERROR -->
     <bean id="errorMessageListener" class="org.eclipse.kapua.broker.core.listener.ErrorMessageListener">
     </bean>

@@ -65,7 +65,6 @@ public class KuraDeviceCallImpl implements DeviceCall<KuraRequestMessage, KuraRe
 
     private static final TransportClientFactory TRANSPORT_CLIENT_FACTORY = LOCATOR.getFactory(TransportClientFactory.class);
 
-
     @Override
     public KuraResponseMessage create(@NotNull KuraRequestMessage requestMessage, @Nullable Long timeout)
             throws DeviceCallTimeoutException, DeviceCallSendException {
@@ -97,6 +96,15 @@ public class KuraDeviceCallImpl implements DeviceCall<KuraRequestMessage, KuraRe
     }
 
     @Override
+    public void submit(@NotNull KuraRequestMessage requestMessage) throws DeviceCallSendException {
+        try {
+            sendInternal(requestMessage, null);
+        } catch (DeviceCallTimeoutException e) {
+            // It cannot throw that when timeout is `null`
+        }
+    }
+
+    @Override
     public KuraResponseMessage write(@NotNull KuraRequestMessage requestMessage, @Nullable Long timeout)
             throws DeviceCallTimeoutException, DeviceCallSendException {
         return sendInternal(requestMessage, timeout);
@@ -123,10 +131,8 @@ public class KuraDeviceCallImpl implements DeviceCall<KuraRequestMessage, KuraRe
      */
     protected KuraResponseMessage sendInternal(@NotNull KuraRequestMessage requestMessage, @Nullable Long timeout) throws DeviceCallTimeoutException, DeviceCallSendException {
 
-        KuraResponseMessage response;
+        KuraResponseMessage response = null;
         try {
-            //
-            // Borrow a TransportClient
             try (TransportFacade transportFacade = borrowClient(requestMessage)) {
                 //
                 // Get Kura to transport translator for the request and vice versa
@@ -139,14 +145,13 @@ public class KuraDeviceCallImpl implements DeviceCall<KuraRequestMessage, KuraRe
                 // Note: Adding to both payload and channel to let the translator choose what to do base on the transport used.
                 KuraRequestChannel requestChannel = requestMessage.getChannel();
                 KuraRequestPayload requestPayload = requestMessage.getPayload();
+                requestPayload.setRequesterClientId(transportFacade.getClientId());
+                requestChannel.setRequesterClientId(transportFacade.getClientId());
                 if (timeout != null) {
                     String requestId = String.valueOf(RANDOM.nextLong());
 
                     requestChannel.setRequestId(requestId);
-                    requestChannel.setRequesterClientId(transportFacade.getClientId());
-
                     requestPayload.setRequestId(requestId);
-                    requestPayload.setRequesterClientId(transportFacade.getClientId());
                 }
 
                 //
@@ -156,10 +161,15 @@ public class KuraDeviceCallImpl implements DeviceCall<KuraRequestMessage, KuraRe
 
                 // Send
                 TransportMessage transportRequestMessage = translatorKuraTransport.translate(requestMessage);
+
+                if (timeout != null) {
                 TransportMessage transportResponseMessage = transportFacade.sendSync(transportRequestMessage, timeout);
 
                 // Translate response
                 response = translatorTransportKura.translate(transportResponseMessage);
+                } else {
+                    transportFacade.sendAsync(transportRequestMessage);
+            }
             }
         } catch (TransportTimeoutException te) {
             throw new DeviceCallTimeoutException(te, timeout);
@@ -202,7 +212,7 @@ public class KuraDeviceCallImpl implements DeviceCall<KuraRequestMessage, KuraRe
             }
 
             Map<String, Object> configParameters = new HashMap<>(1);
-            configParameters.put("serverAddress", serverIp);
+        configParameters.put("serverAddress", serverIp);
             return TRANSPORT_CLIENT_FACTORY.getFacade(configParameters);
         } catch (TransportClientGetException tcge) {
             throw tcge;

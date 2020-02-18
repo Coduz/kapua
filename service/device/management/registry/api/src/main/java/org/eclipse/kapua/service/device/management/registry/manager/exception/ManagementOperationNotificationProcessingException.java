@@ -13,7 +13,7 @@ package org.eclipse.kapua.service.device.management.registry.manager.exception;
 
 import org.eclipse.kapua.KapuaException;
 import org.eclipse.kapua.model.id.KapuaId;
-import org.eclipse.kapua.service.device.management.message.notification.OperationStatus;
+import org.eclipse.kapua.service.device.management.registry.operation.DeviceManagementOperationStatus;
 
 import java.util.Date;
 
@@ -21,11 +21,11 @@ public class ManagementOperationNotificationProcessingException extends KapuaExc
 
     private KapuaId scopeId;
     private KapuaId operationId;
-    private OperationStatus status;
+    private DeviceManagementOperationStatus status;
     private Date updatedOn;
     private Integer progress;
 
-    public ManagementOperationNotificationProcessingException(KapuaException ke, KapuaId scopeId, KapuaId operationId, OperationStatus status, Date updateOn, Integer progress) {
+    public ManagementOperationNotificationProcessingException(KapuaException ke, KapuaId scopeId, KapuaId operationId, DeviceManagementOperationStatus status, Date updateOn, Integer progress) {
         super(ManagementOperationManagerErrorCodes.MANAGEMENT_NOTIFICATION_PROCESSING_ERROR, ke, scopeId, operationId, status, updateOn, progress);
 
         setScopeId(scopeId);
@@ -51,11 +51,11 @@ public class ManagementOperationNotificationProcessingException extends KapuaExc
         this.operationId = operationId;
     }
 
-    public OperationStatus getStatus() {
+    public DeviceManagementOperationStatus getStatus() {
         return status;
     }
 
-    private void setStatus(OperationStatus status) {
+    private void setStatus(DeviceManagementOperationStatus status) {
         this.status = status;
     }
 

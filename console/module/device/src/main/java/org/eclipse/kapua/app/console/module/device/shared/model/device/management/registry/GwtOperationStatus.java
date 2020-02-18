@@ -15,11 +15,17 @@ import com.google.gwt.user.client.rpc.IsSerializable;
 
 public enum GwtOperationStatus implements IsSerializable {
 
+    CREATED,
+
     RUNNING,
+
+    WORKING,
 
     COMPLETED,
 
     FAILED,
+
+    CANCELLED,
 
     STALE
 }

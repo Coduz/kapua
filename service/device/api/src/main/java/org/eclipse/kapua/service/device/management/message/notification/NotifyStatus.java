@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Eurotech and/or its affiliates and others
+ * Copyright (c) 2018, 2020 Eurotech and/or its affiliates and others
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -11,17 +11,28 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.message.notification;
 
-public enum OperationStatus {
+/**
+ * @since 1.1.0
+ */
+public enum NotifyStatus {
 
-    //
+    /**
+     * @since 1.1.0
+     */
     RUNNING,
 
-    //
+    /**
+     * @since 1.1.0
+     */
     COMPLETED,
 
-    //
+    /**
+     * @since 1.1.0
+     */
     FAILED,
 
-    //
+    /**
+     * @since 1.1.0
+     */
     STALE
 }

@@ -44,4 +44,15 @@ public interface DeviceRequestManagementService extends KapuaService {
      * @since 1.1.0
      */
     GenericResponseMessage exec(KapuaId scopeId, KapuaId deviceId, GenericRequestMessage requestInput, Long timeout) throws KapuaException;
+
+    /**
+     * Execute the given device request with the provided options
+     *
+     * @param scopeId      The scope {@link KapuaId} of the target device
+     * @param deviceId     The device {@link KapuaId} of the target device
+     * @param requestInput The {@link GenericRequestMessage} for this request
+     * @throws KapuaException if error occurs during processing
+     * @since 1.2.0
+     */
+    void submit(KapuaId scopeId, KapuaId deviceId, GenericRequestMessage requestInput) throws KapuaException;
 }

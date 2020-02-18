@@ -57,6 +57,10 @@ public class ConnectorDescriptor implements Serializable {
          */
         NOTIFY,
         /**
+         * Update message type
+         */
+        UPDATE,
+        /**
          * Data message type
          */
         DATA
@@ -69,7 +73,7 @@ public class ConnectorDescriptor implements Serializable {
 
     /**
      * Constructs a new connector descriptor
-     *
+     * 
      * @param deviceClass device level messages implementation classes
      * @param kapuaClass  Kapua level messages implementation classes
      */

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Eurotech and/or its affiliates and others
+ * Copyright (c) 2018, 2020 Eurotech and/or its affiliates and others
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -16,7 +16,6 @@ import org.eclipse.kapua.model.id.KapuaId;
 import org.eclipse.kapua.model.id.KapuaIdAdapter;
 import org.eclipse.kapua.model.xml.DateXmlAdapter;
 import org.eclipse.kapua.service.device.management.message.KapuaMethod;
-import org.eclipse.kapua.service.device.management.message.notification.OperationStatus;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -69,9 +68,9 @@ public interface DeviceManagementOperationCreator extends KapuaEntityCreator<Dev
     void setResource(String resource);
 
     @XmlElement(name = "status")
-    OperationStatus getStatus();
+    DeviceManagementOperationStatus getStatus();
 
-    void setStatus(OperationStatus status);
+    void setStatus(DeviceManagementOperationStatus deviceManagementOperationStatus);
 
     @XmlElementWrapper(name = "operationProperties")
     @XmlElement(name = "operationProperty")
