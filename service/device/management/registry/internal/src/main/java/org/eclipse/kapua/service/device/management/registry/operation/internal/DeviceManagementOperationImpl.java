@@ -218,12 +218,23 @@ public class DeviceManagementOperationImpl extends AbstractKapuaUpdatableEntity 
 
     @Override
     public void setInputProperties(List<DeviceManagementOperationProperty> inputProperties) {
-        this.inputProperties = new ArrayList<>();
+        getInputProperties().clear();
+
         if (inputProperties != null) {
             for (DeviceManagementOperationProperty sp : inputProperties) {
-                this.inputProperties.add(DeviceManagementOperationPropertyImpl.parse(sp));
+                getInputProperties().add(DeviceManagementOperationPropertyImpl.parse(sp));
             }
         }
+    }
+
+    @Override
+    public DeviceManagementOperationProperty getProperty(String name) {
+        return getInputProperties().stream().filter(ip -> ip.getName().equals(name)).findAny().orElse(null);
+    }
+
+    @Override
+    public void addProperty(DeviceManagementOperationProperty inputProperty) {
+        getInputProperties().add(DeviceManagementOperationPropertyImpl.parse(inputProperty));
     }
 
     @Override

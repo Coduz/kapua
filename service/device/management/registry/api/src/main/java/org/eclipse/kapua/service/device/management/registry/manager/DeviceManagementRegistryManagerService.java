@@ -77,14 +77,11 @@ public interface DeviceManagementRegistryManagerService extends KapuaService {
         //
         // UGLY 'DEPLOY-V2'-related part
         //
+        DeviceManagementOperationProperty kapuaPackageDownloadInstallProperty = deviceManagementOperation.getProperty("kapua.package.download.install");
+
         boolean isLastNotification = true;
-        for (DeviceManagementOperationProperty ip : deviceManagementOperation.getInputProperties()) {
-            if (ip.getName().equals("kapua.package.download.install")) {
-                if (resource.equals("download")) {
-                    isLastNotification = !Boolean.parseBoolean(ip.getPropertyValue());
-                }
-                break;
-            }
+        if (kapuaPackageDownloadInstallProperty != null && resource.equals("download")) {
+            isLastNotification = !Boolean.parseBoolean(kapuaPackageDownloadInstallProperty.getPropertyValue());
         }
 
         if (isLastNotification) {

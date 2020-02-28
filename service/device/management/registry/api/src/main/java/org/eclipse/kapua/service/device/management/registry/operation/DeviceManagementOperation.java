@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.Date;
@@ -163,6 +164,25 @@ public interface DeviceManagementOperation extends KapuaUpdatableEntity {
      * @since 1.0.0
      */
     void setInputProperties(List<DeviceManagementOperationProperty> inputProperties);
+
+    /**
+     * Gets a {@link DeviceManagementOperationProperty} by its {@link DeviceManagementOperationProperty#getName()} from the {@link #getInputProperties()}
+     *
+     * @param name The {@link DeviceManagementOperationProperty#getName()} to get.
+     * @return The {@link DeviceManagementOperationProperty} found or {@code null}.
+     * @since 1.2.0
+     */
+    @XmlTransient
+    DeviceManagementOperationProperty getProperty(String name);
+
+    /**
+     * Adds a {@link DeviceManagementOperationProperty} to the {@link List} of {@link #getInputProperties()}
+     *
+     * @param inputProperty The {@link DeviceManagementOperationProperty} to add.
+     * @since 1.2.0
+     */
+    @XmlTransient
+    void addProperty(DeviceManagementOperationProperty inputProperty);
 
     /**
      * @return
