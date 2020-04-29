@@ -73,7 +73,7 @@ public class ConnectorDescriptor implements Serializable {
 
     /**
      * Constructs a new connector descriptor
-     * 
+     *
      * @param deviceClass device level messages implementation classes
      * @param kapuaClass  Kapua level messages implementation classes
      */

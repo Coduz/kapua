@@ -21,7 +21,6 @@ import org.eclipse.kapua.message.device.lifecycle.KapuaAppsMessage;
 import org.eclipse.kapua.message.device.lifecycle.KapuaBirthMessage;
 import org.eclipse.kapua.message.device.lifecycle.KapuaDisconnectMessage;
 import org.eclipse.kapua.message.device.lifecycle.KapuaMissingMessage;
-import org.eclipse.kapua.message.device.lifecycle.KapuaUnmatchedMessage;
 import org.eclipse.kapua.service.device.call.message.DeviceMessage;
 import org.eclipse.kapua.service.device.call.message.kura.app.notification.KuraNotifyMessage;
 import org.eclipse.kapua.service.device.call.message.kura.data.KuraDataMessage;
@@ -29,7 +28,6 @@ import org.eclipse.kapua.service.device.call.message.kura.lifecycle.KuraAppsMess
 import org.eclipse.kapua.service.device.call.message.kura.lifecycle.KuraBirthMessage;
 import org.eclipse.kapua.service.device.call.message.kura.lifecycle.KuraDisconnectMessage;
 import org.eclipse.kapua.service.device.call.message.kura.lifecycle.KuraMissingMessage;
-import org.eclipse.kapua.service.device.call.message.kura.others.KuraUnmatchedMessage;
 import org.eclipse.kapua.service.device.management.message.notification.KapuaNotifyMessage;
 import org.elasticsearch.common.Strings;
 import org.slf4j.Logger;

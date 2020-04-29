@@ -13,6 +13,7 @@ org.eclipse.kapua.translator.kura.kapua.TranslatorAppAssetKuraKapua
 org.eclipse.kapua.translator.kura.kapua.TranslatorAppBundleKuraKapua
 org.eclipse.kapua.translator.kura.kapua.TranslatorAppCommandKuraKapua
 org.eclipse.kapua.translator.kura.kapua.TranslatorAppConfigurationKuraKapua
+org.eclipse.kapua.translator.kura.kapua.TranslatorAppNotifyKuraKapua
 org.eclipse.kapua.translator.kura.kapua.TranslatorAppPackageKuraKapua
 org.eclipse.kapua.translator.kura.kapua.TranslatorAppResponseKuraKapua
 org.eclipse.kapua.translator.kura.kapua.TranslatorAppSnapshotKuraKapua
@@ -21,5 +22,3 @@ org.eclipse.kapua.translator.kura.kapua.TranslatorLifeAppsKuraKapua
 org.eclipse.kapua.translator.kura.kapua.TranslatorLifeBirthKuraKapua
 org.eclipse.kapua.translator.kura.kapua.TranslatorLifeDisconnectKuraKapua
 org.eclipse.kapua.translator.kura.kapua.TranslatorLifeMissingKuraKapua
-org.eclipse.kapua.translator.kura.kapua.TranslatorAppNotifyKuraKapua
-org.eclipse.kapua.translator.kura.kapua.TranslatorLifeUpdateKuraKapua

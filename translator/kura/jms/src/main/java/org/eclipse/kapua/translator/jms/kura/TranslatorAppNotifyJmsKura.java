@@ -32,7 +32,7 @@ import java.util.Arrays;
  *
  * @since 1.0.0
  */
-public class TranslatorLifeNotifyJmsKura extends Translator<JmsMessage, KuraNotifyMessage> {
+public class TranslatorAppNotifyJmsKura extends Translator<JmsMessage, KuraNotifyMessage> {
 
     @Override
     public KuraNotifyMessage translate(JmsMessage jmsMessage) throws TranslateException {
