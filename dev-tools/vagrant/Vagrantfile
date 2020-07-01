@@ -17,7 +17,7 @@ network_address = '192.168.33.10'
 env_vars = {
   'BINDING_IP'            => network_address,
   'ELASTICSEARCH_VERSION' => '7.8.1',
-  'H2DB_VERSION'          => '1.4.192',
+  'H2DB_VERSION'          => '1.4.200',
   'ACTIVEMQ_VERSION'      => '5.14.5',
   'ARTEMIS_VERSION'       => '2.2.0',
   'JETTY_VERSION'         => '9.4.12.v20180830',
@@ -45,7 +45,7 @@ Vagrant.configure("2") do |config|
     owner: "vagrant", group: "vagrant",
     mount_options: ["dmode=775", "fmode=664"]
 
-  config.vm.box = "kapua-dev-box/0.8"
+  config.vm.box = "kapua-dev-box/0.9"
   config.vm.box_check_update = false
 
   # DBMS
@@ -98,7 +98,7 @@ Vagrant.configure("2") do |config|
     ###########################
 
     # Run the database engine
-    su --login -c "java -cp /usr/local/h2/h2*.jar org.h2.tools.Server -baseDir /home/vagrant/H2/kapua -webAllowOthers -tcpAllowOthers -tcpPort 3306 &" vagrant
+    su --login -c "java -cp /usr/local/h2/h2*.jar org.h2.tools.Server -baseDir /home/vagrant/H2/kapua -ifNotExists -webAllowOthers -tcpAllowOthers -tcpPort 3306 &" vagrant
 
     # Create the initial database
     java -cp /usr/local/h2/h2*.jar org.h2.tools.Shell -url jdbc:h2:tcp://localhost:3306/kapuadb -user "root" -password "password" -sql "CREATE SCHEMA IF NOT EXISTS kapuadb; \
