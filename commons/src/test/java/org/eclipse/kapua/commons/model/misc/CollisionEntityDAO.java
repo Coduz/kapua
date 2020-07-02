@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.kapua.commons.model.misc;
 
-import org.eclipse.kapua.KapuaException;
 import org.eclipse.kapua.commons.jpa.EntityManager;
 import org.eclipse.kapua.commons.service.internal.ServiceDAO;
 import org.eclipse.kapua.model.id.KapuaId;
@@ -25,11 +24,12 @@ public class CollisionEntityDAO {
     private CollisionEntityDAO() {
     }
 
-    public static CollisionEntity create(EntityManager em, CollisionEntityCreator collisionEntityCreator)
-            throws KapuaException {
-        //
-        // Create User
-        CollisionEntity collisionEntity = new CollisionEntity(collisionEntityCreator.getTestField());
+    public static CollisionEntity create(EntityManager em, CollisionEntityCreator collisionEntityCreator) {
+
+        CollisionEntity collisionEntity = new CollisionEntity();
+        collisionEntity.setScopeId(collisionEntityCreator.getScopeId());
+        collisionEntity.setName(collisionEntityCreator.getName());
+        collisionEntity.setTestField(collisionEntityCreator.getTestField());
 
         return ServiceDAO.create(em, collisionEntity);
     }

@@ -12,17 +12,16 @@
  *******************************************************************************/
 package org.eclipse.kapua.commons.model.misc;
 
-import java.math.BigInteger;
-import java.util.Date;
+import org.eclipse.kapua.commons.model.AbstractKapuaNamedEntity;
+import org.eclipse.kapua.commons.model.id.KapuaEid;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
-
-import org.eclipse.kapua.commons.model.AbstractKapuaNamedEntity;
-import org.eclipse.kapua.commons.model.id.KapuaEid;
+import java.math.BigInteger;
+import java.util.Date;
 
 @Entity(name = "CollisionEntity")
 @Table(name = "collision_entity_test")
@@ -38,6 +37,7 @@ public class CollisionEntity extends AbstractKapuaNamedEntity {
     @Column(name = "test_field")
     private String testField;
 
+    @Override
     public String getType() {
         return TYPE;
     }
@@ -47,10 +47,6 @@ public class CollisionEntity extends AbstractKapuaNamedEntity {
     }
 
     public CollisionEntity() {
-    }
-
-    public CollisionEntity(String testField) {
-        this.testField = testField;
     }
 
     /**
@@ -69,4 +65,7 @@ public class CollisionEntity extends AbstractKapuaNamedEntity {
         return testField;
     }
 
+    public void setTestField(String testField) {
+        this.testField = testField;
+    }
 }
