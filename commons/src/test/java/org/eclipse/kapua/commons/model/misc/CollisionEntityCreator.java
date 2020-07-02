@@ -25,7 +25,8 @@ public class CollisionEntityCreator extends AbstractKapuaNamedEntityCreator<Coll
 
     public CollisionEntityCreator(String testField) {
         super(new KapuaEid(new BigInteger("1")), "collisionEntityCreator");
-        this.testField = testField;
+        setName(testField.split(" -")[0]);
+        setTestField(testField);
     }
 
     public String getTestField() {
