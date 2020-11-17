@@ -12,17 +12,30 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.message.notification;
 
-public enum OperationStatus {
+/**
+ * @since 1.1.0
+ */
+public enum NotifyStatus {
 
-    //
+    /**
+     * @since 1.1.0
+     */
     RUNNING,
 
-    //
+    /**
+     * @since 1.1.0
+     */
     COMPLETED,
 
-    //
+    /**
+     * @since 1.1.0
+     */
     FAILED,
 
-    //
+    /**
+     * @since 1.1.0
+     * @deprecated Since 1.3.0. The {@link KapuaNotifyPayload} will never send this value.
+     */
+    @Deprecated
     STALE
 }

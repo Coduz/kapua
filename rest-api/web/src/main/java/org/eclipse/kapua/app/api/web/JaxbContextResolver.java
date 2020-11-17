@@ -156,7 +156,7 @@ import org.eclipse.kapua.service.device.management.command.DeviceCommandXmlRegis
 import org.eclipse.kapua.service.device.management.configuration.DeviceComponentConfiguration;
 import org.eclipse.kapua.service.device.management.configuration.DeviceConfiguration;
 import org.eclipse.kapua.service.device.management.configuration.DeviceConfigurationXmlRegistry;
-import org.eclipse.kapua.service.device.management.message.notification.OperationStatus;
+import org.eclipse.kapua.service.device.management.message.notification.NotifyStatus;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestChannel;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestMessage;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestPayload;
@@ -460,7 +460,7 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
                     DeviceManagementOperationListResult.class,
                     DeviceManagementOperationQuery.class,
                     DeviceManagementOperationXmlRegistry.class,
-                    OperationStatus.class,
+                    NotifyStatus.class,
 
                     // Device Management Registry Notification
                     ManagementOperationNotification.class,

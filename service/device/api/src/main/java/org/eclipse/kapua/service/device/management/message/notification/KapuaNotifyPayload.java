@@ -51,12 +51,12 @@ public interface KapuaNotifyPayload extends KapuaPayload {
     /**
      * @since 1.0.0
      */
-    OperationStatus getStatus();
+    NotifyStatus getStatus();
 
     /**
      * @since 1.0.0
      */
-    void setStatus(OperationStatus status);
+    void setStatus(NotifyStatus status);
 
     /**
      * @since 1.0.0
