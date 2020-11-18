@@ -15,23 +15,41 @@ package org.eclipse.kapua.service.device.management.message.response;
 /**
  * Request/reply message response code.
  *
- * @since 1.0
+ * @since 1.0.0
  */
 public enum KapuaResponseCode {
     /**
      * Accepted
+     *
+     * @since 1.0.0
      */
     ACCEPTED, // 200, 204
+
     /**
      * Bad request
+     *
+     * @since 1.0.0
      */
     BAD_REQUEST, // 400
+
     /**
      * Resource not found
+     *
+     * @since 1.0.0
      */
     NOT_FOUND, // 404
+
+    /**
+     * Request has been sent
+     *
+     * @since 1.4.0
+     */
+    SENT,
+
     /**
      * Internal error
+     *
+     * @since 1.0.0
      */
     INTERNAL_ERROR; // 500
 

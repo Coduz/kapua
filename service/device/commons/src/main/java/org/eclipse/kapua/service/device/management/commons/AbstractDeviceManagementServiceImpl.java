@@ -24,6 +24,7 @@ import org.eclipse.kapua.service.authorization.AuthorizationService;
 import org.eclipse.kapua.service.authorization.permission.PermissionFactory;
 import org.eclipse.kapua.service.device.management.message.notification.NotifyStatus;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestMessage;
+import org.eclipse.kapua.service.device.management.message.response.KapuaResponseCode;
 import org.eclipse.kapua.service.device.management.message.response.KapuaResponseMessage;
 import org.eclipse.kapua.service.device.management.registry.operation.DeviceManagementOperation;
 import org.eclipse.kapua.service.device.management.registry.operation.DeviceManagementOperationCreator;
@@ -76,14 +77,14 @@ public abstract class AbstractDeviceManagementServiceImpl {
                 DEVICE_EVENT_FACTORY.newCreator(
                         scopeId,
                         deviceId,
-                        responseMessage.getReceivedOn(),
+                        responseMessage != null ? responseMessage.getReceivedOn() : requestMessage.getSentOn(),
                         requestMessage.getChannel().getAppName().getValue());
 
-        deviceEventCreator.setPosition(responseMessage.getPosition());
-        deviceEventCreator.setSentOn(responseMessage.getSentOn());
+        deviceEventCreator.setPosition(responseMessage != null ? responseMessage.getPosition() : null);
+        deviceEventCreator.setSentOn(responseMessage != null ? responseMessage.getSentOn() : requestMessage.getSentOn());
         deviceEventCreator.setAction(requestMessage.getChannel().getMethod());
-        deviceEventCreator.setResponseCode(responseMessage.getResponseCode());
-        deviceEventCreator.setEventMessage(responseMessage.getPayload().toDisplayString());
+        deviceEventCreator.setResponseCode(responseMessage != null ? responseMessage.getResponseCode() : KapuaResponseCode.SENT);
+        deviceEventCreator.setEventMessage(responseMessage != null ? responseMessage.getPayload().toDisplayString() : requestMessage.getPayload().toDisplayString());
 
         KapuaSecurityUtils.doPrivileged(() -> DEVICE_EVENT_SERVICE.create(deviceEventCreator));
     }

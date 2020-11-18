@@ -12,9 +12,12 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.message;
 
+import org.eclipse.kapua.service.device.management.message.request.KapuaRequestMessage;
+
 /**
- * Kapua request/reply method definition.<br>
- * This object defines the request types that can be sent to a Device.
+ * {@link KapuaMethod} definition.
+ * <p>
+ * Defines the {@link KapuaRequestMessage}s types that can be sent to a Device.
  *
  * @since 1.0.0
  */
@@ -31,6 +34,7 @@ public enum KapuaMethod {
      * @since 1.2.0
      */
     GET,
+
     /**
      * Create request.
      *
@@ -43,6 +47,7 @@ public enum KapuaMethod {
      * @since 1.2.0
      */
     POST,
+
     /**
      * Write request.
      *
@@ -55,6 +60,7 @@ public enum KapuaMethod {
      * @since 1.2.0
      */
     PUT,
+
     /**
      * Delete request.
      *
@@ -67,6 +73,7 @@ public enum KapuaMethod {
      * @since 1.2.0
      */
     DEL,
+
     /**
      * Execute request.
      *
@@ -79,12 +86,28 @@ public enum KapuaMethod {
      * @since 1.2.0
      */
     EXEC,
+
+    /**
+     * Submit request
+     *
+     * @since 1.3.0
+     */
+    SUBMIT,
+
     /**
      * Options request.
      *
      * @since 1.0.0
      */
-    OPTIONS;
+    OPTIONS,
+
+    /**
+     * Sent request
+     *
+     * @since 1.4.0
+     */
+    SENT,
+    ;
 
     /**
      * Converts the value
