@@ -14,12 +14,12 @@ package org.eclipse.kapua.model.id;
 
 import java.math.BigInteger;
 
-public final class KapuaIdStatic implements KapuaId {
+public final class KapuaIdImpl implements KapuaId {
 
     private static final long serialVersionUID = 8660393054811025101L;
     private final BigInteger value;
 
-    public KapuaIdStatic(BigInteger value) {
+    public KapuaIdImpl(BigInteger value) {
         if (null == value) {
             throw new IllegalArgumentException();
         }
