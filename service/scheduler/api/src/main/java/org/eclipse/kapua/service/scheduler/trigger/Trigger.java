@@ -33,7 +33,7 @@ import java.util.List;
  */
 @XmlRootElement(name = "schedule")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = TriggerXmlRegistry.class, factoryMethod = "newEntity")
+@XmlType(factoryClass = TriggerXmlFactory.class, factoryMethod = "newEntity")
 public interface Trigger extends KapuaNamedEntity {
 
     String TYPE = "trigger";

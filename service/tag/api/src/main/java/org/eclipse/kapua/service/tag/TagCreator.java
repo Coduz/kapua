@@ -28,6 +28,6 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "tagCreator")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = TagXmlRegistry.class, factoryMethod = "newTagCreator")
+@XmlType(factoryClass = TagXmlFactory.class, factoryMethod = "newCreator")
 public interface TagCreator extends KapuaNamedEntityCreator<Tag> {
 }

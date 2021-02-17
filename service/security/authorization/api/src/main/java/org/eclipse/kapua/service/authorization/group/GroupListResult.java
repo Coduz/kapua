@@ -12,10 +12,10 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.authorization.group;
 
+import org.eclipse.kapua.model.query.KapuaListResult;
+
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-
-import org.eclipse.kapua.model.query.KapuaListResult;
 
 /**
  * {@link Group} list result definition.
@@ -23,7 +23,7 @@ import org.eclipse.kapua.model.query.KapuaListResult;
  * @since 1.0.0
  */
 @XmlRootElement(name = "groups")
-@XmlType(factoryClass = GroupXmlRegistry.class, factoryMethod = "newGroupListResult")
+@XmlType(factoryClass = GroupXmlFactory.class, factoryMethod = "newListResult")
 public interface GroupListResult extends KapuaListResult<Group> {
 
 }

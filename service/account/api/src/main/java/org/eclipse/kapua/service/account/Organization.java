@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  * @since 1.0.0
  */
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = AccountXmlRegistry.class, factoryMethod = "newOrganization")
+@XmlType(factoryClass = AccountXmlFactory.class, factoryMethod = "newOrganization")
 public interface Organization {
 
     /**

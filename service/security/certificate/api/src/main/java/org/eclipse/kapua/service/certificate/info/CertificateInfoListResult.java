@@ -13,7 +13,7 @@
 package org.eclipse.kapua.service.certificate.info;
 
 import org.eclipse.kapua.model.query.KapuaListResult;
-import org.eclipse.kapua.service.certificate.info.xml.CertificateInfoXmlRegistry;
+import org.eclipse.kapua.service.certificate.info.xml.CertificateInfoXmlFactory;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -25,6 +25,6 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "certificateListResult")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = CertificateInfoXmlRegistry.class, factoryMethod = "newListResult")
+@XmlType(factoryClass = CertificateInfoXmlFactory.class, factoryMethod = "newListResult")
 public interface CertificateInfoListResult extends KapuaListResult<CertificateInfo> {
 }

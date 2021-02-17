@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.Date;
 
 /**
- * {@link AccountCreator} {@link org.eclipse.kapua.model.KapuaEntityCreator} definition
+ * {@link Account} {@link org.eclipse.kapua.model.KapuaEntityCreator} definition.
  *
  * @since 1.0.0
  */
@@ -40,7 +40,7 @@ import java.util.Date;
         "organizationZipPostCode",
         "organizationStateProvinceCounty",
         "organizationCountry",
-        "expirationDate"}, factoryClass = AccountXmlRegistry.class, factoryMethod = "newAccountCreator")
+        "expirationDate"}, factoryClass = AccountXmlFactory.class, factoryMethod = "newCreator")
 public interface AccountCreator extends KapuaNamedEntityCreator<Account> {
 
     /**

@@ -14,6 +14,7 @@
 package org.eclipse.kapua.service.device.management.message.request.xml;
 
 import org.eclipse.kapua.locator.KapuaLocator;
+import org.eclipse.kapua.model.xml.KapuaXmlFactory;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestChannel;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestMessage;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestMessageFactory;
@@ -22,7 +23,7 @@ import org.eclipse.kapua.service.device.management.message.request.KapuaRequestP
 import javax.xml.bind.annotation.XmlRegistry;
 
 @XmlRegistry
-public class RequestMessageXmlRegistry {
+public class RequestMessageXmlRegistry implements KapuaXmlFactory {
 
     private static final KapuaLocator LOCATOR = KapuaLocator.getInstance();
     private static final KapuaRequestMessageFactory KAPUA_REQUEST_MESSAGE_FACTORY = LOCATOR.getFactory(KapuaRequestMessageFactory.class);

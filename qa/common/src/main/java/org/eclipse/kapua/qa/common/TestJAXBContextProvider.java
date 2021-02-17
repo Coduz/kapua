@@ -12,8 +12,6 @@
  *******************************************************************************/
 package org.eclipse.kapua.qa.common;
 
-import javax.xml.bind.JAXBContext;
-
 import org.eclipse.kapua.broker.core.router.EndChainEndPoint;
 import org.eclipse.kapua.broker.core.router.EndPointContainer;
 import org.eclipse.kapua.broker.core.router.ParentEndPoint;
@@ -33,7 +31,7 @@ import org.eclipse.kapua.model.config.metatype.MetatypeXmlRegistry;
 import org.eclipse.kapua.service.account.Account;
 import org.eclipse.kapua.service.account.AccountCreator;
 import org.eclipse.kapua.service.account.AccountListResult;
-import org.eclipse.kapua.service.account.AccountXmlRegistry;
+import org.eclipse.kapua.service.account.AccountXmlFactory;
 import org.eclipse.kapua.service.account.Organization;
 import org.eclipse.kapua.service.authentication.token.AccessToken;
 import org.eclipse.kapua.service.device.call.kura.model.bundle.KuraBundle;
@@ -58,16 +56,18 @@ import org.eclipse.kapua.service.device.management.packages.model.uninstall.Devi
 import org.eclipse.kapua.service.device.management.snapshot.DeviceSnapshots;
 import org.eclipse.kapua.service.job.Job;
 import org.eclipse.kapua.service.job.JobListResult;
-import org.eclipse.kapua.service.job.JobXmlRegistry;
+import org.eclipse.kapua.service.job.JobXmlFactory;
 import org.eclipse.kapua.service.tag.Tag;
 import org.eclipse.kapua.service.tag.TagListResult;
-import org.eclipse.kapua.service.tag.TagXmlRegistry;
+import org.eclipse.kapua.service.tag.TagXmlFactory;
 import org.eclipse.kapua.service.user.User;
 import org.eclipse.kapua.service.user.UserCreator;
 import org.eclipse.kapua.service.user.UserListResult;
 import org.eclipse.kapua.service.user.UserQuery;
-import org.eclipse.kapua.service.user.UserXmlRegistry;
+import org.eclipse.kapua.service.user.UserXmlFactory;
 import org.eclipse.persistence.jaxb.JAXBContextFactory;
+
+import javax.xml.bind.JAXBContext;
 
 /**
  * JAXB context provided for proper (un)marshalling of interface annotated classes.
@@ -123,21 +123,21 @@ public class TestJAXBContextProvider implements JAXBContextProvider {
                         UserCreator.class,
                         UserListResult.class,
                         UserQuery.class,
-                        UserXmlRegistry.class,
+                        UserXmlFactory.class,
                         // Account
                         Account.class,
                         AccountCreator.class,
                         AccountListResult.class,
                         Organization.class,
-                        AccountXmlRegistry.class,
+                        AccountXmlFactory.class,
                         // Tag
                         Tag.class,
                         TagListResult.class,
-                        TagXmlRegistry.class,
+                        TagXmlFactory.class,
                         // Jobs
                         Job.class,
                         JobListResult.class,
-                        JobXmlRegistry.class,
+                        JobXmlFactory.class,
                         JobTargetSublist.class,
                         // Broker core
                         EndPointContainer.class,

@@ -34,7 +34,7 @@ import java.util.Set;
  */
 @XmlRootElement(name = "jobStartOptions")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = JobEngineXmlRegistry.class, factoryMethod = "newJobStartOptions")
+@XmlType(factoryClass = JobEngineXmlFactory.class, factoryMethod = "newJobStartOptions")
 public interface JobStartOptions extends KapuaSerializable {
 
     /**

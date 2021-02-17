@@ -13,39 +13,26 @@
 package org.eclipse.kapua.service.device.registry.connection;
 
 import org.eclipse.kapua.locator.KapuaLocator;
+import org.eclipse.kapua.model.xml.KapuaXmlFactory;
+import org.eclipse.kapua.model.xml.XmlEntityFactory;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
 /**
- * {@link DeviceConnection} xml factory class
+ * {@link DeviceConnection} {@link KapuaXmlFactory} implementation.
  *
- * @since 1.0
+ * @see KapuaXmlFactory
+ * @since 1.0.0
  */
 @XmlRegistry
-public class DeviceConnectionXmlRegistry {
-
-    private static final KapuaLocator LOCATOR = KapuaLocator.getInstance();
-    private static final DeviceConnectionFactory DEVICE_CONNECTION_FACTORY = LOCATOR.getFactory(DeviceConnectionFactory.class);
+public class DeviceConnectionXmlRegistry extends XmlEntityFactory<DeviceConnection, DeviceConnectionCreator, DeviceConnectionQuery, DeviceConnectionListResult, DeviceConnectionFactory> implements KapuaXmlFactory {
 
     /**
-     * Creates a new {@link DeviceConnection}
+     * Constructor.
      *
-     * @return
+     * @since 1.5.0
      */
-    public DeviceConnection newDeviceConnection() {
-        return DEVICE_CONNECTION_FACTORY.newEntity(null);
-    }
-
-    /**
-     * Creates a new device list result
-     *
-     * @return
-     */
-    public DeviceConnectionListResult newDeviceConnectionListResult() {
-        return DEVICE_CONNECTION_FACTORY.newListResult();
-    }
-
-    public DeviceConnectionQuery newQuery() {
-        return DEVICE_CONNECTION_FACTORY.newQuery(null);
+    public DeviceConnectionXmlRegistry() {
+        super(KapuaLocator.getInstance().getFactory(DeviceConnectionFactory.class));
     }
 }

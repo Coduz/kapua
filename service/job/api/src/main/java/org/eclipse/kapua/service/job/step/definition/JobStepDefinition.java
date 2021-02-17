@@ -27,7 +27,7 @@ import java.util.List;
  */
 @XmlRootElement(name = "jobStepDefinition")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = JobStepDefinitionXmlRegistry.class, factoryMethod = "newJobStepDefinition")
+@XmlType(factoryClass = JobStepDefinitionXmlFactory.class, factoryMethod = "newEntity")
 public interface JobStepDefinition extends KapuaNamedEntity {
 
     String TYPE = "stepDefinition";

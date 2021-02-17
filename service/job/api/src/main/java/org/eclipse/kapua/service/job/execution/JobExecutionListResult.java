@@ -12,22 +12,21 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.job.execution;
 
+import org.eclipse.kapua.model.query.KapuaListResult;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import org.eclipse.kapua.model.query.KapuaListResult;
-
 /**
  * {@link JobExecutionListResult} definition.
  *
  * @since 1.0.0
- *
  */
 @XmlRootElement(name = "jobExecutionListResult")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = JobExecutionXmlRegistry.class, factoryMethod = "newJobExecutionListResult")
+@XmlType(factoryClass = JobExecutionXmlFactory.class, factoryMethod = "newListResult")
 public interface JobExecutionListResult extends KapuaListResult<JobExecution> {
 
 }

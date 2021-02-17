@@ -32,7 +32,7 @@ import java.util.Set;
  */
 @XmlRootElement(name = "jobExecution")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = JobExecutionXmlRegistry.class, factoryMethod = "newJobExecution")
+@XmlType(factoryClass = JobExecutionXmlFactory.class, factoryMethod = "newEntity")
 public interface JobExecution extends KapuaUpdatableEntity {
 
     String TYPE = "jobExecution";

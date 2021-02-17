@@ -12,22 +12,21 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.job.step;
 
+import org.eclipse.kapua.model.query.KapuaListResult;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import org.eclipse.kapua.model.query.KapuaListResult;
-
 /**
  * {@link JobStepListResult} definition.
  *
  * @since 1.0.0
- *
  */
 @XmlRootElement(name = "jobStepListResult")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = JobStepXmlRegistry.class, factoryMethod = "newJobStepListResult")
+@XmlType(factoryClass = JobStepXmlFactory.class, factoryMethod = "newListResult")
 public interface JobStepListResult extends KapuaListResult<JobStep> {
 
 }

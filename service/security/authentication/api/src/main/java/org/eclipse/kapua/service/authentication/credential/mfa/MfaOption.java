@@ -33,8 +33,7 @@ import java.util.List;
  */
 @XmlRootElement(name = "mfaOption")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = MfaOptionXmlRegistry.class, //
-        factoryMethod = "newMfaOption") //
+@XmlType(factoryClass = MfaOptionXmlFactory.class, factoryMethod = "newEntity")
 public interface MfaOption extends KapuaUpdatableEntity {
 
     String TYPE = "mfaOption";

@@ -28,7 +28,7 @@ import java.util.Set;
  */
 @XmlRootElement(name = "endpointInfoCreator")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = EndpointInfoXmlRegistry.class, factoryMethod = "newCreator")
+@XmlType(factoryClass = EndpointInfoXmlFactory.class, factoryMethod = "newCreator")
 public interface EndpointInfoCreator extends KapuaEntityCreator<EndpointInfo> {
 
     String getSchema();

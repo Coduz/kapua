@@ -13,13 +13,15 @@
 package org.eclipse.kapua.service.device.management.configuration;
 
 import org.eclipse.kapua.locator.KapuaLocator;
+import org.eclipse.kapua.model.xml.KapuaXmlFactory;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
 /**
- * {@link DeviceConfiguration} xml factory class
+ * {@link DeviceConfiguration} {@link KapuaXmlFactory} implementation.
  *
- * @since 1.0
+ * @see KapuaXmlFactory
+ * @since 1.0.0
  */
 @XmlRegistry
 public class DeviceConfigurationXmlRegistry {
@@ -28,18 +30,20 @@ public class DeviceConfigurationXmlRegistry {
     private static final DeviceConfigurationFactory DEVICE_CONFIGURATION_FACTORY = LOCATOR.getFactory(DeviceConfigurationFactory.class);
 
     /**
-     * Creates a new device configuration
+     * Instantiates a new {@link DeviceConfiguration}
      *
-     * @return
+     * @return The newly instantiated {@link DeviceConfiguration}
+     * @since 1.0.0
      */
     public DeviceConfiguration newConfiguration() {
         return DEVICE_CONFIGURATION_FACTORY.newConfigurationInstance();
     }
 
     /**
-     * Creates a new device component configuration
+     * Instantiates a new {@link DeviceComponentConfiguration}.
      *
-     * @return
+     * @return The newly instantiated {@link DeviceComponentConfiguration}
+     * @since 1.0.0
      */
     public DeviceComponentConfiguration newComponentConfiguration() {
         return DEVICE_CONFIGURATION_FACTORY.newComponentConfigurationInstance(null);

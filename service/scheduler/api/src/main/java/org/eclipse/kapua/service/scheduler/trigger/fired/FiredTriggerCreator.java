@@ -32,7 +32,7 @@ import java.util.Date;
  */
 @XmlRootElement(name = "firedTriggerCreator")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = FiredTriggerXmlRegistry.class, factoryMethod = "newCreator")
+@XmlType(factoryClass = FiredTriggerXmlFactory.class, factoryMethod = "newCreator")
 public interface FiredTriggerCreator extends KapuaEntityCreator<FiredTrigger> {
 
     /**

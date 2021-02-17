@@ -12,21 +12,20 @@
  *******************************************************************************/
 package org.eclipse.kapua.commons.service.event.store.api;
 
+import org.eclipse.kapua.model.query.KapuaQuery;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import org.eclipse.kapua.model.query.KapuaQuery;
-
 /**
  * KapuaEvent query definition.
  *
  * @since 1.0
- *
  */
 @XmlRootElement(name = "query")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = EventStoreXmlRegistry.class, factoryMethod = "newQuery")
+@XmlType(factoryClass = EventStoreXmlFactory.class, factoryMethod = "newQuery")
 public interface EventStoreRecordQuery extends KapuaQuery {
 }

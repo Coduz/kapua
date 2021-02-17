@@ -65,7 +65,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
         "customAttribute4",
         "customAttribute5"
 }, //
-        factoryClass = DeviceXmlRegistry.class, factoryMethod = "newDeviceCreator")
+        factoryClass = DeviceXmlFactory.class, factoryMethod = "newCreator")
 public interface DeviceCreator extends KapuaUpdatableEntityCreator<Device> {
 
     /**

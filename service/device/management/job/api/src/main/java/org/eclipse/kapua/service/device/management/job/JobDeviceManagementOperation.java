@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "jobDeviceManagementOperation")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = JobDeviceManagementOperationXmlRegistry.class, factoryMethod = "newJobDeviceManagementOperation")
+@XmlType(factoryClass = JobDeviceManagementOperationXmlFactory.class, factoryMethod = "newEntity")
 public interface JobDeviceManagementOperation extends KapuaUpdatableEntity {
 
     String TYPE = "jobDeviceManagementOperation";

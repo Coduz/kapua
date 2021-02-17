@@ -31,7 +31,7 @@ import java.util.List;
 
 @XmlRootElement(name = "deviceManagementOperationCreator")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = DeviceManagementOperationXmlRegistry.class, factoryMethod = "newDeviceManagementOperationCreator")
+@XmlType(factoryClass = DeviceManagementOperationXmlFactory.class, factoryMethod = "newCreator")
 public interface DeviceManagementOperationCreator extends KapuaEntityCreator<DeviceManagementOperation> {
 
     @XmlElement(name = "startedOn")

@@ -13,33 +13,37 @@
 package org.eclipse.kapua.service.device.management.snapshot;
 
 import org.eclipse.kapua.locator.KapuaLocator;
+import org.eclipse.kapua.model.xml.KapuaXmlFactory;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
 /**
- * {@link DeviceSnapshot} xml factory class
+ * {@link DeviceSnapshot} {@link KapuaXmlFactory} implementation.
  *
- * @since 1.0
+ * @see KapuaXmlFactory
+ * @since 1.0.0
  */
 @XmlRegistry
-public class DeviceSnapshotXmlRegistry {
+public class DeviceSnapshotXmlRegistry implements KapuaXmlFactory {
 
     private static final KapuaLocator LOCATOR = KapuaLocator.getInstance();
     private static final DeviceSnapshotFactory DEVICE_SNAPSHOT_FACTORY = LOCATOR.getFactory(DeviceSnapshotFactory.class);
 
     /**
-     * Creates a new device snapshots list
+     * Instantiates a new {@link DeviceSnapshots}.
      *
-     * @return
+     * @return The newly instantiated {@link DeviceSnapshots}.
+     * @since 1.0.0
      */
     public DeviceSnapshots newDeviceSnapshots() {
         return DEVICE_SNAPSHOT_FACTORY.newDeviceSnapshots();
     }
 
     /**
-     * Creates a new device snapshot
+     * Instantiates a new {@link DeviceSnapshot}.
      *
-     * @return
+     * @return The newly instantiated {@link DeviceSnapshot}.
+     * @since 1.0.0
      */
     public DeviceSnapshot newDeviceSnapshot() {
         return DEVICE_SNAPSHOT_FACTORY.newDeviceSnapshot();

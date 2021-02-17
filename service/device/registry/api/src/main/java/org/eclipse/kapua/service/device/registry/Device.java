@@ -67,7 +67,7 @@ import java.util.Set;
         "customAttribute4",
         "customAttribute5",
         "tagIds"
-}, factoryClass = DeviceXmlRegistry.class, factoryMethod = "newDevice")
+}, factoryClass = DeviceXmlFactory.class, factoryMethod = "newEntity")
 public interface Device extends KapuaUpdatableEntity {
 
     String TYPE = "device";

@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.kapua.commons.configuration.metatype;
 
+import org.eclipse.kapua.model.xml.KapuaXmlFactory;
+
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
@@ -22,10 +24,10 @@ import javax.xml.namespace.QName;
  * The Java representation of XML content can consist of schema derived interfaces and classes representing the binding of schema type definitions, element declarations and model groups. Factory
  * methods for each of these are provided in this class.
  *
- * @since 1.0
+ * @since 1.0.0
  */
 @XmlRegistry
-public class ObjectFactoryImpl {
+public class ObjectFactoryImpl implements KapuaXmlFactory {
 
     private static final QName _MetaData_QNAME = new QName("http://www.osgi.org/xmlns/metatype/v1.2.0", "MetaData");
 

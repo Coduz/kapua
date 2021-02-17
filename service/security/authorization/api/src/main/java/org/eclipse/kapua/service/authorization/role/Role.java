@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "role")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = RoleXmlRegistry.class, factoryMethod = "newRole")
+@XmlType(factoryClass = RoleXmlFactory.class, factoryMethod = "newEntity")
 public interface Role extends KapuaNamedEntity {
 
     String TYPE = "role";

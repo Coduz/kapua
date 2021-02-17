@@ -27,6 +27,6 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "scheduleListResult")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = TriggerXmlRegistry.class, factoryMethod = "newListResult")
+@XmlType(factoryClass = TriggerXmlFactory.class, factoryMethod = "newListResult")
 public interface TriggerListResult extends KapuaListResult<Trigger> {
 }

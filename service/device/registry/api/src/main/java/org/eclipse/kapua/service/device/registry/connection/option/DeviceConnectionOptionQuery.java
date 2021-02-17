@@ -12,12 +12,12 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.registry.connection.option;
 
+import org.eclipse.kapua.model.query.KapuaQuery;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-
-import org.eclipse.kapua.model.query.KapuaQuery;
 
 /**
  * Device connection options query definition.
@@ -26,7 +26,7 @@ import org.eclipse.kapua.model.query.KapuaQuery;
  */
 @XmlRootElement(name = "query")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = DeviceConnectionOptionXmlRegistry.class, factoryMethod = "newQuery")
+@XmlType(factoryClass = DeviceConnectionOptionXmlFactory.class, factoryMethod = "newQuery")
 public interface DeviceConnectionOptionQuery extends KapuaQuery {
 
 }

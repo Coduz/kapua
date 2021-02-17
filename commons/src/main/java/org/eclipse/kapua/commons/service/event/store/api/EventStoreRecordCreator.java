@@ -14,6 +14,14 @@ package org.eclipse.kapua.commons.service.event.store.api;
 
 import org.eclipse.kapua.model.KapuaEntityCreator;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlRootElement(name = "eventStoreRecordCreator")
+@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlType(factoryClass = EventStoreXmlFactory.class, factoryMethod = "newCreator")
 public interface EventStoreRecordCreator extends KapuaEntityCreator<EventStoreRecord> {
 
 }

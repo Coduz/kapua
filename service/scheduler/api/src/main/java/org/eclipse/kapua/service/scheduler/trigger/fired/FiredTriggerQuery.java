@@ -26,6 +26,6 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "query")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = FiredTriggerXmlRegistry.class, factoryMethod = "newQuery")
+@XmlType(factoryClass = FiredTriggerXmlFactory.class, factoryMethod = "newQuery")
 public interface FiredTriggerQuery extends KapuaQuery {
 }

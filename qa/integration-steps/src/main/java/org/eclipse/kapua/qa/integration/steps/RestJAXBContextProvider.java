@@ -22,7 +22,7 @@ import org.eclipse.kapua.service.user.User;
 import org.eclipse.kapua.service.user.UserCreator;
 import org.eclipse.kapua.service.user.UserListResult;
 import org.eclipse.kapua.service.user.UserQuery;
-import org.eclipse.kapua.service.user.UserXmlRegistry;
+import org.eclipse.kapua.service.user.UserXmlFactory;
 import org.eclipse.persistence.jaxb.JAXBContextFactory;
 import org.eclipse.persistence.jaxb.MarshallerProperties;
 
@@ -54,7 +54,7 @@ public class RestJAXBContextProvider implements JAXBContextProvider {
                         UserCreator.class,
                         UserListResult.class,
                         UserQuery.class,
-                        UserXmlRegistry.class,
+                        UserXmlFactory.class,
                         // Account
                         Account.class,
                         AccountCreator.class,

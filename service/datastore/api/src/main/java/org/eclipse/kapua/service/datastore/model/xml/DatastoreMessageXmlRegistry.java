@@ -13,36 +13,41 @@
 package org.eclipse.kapua.service.datastore.model.xml;
 
 import org.eclipse.kapua.locator.KapuaLocator;
+import org.eclipse.kapua.model.xml.KapuaXmlFactory;
 import org.eclipse.kapua.service.datastore.MessageStoreFactory;
+import org.eclipse.kapua.service.datastore.model.DatastoreMessage;
 import org.eclipse.kapua.service.datastore.model.MessageListResult;
 import org.eclipse.kapua.service.datastore.model.query.MessageQuery;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
 /**
- * Datastore message xml registry
+ * {@link DatastoreMessage} {@link KapuaXmlFactory} implementation.
  *
- * @since 1.0
+ * @see KapuaXmlFactory
+ * @since 1.0.0
  */
 @XmlRegistry
-public class DatastoreMessageXmlRegistry {
+public class DatastoreMessageXmlRegistry implements KapuaXmlFactory {
 
     private static final KapuaLocator LOCATOR = KapuaLocator.getInstance();
     private static final MessageStoreFactory MESSAGE_STORE_FACTORY = LOCATOR.getFactory(MessageStoreFactory.class);
 
     /**
-     * Creates a {@link MessageListResult} instance
+     * Instantiates a new {@link MessageListResult}.
      *
-     * @return
+     * @return The newly instantiated {@link MessageListResult}
+     * @since 1.0.0
      */
     public MessageListResult newListResult() {
         return MESSAGE_STORE_FACTORY.newListResult();
     }
 
     /**
-     * Creates a {@link MessageQuery} instance.
+     * Instantiates a new {@link MessageQuery}.
      *
-     * @return
+     * @return The newly instantiated {@link MessageQuery}
+     * @since 1.0.0
      */
     public MessageQuery newQuery() {
         return MESSAGE_STORE_FACTORY.newQuery(null);

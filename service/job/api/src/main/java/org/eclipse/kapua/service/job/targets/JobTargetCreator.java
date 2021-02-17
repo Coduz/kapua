@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlRootElement(name = "jobTargetCreator")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = JobTargetXmlRegistry.class, factoryMethod = "newJobTargetCreator")
+@XmlType(factoryClass = JobTargetXmlFactory.class, factoryMethod = "newCreator")
 public interface JobTargetCreator extends KapuaUpdatableEntityCreator<JobTarget> {
 
     @XmlJavaTypeAdapter(KapuaIdAdapter.class)

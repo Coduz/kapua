@@ -12,10 +12,10 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.tag;
 
+import org.eclipse.kapua.model.query.KapuaListResult;
+
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-
-import org.eclipse.kapua.model.query.KapuaListResult;
 
 /**
  * {@link Tag} list result definition.
@@ -23,7 +23,7 @@ import org.eclipse.kapua.model.query.KapuaListResult;
  * @since 1.0.0
  */
 @XmlRootElement(name = "tags")
-@XmlType(factoryClass = TagXmlRegistry.class, factoryMethod = "newTagListResult")
+@XmlType(factoryClass = TagXmlFactory.class, factoryMethod = "newListResult")
 public interface TagListResult extends KapuaListResult<Tag> {
 
 }

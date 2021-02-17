@@ -18,6 +18,10 @@ import org.eclipse.kapua.model.id.KapuaId;
 import org.eclipse.kapua.service.device.management.message.KapuaMethod;
 import org.eclipse.kapua.service.device.management.message.response.KapuaResponseCode;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import java.util.Date;
 
 /**
@@ -25,6 +29,9 @@ import java.util.Date;
  *
  * @since 1.0
  */
+@XmlRootElement(name = "deviceEventCreator")
+@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlType(factoryClass = DeviceEventXmlFactory.class, factoryMethod = "newCreator")
 public interface DeviceEventCreator extends KapuaEntityCreator<DeviceEvent> {
 
     /**

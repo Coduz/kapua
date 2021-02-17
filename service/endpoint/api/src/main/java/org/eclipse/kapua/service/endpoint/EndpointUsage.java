@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name = "endpointUsage")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = EndpointInfoXmlRegistry.class, factoryMethod = "newEndpointUsage")
+@XmlType(factoryClass = EndpointInfoXmlFactory.class, factoryMethod = "newEndpointUsage")
 public interface EndpointUsage {
 
     public String getName();

@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "deviceManagementOperationListResult")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = DeviceManagementOperationXmlRegistry.class, factoryMethod = "newDeviceManagementOperationListResult")
+@XmlType(factoryClass = DeviceManagementOperationXmlFactory.class, factoryMethod = "newListResult")
 public interface DeviceManagementOperationListResult extends KapuaListResult<DeviceManagementOperation> {
 
 }

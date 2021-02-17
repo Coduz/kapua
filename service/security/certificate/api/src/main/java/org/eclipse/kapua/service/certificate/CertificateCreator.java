@@ -15,7 +15,7 @@ package org.eclipse.kapua.service.certificate;
 import org.eclipse.kapua.model.KapuaNamedEntityCreator;
 import org.eclipse.kapua.model.id.KapuaId;
 import org.eclipse.kapua.model.id.KapuaIdAdapter;
-import org.eclipse.kapua.service.certificate.xml.CertificateXmlRegistry;
+import org.eclipse.kapua.service.certificate.xml.CertificateXmlFactory;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -33,7 +33,7 @@ import java.util.Set;
  */
 @XmlRootElement(name = "certificateCreator")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = CertificateXmlRegistry.class, factoryMethod = "newCreator")
+@XmlType(factoryClass = CertificateXmlFactory.class, factoryMethod = "newCreator")
 public interface CertificateCreator extends KapuaNamedEntityCreator<Certificate> {
 
     @XmlElement(name = "certificate")

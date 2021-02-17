@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "query")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = ScratchCodeXmlRegistry.class, factoryMethod = "newQuery")
+@XmlType(factoryClass = ScratchCodeXmlFactory.class, factoryMethod = "newQuery")
 public interface ScratchCodeQuery extends KapuaQuery {
 
 }

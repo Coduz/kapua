@@ -18,11 +18,12 @@ import org.eclipse.kapua.message.device.data.KapuaDataChannel;
 import org.eclipse.kapua.message.device.data.KapuaDataMessage;
 import org.eclipse.kapua.message.device.data.KapuaDataMessageFactory;
 import org.eclipse.kapua.message.device.data.KapuaDataPayload;
+import org.eclipse.kapua.model.xml.KapuaXmlFactory;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
 @XmlRegistry
-public class DataMessageXmlRegistry {
+public class DataMessageXmlRegistry implements KapuaXmlFactory {
 
     private static final KapuaLocator LOCATOR = KapuaLocator.getInstance();
     private static final KapuaDataMessageFactory KAPUA_DATA_MESSAGE_FACTORY = LOCATOR.getFactory(KapuaDataMessageFactory.class);

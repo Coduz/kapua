@@ -33,17 +33,7 @@ import java.util.Date;
  */
 @XmlRootElement(name = "credential")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(propOrder = { "userId",
-        "credentialType",
-        "credentialKey",
-        "status",
-        "expirationDate",
-        "loginFailures",
-        "firstLoginFailure",
-        "loginFailuresReset",
-        "lockoutReset" }, //
-        factoryClass = CredentialXmlRegistry.class, //
-        factoryMethod = "newCredential") //
+@XmlType(factoryClass = CredentialXmlFactory.class, factoryMethod = "newEntity")
 public interface Credential extends KapuaUpdatableEntity {
 
     String TYPE = "credential";
