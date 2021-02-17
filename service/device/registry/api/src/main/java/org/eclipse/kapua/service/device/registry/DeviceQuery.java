@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "query")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = DeviceXmlRegistry.class, factoryMethod = "newQuery")
+@XmlType(factoryClass = DeviceXmlFactory.class, factoryMethod = "newQuery")
 public interface DeviceQuery extends KapuaQuery {
 
     /**

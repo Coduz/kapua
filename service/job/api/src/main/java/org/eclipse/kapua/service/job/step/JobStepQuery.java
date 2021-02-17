@@ -27,6 +27,6 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "query")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = JobStepXmlRegistry.class, factoryMethod = "newQuery")
+@XmlType(factoryClass = JobStepXmlFactory.class, factoryMethod = "newQuery")
 public interface JobStepQuery extends KapuaQuery {
 }

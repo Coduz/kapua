@@ -35,7 +35,7 @@ import org.eclipse.kapua.commons.configuration.metatype.TscalarImpl;
 import org.eclipse.kapua.commons.service.event.store.api.EventStoreRecordCreator;
 import org.eclipse.kapua.commons.service.event.store.api.EventStoreRecordListResult;
 import org.eclipse.kapua.commons.service.event.store.api.EventStoreRecordQuery;
-import org.eclipse.kapua.commons.service.event.store.api.EventStoreXmlRegistry;
+import org.eclipse.kapua.commons.service.event.store.api.EventStoreXmlFactory;
 import org.eclipse.kapua.commons.util.xml.JAXBContextProvider;
 import org.eclipse.kapua.event.ServiceEvent;
 import org.eclipse.kapua.job.engine.JobStartOptions;
@@ -59,7 +59,7 @@ import java.util.Map;
 
 public class BrokerJAXBContextProvider implements JAXBContextProvider {
 
-    private static Logger logger = LoggerFactory.getLogger(BrokerJAXBContextProvider.class);
+    private static final Logger LOG = LoggerFactory.getLogger(BrokerJAXBContextProvider.class);
 
     private JAXBContext context;
 
@@ -89,7 +89,7 @@ public class BrokerJAXBContextProvider implements JAXBContextProvider {
                     EventStoreRecordCreator.class,
                     EventStoreRecordListResult.class,
                     EventStoreRecordQuery.class,
-                    EventStoreXmlRegistry.class,
+                    EventStoreXmlFactory.class,
 
                     // Job Engine
                     JobStartOptions.class,
@@ -114,7 +114,7 @@ public class BrokerJAXBContextProvider implements JAXBContextProvider {
             };
             try {
                 context = JAXBContextFactory.createContext(classes, properties);
-                logger.debug("Broker JAXB context initialized!");
+                LOG.debug("Broker JAXB context initialized!");
             } catch (JAXBException jaxbException) {
                 throw KapuaException.internalError(jaxbException, "Error creating JAXBContext!");
             }

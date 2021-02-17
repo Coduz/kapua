@@ -27,6 +27,6 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "query")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = GroupXmlRegistry.class, factoryMethod = "newQuery")
+@XmlType(factoryClass = GroupXmlFactory.class, factoryMethod = "newQuery")
 public interface GroupQuery extends KapuaQuery {
 }

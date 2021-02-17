@@ -32,10 +32,10 @@ import org.eclipse.kapua.commons.configuration.metatype.TscalarImpl;
 import org.eclipse.kapua.commons.service.event.store.api.EventStoreRecordCreator;
 import org.eclipse.kapua.commons.service.event.store.api.EventStoreRecordListResult;
 import org.eclipse.kapua.commons.service.event.store.api.EventStoreRecordQuery;
-import org.eclipse.kapua.commons.service.event.store.api.EventStoreXmlRegistry;
+import org.eclipse.kapua.commons.service.event.store.api.EventStoreXmlFactory;
 import org.eclipse.kapua.commons.util.xml.JAXBContextProvider;
 import org.eclipse.kapua.event.ServiceEvent;
-import org.eclipse.kapua.job.engine.JobEngineXmlRegistry;
+import org.eclipse.kapua.job.engine.JobEngineXmlFactory;
 import org.eclipse.kapua.job.engine.JobStartOptions;
 import org.eclipse.kapua.job.engine.commons.model.JobTargetSublist;
 import org.eclipse.kapua.model.config.metatype.KapuaTad;
@@ -94,7 +94,7 @@ import org.eclipse.kapua.service.device.management.packages.model.uninstall.Devi
 import org.eclipse.kapua.service.device.management.snapshot.DeviceSnapshots;
 import org.eclipse.kapua.service.job.JobListResult;
 import org.eclipse.kapua.service.job.JobQuery;
-import org.eclipse.kapua.service.job.JobXmlRegistry;
+import org.eclipse.kapua.service.job.JobXmlFactory;
 import org.eclipse.persistence.jaxb.JAXBContextFactory;
 import org.eclipse.persistence.jaxb.MarshallerProperties;
 
@@ -204,20 +204,21 @@ public class ConsoleJAXBContextProvider implements JAXBContextProvider {
                         DeviceAssetXmlRegistry.class,
 
                         // Job
+                        JobListResult.class,
+                        JobQuery.class,
+                        JobXmlFactory.class,
+
                         JobTargetSublist.class,
                         JobStartOptions.class,
                         IsJobRunningResponse.class,
-                        JobListResult.class,
-                        JobQuery.class,
-                        JobXmlRegistry.class,
-                        JobEngineXmlRegistry.class,
+                        JobEngineXmlFactory.class,
 
                         // KapuaEvent
                         ServiceEvent.class,
                         EventStoreRecordCreator.class,
                         EventStoreRecordListResult.class,
                         EventStoreRecordQuery.class,
-                        EventStoreXmlRegistry.class,
+                        EventStoreXmlFactory.class,
 
                 }, properties);
             }

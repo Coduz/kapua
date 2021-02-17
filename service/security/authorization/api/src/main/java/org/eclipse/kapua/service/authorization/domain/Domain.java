@@ -30,16 +30,14 @@ import java.util.Set;
 /**
  * {@link Domain} {@link KapuaEntity} definition
  * <p>
- * {@link Domain} contains the information about the available {@link Actions} for a {@link KapuaEntity} {@link Domain}<br>
+ * {@link Domain} contains the information about the available {@link Actions} for a {@link KapuaEntity} {@link Domain}
  * Services needs to register their own specific {@link Domain}.
  *
  * @since 1.0.0
  */
 @XmlRootElement(name = "domain")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(propOrder = {"name",
-        "actions",
-        "groupable"})
+@XmlType(factoryClass = DomainXmlFactory.class, factoryMethod = "newEntity")
 public interface Domain extends KapuaEntity {//, org.eclipse.kapua.model.domain.Domain {
 
     String TYPE = "domain";

@@ -53,9 +53,9 @@ import org.eclipse.kapua.app.api.resources.v1.resources.model.device.management.
 import org.eclipse.kapua.commons.service.event.store.api.EventStoreRecordCreator;
 import org.eclipse.kapua.commons.service.event.store.api.EventStoreRecordListResult;
 import org.eclipse.kapua.commons.service.event.store.api.EventStoreRecordQuery;
-import org.eclipse.kapua.commons.service.event.store.api.EventStoreXmlRegistry;
+import org.eclipse.kapua.commons.service.event.store.api.EventStoreXmlFactory;
 import org.eclipse.kapua.event.ServiceEvent;
-import org.eclipse.kapua.job.engine.JobEngineXmlRegistry;
+import org.eclipse.kapua.job.engine.JobEngineXmlFactory;
 import org.eclipse.kapua.job.engine.JobStartOptions;
 import org.eclipse.kapua.message.device.data.KapuaDataChannel;
 import org.eclipse.kapua.message.device.data.KapuaDataMessage;
@@ -70,7 +70,7 @@ import org.eclipse.kapua.service.account.Account;
 import org.eclipse.kapua.service.account.AccountCreator;
 import org.eclipse.kapua.service.account.AccountListResult;
 import org.eclipse.kapua.service.account.AccountQuery;
-import org.eclipse.kapua.service.account.AccountXmlRegistry;
+import org.eclipse.kapua.service.account.AccountXmlFactory;
 import org.eclipse.kapua.service.authentication.ApiKeyCredentials;
 import org.eclipse.kapua.service.authentication.AuthenticationCredentials;
 import org.eclipse.kapua.service.authentication.AuthenticationXmlRegistry;
@@ -82,43 +82,43 @@ import org.eclipse.kapua.service.authentication.credential.CredentialCreator;
 import org.eclipse.kapua.service.authentication.credential.CredentialListResult;
 import org.eclipse.kapua.service.authentication.credential.CredentialQuery;
 import org.eclipse.kapua.service.authentication.credential.CredentialType;
-import org.eclipse.kapua.service.authentication.credential.CredentialXmlRegistry;
+import org.eclipse.kapua.service.authentication.credential.CredentialXmlFactory;
 import org.eclipse.kapua.service.authentication.credential.mfa.MfaOption;
 import org.eclipse.kapua.service.authentication.credential.mfa.MfaOptionCreator;
 import org.eclipse.kapua.service.authentication.credential.mfa.MfaOptionListResult;
 import org.eclipse.kapua.service.authentication.credential.mfa.MfaOptionQuery;
-import org.eclipse.kapua.service.authentication.credential.mfa.MfaOptionXmlRegistry;
+import org.eclipse.kapua.service.authentication.credential.mfa.MfaOptionXmlFactory;
 import org.eclipse.kapua.service.authentication.credential.mfa.ScratchCode;
 import org.eclipse.kapua.service.authentication.credential.mfa.ScratchCodeCreator;
 import org.eclipse.kapua.service.authentication.credential.mfa.ScratchCodeListResult;
 import org.eclipse.kapua.service.authentication.credential.mfa.ScratchCodeQuery;
-import org.eclipse.kapua.service.authentication.credential.mfa.ScratchCodeXmlRegistry;
+import org.eclipse.kapua.service.authentication.credential.mfa.ScratchCodeXmlFactory;
 import org.eclipse.kapua.service.authentication.token.AccessToken;
 import org.eclipse.kapua.service.authentication.token.LoginInfo;
 import org.eclipse.kapua.service.authorization.access.AccessInfo;
 import org.eclipse.kapua.service.authorization.access.AccessInfoCreator;
 import org.eclipse.kapua.service.authorization.access.AccessInfoListResult;
 import org.eclipse.kapua.service.authorization.access.AccessInfoQuery;
-import org.eclipse.kapua.service.authorization.access.AccessInfoXmlRegistry;
+import org.eclipse.kapua.service.authorization.access.AccessInfoXmlFactory;
 import org.eclipse.kapua.service.authorization.access.AccessPermission;
 import org.eclipse.kapua.service.authorization.access.AccessPermissionCreator;
 import org.eclipse.kapua.service.authorization.access.AccessPermissionListResult;
 import org.eclipse.kapua.service.authorization.access.AccessPermissionQuery;
-import org.eclipse.kapua.service.authorization.access.AccessPermissionXmlRegistry;
+import org.eclipse.kapua.service.authorization.access.AccessPermissionXmlFactory;
 import org.eclipse.kapua.service.authorization.access.AccessRole;
 import org.eclipse.kapua.service.authorization.access.AccessRoleCreator;
 import org.eclipse.kapua.service.authorization.access.AccessRoleListResult;
 import org.eclipse.kapua.service.authorization.access.AccessRoleQuery;
-import org.eclipse.kapua.service.authorization.access.AccessRoleXmlRegistry;
+import org.eclipse.kapua.service.authorization.access.AccessRoleXmlFactory;
 import org.eclipse.kapua.service.authorization.domain.Domain;
 import org.eclipse.kapua.service.authorization.domain.DomainListResult;
 import org.eclipse.kapua.service.authorization.domain.DomainQuery;
-import org.eclipse.kapua.service.authorization.domain.DomainXmlRegistry;
+import org.eclipse.kapua.service.authorization.domain.DomainXmlFactory;
 import org.eclipse.kapua.service.authorization.group.Group;
 import org.eclipse.kapua.service.authorization.group.GroupCreator;
 import org.eclipse.kapua.service.authorization.group.GroupListResult;
 import org.eclipse.kapua.service.authorization.group.GroupQuery;
-import org.eclipse.kapua.service.authorization.group.GroupXmlRegistry;
+import org.eclipse.kapua.service.authorization.group.GroupXmlFactory;
 import org.eclipse.kapua.service.authorization.permission.Permission;
 import org.eclipse.kapua.service.authorization.role.Role;
 import org.eclipse.kapua.service.authorization.role.RoleCreator;
@@ -127,9 +127,9 @@ import org.eclipse.kapua.service.authorization.role.RolePermission;
 import org.eclipse.kapua.service.authorization.role.RolePermissionCreator;
 import org.eclipse.kapua.service.authorization.role.RolePermissionListResult;
 import org.eclipse.kapua.service.authorization.role.RolePermissionQuery;
-import org.eclipse.kapua.service.authorization.role.RolePermissionXmlRegistry;
+import org.eclipse.kapua.service.authorization.role.RolePermissionXmlFactory;
 import org.eclipse.kapua.service.authorization.role.RoleQuery;
-import org.eclipse.kapua.service.authorization.role.RoleXmlRegistry;
+import org.eclipse.kapua.service.authorization.role.RoleXmlFactory;
 import org.eclipse.kapua.service.config.ServiceComponentConfiguration;
 import org.eclipse.kapua.service.config.ServiceConfiguration;
 import org.eclipse.kapua.service.config.ServiceConfigurationXmlRegistry;
@@ -214,12 +214,12 @@ import org.eclipse.kapua.service.device.management.registry.operation.DeviceMana
 import org.eclipse.kapua.service.device.management.registry.operation.DeviceManagementOperationCreator;
 import org.eclipse.kapua.service.device.management.registry.operation.DeviceManagementOperationListResult;
 import org.eclipse.kapua.service.device.management.registry.operation.DeviceManagementOperationQuery;
-import org.eclipse.kapua.service.device.management.registry.operation.DeviceManagementOperationXmlRegistry;
+import org.eclipse.kapua.service.device.management.registry.operation.DeviceManagementOperationXmlFactory;
 import org.eclipse.kapua.service.device.management.registry.operation.notification.ManagementOperationNotification;
 import org.eclipse.kapua.service.device.management.registry.operation.notification.ManagementOperationNotificationCreator;
 import org.eclipse.kapua.service.device.management.registry.operation.notification.ManagementOperationNotificationListResult;
 import org.eclipse.kapua.service.device.management.registry.operation.notification.ManagementOperationNotificationQuery;
-import org.eclipse.kapua.service.device.management.registry.operation.notification.ManagementOperationNotificationXmlRegistry;
+import org.eclipse.kapua.service.device.management.registry.operation.notification.ManagementOperationNotificationXmlFactory;
 import org.eclipse.kapua.service.device.management.request.GenericRequestXmlRegistry;
 import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestChannel;
 import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestMessage;
@@ -234,41 +234,41 @@ import org.eclipse.kapua.service.device.registry.Device;
 import org.eclipse.kapua.service.device.registry.DeviceCreator;
 import org.eclipse.kapua.service.device.registry.DeviceListResult;
 import org.eclipse.kapua.service.device.registry.DeviceQuery;
-import org.eclipse.kapua.service.device.registry.DeviceXmlRegistry;
+import org.eclipse.kapua.service.device.registry.DeviceXmlFactory;
 import org.eclipse.kapua.service.device.registry.connection.DeviceConnection;
 import org.eclipse.kapua.service.device.registry.connection.DeviceConnectionListResult;
 import org.eclipse.kapua.service.device.registry.connection.DeviceConnectionQuery;
 import org.eclipse.kapua.service.device.registry.connection.DeviceConnectionXmlRegistry;
 import org.eclipse.kapua.service.device.registry.connection.option.DeviceConnectionOption;
-import org.eclipse.kapua.service.device.registry.connection.option.DeviceConnectionOptionXmlRegistry;
+import org.eclipse.kapua.service.device.registry.connection.option.DeviceConnectionOptionXmlFactory;
 import org.eclipse.kapua.service.device.registry.event.DeviceEvent;
 import org.eclipse.kapua.service.device.registry.event.DeviceEventListResult;
 import org.eclipse.kapua.service.device.registry.event.DeviceEventQuery;
-import org.eclipse.kapua.service.device.registry.event.DeviceEventXmlRegistry;
+import org.eclipse.kapua.service.device.registry.event.DeviceEventXmlFactory;
 import org.eclipse.kapua.service.endpoint.EndpointInfo;
 import org.eclipse.kapua.service.endpoint.EndpointInfoCreator;
 import org.eclipse.kapua.service.endpoint.EndpointInfoListResult;
 import org.eclipse.kapua.service.endpoint.EndpointInfoQuery;
-import org.eclipse.kapua.service.endpoint.EndpointInfoXmlRegistry;
+import org.eclipse.kapua.service.endpoint.EndpointInfoXmlFactory;
 import org.eclipse.kapua.service.endpoint.EndpointUsage;
 import org.eclipse.kapua.service.job.Job;
 import org.eclipse.kapua.service.job.JobCreator;
 import org.eclipse.kapua.service.job.JobListResult;
 import org.eclipse.kapua.service.job.JobQuery;
-import org.eclipse.kapua.service.job.JobXmlRegistry;
+import org.eclipse.kapua.service.job.JobXmlFactory;
 import org.eclipse.kapua.service.job.execution.JobExecution;
 import org.eclipse.kapua.service.job.execution.JobExecutionListResult;
 import org.eclipse.kapua.service.job.execution.JobExecutionQuery;
-import org.eclipse.kapua.service.job.execution.JobExecutionXmlRegistry;
+import org.eclipse.kapua.service.job.execution.JobExecutionXmlFactory;
 import org.eclipse.kapua.service.job.step.JobStep;
 import org.eclipse.kapua.service.job.step.JobStepCreator;
 import org.eclipse.kapua.service.job.step.JobStepListResult;
 import org.eclipse.kapua.service.job.step.JobStepQuery;
-import org.eclipse.kapua.service.job.step.JobStepXmlRegistry;
+import org.eclipse.kapua.service.job.step.JobStepXmlFactory;
 import org.eclipse.kapua.service.job.step.definition.JobStepDefinition;
 import org.eclipse.kapua.service.job.step.definition.JobStepDefinitionListResult;
 import org.eclipse.kapua.service.job.step.definition.JobStepDefinitionQuery;
-import org.eclipse.kapua.service.job.step.definition.JobStepDefinitionXmlRegistry;
+import org.eclipse.kapua.service.job.step.definition.JobStepDefinitionXmlFactory;
 import org.eclipse.kapua.service.job.step.definition.JobStepProperty;
 import org.eclipse.kapua.service.job.targets.JobTarget;
 import org.eclipse.kapua.service.job.targets.JobTargetCreator;
@@ -278,16 +278,16 @@ import org.eclipse.kapua.service.scheduler.trigger.Trigger;
 import org.eclipse.kapua.service.scheduler.trigger.TriggerCreator;
 import org.eclipse.kapua.service.scheduler.trigger.TriggerListResult;
 import org.eclipse.kapua.service.scheduler.trigger.TriggerQuery;
-import org.eclipse.kapua.service.scheduler.trigger.TriggerXmlRegistry;
+import org.eclipse.kapua.service.scheduler.trigger.TriggerXmlFactory;
 import org.eclipse.kapua.service.scheduler.trigger.definition.TriggerDefinition;
 import org.eclipse.kapua.service.scheduler.trigger.definition.TriggerDefinitionListResult;
 import org.eclipse.kapua.service.scheduler.trigger.definition.TriggerDefinitionQuery;
-import org.eclipse.kapua.service.scheduler.trigger.definition.TriggerDefinitionXmlRegistry;
+import org.eclipse.kapua.service.scheduler.trigger.definition.TriggerDefinitionXmlFactory;
 import org.eclipse.kapua.service.scheduler.trigger.definition.TriggerProperty;
 import org.eclipse.kapua.service.scheduler.trigger.fired.FiredTrigger;
 import org.eclipse.kapua.service.scheduler.trigger.fired.FiredTriggerListResult;
 import org.eclipse.kapua.service.scheduler.trigger.fired.FiredTriggerQuery;
-import org.eclipse.kapua.service.scheduler.trigger.fired.FiredTriggerXmlRegistry;
+import org.eclipse.kapua.service.scheduler.trigger.fired.FiredTriggerXmlFactory;
 import org.eclipse.kapua.service.storable.model.id.StorableId;
 import org.eclipse.kapua.service.storable.model.query.SortField;
 import org.eclipse.kapua.service.storable.model.query.SortFieldXmlAdapter;
@@ -297,12 +297,12 @@ import org.eclipse.kapua.service.tag.Tag;
 import org.eclipse.kapua.service.tag.TagCreator;
 import org.eclipse.kapua.service.tag.TagListResult;
 import org.eclipse.kapua.service.tag.TagQuery;
-import org.eclipse.kapua.service.tag.TagXmlRegistry;
+import org.eclipse.kapua.service.tag.TagXmlFactory;
 import org.eclipse.kapua.service.user.User;
 import org.eclipse.kapua.service.user.UserCreator;
 import org.eclipse.kapua.service.user.UserListResult;
 import org.eclipse.kapua.service.user.UserQuery;
-import org.eclipse.kapua.service.user.UserXmlRegistry;
+import org.eclipse.kapua.service.user.UserXmlFactory;
 import org.eclipse.persistence.jaxb.JAXBContextFactory;
 import org.eclipse.persistence.jaxb.MarshallerProperties;
 
@@ -383,7 +383,7 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
                     AccountCreator.class,
                     AccountListResult.class,
                     AccountQuery.class,
-                    AccountXmlRegistry.class,
+                    AccountXmlFactory.class,
 
                     // Data Channel Info
                     ChannelInfo.class,
@@ -430,7 +430,7 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
                     DeviceCreator.class,
                     DeviceListResult.class,
                     DeviceQuery.class,
-                    DeviceXmlRegistry.class,
+                    DeviceXmlFactory.class,
 
                     // Device Connection
                     DeviceConnection.class,
@@ -440,13 +440,13 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
 
                     // Device Connection Options
                     DeviceConnectionOption.class,
-                    DeviceConnectionOptionXmlRegistry.class,
+                    DeviceConnectionOptionXmlFactory.class,
 
                     // Device Event
                     DeviceEvent.class,
                     DeviceEventListResult.class,
                     DeviceEventQuery.class,
-                    DeviceEventXmlRegistry.class,
+                    DeviceEventXmlFactory.class,
 
                     // Device Management Assets
                     DeviceAssets.class,
@@ -536,7 +536,7 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
                     DeviceManagementOperationCreator.class,
                     DeviceManagementOperationListResult.class,
                     DeviceManagementOperationQuery.class,
-                    DeviceManagementOperationXmlRegistry.class,
+                    DeviceManagementOperationXmlFactory.class,
                     OperationStatus.class,
 
                     // Device Management Registry Notification
@@ -544,7 +544,7 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
                     ManagementOperationNotificationCreator.class,
                     ManagementOperationNotificationListResult.class,
                     ManagementOperationNotificationQuery.class,
-                    ManagementOperationNotificationXmlRegistry.class,
+                    ManagementOperationNotificationXmlFactory.class,
 
                     // Device Management Generic Request
                     GenericRequestChannel.class,
@@ -574,19 +574,19 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
                     CredentialCreator.class,
                     CredentialType.class,
                     CredentialQuery.class,
-                    CredentialXmlRegistry.class,
+                    CredentialXmlFactory.class,
 
                     // Multi Factor Authentication
                     MfaOption.class,
                     MfaOptionListResult.class,
                     MfaOptionCreator.class,
                     MfaOptionQuery.class,
-                    MfaOptionXmlRegistry.class,
+                    MfaOptionXmlFactory.class,
                     ScratchCode.class,
                     ScratchCodeListResult.class,
                     ScratchCodeCreator.class,
                     ScratchCodeQuery.class,
-                    ScratchCodeXmlRegistry.class,
+                    ScratchCodeXmlFactory.class,
 
                     // Permission
                     Permission.class,
@@ -597,76 +597,76 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
                     EndpointInfoListResult.class,
                     EndpointInfoCreator.class,
                     EndpointInfoQuery.class,
-                    EndpointInfoXmlRegistry.class,
+                    EndpointInfoXmlFactory.class,
 
                     // Roles
                     Role.class,
                     RoleListResult.class,
                     RoleCreator.class,
                     RoleQuery.class,
-                    RoleXmlRegistry.class,
+                    RoleXmlFactory.class,
 
                     // Role Permissions
                     RolePermission.class,
                     RolePermissionListResult.class,
                     RolePermissionCreator.class,
                     RolePermissionQuery.class,
-                    RolePermissionXmlRegistry.class,
+                    RolePermissionXmlFactory.class,
 
                     // Domains
                     Domain.class,
                     DomainListResult.class,
                     DomainQuery.class,
-                    DomainXmlRegistry.class,
+                    DomainXmlFactory.class,
 
                     // Groups
                     Group.class,
                     GroupListResult.class,
                     GroupCreator.class,
                     GroupQuery.class,
-                    GroupXmlRegistry.class,
+                    GroupXmlFactory.class,
 
                     // Access Info
                     AccessInfo.class,
                     AccessInfoListResult.class,
                     AccessInfoCreator.class,
                     AccessInfoQuery.class,
-                    AccessInfoXmlRegistry.class,
+                    AccessInfoXmlFactory.class,
 
                     // Access Permissions
                     AccessPermission.class,
                     AccessPermissionListResult.class,
                     AccessPermissionCreator.class,
                     AccessPermissionQuery.class,
-                    AccessPermissionXmlRegistry.class,
+                    AccessPermissionXmlFactory.class,
 
                     // Access Roles
                     AccessRole.class,
                     AccessRoleListResult.class,
                     AccessRoleCreator.class,
                     AccessRoleQuery.class,
-                    AccessRoleXmlRegistry.class,
+                    AccessRoleXmlFactory.class,
 
                     // Tag
                     Tag.class,
                     TagListResult.class,
                     TagCreator.class,
                     TagQuery.class,
-                    TagXmlRegistry.class,
+                    TagXmlFactory.class,
 
                     // User
                     User.class,
                     UserCreator.class,
                     UserListResult.class,
                     UserQuery.class,
-                    UserXmlRegistry.class,
+                    UserXmlFactory.class,
 
                     // KapuaEvent
                     ServiceEvent.class,
                     EventStoreRecordCreator.class,
                     EventStoreRecordListResult.class,
                     EventStoreRecordQuery.class,
-                    EventStoreXmlRegistry.class,
+                    EventStoreXmlFactory.class,
 
                     // Service Config
                     ServiceConfigurationXmlRegistry.class,
@@ -682,26 +682,29 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
                     JobCreator.class,
                     JobListResult.class,
                     JobQuery.class,
-                    JobXmlRegistry.class,
-                    JobEngineXmlRegistry.class,
+                    JobXmlFactory.class,
+
+                    JobStartOptions.class,
+                    IsJobRunningResponse.class,
+                    JobEngineXmlFactory.class,
 
                     JobStep.class,
                     JobStepCreator.class,
                     JobStepListResult.class,
                     JobStepQuery.class,
-                    JobStepXmlRegistry.class,
+                    JobStepXmlFactory.class,
                     JobStepProperty.class,
 
                     JobExecution.class,
                     JobExecutionListResult.class,
                     JobExecutionQuery.class,
-                    JobExecutionXmlRegistry.class,
+                    JobExecutionXmlFactory.class,
 
                     JobTarget.class,
                     JobTargetCreator.class,
                     JobTargetListResult.class,
                     JobTargetQuery.class,
-                    JobExecutionXmlRegistry.class,
+                    JobExecutionXmlFactory.class,
 
                     // Trigger
                     Trigger.class,
@@ -709,22 +712,22 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
                     TriggerListResult.class,
                     TriggerQuery.class,
                     TriggerProperty.class,
-                    TriggerXmlRegistry.class,
+                    TriggerXmlFactory.class,
 
                     TriggerDefinition.class,
                     TriggerDefinitionListResult.class,
                     TriggerDefinitionQuery.class,
-                    TriggerDefinitionXmlRegistry.class,
+                    TriggerDefinitionXmlFactory.class,
 
                     FiredTrigger.class,
                     FiredTriggerListResult.class,
                     FiredTriggerQuery.class,
-                    FiredTriggerXmlRegistry.class,
+                    FiredTriggerXmlFactory.class,
 
                     JobStepDefinition.class,
                     JobStepDefinitionListResult.class,
                     JobStepDefinitionQuery.class,
-                    JobStepDefinitionXmlRegistry.class
+                    JobStepDefinitionXmlFactory.class
             }, properties);
         } catch (Exception e) {
             throw new RuntimeException(e);

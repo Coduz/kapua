@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "tag")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = TagXmlRegistry.class, factoryMethod = "newTag")
+@XmlType(factoryClass = TagXmlFactory.class, factoryMethod = "newEntity")
 public interface Tag extends KapuaNamedEntity {
 
     @XmlTransient

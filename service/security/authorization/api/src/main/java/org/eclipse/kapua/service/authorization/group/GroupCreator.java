@@ -28,6 +28,6 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "groupCreator")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = GroupXmlRegistry.class, factoryMethod = "newGroupCreator")
+@XmlType(factoryClass = GroupXmlFactory.class, factoryMethod = "newCreator")
 public interface GroupCreator extends KapuaNamedEntityCreator<Group> {
 }

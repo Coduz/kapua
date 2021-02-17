@@ -13,7 +13,7 @@
 package org.eclipse.kapua.service.certificate;
 
 import org.eclipse.kapua.service.certificate.info.CertificateInfo;
-import org.eclipse.kapua.service.certificate.xml.CertificateXmlRegistry;
+import org.eclipse.kapua.service.certificate.xml.CertificateXmlFactory;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "certificate")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = CertificateXmlRegistry.class, factoryMethod = "newCertificate")
+@XmlType(factoryClass = CertificateXmlFactory.class, factoryMethod = "newEntity")
 public interface Certificate extends CertificateInfo {
 
     String TYPE = "certificate";

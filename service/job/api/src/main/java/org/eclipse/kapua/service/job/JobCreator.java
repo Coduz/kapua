@@ -30,7 +30,7 @@ import java.util.List;
  */
 @XmlRootElement(name = "jobCreator")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = JobXmlRegistry.class, factoryMethod = "newJobCreator")
+@XmlType(factoryClass = JobXmlFactory.class, factoryMethod = "newCreator")
 public interface JobCreator extends KapuaNamedEntityCreator<Job> {
 
     /**

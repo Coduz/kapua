@@ -68,7 +68,7 @@ import java.util.List;
         "customAttribute4",
         "customAttribute5",
         "extendedProperties"
-}, factoryClass = DeviceXmlRegistry.class, factoryMethod = "newDeviceCreator")
+}, factoryClass = DeviceXmlFactory.class, factoryMethod = "newCreator")
 public interface DeviceCreator extends KapuaUpdatableEntityCreator<Device> {
 
     /**

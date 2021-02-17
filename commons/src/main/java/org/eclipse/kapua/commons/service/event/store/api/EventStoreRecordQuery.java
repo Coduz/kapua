@@ -27,6 +27,6 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "query")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = EventStoreXmlRegistry.class, factoryMethod = "newQuery")
+@XmlType(factoryClass = EventStoreXmlFactory.class, factoryMethod = "newQuery")
 public interface EventStoreRecordQuery extends KapuaQuery {
 }

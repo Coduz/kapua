@@ -37,11 +37,7 @@ import java.util.Set;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = { "userId",
-        "roleIds",
-        "permissions" },
-        factoryClass = AccessInfoXmlRegistry.class,
-        factoryMethod = "newAccessInfoCreator")
+@XmlType(factoryClass = AccessInfoXmlFactory.class, factoryMethod = "newCreator")
 public interface AccessInfoCreator extends KapuaEntityCreator<AccessInfo> {
 
     /**

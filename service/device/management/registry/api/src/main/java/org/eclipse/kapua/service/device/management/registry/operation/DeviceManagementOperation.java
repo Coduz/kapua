@@ -34,7 +34,7 @@ import java.util.List;
  */
 @XmlRootElement(name = "deviceManagementOperation")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = DeviceManagementOperationXmlRegistry.class, factoryMethod = "newDeviceManagementOperation")
+@XmlType(factoryClass = DeviceManagementOperationXmlFactory.class, factoryMethod = "newEntity")
 public interface DeviceManagementOperation extends KapuaUpdatableEntity {
 
     static final String TYPE = "deviceManagementOperation";

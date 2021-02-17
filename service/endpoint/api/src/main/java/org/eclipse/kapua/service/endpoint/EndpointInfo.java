@@ -31,7 +31,7 @@ import java.util.Set;
  */
 @XmlRootElement(name = "endpointInfo")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = EndpointInfoXmlRegistry.class, factoryMethod = "newEntity")
+@XmlType(factoryClass = EndpointInfoXmlFactory.class, factoryMethod = "newEntity")
 public interface EndpointInfo extends KapuaUpdatableEntity {
 
     String TYPE = "endpointInfo";

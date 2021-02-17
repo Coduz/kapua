@@ -12,9 +12,10 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.authorization.domain;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
 import org.eclipse.kapua.model.query.KapuaListResult;
+
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  * {@link Domain} list result definition.
@@ -22,6 +23,7 @@ import org.eclipse.kapua.model.query.KapuaListResult;
  * @since 1.0.0
  */
 @XmlRootElement(name = "domains")
+@XmlType(factoryClass = DomainXmlFactory.class, factoryMethod = "newListResult")
 public interface DomainListResult extends KapuaListResult<Domain> {
 
 }

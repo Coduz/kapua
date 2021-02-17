@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "scratchCodeListResult")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = ScratchCodeXmlRegistry.class, factoryMethod = "newScratchCodeListResult")
+@XmlType(factoryClass = ScratchCodeXmlFactory.class, factoryMethod = "newListResult")
 public interface ScratchCodeListResult extends KapuaListResult<ScratchCode> {
 
 }

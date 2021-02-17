@@ -12,22 +12,21 @@
  *******************************************************************************/
 package org.eclipse.kapua.commons.service.event.store.api;
 
+import org.eclipse.kapua.model.query.KapuaListResult;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import org.eclipse.kapua.model.query.KapuaListResult;
-
 /**
  * KapuaEvent result list definition.
  *
  * @since 1.0
- *
  */
 @XmlRootElement(name = "eventStoreRecords")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = EventStoreXmlRegistry.class,factoryMethod = "newEventStoreRecordListResult")
+@XmlType(factoryClass = EventStoreXmlFactory.class, factoryMethod = "newListResult")
 public interface EventStoreRecordListResult extends KapuaListResult<EventStoreRecord> {
 
 }

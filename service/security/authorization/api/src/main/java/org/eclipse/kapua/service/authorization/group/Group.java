@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "group")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = GroupXmlRegistry.class, factoryMethod = "newGroup")
+@XmlType(factoryClass = GroupXmlFactory.class, factoryMethod = "newEntity")
 public interface Group extends KapuaNamedEntity {
 
     @XmlTransient

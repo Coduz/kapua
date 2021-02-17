@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "mfaOptionListResult")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = MfaOptionXmlRegistry.class, factoryMethod = "newMfaOptionListResult")
+@XmlType(factoryClass = MfaOptionXmlFactory.class, factoryMethod = "newListResult")
 public interface MfaOptionListResult extends KapuaListResult<MfaOption> {
 
 }

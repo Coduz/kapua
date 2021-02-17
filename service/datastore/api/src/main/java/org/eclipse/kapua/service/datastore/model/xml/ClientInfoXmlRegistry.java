@@ -13,36 +13,41 @@
 package org.eclipse.kapua.service.datastore.model.xml;
 
 import org.eclipse.kapua.locator.KapuaLocator;
+import org.eclipse.kapua.model.xml.KapuaXmlFactory;
 import org.eclipse.kapua.service.datastore.ClientInfoFactory;
+import org.eclipse.kapua.service.datastore.model.ClientInfo;
 import org.eclipse.kapua.service.datastore.model.ClientInfoListResult;
 import org.eclipse.kapua.service.datastore.model.query.ClientInfoQuery;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
 /**
- * Client information xml registry
+ * {@link ClientInfo} {@link KapuaXmlFactory} implementation.
  *
- * @since 1.0
+ * @see KapuaXmlFactory
+ * @since 1.0.0
  */
 @XmlRegistry
-public class ClientInfoXmlRegistry {
+public class ClientInfoXmlRegistry implements KapuaXmlFactory {
 
     private static final KapuaLocator LOCATOR = KapuaLocator.getInstance();
     private static final ClientInfoFactory CLIENT_INFO_FACTORY = LOCATOR.getFactory(ClientInfoFactory.class);
 
     /**
-     * Creates a {@link ClientInfoListResult} instance
+     * Instantiates a new {@link ClientInfoListResult}.
      *
-     * @return
+     * @return The newly instantiated {@link ClientInfoListResult}.
+     * @since 1.0.0
      */
     public ClientInfoListResult newListResult() {
         return CLIENT_INFO_FACTORY.newListResult();
     }
 
     /**
-     * Creates a {@link ClientInfoQuery} instance.
+     * Instantiates a new {@link ClientInfoQuery}.
      *
-     * @return
+     * @return The newly instantiated {@link ClientInfoQuery}.
+     * @since 1.0.0
      */
     public ClientInfoQuery newQuery() {
         return CLIENT_INFO_FACTORY.newQuery(null);

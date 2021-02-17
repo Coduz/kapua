@@ -33,7 +33,7 @@ import java.util.Set;
  */
 @XmlRootElement(name = "roleCreator")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = RoleXmlRegistry.class, factoryMethod = "newRoleCreator")
+@XmlType(factoryClass = RoleXmlFactory.class, factoryMethod = "newCreator")
 public interface RoleCreator extends KapuaNamedEntityCreator<Role> {
 
     /**

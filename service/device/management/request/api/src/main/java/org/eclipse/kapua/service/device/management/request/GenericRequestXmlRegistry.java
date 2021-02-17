@@ -13,6 +13,7 @@
 package org.eclipse.kapua.service.device.management.request;
 
 import org.eclipse.kapua.locator.KapuaLocator;
+import org.eclipse.kapua.model.xml.KapuaXmlFactory;
 import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestChannel;
 import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestMessage;
 import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestPayload;
@@ -23,7 +24,7 @@ import org.eclipse.kapua.service.device.management.request.message.response.Gene
 import javax.xml.bind.annotation.XmlRegistry;
 
 @XmlRegistry
-public class GenericRequestXmlRegistry {
+public class GenericRequestXmlRegistry implements KapuaXmlFactory {
 
     private static final KapuaLocator LOCATOR = KapuaLocator.getInstance();
     private static final GenericRequestFactory FACTORY = LOCATOR.getFactory(GenericRequestFactory.class);

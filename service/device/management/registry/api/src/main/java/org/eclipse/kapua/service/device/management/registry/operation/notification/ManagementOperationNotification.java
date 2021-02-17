@@ -34,7 +34,7 @@ import java.util.Date;
  */
 @XmlRootElement(name = "managementOperationNotification")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = ManagementOperationNotificationXmlRegistry.class, factoryMethod = "newManagementOperationNotification")
+@XmlType(factoryClass = ManagementOperationNotificationXmlFactory.class, factoryMethod = "newEntity")
 public interface ManagementOperationNotification extends KapuaEntity {
 
     static final String TYPE = "managementOperationNotification";

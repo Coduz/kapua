@@ -12,10 +12,10 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.authorization.role;
 
+import org.eclipse.kapua.model.query.KapuaListResult;
+
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-
-import org.eclipse.kapua.model.query.KapuaListResult;
 
 /**
  * {@link Role} list result definition.
@@ -23,7 +23,7 @@ import org.eclipse.kapua.model.query.KapuaListResult;
  * @since 1.0.0
  */
 @XmlRootElement(name = "roles")
-@XmlType(factoryClass = RoleXmlRegistry.class, factoryMethod = "newRoleListResult")
+@XmlType(factoryClass = RoleXmlFactory.class, factoryMethod = "newListResult")
 public interface RoleListResult extends KapuaListResult<Role> {
 
 }

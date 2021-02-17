@@ -31,7 +31,7 @@ import java.util.List;
  */
 @XmlRootElement(name = "account")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = AccountXmlRegistry.class, factoryMethod = "newAccount")
+@XmlType(factoryClass = AccountXmlFactory.class, factoryMethod = "newEntity")
 public interface Account extends KapuaNamedEntity {
 
     String TYPE = "account";

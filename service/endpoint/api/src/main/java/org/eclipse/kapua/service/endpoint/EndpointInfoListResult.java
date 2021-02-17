@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  * @since 1.0.0
  */
 @XmlRootElement(name = "endpointInfos")
-@XmlType(factoryClass = EndpointInfoXmlRegistry.class, factoryMethod = "newListResult")
+@XmlType(factoryClass = EndpointInfoXmlFactory.class, factoryMethod = "newListResult")
 public interface EndpointInfoListResult extends KapuaListResult<EndpointInfo> {
 
 }

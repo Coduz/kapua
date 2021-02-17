@@ -20,7 +20,7 @@ import org.eclipse.kapua.model.xml.DateXmlAdapter;
 import org.eclipse.kapua.service.certificate.CertificateStatus;
 import org.eclipse.kapua.service.certificate.CertificateUsage;
 import org.eclipse.kapua.service.certificate.KeyUsageSetting;
-import org.eclipse.kapua.service.certificate.info.xml.CertificateInfoXmlRegistry;
+import org.eclipse.kapua.service.certificate.info.xml.CertificateInfoXmlFactory;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -37,7 +37,7 @@ import java.util.Set;
  */
 @XmlRootElement(name = "certificateInfo")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = CertificateInfoXmlRegistry.class, factoryMethod = "newCertificateInfo")
+@XmlType(factoryClass = CertificateInfoXmlFactory.class, factoryMethod = "newEntity")
 public interface CertificateInfo extends KapuaNamedEntity {
 
     String TYPE = "CertificateInfo";

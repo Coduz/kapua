@@ -12,19 +12,18 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.registry;
 
+import org.eclipse.kapua.model.query.KapuaListResult;
+
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-
-import org.eclipse.kapua.model.query.KapuaListResult;
 
 /**
  * Device list result definition.
  *
- * @since 1.0
- *
+ * @since 1.0.0
  */
 @XmlRootElement(name = "devices")
-@XmlType(factoryClass = DeviceXmlRegistry.class, factoryMethod = "newDeviceListResult")
+@XmlType(factoryClass = DeviceXmlFactory.class, factoryMethod = "newListResult")
 public interface DeviceListResult extends KapuaListResult<Device> {
 
 }

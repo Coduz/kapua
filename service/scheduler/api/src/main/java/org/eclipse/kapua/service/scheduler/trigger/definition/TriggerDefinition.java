@@ -27,7 +27,7 @@ import java.util.List;
  */
 @XmlRootElement(name = "triggerDefinition")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = TriggerDefinitionXmlRegistry.class, factoryMethod = "newEntity")
+@XmlType(factoryClass = TriggerDefinitionXmlFactory.class, factoryMethod = "newEntity")
 public interface TriggerDefinition extends KapuaNamedEntity {
 
     String TYPE = "triggerDefinition";

@@ -27,6 +27,6 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "query")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = MfaOptionXmlRegistry.class, factoryMethod = "newQuery")
+@XmlType(factoryClass = MfaOptionXmlFactory.class, factoryMethod = "newQuery")
 public interface MfaOptionQuery extends KapuaQuery {
 }

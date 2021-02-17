@@ -27,6 +27,6 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "query")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = AccessRoleXmlRegistry.class, factoryMethod = "newQuery")
+@XmlType(factoryClass = AccessRoleXmlFactory.class, factoryMethod = "newQuery")
 public interface AccessRoleQuery extends KapuaQuery {
 }

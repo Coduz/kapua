@@ -12,10 +12,10 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.registry.connection.option;
 
+import org.eclipse.kapua.model.query.KapuaListResult;
+
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-
-import org.eclipse.kapua.model.query.KapuaListResult;
 
 /**
  * Device connection options list definition.
@@ -23,6 +23,6 @@ import org.eclipse.kapua.model.query.KapuaListResult;
  * @since 1.0.0
  */
 @XmlRootElement(name = "deviceConnectionOptions")
-@XmlType(factoryClass = DeviceConnectionOptionXmlRegistry.class, factoryMethod = "newDeviceConnectionOptionListResult")
+@XmlType(factoryClass = DeviceConnectionOptionXmlFactory.class, factoryMethod = "newListResult")
 public interface DeviceConnectionOptionListResult extends KapuaListResult<DeviceConnectionOption> {
 }

@@ -13,6 +13,7 @@
 package org.eclipse.kapua.service.device.management.packages.model;
 
 import org.eclipse.kapua.locator.KapuaLocator;
+import org.eclipse.kapua.model.xml.KapuaXmlFactory;
 import org.eclipse.kapua.service.device.management.packages.DevicePackageFactory;
 import org.eclipse.kapua.service.device.management.packages.model.download.AdvancedPackageDownloadOptions;
 import org.eclipse.kapua.service.device.management.packages.model.download.DevicePackageDownloadOperation;
@@ -24,20 +25,21 @@ import org.eclipse.kapua.service.device.management.packages.model.uninstall.Devi
 import javax.xml.bind.annotation.XmlRegistry;
 
 /**
- * {@link DevicePackageXmlRegistry} class.
+ * {@link DevicePackage}s {@link KapuaXmlFactory} implementation.
  *
+ * @see KapuaXmlFactory
  * @since 1.0.0
  */
 @XmlRegistry
-public class DevicePackageXmlRegistry {
+public class DevicePackageXmlRegistry implements KapuaXmlFactory {
 
     private static final KapuaLocator LOCATOR = KapuaLocator.getInstance();
     private static final DevicePackageFactory DEVICE_PACKAGE_FACTORY = LOCATOR.getFactory(DevicePackageFactory.class);
 
     /**
-     * Creates a new device package instance
+     * Instantiates a new {@link DevicePackage}.
      *
-     * @return
+     * @return The newly instantiated {@link DevicePackage}.
      * @since 1.0.0
      */
     public DevicePackage newDevicePackage() {
@@ -45,9 +47,9 @@ public class DevicePackageXmlRegistry {
     }
 
     /**
-     * Creates a new device packages instance
+     * Instantiates a new {@link DevicePackages}.
      *
-     * @return
+     * @return The newly instantiated {@link DevicePackages}.
      * @since 1.0.0
      */
     public DevicePackages newDevicePackages() {
@@ -55,9 +57,9 @@ public class DevicePackageXmlRegistry {
     }
 
     /**
-     * Creates a new device package bundle information instance
+     * Instantiates a new {@link DevicePackageBundleInfo}.
      *
-     * @return
+     * @return The newly instantiated {@link DevicePackageBundleInfo}.
      * @since 1.0.0
      */
     public DevicePackageBundleInfo newDevicePackageBundleInfo() {
@@ -65,9 +67,9 @@ public class DevicePackageXmlRegistry {
     }
 
     /**
-     * Creates a new device package bundle informations instance
+     * Instantiates a new {@link DevicePackageBundleInfos}
      *
-     * @return
+     * @return The newly instantiated {@link DevicePackageBundleInfos}
      * @since 1.0.0
      */
     public DevicePackageBundleInfos newDevicePackageBundleInfos() {
@@ -75,18 +77,19 @@ public class DevicePackageXmlRegistry {
     }
 
     /**
-     * Creates a new device package download request instance
+     * Instantiates a new {@link DevicePackageDownloadRequest}.
      *
-     * @return
+     * @return The newly instantiated {@link DevicePackageDownloadRequest}
+     * @since 1.0.0
      */
     public DevicePackageDownloadRequest newDevicePackageDownloadRequest() {
         return DEVICE_PACKAGE_FACTORY.newPackageDownloadRequest();
     }
 
     /**
-     * Creates a new device package download request instance
+     * Instantiates a new {@link AdvancedPackageDownloadOptions}
      *
-     * @return
+     * @return The newly instantiated {@link AdvancedPackageDownloadOptions}
      * @since 1.1.0
      */
     public AdvancedPackageDownloadOptions newAdvancedPackageDownloadOptions() {
@@ -114,9 +117,9 @@ public class DevicePackageXmlRegistry {
     }
 
     /**
-     * Creates a new device package uninstall request instance
+     * Instantiates a new {@link DevicePackageUninstallRequest}
      *
-     * @return
+     * @return The newly instantiated {@link DevicePackageUninstallRequest}
      * @since 1.0.0
      */
     public DevicePackageUninstallRequest newDevicePackageUninstallRequest() {

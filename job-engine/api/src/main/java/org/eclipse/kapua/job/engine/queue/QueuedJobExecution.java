@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "queuedJobExecution")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = QueuedJobExecutionXmlRegistry.class, factoryMethod = "newQueuedJobExecution")
+@XmlType(factoryClass = QueuedJobExecutionXmlFactory.class, factoryMethod = "newEntity")
 public interface QueuedJobExecution extends KapuaUpdatableEntity {
 
     String TYPE = "queuedJobExecution";

@@ -13,36 +13,41 @@
 package org.eclipse.kapua.service.datastore.model.xml;
 
 import org.eclipse.kapua.locator.KapuaLocator;
+import org.eclipse.kapua.model.xml.KapuaXmlFactory;
 import org.eclipse.kapua.service.datastore.MetricInfoFactory;
+import org.eclipse.kapua.service.datastore.model.MetricInfo;
 import org.eclipse.kapua.service.datastore.model.MetricInfoListResult;
 import org.eclipse.kapua.service.datastore.model.query.MetricInfoQuery;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
 /**
- * Metric information xml registry
+ * {@link MetricInfo} {@link KapuaXmlFactory} implementation.
  *
- * @since 1.0
+ * @see KapuaXmlFactory
+ * @since 1.0.0
  */
 @XmlRegistry
-public class MetricInfoXmlRegistry {
+public class MetricInfoXmlRegistry implements KapuaXmlFactory {
 
     private static final KapuaLocator LOCATOR = KapuaLocator.getInstance();
     private static final MetricInfoFactory METRIC_INFO_FACTORY = LOCATOR.getFactory(MetricInfoFactory.class);
 
     /**
-     * Creates a {@link MetricInfoListResult} instance
+     * Instantiates a new {@link MetricInfoListResult}.
      *
-     * @return
+     * @return The newly instantiated {@link MetricInfoListResult}.
+     * @since 1.0.0
      */
     public MetricInfoListResult newListResult() {
         return METRIC_INFO_FACTORY.newListResult();
     }
 
     /**
-     * Creates a {@link MetricInfoQuery} instance.
+     * Instantiates a new {@link MetricInfoQuery}.
      *
-     * @return
+     * @return The newly instantiated {@link MetricInfoQuery}.
+     * @since 1.0.0
      */
     public MetricInfoQuery newQuery() {
         return METRIC_INFO_FACTORY.newQuery(null);

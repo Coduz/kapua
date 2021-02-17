@@ -13,16 +13,19 @@
 package org.eclipse.kapua.service.device.management.command;
 
 import org.eclipse.kapua.locator.KapuaLocator;
+import org.eclipse.kapua.model.xml.KapuaXmlFactory;
+
+import javax.xml.bind.annotation.XmlRegistry;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
 /**
- * {@link DeviceCommand} XmlFactory implementation.
+ * {@link DeviceCommand} {@link KapuaXmlFactory} implementation.
  *
  * @since 1.0.0
  */
 @XmlRegistry
-public class DeviceCommandXmlRegistry {
+public class DeviceCommandXmlRegistry implements KapuaXmlFactory {
 
     private final KapuaLocator locator = KapuaLocator.getInstance();
     private final DeviceCommandFactory factory = locator.getFactory(DeviceCommandFactory.class);

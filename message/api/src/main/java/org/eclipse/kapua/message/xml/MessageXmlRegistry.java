@@ -19,6 +19,7 @@ import org.eclipse.kapua.message.KapuaMessage;
 import org.eclipse.kapua.message.KapuaMessageFactory;
 import org.eclipse.kapua.message.KapuaPayload;
 import org.eclipse.kapua.message.KapuaPosition;
+import org.eclipse.kapua.model.xml.KapuaXmlFactory;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
@@ -26,7 +27,7 @@ import javax.xml.bind.annotation.XmlRegistry;
  * Message XML factory class
  */
 @XmlRegistry
-public class MessageXmlRegistry {
+public class MessageXmlRegistry implements KapuaXmlFactory {
 
     private static final KapuaLocator LOCATOR = KapuaLocator.getInstance();
     private static final KapuaMessageFactory KAPUA_MESSAGE_FACTORY = LOCATOR.getFactory(KapuaMessageFactory.class);

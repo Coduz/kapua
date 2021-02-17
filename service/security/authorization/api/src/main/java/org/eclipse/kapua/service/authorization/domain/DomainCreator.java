@@ -19,6 +19,7 @@ import org.eclipse.kapua.service.authorization.permission.Permission;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import java.util.Set;
 
 /**
@@ -30,6 +31,7 @@ import java.util.Set;
  */
 @XmlRootElement(name = "domainCreator")
 @XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlType(factoryClass = DomainXmlFactory.class, factoryMethod = "newCreator")
 public interface DomainCreator extends KapuaEntityCreator<Domain> { // org.eclipse.kapua.model.domain.Domain {
 
     String getName();

@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "deviceExtendedProperty")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = DeviceXmlRegistry.class, factoryMethod = "newDeviceExtendedProperty")
+@XmlType(factoryClass = DeviceXmlFactory.class, factoryMethod = "newDeviceExtendedProperty")
 public interface DeviceExtendedProperty extends KapuaSerializable {
 
     /**

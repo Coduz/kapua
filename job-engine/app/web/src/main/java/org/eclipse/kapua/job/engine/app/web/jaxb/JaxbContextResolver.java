@@ -50,11 +50,11 @@ import org.eclipse.kapua.service.device.management.packages.model.download.Devic
 import org.eclipse.kapua.service.device.management.packages.model.download.DevicePackageDownloadRequest;
 import org.eclipse.kapua.service.job.Job;
 import org.eclipse.kapua.service.job.JobQuery;
-import org.eclipse.kapua.service.job.JobXmlRegistry;
+import org.eclipse.kapua.service.job.JobXmlFactory;
 import org.eclipse.kapua.service.job.execution.JobExecution;
 import org.eclipse.kapua.service.job.execution.JobExecutionListResult;
 import org.eclipse.kapua.service.job.execution.JobExecutionQuery;
-import org.eclipse.kapua.service.job.execution.JobExecutionXmlRegistry;
+import org.eclipse.kapua.service.job.execution.JobExecutionXmlFactory;
 import org.eclipse.kapua.service.job.step.JobStep;
 import org.eclipse.kapua.service.job.step.JobStepListResult;
 import org.eclipse.kapua.service.job.step.JobStepQuery;
@@ -66,7 +66,7 @@ import org.eclipse.kapua.service.job.targets.JobTargetQuery;
 import org.eclipse.kapua.service.scheduler.trigger.Trigger;
 import org.eclipse.kapua.service.scheduler.trigger.TriggerListResult;
 import org.eclipse.kapua.service.scheduler.trigger.TriggerQuery;
-import org.eclipse.kapua.service.scheduler.trigger.TriggerXmlRegistry;
+import org.eclipse.kapua.service.scheduler.trigger.TriggerXmlFactory;
 import org.eclipse.persistence.jaxb.JAXBContextFactory;
 import org.eclipse.persistence.jaxb.MarshallerProperties;
 
@@ -139,7 +139,7 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
                     // Jobs
                     Job.class,
                     JobQuery.class,
-                    JobXmlRegistry.class,
+                    JobXmlFactory.class,
 
                     JobStep.class,
                     JobStepListResult.class,
@@ -150,12 +150,12 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
                     JobExecution.class,
                     JobExecutionListResult.class,
                     JobExecutionQuery.class,
-                    JobExecutionXmlRegistry.class,
+                    JobExecutionXmlFactory.class,
 
                     JobTarget.class,
                     JobTargetListResult.class,
                     JobTargetQuery.class,
-                    JobExecutionXmlRegistry.class,
+                    JobExecutionXmlFactory.class,
 
                     JobTargetSublist.class,
 
@@ -168,7 +168,7 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
                     Trigger.class,
                     TriggerListResult.class,
                     TriggerQuery.class,
-                    TriggerXmlRegistry.class
+                    TriggerXmlFactory.class
             }, properties);
         } catch (Exception e) {
             throw new RuntimeException(e);

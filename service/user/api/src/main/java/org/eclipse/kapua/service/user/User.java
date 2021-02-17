@@ -30,7 +30,7 @@ import java.util.Date;
  */
 @XmlRootElement(name = "user")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = UserXmlRegistry.class, factoryMethod = "newUser")
+@XmlType(factoryClass = UserXmlFactory.class, factoryMethod = "newEntity")
 public interface User extends KapuaNamedEntity {
 
     String TYPE = "user";

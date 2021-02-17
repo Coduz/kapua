@@ -12,22 +12,21 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.registry.event;
 
+import org.eclipse.kapua.model.query.KapuaListResult;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import org.eclipse.kapua.model.query.KapuaListResult;
-
 /**
  * Device event list definition.
  *
  * @since 1.0
- *
  */
 @XmlRootElement(name = "deviceEventListResult")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = DeviceEventXmlRegistry.class, factoryMethod = "newDeviceEventListResult")
+@XmlType(factoryClass = DeviceEventXmlFactory.class, factoryMethod = "newListResult")
 public interface DeviceEventListResult extends KapuaListResult<DeviceEvent> {
 
 }

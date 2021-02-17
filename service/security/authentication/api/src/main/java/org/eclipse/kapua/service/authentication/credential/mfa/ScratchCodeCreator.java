@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlRootElement(name = "scratchCodeCreator")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = ScratchCodeXmlRegistry.class, factoryMethod = "newScratchCodeCreator")
+@XmlType(factoryClass = ScratchCodeXmlFactory.class, factoryMethod = "newCreator")
 public interface ScratchCodeCreator extends KapuaEntityCreator<ScratchCode> {
 
     /**
