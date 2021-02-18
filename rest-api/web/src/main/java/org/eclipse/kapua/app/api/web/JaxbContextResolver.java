@@ -145,10 +145,10 @@ import org.eclipse.kapua.service.datastore.model.query.ChannelInfoQuery;
 import org.eclipse.kapua.service.datastore.model.query.ClientInfoQuery;
 import org.eclipse.kapua.service.datastore.model.query.MessageQuery;
 import org.eclipse.kapua.service.datastore.model.query.MetricInfoQuery;
-import org.eclipse.kapua.service.datastore.model.xml.ChannelInfoXmlRegistry;
-import org.eclipse.kapua.service.datastore.model.xml.ClientInfoXmlRegistry;
-import org.eclipse.kapua.service.datastore.model.xml.DatastoreMessageXmlRegistry;
-import org.eclipse.kapua.service.datastore.model.xml.MetricInfoXmlRegistry;
+import org.eclipse.kapua.service.datastore.model.xml.ChannelInfoXmlFactory;
+import org.eclipse.kapua.service.datastore.model.xml.ClientInfoXmlFactory;
+import org.eclipse.kapua.service.datastore.model.xml.DatastoreMessageXmlFactory;
+import org.eclipse.kapua.service.datastore.model.xml.MetricInfoXmlFactory;
 import org.eclipse.kapua.service.device.call.kura.model.bundle.KuraBundles;
 import org.eclipse.kapua.service.device.call.kura.model.configuration.KuraDeviceConfiguration;
 import org.eclipse.kapua.service.device.call.kura.model.deploy.KuraDeploymentPackage;
@@ -389,19 +389,19 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
                     ChannelInfo.class,
                     ChannelInfoListResult.class,
                     ChannelInfoQuery.class,
-                    ChannelInfoXmlRegistry.class,
+                    ChannelInfoXmlFactory.class,
 
                     // Data Client Info
                     ClientInfo.class,
                     ClientInfoListResult.class,
                     ClientInfoQuery.class,
-                    ClientInfoXmlRegistry.class,
+                    ClientInfoXmlFactory.class,
 
                     // Data Metric Info
                     MetricInfo.class,
                     MetricInfoListResult.class,
                     MetricInfoQuery.class,
-                    MetricInfoXmlRegistry.class,
+                    MetricInfoXmlFactory.class,
 
                     // Data Messages
                     KapuaDataMessage.class,
@@ -416,7 +416,7 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
                     JsonDatastoreMessage.class,
 
                     DatastoreMessage.class,
-                    DatastoreMessageXmlRegistry.class,
+                    DatastoreMessageXmlFactory.class,
                     StorableEntityId.class,
                     StorableId.class,
                     SortField.class,

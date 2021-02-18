@@ -13,6 +13,7 @@
 package org.eclipse.kapua.service.datastore.model;
 
 import org.eclipse.kapua.model.xml.DateXmlAdapter;
+import org.eclipse.kapua.service.datastore.model.xml.ChannelInfoXmlFactory;
 import org.eclipse.kapua.service.storable.model.Storable;
 import org.eclipse.kapua.service.storable.model.id.StorableId;
 import org.eclipse.kapua.service.storable.model.id.StorableIdXmlAdapter;
@@ -32,15 +33,7 @@ import java.util.Date;
  */
 @XmlRootElement(name = "channel")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(propOrder = {
-        "id",
-        "clientId",
-        "name",
-        "firstMessageId",
-        "firstMessageOn",
-        "lastMessageId",
-        "lastMessageOn"
-})
+@XmlType(factoryClass = ChannelInfoXmlFactory.class, factoryMethod = "newEntity")
 public interface ChannelInfo extends Storable {
 
     /**

@@ -12,7 +12,7 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.datastore.model;
 
-import org.eclipse.kapua.service.datastore.model.xml.DatastoreMessageXmlRegistry;
+import org.eclipse.kapua.service.datastore.model.xml.DatastoreMessageXmlFactory;
 import org.eclipse.kapua.service.storable.model.StorableListResult;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  * @since 1.0
  */
 @XmlRootElement(name = "datastoreMessages")
-@XmlType(factoryClass = DatastoreMessageXmlRegistry.class, factoryMethod = "newListResult")
+@XmlType(factoryClass = DatastoreMessageXmlFactory.class, factoryMethod = "newListResult")
 public interface MessageListResult extends StorableListResult<DatastoreMessage> {
 
 }
