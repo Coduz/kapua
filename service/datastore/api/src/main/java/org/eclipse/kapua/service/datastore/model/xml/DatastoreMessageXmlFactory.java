@@ -15,6 +15,7 @@ package org.eclipse.kapua.service.datastore.model.xml;
 import org.eclipse.kapua.model.xml.KapuaXmlFactory;
 import org.eclipse.kapua.service.datastore.MessageStoreFactory;
 import org.eclipse.kapua.service.datastore.model.DatastoreMessage;
+import org.eclipse.kapua.service.datastore.model.DatastoreMessageCreator;
 import org.eclipse.kapua.service.datastore.model.MessageListResult;
 import org.eclipse.kapua.service.datastore.model.query.MessageQuery;
 import org.eclipse.kapua.service.storable.model.xml.XmlStorableFactory;
@@ -28,7 +29,7 @@ import javax.xml.bind.annotation.XmlRegistry;
  * @since 1.0.0
  */
 @XmlRegistry
-public class DatastoreMessageXmlFactory extends XmlStorableFactory<DatastoreMessage, MessageQuery, MessageListResult, MessageStoreFactory> implements KapuaXmlFactory {
+public class DatastoreMessageXmlFactory extends XmlStorableFactory<DatastoreMessage, DatastoreMessageCreator, MessageQuery, MessageListResult, MessageStoreFactory> implements KapuaXmlFactory {
 
     public DatastoreMessageXmlFactory() {
         super(MessageStoreFactory.class);

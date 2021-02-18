@@ -13,6 +13,7 @@
 package org.eclipse.kapua.service.datastore;
 
 import org.eclipse.kapua.service.datastore.model.MetricInfo;
+import org.eclipse.kapua.service.datastore.model.MetricInfoCreator;
 import org.eclipse.kapua.service.datastore.model.MetricInfoListResult;
 import org.eclipse.kapua.service.datastore.model.query.MetricInfoQuery;
 import org.eclipse.kapua.service.storable.StorableFactory;
@@ -24,5 +25,5 @@ import org.eclipse.kapua.service.storable.StorableFactory;
  *
  * @since 1.3.0
  */
-public interface MetricInfoFactory extends StorableFactory<MetricInfo, MetricInfoListResult, MetricInfoQuery> {
+public interface MetricInfoFactory extends StorableFactory<MetricInfo, MetricInfoCreator<?>, MetricInfoListResult, MetricInfoQuery> {
 }

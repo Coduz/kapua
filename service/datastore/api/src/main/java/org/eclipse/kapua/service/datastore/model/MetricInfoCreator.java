@@ -13,9 +13,14 @@
 package org.eclipse.kapua.service.datastore.model;
 
 import org.eclipse.kapua.model.id.KapuaId;
+import org.eclipse.kapua.service.datastore.model.xml.MetricInfoXmlFactory;
 import org.eclipse.kapua.service.storable.model.StorableCreator;
 import org.eclipse.kapua.service.storable.model.id.StorableId;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import java.util.Date;
 
 /**
@@ -23,6 +28,9 @@ import java.util.Date;
  *
  * @since 1.0.0
  */
+@XmlRootElement(name = "metricInfoCreator")
+@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlType(factoryClass = MetricInfoXmlFactory.class, factoryMethod = "newCreator")
 public interface MetricInfoCreator<T> extends StorableCreator<MetricInfo> {
 
     /**
@@ -31,6 +39,7 @@ public interface MetricInfoCreator<T> extends StorableCreator<MetricInfo> {
      * @return
      * @since 1.0.0
      */
+    @Override
     KapuaId getScopeId();
 
     /**

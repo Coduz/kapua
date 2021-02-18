@@ -15,6 +15,7 @@ package org.eclipse.kapua.service.datastore.model.xml;
 import org.eclipse.kapua.model.xml.KapuaXmlFactory;
 import org.eclipse.kapua.service.datastore.ClientInfoFactory;
 import org.eclipse.kapua.service.datastore.model.ClientInfo;
+import org.eclipse.kapua.service.datastore.model.ClientInfoCreator;
 import org.eclipse.kapua.service.datastore.model.ClientInfoListResult;
 import org.eclipse.kapua.service.datastore.model.query.ClientInfoQuery;
 import org.eclipse.kapua.service.storable.model.xml.XmlStorableFactory;
@@ -28,7 +29,7 @@ import javax.xml.bind.annotation.XmlRegistry;
  * @since 1.0.0
  */
 @XmlRegistry
-public class ClientInfoXmlFactory extends XmlStorableFactory<ClientInfo, ClientInfoQuery, ClientInfoListResult, ClientInfoFactory> implements KapuaXmlFactory {
+public class ClientInfoXmlFactory extends XmlStorableFactory<ClientInfo, ClientInfoCreator, ClientInfoQuery, ClientInfoListResult, ClientInfoFactory> implements KapuaXmlFactory {
 
     /**
      * Constructor.
