@@ -12,7 +12,7 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.datastore.model;
 
-import org.eclipse.kapua.service.datastore.model.xml.MetricInfoXmlRegistry;
+import org.eclipse.kapua.service.datastore.model.xml.MetricInfoXmlFactory;
 import org.eclipse.kapua.service.storable.model.StorableListResult;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  * @since 1.0
  */
 @XmlRootElement(name = "metricInfos")
-@XmlType(factoryClass = MetricInfoXmlRegistry.class, factoryMethod = "newListResult")
+@XmlType(factoryClass = MetricInfoXmlFactory.class, factoryMethod = "newListResult")
 public interface MetricInfoListResult extends StorableListResult<MetricInfo> {
 
 }

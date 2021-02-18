@@ -18,6 +18,7 @@ import org.eclipse.kapua.message.device.data.KapuaDataChannel;
 import org.eclipse.kapua.model.id.KapuaId;
 import org.eclipse.kapua.model.id.KapuaIdAdapter;
 import org.eclipse.kapua.model.xml.DateXmlAdapter;
+import org.eclipse.kapua.service.datastore.model.xml.DatastoreMessageXmlFactory;
 import org.eclipse.kapua.service.storable.model.Storable;
 import org.eclipse.kapua.service.storable.model.id.StorableId;
 import org.eclipse.kapua.service.storable.model.id.StorableIdXmlAdapter;
@@ -38,19 +39,7 @@ import java.util.UUID;
  */
 @XmlRootElement(name = "message")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(propOrder = {
-        "id",
-        "datastoreId",
-        "timestamp",
-        "deviceId",
-        "clientId",
-        "receivedOn",
-        "sentOn",
-        "capturedOn",
-        "position",
-        "channel",
-        "payload",
-})
+@XmlType(factoryClass = DatastoreMessageXmlFactory.class, factoryMethod = "newEntity")
 public interface DatastoreMessage extends Storable {
 
     /**

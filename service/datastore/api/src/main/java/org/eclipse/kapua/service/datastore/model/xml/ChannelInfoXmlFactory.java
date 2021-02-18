@@ -12,12 +12,12 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.datastore.model.xml;
 
-import org.eclipse.kapua.locator.KapuaLocator;
 import org.eclipse.kapua.model.xml.KapuaXmlFactory;
 import org.eclipse.kapua.service.datastore.ChannelInfoFactory;
 import org.eclipse.kapua.service.datastore.model.ChannelInfo;
 import org.eclipse.kapua.service.datastore.model.ChannelInfoListResult;
 import org.eclipse.kapua.service.datastore.model.query.ChannelInfoQuery;
+import org.eclipse.kapua.service.storable.model.xml.XmlStorableFactory;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
@@ -28,28 +28,14 @@ import javax.xml.bind.annotation.XmlRegistry;
  * @since 1.0.0
  */
 @XmlRegistry
-public class ChannelInfoXmlRegistry implements KapuaXmlFactory {
-
-    private static final KapuaLocator LOCATOR = KapuaLocator.getInstance();
-    private static final ChannelInfoFactory CHANNEL_INFO_FACTORY = LOCATOR.getFactory(ChannelInfoFactory.class);
+public class ChannelInfoXmlFactory extends XmlStorableFactory<ChannelInfo, ChannelInfoQuery, ChannelInfoListResult, ChannelInfoFactory> implements KapuaXmlFactory {
 
     /**
-     * Instantiates a new {@link ChannelInfoListResult}.
+     * Constructor.
      *
-     * @return The newly instantiated {@link ChannelInfoListResult}.
-     * @since 1.0.0
+     * @since 1.5.0
      */
-    public ChannelInfoListResult newListResult() {
-        return CHANNEL_INFO_FACTORY.newListResult();
-    }
-
-    /**
-     * Instantiates a new {@link ChannelInfoQuery}.
-     *
-     * @return The newly instantiated {@link ChannelInfoQuery}.
-     * @since 1.0.0
-     */
-    public ChannelInfoQuery newQuery() {
-        return CHANNEL_INFO_FACTORY.newQuery(null);
+    public ChannelInfoXmlFactory() {
+        super(ChannelInfoFactory.class);
     }
 }

@@ -13,6 +13,7 @@
 package org.eclipse.kapua.service.datastore.model;
 
 import org.eclipse.kapua.model.xml.DateXmlAdapter;
+import org.eclipse.kapua.service.datastore.model.xml.ClientInfoXmlFactory;
 import org.eclipse.kapua.service.storable.model.Storable;
 import org.eclipse.kapua.service.storable.model.id.StorableId;
 import org.eclipse.kapua.service.storable.model.id.StorableIdXmlAdapter;
@@ -32,14 +33,7 @@ import java.util.Date;
  */
 @XmlRootElement(name = "clientInfo")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(propOrder = { //
-        "id", //
-        "clientId", //
-        "firstMessageId", //
-        "firstMessageOn", //
-        "lastMessageId", //
-        "lastMessageOn" //
-})
+@XmlType(factoryClass = ClientInfoXmlFactory.class, factoryMethod = "newEntity")
 public interface ClientInfo extends Storable {
 
     /**
