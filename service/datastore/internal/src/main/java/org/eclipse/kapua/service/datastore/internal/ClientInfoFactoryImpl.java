@@ -15,10 +15,12 @@ package org.eclipse.kapua.service.datastore.internal;
 import org.eclipse.kapua.locator.KapuaProvider;
 import org.eclipse.kapua.model.id.KapuaId;
 import org.eclipse.kapua.service.datastore.ClientInfoFactory;
+import org.eclipse.kapua.service.datastore.internal.model.ClientInfoCreatorImpl;
 import org.eclipse.kapua.service.datastore.internal.model.ClientInfoImpl;
 import org.eclipse.kapua.service.datastore.internal.model.ClientInfoListResultImpl;
 import org.eclipse.kapua.service.datastore.internal.model.query.ClientInfoQueryImpl;
 import org.eclipse.kapua.service.datastore.model.ClientInfo;
+import org.eclipse.kapua.service.datastore.model.ClientInfoCreator;
 import org.eclipse.kapua.service.datastore.model.ClientInfoListResult;
 import org.eclipse.kapua.service.datastore.model.query.ClientInfoQuery;
 
@@ -33,6 +35,11 @@ public class ClientInfoFactoryImpl implements ClientInfoFactory {
     @Override
     public ClientInfo newStorable() {
         return new ClientInfoImpl();
+    }
+
+    @Override
+    public ClientInfoCreator newCreator(KapuaId scopeId) {
+        return new ClientInfoCreatorImpl(scopeId);
     }
 
     @Override

@@ -16,10 +16,12 @@ import org.eclipse.kapua.locator.KapuaProvider;
 import org.eclipse.kapua.model.id.KapuaId;
 import org.eclipse.kapua.service.datastore.MessageStoreFactory;
 import org.eclipse.kapua.service.datastore.MetricInfoFactory;
+import org.eclipse.kapua.service.datastore.internal.model.DatastoreMessageCreatorImpl;
 import org.eclipse.kapua.service.datastore.internal.model.DatastoreMessageImpl;
 import org.eclipse.kapua.service.datastore.internal.model.MessageListResultImpl;
 import org.eclipse.kapua.service.datastore.internal.model.query.MessageQueryImpl;
 import org.eclipse.kapua.service.datastore.model.DatastoreMessage;
+import org.eclipse.kapua.service.datastore.model.DatastoreMessageCreator;
 import org.eclipse.kapua.service.datastore.model.MessageListResult;
 import org.eclipse.kapua.service.datastore.model.query.MessageQuery;
 
@@ -34,6 +36,11 @@ public class MessageStoreFactoryImpl implements MessageStoreFactory {
     @Override
     public DatastoreMessage newStorable() {
         return new DatastoreMessageImpl();
+    }
+
+    @Override
+    public DatastoreMessageCreator newCreator(KapuaId scopeId) {
+        return new DatastoreMessageCreatorImpl(scopeId);
     }
 
     @Override

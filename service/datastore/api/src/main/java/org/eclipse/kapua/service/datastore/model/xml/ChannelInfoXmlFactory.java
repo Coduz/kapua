@@ -15,6 +15,7 @@ package org.eclipse.kapua.service.datastore.model.xml;
 import org.eclipse.kapua.model.xml.KapuaXmlFactory;
 import org.eclipse.kapua.service.datastore.ChannelInfoFactory;
 import org.eclipse.kapua.service.datastore.model.ChannelInfo;
+import org.eclipse.kapua.service.datastore.model.ChannelInfoCreator;
 import org.eclipse.kapua.service.datastore.model.ChannelInfoListResult;
 import org.eclipse.kapua.service.datastore.model.query.ChannelInfoQuery;
 import org.eclipse.kapua.service.storable.model.xml.XmlStorableFactory;
@@ -28,7 +29,7 @@ import javax.xml.bind.annotation.XmlRegistry;
  * @since 1.0.0
  */
 @XmlRegistry
-public class ChannelInfoXmlFactory extends XmlStorableFactory<ChannelInfo, ChannelInfoQuery, ChannelInfoListResult, ChannelInfoFactory> implements KapuaXmlFactory {
+public class ChannelInfoXmlFactory extends XmlStorableFactory<ChannelInfo, ChannelInfoCreator, ChannelInfoQuery, ChannelInfoListResult, ChannelInfoFactory> implements KapuaXmlFactory {
 
     /**
      * Constructor.

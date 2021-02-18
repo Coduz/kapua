@@ -13,6 +13,7 @@
 package org.eclipse.kapua.service.datastore;
 
 import org.eclipse.kapua.service.datastore.model.ChannelInfo;
+import org.eclipse.kapua.service.datastore.model.ChannelInfoCreator;
 import org.eclipse.kapua.service.datastore.model.ChannelInfoListResult;
 import org.eclipse.kapua.service.datastore.model.query.ChannelInfoQuery;
 import org.eclipse.kapua.service.storable.StorableFactory;
@@ -24,5 +25,5 @@ import org.eclipse.kapua.service.storable.StorableFactory;
  *
  * @since 1.3.0
  */
-public interface ChannelInfoFactory extends StorableFactory<ChannelInfo, ChannelInfoListResult, ChannelInfoQuery> {
+public interface ChannelInfoFactory extends StorableFactory<ChannelInfo, ChannelInfoCreator, ChannelInfoListResult, ChannelInfoQuery> {
 }

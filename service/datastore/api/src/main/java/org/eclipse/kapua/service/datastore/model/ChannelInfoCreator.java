@@ -12,9 +12,14 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.datastore.model;
 
+import org.eclipse.kapua.service.datastore.model.xml.ChannelInfoXmlFactory;
 import org.eclipse.kapua.service.storable.model.StorableCreator;
 import org.eclipse.kapua.service.storable.model.id.StorableId;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import java.util.Date;
 
 /**
@@ -22,6 +27,9 @@ import java.util.Date;
  *
  * @since 1.0.0
  */
+@XmlRootElement(name = "channelInfoCreator")
+@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlType(factoryClass = ChannelInfoXmlFactory.class, factoryMethod = "newCreator")
 public interface ChannelInfoCreator extends StorableCreator<ChannelInfo> {
 
     /**

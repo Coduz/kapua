@@ -15,6 +15,7 @@ package org.eclipse.kapua.service.storable;
 import org.eclipse.kapua.model.KapuaObjectFactory;
 import org.eclipse.kapua.model.id.KapuaId;
 import org.eclipse.kapua.service.storable.model.Storable;
+import org.eclipse.kapua.service.storable.model.StorableCreator;
 import org.eclipse.kapua.service.storable.model.StorableListResult;
 import org.eclipse.kapua.service.storable.model.query.StorableQuery;
 
@@ -25,7 +26,7 @@ import org.eclipse.kapua.service.storable.model.query.StorableQuery;
  *
  * @since 1.3.0
  */
-public interface StorableFactory<S extends Storable, L extends StorableListResult<S>, Q extends StorableQuery> extends KapuaObjectFactory {
+public interface StorableFactory<S extends Storable, C extends StorableCreator<S>, L extends StorableListResult<S>, Q extends StorableQuery> extends KapuaObjectFactory {
 
     /**
      * Instantiates a new {@link Storable}.
@@ -34,6 +35,15 @@ public interface StorableFactory<S extends Storable, L extends StorableListResul
      * @since 1.3.0
      */
     S newStorable();
+
+    /**
+     * Instantiates a new {@link StorableCreator}.
+     *
+     * @param scopeId The {@link StorableCreator#getScopeId()}
+     * @return The newly instantiated {@link StorableCreator}
+     * @since 1.5.0
+     */
+    C newCreator(KapuaId scopeId);
 
     /**
      * Instantiates a new {@link StorableListResult}.

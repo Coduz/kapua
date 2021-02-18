@@ -16,15 +16,16 @@ import org.eclipse.kapua.locator.KapuaLocator;
 import org.eclipse.kapua.model.xml.KapuaXmlFactory;
 import org.eclipse.kapua.service.storable.StorableFactory;
 import org.eclipse.kapua.service.storable.model.Storable;
+import org.eclipse.kapua.service.storable.model.StorableCreator;
 import org.eclipse.kapua.service.storable.model.StorableListResult;
 import org.eclipse.kapua.service.storable.model.query.StorableQuery;
 
 /**
- * Base {@link KapuaXmlFactory} for  {@link Storable}s implementation.
+ * Base {@link KapuaXmlFactory} for {@link Storable}s implementation.
  *
  * @since 1.5.0
  */
-public abstract class XmlStorableFactory<S extends Storable, Q extends StorableQuery, L extends StorableListResult<S>, F extends StorableFactory<S, L, Q>> implements KapuaXmlFactory {
+public abstract class XmlStorableFactory<S extends Storable, C extends StorableCreator<S>, Q extends StorableQuery, L extends StorableListResult<S>, F extends StorableFactory<S, C, L, Q>> implements KapuaXmlFactory {
 
     final F storableFactory;
 
@@ -46,6 +47,16 @@ public abstract class XmlStorableFactory<S extends Storable, Q extends StorableQ
      */
     public S newEntity() {
         return storableFactory.newStorable();
+    }
+
+    /**
+     * Instantiates a new {@link Storable}.
+     *
+     * @return The newly instantiated {@link Storable}.
+     * @since 1.5.0
+     */
+    public C newCreator() {
+        return storableFactory.newCreator(null);
     }
 
     /**

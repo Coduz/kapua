@@ -15,6 +15,7 @@ package org.eclipse.kapua.service.datastore.model.xml;
 import org.eclipse.kapua.model.xml.KapuaXmlFactory;
 import org.eclipse.kapua.service.datastore.MetricInfoFactory;
 import org.eclipse.kapua.service.datastore.model.MetricInfo;
+import org.eclipse.kapua.service.datastore.model.MetricInfoCreator;
 import org.eclipse.kapua.service.datastore.model.MetricInfoListResult;
 import org.eclipse.kapua.service.datastore.model.query.MetricInfoQuery;
 import org.eclipse.kapua.service.storable.model.xml.XmlStorableFactory;
@@ -28,7 +29,7 @@ import javax.xml.bind.annotation.XmlRegistry;
  * @since 1.0.0
  */
 @XmlRegistry
-public class MetricInfoXmlFactory extends XmlStorableFactory<MetricInfo, MetricInfoQuery, MetricInfoListResult, MetricInfoFactory> implements KapuaXmlFactory {
+public class MetricInfoXmlFactory extends XmlStorableFactory<MetricInfo, MetricInfoCreator<?>, MetricInfoQuery, MetricInfoListResult, MetricInfoFactory> implements KapuaXmlFactory {
 
     /**
      * Constructor.
