@@ -25,14 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "commandOutput")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(propOrder = {
-        "stderr",
-        "stdout",
-        "exceptionMessage",
-        "exceptionStack",
-        "exitCode",
-        "hasTimedout"
-}, factoryClass = DeviceCommandXmlRegistry.class, factoryMethod = "newCommandOutput")
+@XmlType(factoryClass = DeviceCommandXmlFactory.class, factoryMethod = "newCommandOutput")
 public interface DeviceCommandOutput extends DeviceCommand {
 
     /**

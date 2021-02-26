@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRegistry;
  * @since 1.0.0
  */
 @XmlRegistry
-public class DeviceCommandXmlRegistry implements KapuaXmlFactory {
+public class DeviceCommandXmlFactory implements KapuaXmlFactory {
 
     private final KapuaLocator locator = KapuaLocator.getInstance();
     private final DeviceCommandFactory factory = locator.getFactory(DeviceCommandFactory.class);

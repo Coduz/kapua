@@ -10,38 +10,39 @@
  * Contributors:
  *     Eurotech - initial API and implementation
  *******************************************************************************/
-package org.eclipse.kapua.service.device.management.inventory.model.inventory.system;
+package org.eclipse.kapua.service.device.management.inventory.model.inventory;
 
 import org.eclipse.kapua.locator.KapuaLocator;
+import org.eclipse.kapua.model.xml.KapuaXmlFactory;
 import org.eclipse.kapua.service.device.management.inventory.DeviceInventoryManagementFactory;
 
 /**
- * {@link DeviceInventorySystemPackages} XmlFactory definition.
+ * {@link DeviceInventory} {@link KapuaXmlFactory} definition.
  *
  * @since 1.5.0
  */
-public class DeviceInventorySystemPackagesXmlRegistry {
+public class DeviceInventoryXmlFactory implements KapuaXmlFactory {
 
     private final KapuaLocator locator = KapuaLocator.getInstance();
     private final DeviceInventoryManagementFactory factory = locator.getFactory(DeviceInventoryManagementFactory.class);
 
     /**
-     * Instantiates a new {@link DeviceInventorySystemPackages}.
+     * Instantiates a new {@link DeviceInventory}.
      *
-     * @return The newly instantiated {@link DeviceInventorySystemPackages}
+     * @return The newly instantiated {@link DeviceInventory}
      * @since 1.5.0
      */
-    public DeviceInventorySystemPackages newDeviceInventorySystemPackages() {
-        return factory.newDeviceInventorySystemPackages();
+    public DeviceInventory newDeviceInventory() {
+        return factory.newDeviceInventory();
     }
 
     /**
-     * Instantiates a new {@link DeviceInventorySystemPackage}.
+     * Instantiates a new {@link DeviceInventoryItem}.
      *
-     * @return The newly instantiated {@link DeviceInventorySystemPackage}
+     * @return The newly instantiated {@link DeviceInventoryItem}
      * @since 1.5.0
      */
-    public DeviceInventorySystemPackage newDeviceInventorySystemPackage() {
-        return factory.newDeviceInventorySystemPackage();
+    public DeviceInventoryItem newDeviceInventoryItem() {
+        return factory.newDeviceInventoryItem();
     }
 }

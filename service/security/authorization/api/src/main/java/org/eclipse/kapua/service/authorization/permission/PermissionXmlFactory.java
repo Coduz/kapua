@@ -10,29 +10,32 @@
  * Contributors:
  *     Eurotech - initial API and implementation
  *******************************************************************************/
-package org.eclipse.kapua.service.device.registry.connection;
+package org.eclipse.kapua.service.authorization.permission;
 
 import org.eclipse.kapua.locator.KapuaLocator;
 import org.eclipse.kapua.model.xml.KapuaXmlFactory;
-import org.eclipse.kapua.model.xml.XmlEntityFactory;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
 /**
- * {@link DeviceConnection} {@link KapuaXmlFactory} implementation.
+ * {@link Permission} {@link KapuaXmlFactory} implementation.
  *
  * @see KapuaXmlFactory
  * @since 1.0.0
  */
 @XmlRegistry
-public class DeviceConnectionXmlRegistry extends XmlEntityFactory<DeviceConnection, DeviceConnectionCreator, DeviceConnectionQuery, DeviceConnectionListResult, DeviceConnectionFactory> implements KapuaXmlFactory {
+public class PermissionXmlFactory implements KapuaXmlFactory {
+
+    private static final KapuaLocator LOCATOR = KapuaLocator.getInstance();
+    private static final PermissionFactory PERMISSION_FACTORY = LOCATOR.getFactory(PermissionFactory.class);
 
     /**
-     * Constructor.
+     * Instantiates a new {@link Permission}.
      *
-     * @since 1.5.0
+     * @return The newly instantiated {@link Permission}.
+     * @since 1.0.0
      */
-    public DeviceConnectionXmlRegistry() {
-        super(KapuaLocator.getInstance().getFactory(DeviceConnectionFactory.class));
+    public Permission newPermission() {
+        return PERMISSION_FACTORY.newPermission(null, null, null, null);
     }
 }

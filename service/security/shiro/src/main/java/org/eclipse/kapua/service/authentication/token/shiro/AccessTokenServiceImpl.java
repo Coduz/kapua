@@ -53,7 +53,9 @@ public class AccessTokenServiceImpl extends AbstractKapuaService implements Acce
     private static final PermissionFactory PERMISSION_FACTORY = LOCATOR.getFactory(PermissionFactory.class);
 
     /**
-     * Constructor
+     * Constructor.
+     *
+     * @since 1.0.0
      */
     public AccessTokenServiceImpl() {
         super(AccessTokenEntityManagerFactory.getInstance());

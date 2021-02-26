@@ -24,10 +24,13 @@ import org.eclipse.kapua.model.xml.KapuaXmlFactory;
 import javax.xml.bind.annotation.XmlRegistry;
 
 /**
- * Message XML factory class
+ * {@link KapuaMessage} {@link KapuaXmlFactory} implementation.
+ *
+ * @see KapuaXmlFactory
+ * @since 1.0.0
  */
 @XmlRegistry
-public class MessageXmlRegistry implements KapuaXmlFactory {
+public class MessageXmlFactory implements KapuaXmlFactory {
 
     private static final KapuaLocator LOCATOR = KapuaLocator.getInstance();
     private static final KapuaMessageFactory KAPUA_MESSAGE_FACTORY = LOCATOR.getFactory(KapuaMessageFactory.class);

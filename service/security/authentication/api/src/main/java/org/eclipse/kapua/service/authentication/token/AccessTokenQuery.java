@@ -14,12 +14,18 @@ package org.eclipse.kapua.service.authentication.token;
 
 import org.eclipse.kapua.model.query.KapuaQuery;
 
-/**
- * Access token query definition.
- *
- * @since 1.0
- *
- */
-public interface AccessTokenQuery extends KapuaQuery {
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
+/**
+ * {@link AccessToken} {@link KapuaQuery} definition.
+ *
+ * @since 1.0.0
+ */
+@XmlRootElement(name = "query")
+@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlType(factoryClass = AccessTokenXmlFactory.class, factoryMethod = "newQuery")
+public interface AccessTokenQuery extends KapuaQuery {
 }

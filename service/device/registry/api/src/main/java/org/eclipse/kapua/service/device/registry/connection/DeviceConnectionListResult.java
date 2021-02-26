@@ -23,6 +23,6 @@ import javax.xml.bind.annotation.XmlType;
  * @since 1.0
  */
 @XmlRootElement(name = "deviceConnections")
-@XmlType(factoryClass = DeviceConnectionXmlRegistry.class, factoryMethod = "newListResult")
+@XmlType(factoryClass = DeviceConnectionXmlFactory.class, factoryMethod = "newListResult")
 public interface DeviceConnectionListResult extends KapuaListResult<DeviceConnection> {
 }

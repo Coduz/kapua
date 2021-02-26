@@ -13,30 +13,34 @@
 package org.eclipse.kapua.service.device.management.bundle;
 
 import org.eclipse.kapua.locator.KapuaLocator;
+import org.eclipse.kapua.model.xml.KapuaXmlFactory;
 
 /**
- * Device bundle xml factory class
+ * {@link DeviceBundle} {@link KapuaXmlFactory} implementation.
  *
- * @since 1.0
+ * @see KapuaXmlFactory
+ * @since 1.0.0
  */
-public class DeviceBundleXmlRegistry {
+public class DeviceBundleXmlFactory implements KapuaXmlFactory {
 
     private final KapuaLocator locator = KapuaLocator.getInstance();
     private final DeviceBundleFactory factory = locator.getFactory(DeviceBundleFactory.class);
 
     /**
-     * Creates a new device bundles list
+     * Instantiates a new {@link DeviceBundles}.
      *
-     * @return
+     * @return The newly instantiated {@link DeviceBundles}
+     * @since 1.0.0
      */
     public DeviceBundles newBundleListResult() {
         return factory.newBundleListResult();
     }
 
     /**
-     * Creates a new device bundle
+     * Instantiates a new {@link DeviceBundle}.
      *
-     * @return
+     * @return The newly instantiated {@link DeviceBundle}
+     * @since 1.0.0
      */
     public DeviceBundle newDeviceBundle() {
         return factory.newDeviceBundle();

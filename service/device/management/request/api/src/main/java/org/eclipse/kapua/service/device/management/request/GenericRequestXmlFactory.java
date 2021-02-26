@@ -23,8 +23,14 @@ import org.eclipse.kapua.service.device.management.request.message.response.Gene
 
 import javax.xml.bind.annotation.XmlRegistry;
 
+/**
+ * {@link GenericRequestMessage} {@link KapuaXmlFactory} implementation.
+ *
+ * @see KapuaXmlFactory
+ * @since 1.0.0
+ */
 @XmlRegistry
-public class GenericRequestXmlRegistry implements KapuaXmlFactory {
+public class GenericRequestXmlFactory implements KapuaXmlFactory {
 
     private static final KapuaLocator LOCATOR = KapuaLocator.getInstance();
     private static final GenericRequestFactory FACTORY = LOCATOR.getFactory(GenericRequestFactory.class);

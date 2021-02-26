@@ -50,7 +50,7 @@ import java.util.Map;
 @XmlType(name = "Tobject", propOrder = {
         "attribute",
         "any"
-}, factoryClass = MetatypeXmlRegistry.class, factoryMethod = "newKapuaTobject")
+}, factoryClass = MetatypeXmlFactory.class, factoryMethod = "newKapuaTobject")
 public interface KapuaTobject {
 
     /**

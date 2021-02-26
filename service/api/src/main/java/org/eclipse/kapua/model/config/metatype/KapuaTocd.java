@@ -52,7 +52,7 @@ import java.util.Map;
  */
 @XmlRootElement(name = "OCD", namespace = "http://www.osgi.org/xmlns/metatype/v1.2.0")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = MetatypeXmlRegistry.class, factoryMethod = "newKapuaTocd")
+@XmlType(factoryClass = MetatypeXmlFactory.class, factoryMethod = "newKapuaTocd")
 public interface KapuaTocd {
 
     /**

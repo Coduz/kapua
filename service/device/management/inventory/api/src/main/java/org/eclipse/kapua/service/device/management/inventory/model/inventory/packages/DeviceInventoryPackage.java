@@ -30,7 +30,7 @@ import java.util.List;
  */
 @XmlRootElement(name = "deviceInventoryDeploymentPackage")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = DeviceInventoryPackagesXmlRegistry.class, factoryMethod = "newDeviceInventoryPackage")
+@XmlType(factoryClass = DeviceInventoryPackagesXmlFactory.class, factoryMethod = "newDeviceInventoryPackage")
 public interface DeviceInventoryPackage {
 
     /**

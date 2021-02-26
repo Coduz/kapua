@@ -35,7 +35,7 @@ import java.util.Map;
         "name",
         "definition",
         "properties"
-}, factoryClass = DeviceConfigurationXmlRegistry.class, factoryMethod = "newComponentConfiguration")
+}, factoryClass = DeviceConfigurationXmlFactory.class, factoryMethod = "newComponentConfiguration")
 public interface DeviceComponentConfiguration {
 
     /**

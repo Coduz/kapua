@@ -26,17 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "commandInput")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(propOrder = {
-        "command",
-        "password",
-        "arguments",
-        "timeout",
-        "workingDir",
-        "body",
-        "environment",
-        "runAsynch",
-        "stdin"
-}, factoryClass = DeviceCommandXmlRegistry.class, factoryMethod = "newCommandInput")
+@XmlType(factoryClass = DeviceCommandXmlFactory.class, factoryMethod = "newCommandInput")
 public interface DeviceCommandInput extends DeviceCommand {
 
     /**

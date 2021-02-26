@@ -14,12 +14,19 @@ package org.eclipse.kapua.service.authentication.token;
 
 import org.eclipse.kapua.model.query.KapuaListResult;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
 /**
- * Access token list result definition.
+ * {@link AccessToken} {@link KapuaListResult} definition.
  *
- * @since 1.0
- *
+ * @since 1.0.0
  */
+@XmlRootElement(name = "accessTokenListResult")
+@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlType(factoryClass = AccessTokenXmlFactory.class, factoryMethod = "newListResult")
 public interface AccessTokenListResult extends KapuaListResult<AccessToken> {
 
 }

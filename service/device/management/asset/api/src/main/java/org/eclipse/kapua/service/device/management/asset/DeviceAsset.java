@@ -32,7 +32,7 @@ import java.util.List;
  */
 @XmlRootElement(name = "deviceAsset")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = DeviceAssetXmlRegistry.class, factoryMethod = "newDeviceAsset")
+@XmlType(factoryClass = DeviceAssetXmlFactory.class, factoryMethod = "newDeviceAsset")
 public interface DeviceAsset {
 
     /**

@@ -28,7 +28,7 @@ import java.util.List;
  */
 @XmlRootElement(name = "deviceInventoryDeploymentPackages")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = DeviceInventoryPackagesXmlRegistry.class, factoryMethod = "newDeviceInventoryPackages")
+@XmlType(factoryClass = DeviceInventoryPackagesXmlFactory.class, factoryMethod = "newDeviceInventoryPackages")
 public interface DeviceInventoryPackages extends KapuaSerializable {
 
     /**

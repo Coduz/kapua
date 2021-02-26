@@ -50,7 +50,7 @@ import java.util.Map;
 @XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlType(name = "Toption", propOrder = {
         "any"
-}, factoryClass = MetatypeXmlRegistry.class, factoryMethod = "newKapuaToption")
+}, factoryClass = MetatypeXmlFactory.class, factoryMethod = "newKapuaToption")
 public interface KapuaToption {
 
     /**

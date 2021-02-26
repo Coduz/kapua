@@ -14,52 +14,63 @@
 package org.eclipse.kapua.service.authentication;
 
 import org.eclipse.kapua.locator.KapuaLocator;
+import org.eclipse.kapua.model.xml.KapuaXmlFactory;
 
-public class AuthenticationXmlRegistry {
+/**
+ * {@link AuthenticationCredentials} {@link KapuaXmlFactory} implementation.
+ *
+ * @since 1.0.0
+ */
+public class AuthenticationXmlFactory implements KapuaXmlFactory {
 
     private static final KapuaLocator LOCATOR = KapuaLocator.getInstance();
     private static final CredentialsFactory CREDENTIALS_FACTORY = LOCATOR.getFactory(CredentialsFactory.class);
 
     /**
-     * Creates a new {@link UsernamePasswordCredentials} instance
+     * Instatiates a new {@link UsernamePasswordCredentials}.
      *
-     * @return
+     * @return The newly instantiated {@link UsernamePasswordCredentials}.
+     * @since 1.0.0
      */
     public UsernamePasswordCredentials newUsernamePasswordCredentials() {
         return CREDENTIALS_FACTORY.newUsernamePasswordCredentials();
     }
 
     /**
-     * Creates a new {@link ApiKeyCredentials} instance
+     * Instatiates a new {@link ApiKeyCredentials}.
      *
-     * @return
+     * @return The newly instantiated {@link ApiKeyCredentials}.
+     * @since 1.0.0
      */
     public ApiKeyCredentials newApiKeyCredentials() {
         return CREDENTIALS_FACTORY.newApiKeyCredentials(null);
     }
 
     /**
-     * Creates a new {@link JwtCredentials} instance
+     * Instatiates a new {@link JwtCredentials}.
      *
-     * @return
+     * @return The newly instantiated {@link JwtCredentials}.
+     * @since 1.0.0
      */
     public JwtCredentials newJwtCredentials() {
         return CREDENTIALS_FACTORY.newJwtCredentials(null, null);
     }
 
     /**
-     * Creates a new {@link AccessTokenCredentials} instance
+     * Instatiates a new {@link AccessTokenCredentials}.
      *
-     * @return
+     * @return The newly instantiated {@link AccessTokenCredentials}.
+     * @since 1.0.0
      */
     public AccessTokenCredentials newAccessTokenCredentials() {
         return CREDENTIALS_FACTORY.newAccessTokenCredentials(null);
     }
 
     /**
-     * Creates a new {@link RefreshTokenCredentials} instance
+     * Instatiates a new {@link RefreshTokenCredentials}.
      *
-     * @return
+     * @return The newly instantiated {@link RefreshTokenCredentials}.
+     * @since 1.0.0
      */
     public RefreshTokenCredentials newRefreshTokenCredentials() {
         return CREDENTIALS_FACTORY.newRefreshTokenCredentials(null, null);

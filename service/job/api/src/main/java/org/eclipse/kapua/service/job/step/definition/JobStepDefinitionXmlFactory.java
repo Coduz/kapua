@@ -27,6 +27,7 @@ import javax.xml.bind.annotation.XmlRegistry;
 @XmlRegistry
 public class JobStepDefinitionXmlFactory extends XmlEntityFactory<JobStepDefinition, JobStepDefinitionCreator, JobStepDefinitionQuery, JobStepDefinitionListResult, JobStepDefinitionFactory> implements KapuaXmlFactory {
 
+
     /**
      * Constructor.
      *
@@ -34,5 +35,15 @@ public class JobStepDefinitionXmlFactory extends XmlEntityFactory<JobStepDefinit
      */
     public JobStepDefinitionXmlFactory() {
         super(KapuaLocator.getInstance().getFactory(JobStepDefinitionFactory.class));
+    }
+
+    /**
+     * Instantiates a new {@link JobStepProperty}.
+     *
+     * @return The newly instantiated {@link JobStepProperty}.
+     * @since 1.0.0
+     */
+    public JobStepProperty newJobStepProperty() {
+        return getFactory().newStepProperty(null, null, null);
     }
 }

@@ -17,12 +17,11 @@ import org.eclipse.kapua.service.authentication.token.AccessToken;
 import org.eclipse.kapua.service.authentication.token.AccessTokenListResult;
 
 /**
- * Access token list result implementation.
+ * {@link AccessTokenListResult} implementation.
  *
- * @since 1.0
- *
+ * @since 1.0.0
  */
 public class AccessTokenListResultImpl extends KapuaListResultImpl<AccessToken> implements AccessTokenListResult {
-    private static final long serialVersionUID = -2596004122285166444L;
 
+    private static final long serialVersionUID = -2596004122285166444L;
 }

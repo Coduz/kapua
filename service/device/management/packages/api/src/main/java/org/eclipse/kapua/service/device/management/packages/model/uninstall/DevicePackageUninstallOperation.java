@@ -13,7 +13,7 @@
 package org.eclipse.kapua.service.device.management.packages.model.uninstall;
 
 import org.eclipse.kapua.model.id.KapuaId;
-import org.eclipse.kapua.service.device.management.packages.model.DevicePackageXmlRegistry;
+import org.eclipse.kapua.service.device.management.packages.model.DevicePackageXmlFactory;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "devicePackageUninstallOperation")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = DevicePackageXmlRegistry.class, factoryMethod = "newDevicePackageUninstallOperation")
+@XmlType(factoryClass = DevicePackageXmlFactory.class, factoryMethod = "newDevicePackageUninstallOperation")
 public interface DevicePackageUninstallOperation {
 
     /**

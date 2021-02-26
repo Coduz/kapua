@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.config;
 
+import org.eclipse.kapua.model.config.metatype.KapuaTocd;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -21,21 +23,14 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.Map;
 
-import org.eclipse.kapua.model.config.metatype.KapuaTocd;
-
 /**
- * Service component configuration entity definition.
+ * {@link ServiceComponentConfiguration} definition.
  *
- * @since 1.0
+ * @since 1.0.0
  */
 @XmlRootElement(name = "configuration")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(propOrder = {
-        "id",
-        "name",
-        "definition",
-        "properties"
-}, factoryClass = ServiceConfigurationXmlRegistry.class, factoryMethod = "newComponentConfiguration")
+@XmlType(factoryClass = ServiceConfigurationXmlFactory.class, factoryMethod = "newComponentConfiguration")
 public interface ServiceComponentConfiguration {
 
     /**

@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "accessTokenCredentials")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(propOrder = { "tokenId" }, factoryClass = AuthenticationXmlRegistry.class, factoryMethod = "newAccessTokenCredentials")
+@XmlType(propOrder = {"tokenId"}, factoryClass = AuthenticationXmlFactory.class, factoryMethod = "newAccessTokenCredentials")
 public interface AccessTokenCredentials extends SessionCredentials {
 
     /**

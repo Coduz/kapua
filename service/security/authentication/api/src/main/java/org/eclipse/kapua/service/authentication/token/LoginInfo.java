@@ -12,21 +12,20 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.authentication.token;
 
+import org.eclipse.kapua.KapuaSerializable;
+import org.eclipse.kapua.service.authorization.access.AccessPermission;
+import org.eclipse.kapua.service.authorization.role.RolePermission;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-
 import java.util.Set;
 
-import org.eclipse.kapua.KapuaSerializable;
-import org.eclipse.kapua.service.authorization.access.AccessPermission;
-import org.eclipse.kapua.service.authorization.role.RolePermission;
-
-@XmlRootElement
+@XmlRootElement(name = "loginInfo")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = AccessTokenXmlRegistry.class, factoryMethod = "newAccessToken")
+@XmlType(factoryClass = AccessTokenXmlFactory.class, factoryMethod = "newLoginInfo")
 public interface LoginInfo extends KapuaSerializable {
 
     @XmlElement(name = "accessToken")

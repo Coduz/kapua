@@ -12,7 +12,7 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.packages.model.download;
 
-import org.eclipse.kapua.service.device.management.packages.model.DevicePackageXmlRegistry;
+import org.eclipse.kapua.service.device.management.packages.model.DevicePackageXmlFactory;
 import org.eclipse.kapua.service.device.management.packages.model.FileType;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -31,7 +31,7 @@ import java.net.URI;
  */
 @XmlRootElement(name = "downloadRequest")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = DevicePackageXmlRegistry.class, factoryMethod = "newDevicePackageDownloadRequest")
+@XmlType(factoryClass = DevicePackageXmlFactory.class, factoryMethod = "newDevicePackageDownloadRequest")
 public interface DevicePackageDownloadRequest {
 
     /**

@@ -28,7 +28,7 @@ import java.util.List;
  */
 @XmlRootElement(name = "deviceAssets")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = DeviceAssetXmlRegistry.class, factoryMethod = "newAssetListResult")
+@XmlType(factoryClass = DeviceAssetXmlFactory.class, factoryMethod = "newAssetListResult")
 public interface DeviceAssets extends KapuaSerializable {
 
     /**

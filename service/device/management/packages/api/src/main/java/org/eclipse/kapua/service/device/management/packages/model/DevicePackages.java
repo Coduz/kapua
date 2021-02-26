@@ -29,7 +29,7 @@ import java.util.List;
  */
 @XmlRootElement(name = "devicePackages")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = DevicePackageXmlRegistry.class, factoryMethod = "newDevicePackages")
+@XmlType(factoryClass = DevicePackageXmlFactory.class, factoryMethod = "newDevicePackages")
 public interface DevicePackages extends KapuaSerializable {
 
     /**

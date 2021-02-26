@@ -13,41 +13,36 @@
 package org.eclipse.kapua.model.config.metatype;
 
 import org.eclipse.kapua.locator.KapuaLocator;
+import org.eclipse.kapua.model.xml.KapuaXmlFactory;
 
 /**
- * Xml factory class.<br>
- * This class provides, through locator and factory service, a factory for few objects types.
+ * Metatype {@link KapuaXmlFactory} implementation.
  *
- * @since 1.0
+ * @see KapuaXmlFactory
+ * @since 1.0.0
  */
-public class MetatypeXmlRegistry {
+public class MetatypeXmlFactory implements KapuaXmlFactory {
+
+    private final static KapuaLocator KAPUA_LOCATOR = KapuaLocator.getInstance();
+    private final static KapuaMetatypeFactory KAPUA_METATYPE_FACTORY = KAPUA_LOCATOR.getFactory(KapuaMetatypeFactory.class);
+
 
     /**
-     * Locator instance
-     */
-    private KapuaLocator locator = KapuaLocator.getInstance();
-
-    /**
-     * Meta type factory instance
-     */
-    private KapuaMetatypeFactory factory = locator.getFactory(KapuaMetatypeFactory.class);
-
-    /**
-     * Returns a {@link KapuaTocd} instance
+     * Instantiates a new {@link KapuaTocd}.
      *
      * @return
      */
     public KapuaTocd newKapuaTocd() {
-        return factory.newKapuaTocd();
+        return KAPUA_METATYPE_FACTORY.newKapuaTocd();
     }
 
     /**
-     * Returns a {@link KapuaTad} instance
+     * Instantiates a new {@link KapuaTad}.
      *
      * @return
      */
     public KapuaTad newKapuaTad() {
-        return factory.newKapuaTad();
+        return KAPUA_METATYPE_FACTORY.newKapuaTad();
     }
 
     /**
@@ -56,7 +51,7 @@ public class MetatypeXmlRegistry {
      * @return
      */
     public KapuaTicon newKapuaTicon() {
-        return factory.newKapuaTicon();
+        return KAPUA_METATYPE_FACTORY.newKapuaTicon();
     }
 
     /**
@@ -65,7 +60,7 @@ public class MetatypeXmlRegistry {
      * @return
      */
     public KapuaToption newKapuaToption() {
-        return factory.newKapuaToption();
+        return KAPUA_METATYPE_FACTORY.newKapuaToption();
     }
 
     /**
@@ -74,7 +69,7 @@ public class MetatypeXmlRegistry {
      * @return
      */
     public KapuaTmetadata newKapuaTmetadata() {
-        return factory.newKapuaTmetadata();
+        return KAPUA_METATYPE_FACTORY.newKapuaTmetadata();
     }
 
     /**
@@ -83,7 +78,7 @@ public class MetatypeXmlRegistry {
      * @return
      */
     public KapuaTdesignate newKapuaTdesignate() {
-        return factory.newKapuaTdesignate();
+        return KAPUA_METATYPE_FACTORY.newKapuaTdesignate();
     }
 
     /**
@@ -92,6 +87,6 @@ public class MetatypeXmlRegistry {
      * @return
      */
     public KapuaTobject newKapuaTobject() {
-        return factory.newKapuaTobject();
+        return KAPUA_METATYPE_FACTORY.newKapuaTobject();
     }
 }

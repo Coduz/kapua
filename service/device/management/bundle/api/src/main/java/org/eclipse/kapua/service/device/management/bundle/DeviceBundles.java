@@ -25,7 +25,7 @@ import java.util.List;
  *
  * @since 1.0.0
  */
-@XmlType(factoryClass = DeviceBundleXmlRegistry.class, factoryMethod = "newBundleListResult")
+@XmlType(factoryClass = DeviceBundleXmlFactory.class, factoryMethod = "newBundleListResult")
 @XmlRootElement(name = "bundles")
 public interface DeviceBundles extends KapuaSerializable {
 

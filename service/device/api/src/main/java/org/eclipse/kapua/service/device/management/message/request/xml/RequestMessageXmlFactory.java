@@ -22,8 +22,14 @@ import org.eclipse.kapua.service.device.management.message.request.KapuaRequestP
 
 import javax.xml.bind.annotation.XmlRegistry;
 
+/**
+ * {@link KapuaRequestMessage} {@link KapuaXmlFactory} implementation.
+ *
+ * @see KapuaXmlFactory
+ * @since 1.0.0
+ */
 @XmlRegistry
-public class RequestMessageXmlRegistry implements KapuaXmlFactory {
+public class RequestMessageXmlFactory implements KapuaXmlFactory {
 
     private static final KapuaLocator LOCATOR = KapuaLocator.getInstance();
     private static final KapuaRequestMessageFactory KAPUA_REQUEST_MESSAGE_FACTORY = LOCATOR.getFactory(KapuaRequestMessageFactory.class);
