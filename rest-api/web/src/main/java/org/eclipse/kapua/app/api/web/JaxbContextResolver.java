@@ -60,7 +60,7 @@ import org.eclipse.kapua.job.engine.JobStartOptions;
 import org.eclipse.kapua.message.device.data.KapuaDataChannel;
 import org.eclipse.kapua.message.device.data.KapuaDataMessage;
 import org.eclipse.kapua.message.device.data.KapuaDataPayload;
-import org.eclipse.kapua.message.xml.MessageXmlRegistry;
+import org.eclipse.kapua.message.xml.MessageXmlFactory;
 import org.eclipse.kapua.model.config.metatype.KapuaTad;
 import org.eclipse.kapua.model.config.metatype.KapuaTicon;
 import org.eclipse.kapua.model.config.metatype.KapuaTmetadata;
@@ -73,7 +73,7 @@ import org.eclipse.kapua.service.account.AccountQuery;
 import org.eclipse.kapua.service.account.AccountXmlFactory;
 import org.eclipse.kapua.service.authentication.ApiKeyCredentials;
 import org.eclipse.kapua.service.authentication.AuthenticationCredentials;
-import org.eclipse.kapua.service.authentication.AuthenticationXmlRegistry;
+import org.eclipse.kapua.service.authentication.AuthenticationXmlFactory;
 import org.eclipse.kapua.service.authentication.JwtCredentials;
 import org.eclipse.kapua.service.authentication.RefreshTokenCredentials;
 import org.eclipse.kapua.service.authentication.UsernamePasswordCredentials;
@@ -132,7 +132,7 @@ import org.eclipse.kapua.service.authorization.role.RoleQuery;
 import org.eclipse.kapua.service.authorization.role.RoleXmlFactory;
 import org.eclipse.kapua.service.config.ServiceComponentConfiguration;
 import org.eclipse.kapua.service.config.ServiceConfiguration;
-import org.eclipse.kapua.service.config.ServiceConfigurationXmlRegistry;
+import org.eclipse.kapua.service.config.ServiceConfigurationXmlFactory;
 import org.eclipse.kapua.service.datastore.model.ChannelInfo;
 import org.eclipse.kapua.service.datastore.model.ChannelInfoListResult;
 import org.eclipse.kapua.service.datastore.model.ClientInfo;
@@ -162,26 +162,29 @@ import org.eclipse.kapua.service.device.call.kura.model.inventory.packages.KuraI
 import org.eclipse.kapua.service.device.call.kura.model.inventory.system.KuraInventorySystemPackage;
 import org.eclipse.kapua.service.device.call.kura.model.inventory.system.KuraInventorySystemPackages;
 import org.eclipse.kapua.service.device.call.kura.model.snapshot.KuraSnapshotIds;
-import org.eclipse.kapua.service.device.management.asset.DeviceAssetXmlRegistry;
+import org.eclipse.kapua.service.device.management.asset.DeviceAssetXmlFactory;
 import org.eclipse.kapua.service.device.management.asset.DeviceAssets;
 import org.eclipse.kapua.service.device.management.bundle.DeviceBundle;
-import org.eclipse.kapua.service.device.management.bundle.DeviceBundleXmlRegistry;
+import org.eclipse.kapua.service.device.management.bundle.DeviceBundleXmlFactory;
 import org.eclipse.kapua.service.device.management.bundle.DeviceBundles;
 import org.eclipse.kapua.service.device.management.command.DeviceCommandInput;
 import org.eclipse.kapua.service.device.management.command.DeviceCommandOutput;
-import org.eclipse.kapua.service.device.management.command.DeviceCommandXmlRegistry;
+import org.eclipse.kapua.service.device.management.command.DeviceCommandXmlFactory;
 import org.eclipse.kapua.service.device.management.configuration.DeviceComponentConfiguration;
 import org.eclipse.kapua.service.device.management.configuration.DeviceConfiguration;
-import org.eclipse.kapua.service.device.management.configuration.DeviceConfigurationXmlRegistry;
+import org.eclipse.kapua.service.device.management.configuration.DeviceConfigurationXmlFactory;
 import org.eclipse.kapua.service.device.management.inventory.model.bundle.inventory.DeviceInventoryBundle;
 import org.eclipse.kapua.service.device.management.inventory.model.bundle.inventory.DeviceInventoryBundles;
+import org.eclipse.kapua.service.device.management.inventory.model.bundle.inventory.DeviceInventoryBundlesXmlFactory;
 import org.eclipse.kapua.service.device.management.inventory.model.inventory.DeviceInventory;
 import org.eclipse.kapua.service.device.management.inventory.model.inventory.DeviceInventoryItem;
-import org.eclipse.kapua.service.device.management.inventory.model.inventory.DeviceInventoryXmlRegistry;
+import org.eclipse.kapua.service.device.management.inventory.model.inventory.DeviceInventoryXmlFactory;
 import org.eclipse.kapua.service.device.management.inventory.model.inventory.packages.DeviceInventoryPackage;
 import org.eclipse.kapua.service.device.management.inventory.model.inventory.packages.DeviceInventoryPackages;
+import org.eclipse.kapua.service.device.management.inventory.model.inventory.packages.DeviceInventoryPackagesXmlFactory;
 import org.eclipse.kapua.service.device.management.inventory.model.inventory.system.DeviceInventorySystemPackage;
 import org.eclipse.kapua.service.device.management.inventory.model.inventory.system.DeviceInventorySystemPackages;
+import org.eclipse.kapua.service.device.management.inventory.model.inventory.system.DeviceInventorySystemPackagesXmlFactory;
 import org.eclipse.kapua.service.device.management.keystore.model.DeviceKeystore;
 import org.eclipse.kapua.service.device.management.keystore.model.DeviceKeystoreCSR;
 import org.eclipse.kapua.service.device.management.keystore.model.DeviceKeystoreCSRInfo;
@@ -196,13 +199,13 @@ import org.eclipse.kapua.service.device.management.message.notification.Operatio
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestChannel;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestMessage;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestPayload;
-import org.eclipse.kapua.service.device.management.message.request.xml.RequestMessageXmlRegistry;
+import org.eclipse.kapua.service.device.management.message.request.xml.RequestMessageXmlFactory;
 import org.eclipse.kapua.service.device.management.message.response.KapuaResponseChannel;
 import org.eclipse.kapua.service.device.management.message.response.KapuaResponseMessage;
 import org.eclipse.kapua.service.device.management.packages.model.DevicePackage;
 import org.eclipse.kapua.service.device.management.packages.model.DevicePackageBundleInfo;
 import org.eclipse.kapua.service.device.management.packages.model.DevicePackageBundleInfos;
-import org.eclipse.kapua.service.device.management.packages.model.DevicePackageXmlRegistry;
+import org.eclipse.kapua.service.device.management.packages.model.DevicePackageXmlFactory;
 import org.eclipse.kapua.service.device.management.packages.model.DevicePackages;
 import org.eclipse.kapua.service.device.management.packages.model.download.DevicePackageDownloadOperation;
 import org.eclipse.kapua.service.device.management.packages.model.download.DevicePackageDownloadRequest;
@@ -220,7 +223,7 @@ import org.eclipse.kapua.service.device.management.registry.operation.notificati
 import org.eclipse.kapua.service.device.management.registry.operation.notification.ManagementOperationNotificationListResult;
 import org.eclipse.kapua.service.device.management.registry.operation.notification.ManagementOperationNotificationQuery;
 import org.eclipse.kapua.service.device.management.registry.operation.notification.ManagementOperationNotificationXmlFactory;
-import org.eclipse.kapua.service.device.management.request.GenericRequestXmlRegistry;
+import org.eclipse.kapua.service.device.management.request.GenericRequestXmlFactory;
 import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestChannel;
 import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestMessage;
 import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestPayload;
@@ -228,7 +231,7 @@ import org.eclipse.kapua.service.device.management.request.message.response.Gene
 import org.eclipse.kapua.service.device.management.request.message.response.GenericResponseMessage;
 import org.eclipse.kapua.service.device.management.request.message.response.GenericResponsePayload;
 import org.eclipse.kapua.service.device.management.snapshot.DeviceSnapshot;
-import org.eclipse.kapua.service.device.management.snapshot.DeviceSnapshotXmlRegistry;
+import org.eclipse.kapua.service.device.management.snapshot.DeviceSnapshotXmlFactory;
 import org.eclipse.kapua.service.device.management.snapshot.DeviceSnapshots;
 import org.eclipse.kapua.service.device.registry.Device;
 import org.eclipse.kapua.service.device.registry.DeviceCreator;
@@ -238,7 +241,7 @@ import org.eclipse.kapua.service.device.registry.DeviceXmlFactory;
 import org.eclipse.kapua.service.device.registry.connection.DeviceConnection;
 import org.eclipse.kapua.service.device.registry.connection.DeviceConnectionListResult;
 import org.eclipse.kapua.service.device.registry.connection.DeviceConnectionQuery;
-import org.eclipse.kapua.service.device.registry.connection.DeviceConnectionXmlRegistry;
+import org.eclipse.kapua.service.device.registry.connection.DeviceConnectionXmlFactory;
 import org.eclipse.kapua.service.device.registry.connection.option.DeviceConnectionOption;
 import org.eclipse.kapua.service.device.registry.connection.option.DeviceConnectionOptionXmlFactory;
 import org.eclipse.kapua.service.device.registry.event.DeviceEvent;
@@ -410,7 +413,7 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
 
                     MessageListResult.class,
                     MessageQuery.class,
-                    MessageXmlRegistry.class,
+                    MessageXmlFactory.class,
 
                     JsonKapuaPayload.class,
                     JsonDatastoreMessage.class,
@@ -436,7 +439,7 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
                     DeviceConnection.class,
                     DeviceConnectionListResult.class,
                     DeviceConnectionQuery.class,
-                    DeviceConnectionXmlRegistry.class,
+                    DeviceConnectionXmlFactory.class,
 
                     // Device Connection Options
                     DeviceConnectionOption.class,
@@ -450,43 +453,46 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
 
                     // Device Management Assets
                     DeviceAssets.class,
-                    DeviceAssetXmlRegistry.class,
+                    DeviceAssetXmlFactory.class,
 
                     // Device Management Bundles
                     KuraBundles.class,
                     DeviceBundle.class,
                     DeviceBundles.class,
-                    DeviceBundleXmlRegistry.class,
+                    DeviceBundleXmlFactory.class,
 
                     // Device Management Command
                     DeviceCommandInput.class,
                     DeviceCommandOutput.class,
-                    DeviceCommandXmlRegistry.class,
+                    DeviceCommandXmlFactory.class,
 
                     // Device Management Configuration
                     KuraDeviceConfiguration.class,
                     DeviceConfiguration.class,
                     DeviceComponentConfiguration.class,
-                    DeviceConfigurationXmlRegistry.class,
+                    DeviceConfigurationXmlFactory.class,
 
                     // Device Management Inventory
                     DeviceInventory.class,
                     DeviceInventoryItem.class,
+                    DeviceInventoryXmlFactory.class,
                     KuraInventoryItems.class,
                     KuraInventoryItem.class,
                     DeviceInventoryBundles.class,
                     DeviceInventoryBundle.class,
+                    DeviceInventoryBundlesXmlFactory.class,
                     KuraInventoryBundles.class,
                     KuraInventoryBundle.class,
                     DeviceInventoryPackages.class,
                     DeviceInventoryPackage.class,
+                    DeviceInventoryPackagesXmlFactory.class,
                     KuraInventoryPackages.class,
                     KuraInventoryPackage.class,
                     DeviceInventorySystemPackages.class,
                     DeviceInventorySystemPackage.class,
+                    DeviceInventorySystemPackagesXmlFactory.class,
                     KuraInventorySystemPackages.class,
                     KuraInventorySystemPackage.class,
-                    DeviceInventoryXmlRegistry.class,
 
                     // Device Management Keystore
                     DeviceKeystores.class,
@@ -506,7 +512,7 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
                     KuraSnapshotIds.class,
                     DeviceSnapshot.class,
                     DeviceSnapshots.class,
-                    DeviceSnapshotXmlRegistry.class,
+                    DeviceSnapshotXmlFactory.class,
 
                     // Device Management Packages
                     KuraDeploymentPackages.class,
@@ -521,7 +527,7 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
                     DevicePackageInstallOperation.class,
                     DevicePackageUninstallRequest.class,
                     DevicePackageUninstallOperation.class,
-                    DevicePackageXmlRegistry.class,
+                    DevicePackageXmlFactory.class,
 
                     // Device Management Requests
                     KapuaRequestMessage.class,
@@ -529,7 +535,7 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
                     KapuaRequestChannel.class,
                     KapuaResponseChannel.class,
                     KapuaRequestPayload.class,
-                    RequestMessageXmlRegistry.class,
+                    RequestMessageXmlFactory.class,
 
                     // Device Management Registry
                     DeviceManagementOperation.class,
@@ -553,14 +559,14 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
                     GenericResponseChannel.class,
                     GenericResponsePayload.class,
                     GenericResponseMessage.class,
-                    GenericRequestXmlRegistry.class,
+                    GenericRequestXmlFactory.class,
 
                     JsonGenericRequestMessage.class,
                     JsonGenericResponseMessage.class,
 
                     // Authentication
                     AuthenticationCredentials.class,
-                    AuthenticationXmlRegistry.class,
+                    AuthenticationXmlFactory.class,
                     AccessToken.class,
                     LoginInfo.class,
                     ApiKeyCredentials.class,
@@ -669,7 +675,7 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
                     EventStoreXmlFactory.class,
 
                     // Service Config
-                    ServiceConfigurationXmlRegistry.class,
+                    ServiceConfigurationXmlFactory.class,
                     ServiceConfiguration.class,
                     ServiceComponentConfiguration.class,
 

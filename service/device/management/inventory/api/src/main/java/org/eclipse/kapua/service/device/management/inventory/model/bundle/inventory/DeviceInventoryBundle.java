@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "deviceInventoryBundle")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = DeviceInventoryBundlesXmlRegistry.class, factoryMethod = "newDeviceInventoryBundle")
+@XmlType(factoryClass = DeviceInventoryBundlesXmlFactory.class, factoryMethod = "newDeviceInventoryBundle")
 public interface DeviceInventoryBundle {
 
     /**

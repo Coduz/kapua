@@ -13,7 +13,7 @@
 package org.eclipse.kapua.message;
 
 import org.eclipse.kapua.message.device.data.KapuaDataMessage;
-import org.eclipse.kapua.message.xml.MessageXmlRegistry;
+import org.eclipse.kapua.message.xml.MessageXmlFactory;
 import org.eclipse.kapua.model.id.KapuaId;
 import org.eclipse.kapua.model.id.KapuaIdAdapter;
 
@@ -47,7 +47,7 @@ import java.util.UUID;
         "position", //
         "channel", //
         "payload", //
-}, factoryClass = MessageXmlRegistry.class, factoryMethod = "newKapuaMessage")
+}, factoryClass = MessageXmlFactory.class, factoryMethod = "newKapuaMessage")
 @XmlSeeAlso(KapuaDataMessage.class)
 public interface KapuaMessage<C extends KapuaChannel, P extends KapuaPayload> extends Message<C, P> {
 

@@ -13,7 +13,7 @@
 package org.eclipse.kapua.service.device.management.message.request;
 
 import org.eclipse.kapua.message.KapuaMessage;
-import org.eclipse.kapua.service.device.management.message.request.xml.RequestMessageXmlRegistry;
+import org.eclipse.kapua.service.device.management.message.request.xml.RequestMessageXmlFactory;
 import org.eclipse.kapua.service.device.management.message.response.KapuaResponseChannel;
 import org.eclipse.kapua.service.device.management.message.response.KapuaResponseMessage;
 import org.eclipse.kapua.service.device.management.message.response.KapuaResponsePayload;
@@ -29,7 +29,8 @@ import javax.xml.bind.annotation.XmlType;
  *
  * @since 1.0.0
  */
-@XmlType(factoryClass = RequestMessageXmlRegistry.class, factoryMethod = "newRequestMessage")
+
+@XmlType(factoryClass = RequestMessageXmlFactory.class, factoryMethod = "newRequestMessage")
 public interface KapuaRequestMessage<C extends KapuaRequestChannel, P extends KapuaRequestPayload> extends KapuaMessage<C, P> {
 
     /**

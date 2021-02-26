@@ -12,7 +12,7 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.packages.model.download;
 
-import org.eclipse.kapua.service.device.management.packages.model.DevicePackageXmlRegistry;
+import org.eclipse.kapua.service.device.management.packages.model.DevicePackageXmlFactory;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  * @since 1.1.0
  */
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = DevicePackageXmlRegistry.class, factoryMethod = "newAdvancedPackageDownloadOptions")
+@XmlType(factoryClass = DevicePackageXmlFactory.class, factoryMethod = "newAdvancedPackageDownloadOptions")
 public interface AdvancedPackageDownloadOptions {
 
     /**

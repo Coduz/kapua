@@ -46,7 +46,7 @@ import org.eclipse.kapua.model.config.metatype.KapuaTmetadata;
 import org.eclipse.kapua.model.config.metatype.KapuaTobject;
 import org.eclipse.kapua.model.config.metatype.KapuaTocd;
 import org.eclipse.kapua.model.config.metatype.KapuaToption;
-import org.eclipse.kapua.model.config.metatype.MetatypeXmlRegistry;
+import org.eclipse.kapua.model.config.metatype.MetatypeXmlFactory;
 import org.eclipse.persistence.jaxb.JAXBContextFactory;
 import org.eclipse.persistence.jaxb.MarshallerProperties;
 import org.slf4j.Logger;
@@ -78,7 +78,7 @@ public class BrokerJAXBContextProvider implements JAXBContextProvider {
                     KapuaToption.class,
                     KapuaTdesignate.class,
                     KapuaTobject.class,
-                    MetatypeXmlRegistry.class,
+                    MetatypeXmlFactory.class,
                     EndPointContainer.class,
                     SimpleEndPoint.class,
                     ParentEndPoint.class,

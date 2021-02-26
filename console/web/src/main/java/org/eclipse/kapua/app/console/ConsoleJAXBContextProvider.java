@@ -43,7 +43,7 @@ import org.eclipse.kapua.model.config.metatype.KapuaTicon;
 import org.eclipse.kapua.model.config.metatype.KapuaTmetadata;
 import org.eclipse.kapua.model.config.metatype.KapuaTocd;
 import org.eclipse.kapua.model.config.metatype.KapuaToption;
-import org.eclipse.kapua.model.config.metatype.MetatypeXmlRegistry;
+import org.eclipse.kapua.model.config.metatype.MetatypeXmlFactory;
 import org.eclipse.kapua.service.device.call.kura.model.bundle.KuraBundle;
 import org.eclipse.kapua.service.device.call.kura.model.bundle.KuraBundles;
 import org.eclipse.kapua.service.device.call.kura.model.configuration.KuraDeviceComponentConfiguration;
@@ -60,7 +60,7 @@ import org.eclipse.kapua.service.device.call.kura.model.inventory.packages.KuraI
 import org.eclipse.kapua.service.device.call.kura.model.inventory.system.KuraInventorySystemPackage;
 import org.eclipse.kapua.service.device.call.kura.model.inventory.system.KuraInventorySystemPackages;
 import org.eclipse.kapua.service.device.call.kura.model.snapshot.KuraSnapshotIds;
-import org.eclipse.kapua.service.device.management.asset.DeviceAssetXmlRegistry;
+import org.eclipse.kapua.service.device.management.asset.DeviceAssetXmlFactory;
 import org.eclipse.kapua.service.device.management.asset.DeviceAssets;
 import org.eclipse.kapua.service.device.management.bundle.DeviceBundle;
 import org.eclipse.kapua.service.device.management.bundle.DeviceBundles;
@@ -72,7 +72,7 @@ import org.eclipse.kapua.service.device.management.inventory.model.bundle.invent
 import org.eclipse.kapua.service.device.management.inventory.model.bundle.inventory.DeviceInventoryBundles;
 import org.eclipse.kapua.service.device.management.inventory.model.inventory.DeviceInventory;
 import org.eclipse.kapua.service.device.management.inventory.model.inventory.DeviceInventoryItem;
-import org.eclipse.kapua.service.device.management.inventory.model.inventory.DeviceInventoryXmlRegistry;
+import org.eclipse.kapua.service.device.management.inventory.model.inventory.DeviceInventoryXmlFactory;
 import org.eclipse.kapua.service.device.management.inventory.model.inventory.packages.DeviceInventoryPackage;
 import org.eclipse.kapua.service.device.management.inventory.model.inventory.packages.DeviceInventoryPackages;
 import org.eclipse.kapua.service.device.management.inventory.model.inventory.system.DeviceInventorySystemPackage;
@@ -168,7 +168,7 @@ public class ConsoleJAXBContextProvider implements JAXBContextProvider {
                         DeviceInventorySystemPackage.class,
                         KuraInventorySystemPackages.class,
                         KuraInventorySystemPackage.class,
-                        DeviceInventoryXmlRegistry.class,
+                        DeviceInventoryXmlFactory.class,
 
                         // Device Management Keystore
                         DeviceKeystores.class,
@@ -197,11 +197,11 @@ public class ConsoleJAXBContextProvider implements JAXBContextProvider {
                         KapuaToption.class,
                         KapuaTmetadata.class,
                         TscalarImpl.class,
-                        MetatypeXmlRegistry.class,
+                        MetatypeXmlFactory.class,
 
                         // Device Management Assets
                         DeviceAssets.class,
-                        DeviceAssetXmlRegistry.class,
+                        DeviceAssetXmlFactory.class,
 
                         // Job
                         JobListResult.class,

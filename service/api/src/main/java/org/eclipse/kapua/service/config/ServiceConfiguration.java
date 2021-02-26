@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.config;
 
+import org.eclipse.kapua.KapuaSerializable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -19,22 +21,21 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import java.util.List;
 
-import org.eclipse.kapua.KapuaSerializable;
-
 /**
- * Service configuration entity definition.
+ * {@link ServiceConfiguration} entity definition.
  *
- * @since 1.0
+ * @since 1.0.0
  */
 @XmlRootElement(name = "configurations")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = ServiceConfigurationXmlRegistry.class, factoryMethod = "newConfiguration")
+@XmlType(factoryClass = ServiceConfigurationXmlFactory.class, factoryMethod = "newConfiguration")
 public interface ServiceConfiguration extends KapuaSerializable {
 
     /**
-     * Get the service component configuration list
+     * Gets the {@link List} fof {@link ServiceComponentConfiguration}s.
      *
-     * @return
+     * @return The {@link List} fof {@link ServiceComponentConfiguration}s.
+     * @since 1.0.0
      */
     @XmlElement(name = "configuration")
     List<ServiceComponentConfiguration> getComponentConfigurations();

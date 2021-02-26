@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "usernamePasswordCredentials")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(propOrder = { "username", "password", "authenticationCode", "trustKey" }, factoryClass = AuthenticationXmlRegistry.class, factoryMethod = "newUsernamePasswordCredentials")
+@XmlType(propOrder = {"username", "password", "authenticationCode", "trustKey"}, factoryClass = AuthenticationXmlFactory.class, factoryMethod = "newUsernamePasswordCredentials")
 public interface UsernamePasswordCredentials extends LoginCredentials {
 
     /**

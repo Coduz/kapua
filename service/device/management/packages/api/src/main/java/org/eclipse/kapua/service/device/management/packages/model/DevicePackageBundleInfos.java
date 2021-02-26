@@ -27,7 +27,7 @@ import java.util.List;
  */
 @XmlRootElement(name = "bundleInfos")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = DevicePackageXmlRegistry.class, factoryMethod = "newDevicePackageBundleInfos")
+@XmlType(factoryClass = DevicePackageXmlFactory.class, factoryMethod = "newDevicePackageBundleInfos")
 public interface DevicePackageBundleInfos {
 
     /**

@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "jobStepProperty")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = JobStepXmlRegistry.class, factoryMethod = "newJobStepProperty")
+@XmlType(factoryClass = JobStepDefinitionXmlFactory.class, factoryMethod = "newJobStepProperty")
 public interface JobStepProperty {
 
     /**

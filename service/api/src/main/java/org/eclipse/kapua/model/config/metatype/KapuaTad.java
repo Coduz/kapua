@@ -61,7 +61,7 @@ import java.util.Map;
 @XmlType(name = "Tad", propOrder = {
         "option",
         "any"
-}, factoryClass = MetatypeXmlRegistry.class, factoryMethod = "newKapuaTad")
+}, factoryClass = MetatypeXmlFactory.class, factoryMethod = "newKapuaTad")
 public interface KapuaTad {
 
     /**

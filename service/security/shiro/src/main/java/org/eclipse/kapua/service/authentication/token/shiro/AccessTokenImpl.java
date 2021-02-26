@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.authentication.token.shiro;
 
-import org.eclipse.kapua.KapuaException;
 import org.eclipse.kapua.commons.model.AbstractKapuaEntity;
 import org.eclipse.kapua.commons.model.AbstractKapuaUpdatableEntity;
 import org.eclipse.kapua.commons.model.id.IdGenerator;
@@ -37,7 +36,6 @@ import java.util.Date;
  *
  * @since 1.0.0
  */
-
 @Entity(name = "AccessToken")
 @Table(name = "atht_access_token")
 public class AccessTokenImpl extends AbstractKapuaUpdatableEntity implements AccessToken {
@@ -108,11 +106,10 @@ public class AccessTokenImpl extends AbstractKapuaUpdatableEntity implements Acc
     /**
      * Clone constructor.
      *
-     * @param accessToken
-     * @throws KapuaException
+     * @param accessToken The {@link AccessToken} to clone.
      * @since 1.1.0
      */
-    public AccessTokenImpl(AccessToken accessToken) throws KapuaException {
+    public AccessTokenImpl(AccessToken accessToken) {
         super(accessToken);
 
         setUserId(accessToken.getUserId());

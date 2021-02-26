@@ -10,38 +10,38 @@
  * Contributors:
  *     Eurotech - initial API and implementation
  *******************************************************************************/
-package org.eclipse.kapua.service.device.management.inventory.model.inventory.packages;
+package org.eclipse.kapua.service.device.management.inventory.model.bundle.inventory;
 
 import org.eclipse.kapua.locator.KapuaLocator;
 import org.eclipse.kapua.service.device.management.inventory.DeviceInventoryManagementFactory;
 
 /**
- * {@link DeviceInventoryPackages} XmlFactory definition.
+ * {@link DeviceInventoryBundles} XmlFactory definition.
  *
  * @since 1.5.0
  */
-public class DeviceInventoryPackagesXmlRegistry {
+public class DeviceInventoryBundlesXmlFactory {
 
     private final KapuaLocator locator = KapuaLocator.getInstance();
     private final DeviceInventoryManagementFactory factory = locator.getFactory(DeviceInventoryManagementFactory.class);
 
     /**
-     * Instantiates a new {@link DeviceInventoryPackages}.
+     * Instantiates a new {@link DeviceInventoryBundles}.
      *
-     * @return The newly instantiated {@link DeviceInventoryPackages}
+     * @return The newly instantiated {@link DeviceInventoryBundles}
      * @since 1.5.0
      */
-    public DeviceInventoryPackages newDeviceInventoryPackages() {
-        return factory.newDeviceInventoryPackages();
+    public DeviceInventoryBundles newDeviceInventoryBundles() {
+        return factory.newDeviceInventoryBundles();
     }
 
     /**
-     * Instantiates a new {@link DeviceInventoryPackage}.
+     * Instantiates a new {@link DeviceInventoryBundle}.
      *
-     * @return The newly instantiated {@link DeviceInventoryPackage}
+     * @return The newly instantiated {@link DeviceInventoryBundle}
      * @since 1.5.0
      */
-    public DeviceInventoryPackage newDeviceInventoryPackage() {
-        return factory.newDeviceInventoryPackage();
+    public DeviceInventoryBundle newDeviceInventoryBundle() {
+        return factory.newDeviceInventoryBundle();
     }
 }

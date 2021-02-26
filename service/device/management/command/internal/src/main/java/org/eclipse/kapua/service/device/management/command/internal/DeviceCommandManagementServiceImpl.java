@@ -97,7 +97,7 @@ public class DeviceCommandManagementServiceImpl extends AbstractDeviceManagement
             deviceCommandOutput.setExceptionMessage(responsePayload.getExceptionMessage());
             deviceCommandOutput.setExceptionStack(responsePayload.getExceptionStack());
             deviceCommandOutput.setExitCode(responsePayload.getExitCode());
-            deviceCommandOutput.setHasTimedout(responsePayload.hasTimedout());
+            deviceCommandOutput.setHasTimedout(responsePayload.hasTimedOut());
             deviceCommandOutput.setStderr(responsePayload.getStderr());
             deviceCommandOutput.setStdout(responsePayload.getStdout());
 

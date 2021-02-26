@@ -13,7 +13,7 @@
 package org.eclipse.kapua.message;
 
 import org.eclipse.kapua.commons.util.Payloads;
-import org.eclipse.kapua.message.xml.MessageXmlRegistry;
+import org.eclipse.kapua.message.xml.MessageXmlFactory;
 import org.eclipse.kapua.model.xml.DateXmlAdapter;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -38,7 +38,7 @@ import java.util.Map;
  */
 @XmlRootElement(name = "position")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = MessageXmlRegistry.class, factoryMethod = "newPosition")
+@XmlType(factoryClass = MessageXmlFactory.class, factoryMethod = "newPosition")
 public interface KapuaPosition extends Position, Serializable {
 
     /**

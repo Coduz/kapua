@@ -13,7 +13,7 @@
 package org.eclipse.kapua.message;
 
 import org.eclipse.kapua.commons.util.Payloads;
-import org.eclipse.kapua.message.xml.MessageXmlRegistry;
+import org.eclipse.kapua.message.xml.MessageXmlFactory;
 import org.eclipse.kapua.message.xml.MetricsXmlAdapter;
 import org.eclipse.kapua.model.xml.BinaryXmlAdapter;
 
@@ -33,7 +33,7 @@ import java.util.Map;
  */
 @XmlRootElement(name = "payload")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(propOrder = {"metrics", "body"}, factoryClass = MessageXmlRegistry.class, factoryMethod = "newPayload")
+@XmlType(propOrder = {"metrics", "body"}, factoryClass = MessageXmlFactory.class, factoryMethod = "newPayload")
 public interface KapuaPayload extends Payload {
 
     /**

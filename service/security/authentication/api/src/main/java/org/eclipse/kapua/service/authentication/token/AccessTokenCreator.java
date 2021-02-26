@@ -29,14 +29,7 @@ import java.util.Date;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = { "tokenId",
-        "userId",
-        "expiresOn",
-        "refreshToken",
-        "refreshExpiresOn"
-}, //
-        factoryClass = AccessTokenXmlRegistry.class, //
-        factoryMethod = "newAccessTokenCreator")
+@XmlType(factoryClass = AccessTokenXmlFactory.class, factoryMethod = "newCreator")
 public interface AccessTokenCreator extends KapuaEntityCreator<AccessToken> {
 
     /**

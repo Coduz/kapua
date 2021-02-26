@@ -54,7 +54,7 @@ import java.util.Map;
         "any",
         "localization",
         "otherAttributes"
-}, factoryClass = MetatypeXmlRegistry.class, factoryMethod = "newKapuaTmetadata")
+}, factoryClass = MetatypeXmlFactory.class, factoryMethod = "newKapuaTmetadata")
 public interface KapuaTmetadata {
 
     /**

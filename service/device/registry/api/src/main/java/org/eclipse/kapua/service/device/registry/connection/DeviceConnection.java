@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.registry.connection;
 
+import org.eclipse.kapua.model.KapuaEntity;
 import org.eclipse.kapua.model.KapuaUpdatableEntity;
 import org.eclipse.kapua.model.id.KapuaId;
 import org.eclipse.kapua.model.id.KapuaIdAdapter;
@@ -25,13 +26,14 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
- * Device connection entity definition.
+ * {@link DeviceConnection} {@link KapuaEntity} definition.
  *
+ * @see KapuaEntity
  * @since 1.0.0
  */
 @XmlRootElement(name = "deviceConnection")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = DeviceConnectionXmlRegistry.class, factoryMethod = "newEntity")
+@XmlType(factoryClass = DeviceConnectionXmlFactory.class, factoryMethod = "newEntity")
 public interface DeviceConnection extends KapuaUpdatableEntity {
 
     String TYPE = "deviceConnection";

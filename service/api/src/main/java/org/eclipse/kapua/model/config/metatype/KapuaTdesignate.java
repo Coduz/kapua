@@ -60,7 +60,7 @@ import java.util.Map;
         "optional",
         "merge",
         "otherAttributes"
-}, factoryClass = MetatypeXmlRegistry.class, factoryMethod = "newKapuaTdesignate")
+}, factoryClass = MetatypeXmlFactory.class, factoryMethod = "newKapuaTdesignate")
 public interface KapuaTdesignate {
 
     /**

@@ -12,18 +12,17 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.authentication.token.shiro;
 
-import java.util.Date;
-
 import org.eclipse.kapua.commons.model.AbstractKapuaEntityCreator;
 import org.eclipse.kapua.model.id.KapuaId;
 import org.eclipse.kapua.service.authentication.token.AccessToken;
 import org.eclipse.kapua.service.authentication.token.AccessTokenCreator;
 
+import java.util.Date;
+
 /**
- * Access token implementation
+ * {@link AccessTokenCreator} implementation.
  *
- * @since 1.0
- *
+ * @since 1.0.0
  */
 public class AccessTokenCreatorImpl extends AbstractKapuaEntityCreator<AccessToken> implements AccessTokenCreator {
 
@@ -38,7 +37,8 @@ public class AccessTokenCreatorImpl extends AbstractKapuaEntityCreator<AccessTok
     /**
      * Constructor
      *
-     * @param scopeId
+     * @param scopeId The scope {@link KapuaId}
+     * @since 1.0.0
      */
     protected AccessTokenCreatorImpl(KapuaId scopeId) {
         super(scopeId);

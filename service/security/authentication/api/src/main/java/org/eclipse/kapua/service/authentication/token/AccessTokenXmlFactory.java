@@ -13,17 +13,23 @@
 package org.eclipse.kapua.service.authentication.token;
 
 import org.eclipse.kapua.locator.KapuaLocator;
+import org.eclipse.kapua.model.xml.KapuaXmlFactory;
+import org.eclipse.kapua.model.xml.XmlEntityFactory;
 
-public class AccessTokenXmlRegistry {
+/**
+ * {@link AccessToken} {@link KapuaXmlFactory} implementation
+ *
+ * @see KapuaXmlFactory
+ * @since 1.0.0
+ */
+public class AccessTokenXmlFactory extends XmlEntityFactory<AccessToken, AccessTokenCreator, AccessTokenQuery, AccessTokenListResult, AccessTokenFactory> implements KapuaXmlFactory {
 
-    private static final KapuaLocator LOCATOR = KapuaLocator.getInstance();
-    private static final AccessTokenFactory ACCESS_TOKEN_FACTORY = LOCATOR.getFactory(AccessTokenFactory.class);
-
-    public AccessToken newAccessToken() {
-        return ACCESS_TOKEN_FACTORY.newEntity(null);
-    }
-
-    public AccessTokenCreator newAccessTokenCreator() {
-        return ACCESS_TOKEN_FACTORY.newCreator(null, null, null, null, null, null);
+    /**
+     * Constructor.
+     *
+     * @since 1.5.0
+     */
+    public AccessTokenXmlFactory() {
+        super(KapuaLocator.getInstance().getFactory(AccessTokenFactory.class));
     }
 }

@@ -13,7 +13,7 @@
 package org.eclipse.kapua.service.device.management.request.message.response;
 
 import org.eclipse.kapua.service.device.management.message.response.KapuaResponseMessage;
-import org.eclipse.kapua.service.device.management.request.GenericRequestXmlRegistry;
+import org.eclipse.kapua.service.device.management.request.GenericRequestXmlFactory;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  * @since 1.0.0
  */
 @XmlRootElement(name = "genericResponseMessage")
-@XmlType(factoryClass = GenericRequestXmlRegistry.class, factoryMethod = "newResponseMessage")
+@XmlType(factoryClass = GenericRequestXmlFactory.class, factoryMethod = "newResponseMessage")
 public interface GenericResponseMessage extends KapuaResponseMessage<GenericResponseChannel, GenericResponsePayload> {
 
 }

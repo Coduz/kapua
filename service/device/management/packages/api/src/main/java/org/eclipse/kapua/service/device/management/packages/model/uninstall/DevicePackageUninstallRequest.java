@@ -12,7 +12,7 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.packages.model.uninstall;
 
-import org.eclipse.kapua.service.device.management.packages.model.DevicePackageXmlRegistry;
+import org.eclipse.kapua.service.device.management.packages.model.DevicePackageXmlFactory;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -31,8 +31,8 @@ import javax.xml.bind.annotation.XmlType;
         "name",
         "version",
         "reboot",
-        "rebootDelay" },
-        factoryClass = DevicePackageXmlRegistry.class,
+        "rebootDelay"},
+        factoryClass = DevicePackageXmlFactory.class,
         factoryMethod = "newDevicePackageUninstallRequest")
 public interface DevicePackageUninstallRequest {
 

@@ -13,7 +13,7 @@
  *******************************************************************************/
 package org.eclipse.kapua.message;
 
-import org.eclipse.kapua.message.xml.MessageXmlRegistry;
+import org.eclipse.kapua.message.xml.MessageXmlFactory;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -28,7 +28,7 @@ import java.util.List;
  */
 @XmlRootElement(name = "channel")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(propOrder = {"semanticParts"}, factoryClass = MessageXmlRegistry.class, factoryMethod = "newKapuaChannel")
+@XmlType(propOrder = {"semanticParts"}, factoryClass = MessageXmlFactory.class, factoryMethod = "newKapuaChannel")
 public interface KapuaChannel extends Channel {
 
     /**

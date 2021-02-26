@@ -13,7 +13,7 @@
 package org.eclipse.kapua.message;
 
 
-import org.eclipse.kapua.message.xml.MessageXmlRegistry;
+import org.eclipse.kapua.message.xml.MessageXmlFactory;
 
 import javax.xml.bind.annotation.XmlType;
 
@@ -22,6 +22,6 @@ import javax.xml.bind.annotation.XmlType;
  *
  * @since 1.0.0
  */
-@XmlType(factoryClass = MessageXmlRegistry.class, factoryMethod = "newPosition")
+@XmlType(factoryClass = MessageXmlFactory.class, factoryMethod = "newPosition")
 public interface Position {
 }

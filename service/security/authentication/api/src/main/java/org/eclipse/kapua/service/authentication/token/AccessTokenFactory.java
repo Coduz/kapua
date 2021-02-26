@@ -18,9 +18,9 @@ import org.eclipse.kapua.model.id.KapuaId;
 import java.util.Date;
 
 /**
- * {@link AccessTokenFactory} definition.
+ * {@link AccessToken} {@link KapuaEntityFactory} definition.
  *
- * @see org.eclipse.kapua.model.KapuaEntityFactory
+ * @see KapuaEntityFactory
  * @since 1.0.0
  */
 public interface AccessTokenFactory extends KapuaEntityFactory<AccessToken, AccessTokenCreator, AccessTokenQuery, AccessTokenListResult> {
@@ -39,9 +39,10 @@ public interface AccessTokenFactory extends KapuaEntityFactory<AccessToken, Acce
     AccessTokenCreator newCreator(KapuaId scopeId, KapuaId userId, String tokenId, Date expiresOn, String refreshToken, Date refreshExpiresOn);
 
     /**
-     * Instantiates a new {@link LoginInfo}
+     * Instantiates a new {@link LoginInfo}.
      *
-     * @return a new {@link LoginInfo} object
+     * @return The newly instantiated {@link LoginInfo}.
+     * @since 1.0.0
      */
     LoginInfo newLoginInfo();
 

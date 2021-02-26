@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "deviceConnectionCreator")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = DeviceConnectionXmlRegistry.class, factoryMethod = "newCreator")
+@XmlType(factoryClass = DeviceConnectionXmlFactory.class, factoryMethod = "newCreator")
 public interface DeviceConnectionCreator extends KapuaUpdatableEntityCreator<DeviceConnection> {
 
     /**

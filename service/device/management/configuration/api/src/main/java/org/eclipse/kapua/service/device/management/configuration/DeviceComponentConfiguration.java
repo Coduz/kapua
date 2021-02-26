@@ -30,7 +30,7 @@ import java.util.Map;
  */
 @XmlRootElement(name = "configuration")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = DeviceConfigurationXmlRegistry.class, factoryMethod = "newComponentConfiguration")
+@XmlType(factoryClass = DeviceConfigurationXmlFactory.class, factoryMethod = "newComponentConfiguration")
 public interface DeviceComponentConfiguration {
 
     /**

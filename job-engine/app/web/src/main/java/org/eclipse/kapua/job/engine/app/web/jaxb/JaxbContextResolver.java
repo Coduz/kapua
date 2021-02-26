@@ -31,7 +31,7 @@ import org.eclipse.kapua.app.api.core.exception.model.JobStoppingExceptionInfo;
 import org.eclipse.kapua.app.api.core.exception.model.SubjectUnauthorizedExceptionInfo;
 import org.eclipse.kapua.app.api.core.exception.model.ThrowableInfo;
 import org.eclipse.kapua.job.engine.commons.model.JobTargetSublist;
-import org.eclipse.kapua.service.authentication.AuthenticationXmlRegistry;
+import org.eclipse.kapua.service.authentication.AuthenticationXmlFactory;
 import org.eclipse.kapua.service.authentication.token.AccessToken;
 import org.eclipse.kapua.service.device.management.asset.DeviceAssets;
 import org.eclipse.kapua.service.device.management.command.DeviceCommandInput;
@@ -58,7 +58,7 @@ import org.eclipse.kapua.service.job.execution.JobExecutionXmlFactory;
 import org.eclipse.kapua.service.job.step.JobStep;
 import org.eclipse.kapua.service.job.step.JobStepListResult;
 import org.eclipse.kapua.service.job.step.JobStepQuery;
-import org.eclipse.kapua.service.job.step.JobStepXmlRegistry;
+import org.eclipse.kapua.service.job.step.JobStepXmlFactory;
 import org.eclipse.kapua.service.job.step.definition.JobStepProperty;
 import org.eclipse.kapua.service.job.targets.JobTarget;
 import org.eclipse.kapua.service.job.targets.JobTargetListResult;
@@ -88,7 +88,7 @@ import java.util.Map;
 @Produces({MediaType.APPLICATION_JSON})
 public class JaxbContextResolver implements ContextResolver<JAXBContext> {
 
-    private JAXBContext jaxbContext;
+    private final JAXBContext jaxbContext;
 
     public JaxbContextResolver() {
         try {
@@ -121,7 +121,7 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
                     JobStoppingExceptionInfo.class,
 
                     // Authentication
-                    AuthenticationXmlRegistry.class,
+                    AuthenticationXmlFactory.class,
                     AccessToken.class,
 
                     // Device Management Keystore
@@ -144,8 +144,8 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
                     JobStep.class,
                     JobStepListResult.class,
                     JobStepQuery.class,
-                    JobStepXmlRegistry.class,
                     JobStepProperty.class,
+                    JobStepXmlFactory.class,
 
                     JobExecution.class,
                     JobExecutionListResult.class,

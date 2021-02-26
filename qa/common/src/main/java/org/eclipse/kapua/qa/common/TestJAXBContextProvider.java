@@ -27,7 +27,7 @@ import org.eclipse.kapua.model.config.metatype.KapuaTmetadata;
 import org.eclipse.kapua.model.config.metatype.KapuaTobject;
 import org.eclipse.kapua.model.config.metatype.KapuaTocd;
 import org.eclipse.kapua.model.config.metatype.KapuaToption;
-import org.eclipse.kapua.model.config.metatype.MetatypeXmlRegistry;
+import org.eclipse.kapua.model.config.metatype.MetatypeXmlFactory;
 import org.eclipse.kapua.service.account.Account;
 import org.eclipse.kapua.service.account.AccountCreator;
 import org.eclipse.kapua.service.account.AccountListResult;
@@ -104,9 +104,16 @@ public class TestJAXBContextProvider implements JAXBContextProvider {
                         KapuaToption.class,
                         KapuaTdesignate.class,
                         KapuaTobject.class,
-                        MetatypeXmlRegistry.class,
+                        MetatypeXmlFactory.class,
 
-                        // Device Management Asset
+                        // Device
+                        KuraDeviceComponentConfiguration.class,
+                        KuraDeviceConfiguration.class,
+                        KuraDeploymentPackage.class,
+                        KuraDeploymentPackages.class,
+                        KuraBundle.class,
+                        KuraBundles.class,
+                        KuraBundleInfo.class,
                         DeviceAsset.class,
                         DeviceAssets.class,
 

@@ -13,7 +13,7 @@
 package org.eclipse.kapua.service.device.management.request.message.request;
 
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestChannel;
-import org.eclipse.kapua.service.device.management.request.GenericRequestXmlRegistry;
+import org.eclipse.kapua.service.device.management.request.GenericRequestXmlFactory;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
@@ -24,7 +24,7 @@ import java.util.List;
  *
  * @since 1.0.0
  */
-@XmlType(factoryClass = GenericRequestXmlRegistry.class, factoryMethod = "newRequestChannel")
+@XmlType(factoryClass = GenericRequestXmlFactory.class, factoryMethod = "newRequestChannel")
 public interface GenericRequestChannel extends KapuaRequestChannel {
 
     /**
