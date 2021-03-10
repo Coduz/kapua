@@ -18,8 +18,6 @@ import com.google.inject.Injector;
 import org.eclipse.kapua.KapuaException;
 import org.eclipse.kapua.commons.configuration.metatype.KapuaMetatypeFactoryImpl;
 import org.eclipse.kapua.locator.KapuaLocator;
-import org.eclipse.kapua.message.KapuaMessageFactory;
-import org.eclipse.kapua.message.internal.KapuaMessageFactoryImpl;
 import org.eclipse.kapua.model.config.metatype.KapuaMetatypeFactory;
 import org.eclipse.kapua.qa.common.MockedLocator;
 import org.eclipse.kapua.qa.common.cucumber.CucumberWithProperties;
@@ -110,7 +108,6 @@ public class CucumberWithPropertiesForTag extends CucumberWithProperties {
 
                 bind(DeviceEventService.class).toInstance(new DeviceEventServiceImpl());
                 bind(DeviceEventFactory.class).toInstance(new DeviceEventFactoryImpl());
-                bind(KapuaMessageFactory.class).toInstance(new KapuaMessageFactoryImpl());
             }
         };
 

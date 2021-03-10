@@ -13,11 +13,10 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.commons.message.request;
 
-import org.eclipse.kapua.message.internal.KapuaMessageImpl;
+import org.eclipse.kapua.service.device.management.commons.message.KapuaAppMessageImpl;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestChannel;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestMessage;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestPayload;
-import org.eclipse.kapua.service.device.management.message.response.KapuaResponseMessage;
 
 /**
  * {@link KapuaRequestMessage} implementation.
@@ -26,17 +25,9 @@ import org.eclipse.kapua.service.device.management.message.response.KapuaRespons
  * @param <P> The {@link KapuaRequestPayload} type.
  * @since 1.0.0
  */
-public class KapuaRequestMessageImpl<C extends KapuaRequestChannel, P extends KapuaRequestPayload> extends KapuaMessageImpl<C, P> implements KapuaRequestMessage<C, P> {
+public abstract class KapuaRequestMessageImpl<C extends KapuaRequestChannel, P extends KapuaRequestPayload>
+        extends KapuaAppMessageImpl<C, P>
+        implements KapuaRequestMessage<C, P> {
 
     private static final long serialVersionUID = -2127359876688789508L;
-
-    @Override
-    public Class<KapuaRequestMessage> getRequestClass() {
-        return KapuaRequestMessage.class;
-    }
-
-    @Override
-    public Class<KapuaResponseMessage> getResponseClass() {
-        return KapuaResponseMessage.class;
-    }
 }

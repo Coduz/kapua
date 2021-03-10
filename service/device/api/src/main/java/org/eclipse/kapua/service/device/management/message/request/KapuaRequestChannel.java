@@ -14,22 +14,17 @@ package org.eclipse.kapua.service.device.management.message.request;
 
 import org.eclipse.kapua.service.device.management.message.KapuaAppChannel;
 import org.eclipse.kapua.service.device.management.message.KapuaMethod;
-import org.eclipse.kapua.service.device.management.message.request.xml.RequestMessageXmlFactory;
 
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
 /**
- * {@link KapuaRequestMessage} {@link KapuaAppChannel} definition.
+ * Request {@link KapuaAppChannel} definition.
  * <p>
  * This object defines the channel for a Kapua request message.
  * The request message is used to perform interactive operations with the device (e.g. to send command to the device, to ask configurations...)
  *
  * @since 1.0.0
  */
-@XmlRootElement(name = "channel")
-@XmlType(factoryClass = RequestMessageXmlFactory.class, factoryMethod = "newRequestChannel")
 public interface KapuaRequestChannel extends KapuaAppChannel {
 
     /**

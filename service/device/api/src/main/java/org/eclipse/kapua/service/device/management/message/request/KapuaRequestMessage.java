@@ -12,26 +12,22 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.message.request;
 
-import org.eclipse.kapua.message.KapuaMessage;
-import org.eclipse.kapua.service.device.management.message.request.xml.RequestMessageXmlFactory;
+import org.eclipse.kapua.service.device.management.message.KapuaAppMessage;
 import org.eclipse.kapua.service.device.management.message.response.KapuaResponseChannel;
 import org.eclipse.kapua.service.device.management.message.response.KapuaResponseMessage;
 import org.eclipse.kapua.service.device.management.message.response.KapuaResponsePayload;
 
 import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlType;
 
 /**
- * Request {@link KapuaMessage} definition.
+ * Request {@link KapuaAppMessage} definition.
  * <p>
  * This object defines the for a Kapua request message.
  * The request message is used to perform interactive operations with the device (e.g. to send command to the device, to ask configurations...)
  *
  * @since 1.0.0
  */
-
-@XmlType(factoryClass = RequestMessageXmlFactory.class, factoryMethod = "newRequestMessage")
-public interface KapuaRequestMessage<C extends KapuaRequestChannel, P extends KapuaRequestPayload> extends KapuaMessage<C, P> {
+public interface KapuaRequestMessage<C extends KapuaRequestChannel, P extends KapuaRequestPayload> extends KapuaAppMessage<C, P> {
 
     /**
      * Gets the {@link KapuaRequestMessage} {@link Class} type.

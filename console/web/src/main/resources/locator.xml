@@ -89,7 +89,8 @@
         <api>org.eclipse.kapua.service.device.management.keystore.DeviceKeystoreManagementFactory</api>
         <api>org.eclipse.kapua.service.device.management.packages.DevicePackageManagementService</api>
         <api>org.eclipse.kapua.service.device.management.packages.DevicePackageFactory</api>
-        <api>org.eclipse.kapua.service.device.management.request.GenericRequestFactory</api>
+        <api>org.eclipse.kapua.service.device.management.request.message.request.GenericRequestFactory</api>
+        <api>org.eclipse.kapua.service.device.management.request.message.response.GenericResponseFactory</api>
         <api>org.eclipse.kapua.service.device.management.snapshot.DeviceSnapshotManagementService</api>
         <api>org.eclipse.kapua.service.device.management.snapshot.DeviceSnapshotFactory</api>
 

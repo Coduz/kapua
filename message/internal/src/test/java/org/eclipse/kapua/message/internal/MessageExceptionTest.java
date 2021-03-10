@@ -13,6 +13,8 @@
 package org.eclipse.kapua.message.internal;
 
 
+import org.eclipse.kapua.message.internal.exception.MessageErrorCodes;
+import org.eclipse.kapua.message.internal.exception.MessageException;
 import org.eclipse.kapua.qa.markers.junit.JUnitTests;
 import org.junit.Assert;
 import org.junit.Test;

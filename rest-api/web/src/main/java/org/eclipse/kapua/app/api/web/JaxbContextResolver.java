@@ -60,7 +60,6 @@ import org.eclipse.kapua.job.engine.JobStartOptions;
 import org.eclipse.kapua.message.device.data.KapuaDataChannel;
 import org.eclipse.kapua.message.device.data.KapuaDataMessage;
 import org.eclipse.kapua.message.device.data.KapuaDataPayload;
-import org.eclipse.kapua.message.xml.MessageXmlFactory;
 import org.eclipse.kapua.model.config.metatype.KapuaTad;
 import org.eclipse.kapua.model.config.metatype.KapuaTicon;
 import org.eclipse.kapua.model.config.metatype.KapuaTmetadata;
@@ -199,7 +198,6 @@ import org.eclipse.kapua.service.device.management.message.notification.Operatio
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestChannel;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestMessage;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestPayload;
-import org.eclipse.kapua.service.device.management.message.request.xml.RequestMessageXmlFactory;
 import org.eclipse.kapua.service.device.management.message.response.KapuaResponseChannel;
 import org.eclipse.kapua.service.device.management.message.response.KapuaResponseMessage;
 import org.eclipse.kapua.service.device.management.packages.model.DevicePackage;
@@ -223,13 +221,14 @@ import org.eclipse.kapua.service.device.management.registry.operation.notificati
 import org.eclipse.kapua.service.device.management.registry.operation.notification.ManagementOperationNotificationListResult;
 import org.eclipse.kapua.service.device.management.registry.operation.notification.ManagementOperationNotificationQuery;
 import org.eclipse.kapua.service.device.management.registry.operation.notification.ManagementOperationNotificationXmlFactory;
-import org.eclipse.kapua.service.device.management.request.GenericRequestXmlFactory;
 import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestChannel;
 import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestMessage;
 import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestPayload;
+import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestXmlFactory;
 import org.eclipse.kapua.service.device.management.request.message.response.GenericResponseChannel;
 import org.eclipse.kapua.service.device.management.request.message.response.GenericResponseMessage;
 import org.eclipse.kapua.service.device.management.request.message.response.GenericResponsePayload;
+import org.eclipse.kapua.service.device.management.request.message.response.GenericResponseXmlFactory;
 import org.eclipse.kapua.service.device.management.snapshot.DeviceSnapshot;
 import org.eclipse.kapua.service.device.management.snapshot.DeviceSnapshotXmlFactory;
 import org.eclipse.kapua.service.device.management.snapshot.DeviceSnapshots;
@@ -413,7 +412,6 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
 
                     MessageListResult.class,
                     MessageQuery.class,
-                    MessageXmlFactory.class,
 
                     JsonKapuaPayload.class,
                     JsonDatastoreMessage.class,
@@ -535,7 +533,6 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
                     KapuaRequestChannel.class,
                     KapuaResponseChannel.class,
                     KapuaRequestPayload.class,
-                    RequestMessageXmlFactory.class,
 
                     // Device Management Registry
                     DeviceManagementOperation.class,
@@ -556,10 +553,11 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
                     GenericRequestChannel.class,
                     GenericRequestPayload.class,
                     GenericRequestMessage.class,
+                    GenericRequestXmlFactory.class,
                     GenericResponseChannel.class,
                     GenericResponsePayload.class,
                     GenericResponseMessage.class,
-                    GenericRequestXmlFactory.class,
+                    GenericResponseXmlFactory.class,
 
                     JsonGenericRequestMessage.class,
                     JsonGenericResponseMessage.class,

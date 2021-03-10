@@ -12,7 +12,7 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.commons.message.notification;
 
-import org.eclipse.kapua.message.internal.KapuaMessageImpl;
+import org.eclipse.kapua.service.device.management.commons.message.KapuaAppMessageImpl;
 import org.eclipse.kapua.service.device.management.message.notification.KapuaNotifyChannel;
 import org.eclipse.kapua.service.device.management.message.notification.KapuaNotifyMessage;
 import org.eclipse.kapua.service.device.management.message.notification.KapuaNotifyPayload;
@@ -22,7 +22,9 @@ import org.eclipse.kapua.service.device.management.message.notification.KapuaNot
  *
  * @since 1.0.0
  */
-public class KapuaNotifyMessageImpl extends KapuaMessageImpl<KapuaNotifyChannel, KapuaNotifyPayload> implements KapuaNotifyMessage {
+public class KapuaNotifyMessageImpl
+        extends KapuaAppMessageImpl<KapuaNotifyChannel, KapuaNotifyPayload>
+        implements KapuaNotifyMessage {
 
     private static final long serialVersionUID = 4475824062529778773L;
 }

@@ -232,7 +232,7 @@ public class MessageStoreServiceSslTest extends AbstractMessageStoreServiceTest 
     }
 
     private KapuaDataMessage insertMessage(Account account, String clientId, KapuaId deviceId, String semanticTopic, byte[] payload, Date sentOn) throws InterruptedException, KapuaException {
-        KapuaDataPayload messagePayload = KAPUA_DATA_MESSAGE_FACTORY.newKapuaDataPayload();
+        KapuaDataPayload messagePayload = KAPUA_DATA_MESSAGE_FACTORY.newPayload();
         Map<String, Object> metrics = new HashMap<>();
         metrics.put("float", new Float((float) 0.01));
         messagePayload.setMetrics(metrics);
@@ -273,11 +273,11 @@ public class MessageStoreServiceSslTest extends AbstractMessageStoreServiceTest 
      * @return
      */
     private KapuaDataMessage createMessage(String clientId, KapuaId scopeId, KapuaId deviceId, Date receivedOn, Date capturedOn, Date sentOn) {
-        KapuaDataMessage message = KAPUA_DATA_MESSAGE_FACTORY.newKapuaDataMessage();
+        KapuaDataMessage message = KAPUA_DATA_MESSAGE_FACTORY.newMessage();
         message.setReceivedOn(receivedOn);
         message.setCapturedOn(capturedOn);
         message.setSentOn(sentOn);
-        message.setChannel(KAPUA_DATA_MESSAGE_FACTORY.newKapuaDataChannel());
+        message.setChannel(KAPUA_DATA_MESSAGE_FACTORY.newChannel());
         message.setClientId(clientId);
         message.setDeviceId(deviceId);
         message.setScopeId(scopeId);
@@ -291,7 +291,7 @@ public class MessageStoreServiceSslTest extends AbstractMessageStoreServiceTest 
      * @param semanticPart
      */
     private void setChannel(KapuaDataMessage message, String semanticPart) {
-        KapuaDataChannel channel = KAPUA_DATA_MESSAGE_FACTORY.newKapuaDataChannel();
+        KapuaDataChannel channel = KAPUA_DATA_MESSAGE_FACTORY.newChannel();
         channel.setSemanticParts(new ArrayList<>(Arrays.asList(semanticPart.split("/"))));
 
         message.setChannel(channel);

@@ -13,15 +13,10 @@
 package org.eclipse.kapua.message;
 
 
-import org.eclipse.kapua.message.xml.MessageXmlFactory;
-
-import javax.xml.bind.annotation.XmlType;
-
 /**
  * {@link Position} definition.
  *
  * @since 1.0.0
  */
-@XmlType(factoryClass = MessageXmlFactory.class, factoryMethod = "newPosition")
 public interface Position {
 }

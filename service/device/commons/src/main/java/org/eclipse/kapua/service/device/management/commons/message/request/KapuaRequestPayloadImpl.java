@@ -12,7 +12,7 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.commons.message.request;
 
-import org.eclipse.kapua.message.internal.KapuaPayloadImpl;
+import org.eclipse.kapua.service.device.management.commons.message.KapuaAppPayloadImpl;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestPayload;
 
 /**
@@ -20,7 +20,7 @@ import org.eclipse.kapua.service.device.management.message.request.KapuaRequestP
  *
  * @since 1.0.0
  */
-public class KapuaRequestPayloadImpl extends KapuaPayloadImpl implements KapuaRequestPayload {
+public abstract class KapuaRequestPayloadImpl extends KapuaAppPayloadImpl implements KapuaRequestPayload {
 
     private static final long serialVersionUID = -7231317572182056724L;
 }

@@ -13,7 +13,7 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.request.internal.message.request;
 
-import org.eclipse.kapua.message.internal.KapuaMessageImpl;
+import org.eclipse.kapua.service.device.management.commons.message.request.KapuaRequestMessageImpl;
 import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestChannel;
 import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestMessage;
 import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestPayload;
@@ -24,7 +24,9 @@ import org.eclipse.kapua.service.device.management.request.message.response.Gene
  *
  * @since 1.0.0
  */
-public class GenericRequestMessageImpl extends KapuaMessageImpl<GenericRequestChannel, GenericRequestPayload> implements GenericRequestMessage {
+public class GenericRequestMessageImpl
+        extends KapuaRequestMessageImpl<GenericRequestChannel, GenericRequestPayload>
+        implements GenericRequestMessage {
 
     private static final long serialVersionUID = -8491427803023664571L;
 

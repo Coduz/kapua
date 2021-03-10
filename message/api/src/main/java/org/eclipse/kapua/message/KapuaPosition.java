@@ -13,14 +13,9 @@
 package org.eclipse.kapua.message;
 
 import org.eclipse.kapua.commons.util.Payloads;
-import org.eclipse.kapua.message.xml.MessageXmlFactory;
 import org.eclipse.kapua.model.xml.DateXmlAdapter;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 import java.util.Date;
@@ -36,9 +31,6 @@ import java.util.Map;
  *
  * @since 1.0.0
  */
-@XmlRootElement(name = "position")
-@XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = MessageXmlFactory.class, factoryMethod = "newPosition")
 public interface KapuaPosition extends Position, Serializable {
 
     /**

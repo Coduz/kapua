@@ -14,13 +14,14 @@ package org.eclipse.kapua.service.device.management.message.notification;
 
 import org.eclipse.kapua.message.KapuaPayload;
 import org.eclipse.kapua.model.id.KapuaId;
+import org.eclipse.kapua.service.device.management.message.KapuaAppPayload;
 
 /**
  * Notify {@link KapuaPayload} definition.
  *
  * @since 1.0.0
  */
-public interface KapuaNotifyPayload extends KapuaPayload {
+public interface KapuaNotifyPayload extends KapuaAppPayload {
 
     /**
      * Gets the operation {@link KapuaId}.

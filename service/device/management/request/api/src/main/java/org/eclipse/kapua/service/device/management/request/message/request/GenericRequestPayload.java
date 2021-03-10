@@ -13,7 +13,6 @@
 package org.eclipse.kapua.service.device.management.request.message.request;
 
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestPayload;
-import org.eclipse.kapua.service.device.management.request.GenericRequestXmlFactory;
 
 import javax.xml.bind.annotation.XmlType;
 
@@ -22,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *
  * @since 1.0.0
  */
-@XmlType(factoryClass = GenericRequestXmlFactory.class, factoryMethod = "newRequestPayload")
+@XmlType(factoryClass = GenericRequestXmlFactory.class, factoryMethod = "newPayload")
 public interface GenericRequestPayload extends KapuaRequestPayload {
 
 }

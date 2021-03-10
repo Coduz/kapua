@@ -12,17 +12,17 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.message.response;
 
-import org.eclipse.kapua.message.KapuaMessage;
+import org.eclipse.kapua.service.device.management.message.KapuaAppMessage;
 
 /**
- * Response {@link KapuaMessage} definition.
+ * Response {@link KapuaAppMessage} definition.
  * <p>
  * The response message is used to perform interactive operations with the device (e.g. to send command to the device, to ask configurations...)
  *
  * @since 1.0.0
  */
 public interface KapuaResponseMessage<C extends KapuaResponseChannel, P extends KapuaResponsePayload>
-        extends KapuaMessage<C, P> {
+        extends KapuaAppMessage<C, P> {
 
     @Override
     C getChannel();

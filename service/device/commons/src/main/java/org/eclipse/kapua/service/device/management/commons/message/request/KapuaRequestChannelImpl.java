@@ -21,7 +21,7 @@ import org.eclipse.kapua.service.device.management.message.request.KapuaRequestC
  *
  * @since 1.0.0
  */
-public class KapuaRequestChannelImpl extends KapuaAppChannelImpl implements KapuaRequestChannel {
+public abstract class KapuaRequestChannelImpl extends KapuaAppChannelImpl implements KapuaRequestChannel {
 
     private static final long serialVersionUID = -7140990471048488667L;
 

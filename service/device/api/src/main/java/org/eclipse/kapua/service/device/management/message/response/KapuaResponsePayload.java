@@ -13,16 +13,17 @@
 package org.eclipse.kapua.service.device.management.message.response;
 
 import org.eclipse.kapua.message.KapuaPayload;
+import org.eclipse.kapua.service.device.management.message.KapuaAppPayload;
 
 /**
- * Response {@link KapuaPayload} definition.
+ * Response {@link KapuaAppPayload} definition.
  * <p>
  * This object defines the {@link KapuaPayload} for a {@link KapuaResponseMessage}.<br>
  * The response message is used to perform interactive operations with the device (e.g. to send command to the device, to ask configurations...)
  *
  * @since 1.0.0
  */
-public interface KapuaResponsePayload extends KapuaPayload {
+public interface KapuaResponsePayload extends KapuaAppPayload {
 
     /**
      * Gets the exception message (if present).

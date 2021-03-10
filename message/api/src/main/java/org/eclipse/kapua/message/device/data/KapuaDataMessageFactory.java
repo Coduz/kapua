@@ -12,36 +12,13 @@
  *******************************************************************************/
 package org.eclipse.kapua.message.device.data;
 
-import org.eclipse.kapua.model.KapuaObjectFactory;
+import org.eclipse.kapua.message.KapuaMessageFactory;
+import org.eclipse.kapua.message.MessageFactory;
 
 /**
- * {@link KapuaDataMessage} definition.
+ * {@link KapuaDataMessage} {@link MessageFactory} definition.
  *
  * @since 1.1.0
  */
-public interface KapuaDataMessageFactory extends KapuaObjectFactory {
-
-    /**
-     * Instantiates a new {@link KapuaDataMessage}
-     *
-     * @return The newly instantiated {@link KapuaDataMessage}
-     * @since 1.1.0
-     */
-    public KapuaDataMessage newKapuaDataMessage();
-
-    /**
-     * Instantiates a new {@link KapuaDataChannel}
-     *
-     * @return The newly instantiated {@link KapuaDataChannel}
-     * @since 1.1.0
-     */
-    KapuaDataChannel newKapuaDataChannel();
-
-    /**
-     * Instantiates a new {@link KapuaDataPayload}.
-     *
-     * @return The newly instantiated {@link KapuaDataPayload}.
-     * @since 1.1.0
-     */
-    KapuaDataPayload newKapuaDataPayload();
+public interface KapuaDataMessageFactory extends KapuaMessageFactory<KapuaDataChannel, KapuaDataPayload, KapuaDataMessage> {
 }

@@ -13,14 +13,14 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.command.message.internal;
 
-import org.eclipse.kapua.message.internal.KapuaMessageImpl;
 import org.eclipse.kapua.service.device.management.command.DeviceCommand;
+import org.eclipse.kapua.service.device.management.commons.message.request.KapuaRequestMessageImpl;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestMessage;
 
 /**
  * {@link DeviceCommand} {@link KapuaRequestMessage} implementation
  */
-public class CommandRequestMessage extends KapuaMessageImpl<CommandRequestChannel, CommandRequestPayload>
+public class CommandRequestMessage extends KapuaRequestMessageImpl<CommandRequestChannel, CommandRequestPayload>
         implements KapuaRequestMessage<CommandRequestChannel, CommandRequestPayload> {
 
     private static final long serialVersionUID = -2546716187486012931L;

@@ -38,7 +38,9 @@ public class KapuaPositionImpl implements KapuaPosition {
     private Integer status;
 
     /**
-     * Constructor
+     * Constructor.
+     *
+     * @since 1.5.0
      */
     public KapuaPositionImpl() {
     }

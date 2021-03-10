@@ -27,7 +27,7 @@ import org.eclipse.kapua.service.device.management.commons.setting.DeviceManagem
 import org.eclipse.kapua.service.device.management.message.response.KapuaResponseChannel;
 import org.eclipse.kapua.service.device.management.message.response.KapuaResponseMessage;
 import org.eclipse.kapua.service.device.management.message.response.KapuaResponsePayload;
-import org.eclipse.kapua.service.device.management.request.GenericRequestFactory;
+import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestFactory;
 import org.eclipse.kapua.service.device.management.request.message.response.GenericResponseMessage;
 import org.eclipse.kapua.service.device.management.request.message.response.GenericResponsePayload;
 import org.eclipse.kapua.translator.exception.InvalidBodyContentException;
@@ -78,7 +78,7 @@ public abstract class AbstractSimpleTranslatorResponseKuraKapua<TO_C extends Kap
 
         try {
             if (this.messageClazz.equals(GenericResponseMessage.class)) {
-                return this.messageClazz.cast(genericRequestFactory.newResponseMessage());
+                return this.messageClazz.cast(genericRequestFactory.newMessage());
             } else {
                 return this.messageClazz.newInstance();
             }

@@ -13,7 +13,7 @@
  *******************************************************************************/
 package org.eclipse.kapua.translator.mqtt.kura;
 
-import org.eclipse.kapua.message.internal.MessageException;
+import org.eclipse.kapua.message.internal.exception.MessageException;
 import org.eclipse.kapua.service.device.call.kura.Kura;
 import org.eclipse.kapua.service.device.call.message.kura.data.KuraDataChannel;
 import org.eclipse.kapua.service.device.call.message.kura.data.KuraDataMessage;

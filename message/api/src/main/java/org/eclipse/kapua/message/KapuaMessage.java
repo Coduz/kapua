@@ -12,17 +12,10 @@
  *******************************************************************************/
 package org.eclipse.kapua.message;
 
-import org.eclipse.kapua.message.device.data.KapuaDataMessage;
-import org.eclipse.kapua.message.xml.MessageXmlFactory;
 import org.eclipse.kapua.model.id.KapuaId;
 import org.eclipse.kapua.model.id.KapuaIdAdapter;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.Date;
 import java.util.UUID;
@@ -34,21 +27,6 @@ import java.util.UUID;
  * @param <P> payload type
  * @since 1.0.0
  */
-@XmlRootElement(name = "message")
-@XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(propOrder = { //
-        "id", //
-        "scopeId", //
-        "deviceId", //
-        "clientId", //
-        "receivedOn", //
-        "sentOn", //
-        "capturedOn", //
-        "position", //
-        "channel", //
-        "payload", //
-}, factoryClass = MessageXmlFactory.class, factoryMethod = "newKapuaMessage")
-@XmlSeeAlso(KapuaDataMessage.class)
 public interface KapuaMessage<C extends KapuaChannel, P extends KapuaPayload> extends Message<C, P> {
 
     /**

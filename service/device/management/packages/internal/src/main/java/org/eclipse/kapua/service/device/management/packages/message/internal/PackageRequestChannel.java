@@ -13,33 +13,38 @@
 package org.eclipse.kapua.service.device.management.packages.message.internal;
 
 import org.eclipse.kapua.service.device.management.commons.message.request.KapuaRequestChannelImpl;
+import org.eclipse.kapua.service.device.management.message.request.KapuaRequestChannel;
+import org.eclipse.kapua.service.device.management.packages.model.DevicePackage;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
- * Package request message channel.
+ * {@link DevicePackage} {@link KapuaRequestChannel} implementation.
  *
- * @since 1.0
+ * @since 1.0.0
  */
-public class PackageRequestChannel extends KapuaRequestChannelImpl {
+public class PackageRequestChannel extends KapuaRequestChannelImpl implements KapuaRequestChannel {
 
     private static final long serialVersionUID = -2326105340676100128L;
+
     private PackageResource packageResource;
 
     /**
-     * Get package resource
+     * Gets the package resource.
      *
-     * @return
+     * @return The package resource.
+     * @since 1.0.0
      */
     public PackageResource getPackageResource() {
         return packageResource;
     }
 
     /**
-     * Set package resource
+     * Sets the package resource.
      *
-     * @param packageResource
+     * @param packageResource The package resource.
+     * @since 1.0.0
      */
     public void setPackageResource(PackageResource packageResource) {
         this.packageResource = packageResource;
@@ -47,6 +52,6 @@ public class PackageRequestChannel extends KapuaRequestChannelImpl {
 
     @Override
     public List<String> getSemanticParts() {
-        return Arrays.asList(packageResource.name());
+        return Collections.singletonList(packageResource.name());
     }
 }

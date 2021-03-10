@@ -32,16 +32,19 @@ import org.eclipse.kapua.message.KapuaMessageFactory;
 import org.eclipse.kapua.message.KapuaPosition;
 import org.eclipse.kapua.message.device.lifecycle.KapuaAppsChannel;
 import org.eclipse.kapua.message.device.lifecycle.KapuaAppsMessage;
+import org.eclipse.kapua.message.device.lifecycle.KapuaAppsMessageFactory;
 import org.eclipse.kapua.message.device.lifecycle.KapuaAppsPayload;
 import org.eclipse.kapua.message.device.lifecycle.KapuaBirthChannel;
 import org.eclipse.kapua.message.device.lifecycle.KapuaBirthMessage;
+import org.eclipse.kapua.message.device.lifecycle.KapuaBirthMessageFactory;
 import org.eclipse.kapua.message.device.lifecycle.KapuaBirthPayload;
 import org.eclipse.kapua.message.device.lifecycle.KapuaDisconnectChannel;
 import org.eclipse.kapua.message.device.lifecycle.KapuaDisconnectMessage;
+import org.eclipse.kapua.message.device.lifecycle.KapuaDisconnectMessageFactory;
 import org.eclipse.kapua.message.device.lifecycle.KapuaDisconnectPayload;
-import org.eclipse.kapua.message.device.lifecycle.KapuaLifecycleMessageFactory;
 import org.eclipse.kapua.message.device.lifecycle.KapuaMissingChannel;
 import org.eclipse.kapua.message.device.lifecycle.KapuaMissingMessage;
+import org.eclipse.kapua.message.device.lifecycle.KapuaMissingMessageFactory;
 import org.eclipse.kapua.message.device.lifecycle.KapuaMissingPayload;
 import org.eclipse.kapua.model.domain.Actions;
 import org.eclipse.kapua.model.id.KapuaId;
@@ -198,7 +201,10 @@ public class DeviceRegistrySteps extends TestBase {
     private TagService tagService;
     private TagFactory tagFactory;
     private KapuaMessageFactory messageFactory;
-    private KapuaLifecycleMessageFactory lifecycleMessageFactory;
+    private KapuaAppsMessageFactory appsMessageFactory;
+    private KapuaBirthMessageFactory birthMessageFactory;
+    private KapuaDisconnectMessageFactory disconnectMessageFactory;
+    private KapuaMissingMessageFactory missingMessageFactory;
     private GroupService groupService;
     private GroupFactory groupFactory;
 
@@ -240,7 +246,10 @@ public class DeviceRegistrySteps extends TestBase {
         eventFactory = locator.getFactory(DeviceEventFactory.class);
 
         messageFactory = locator.getFactory(KapuaMessageFactory.class);
-        lifecycleMessageFactory = locator.getFactory(KapuaLifecycleMessageFactory.class);
+        appsMessageFactory = locator.getFactory(KapuaAppsMessageFactory.class);
+        birthMessageFactory = locator.getFactory(KapuaBirthMessageFactory.class);
+        disconnectMessageFactory = locator.getFactory(KapuaDisconnectMessageFactory.class);
+        missingMessageFactory = locator.getFactory(KapuaMissingMessageFactory.class);
 
         deviceLifeCycleService = locator.getService(DeviceLifeCycleService.class);
         authenticationService = locator.getService(AuthenticationService.class);
@@ -1884,8 +1893,8 @@ public class DeviceRegistrySteps extends TestBase {
 
         Device tmpDev;
         List<String> tmpSemParts = new ArrayList<>();
-        KapuaBirthMessage tmpMsg = lifecycleMessageFactory.newKapuaBirthMessage();
-        KapuaBirthChannel tmpChan = lifecycleMessageFactory.newKapuaBirthChannel();
+        KapuaBirthMessage tmpMsg = birthMessageFactory.newMessage();
+        KapuaBirthChannel tmpChan = birthMessageFactory.newChannel();
         KapuaBirthPayload tmpPayload = prepareDefaultBirthPayload();
 
         tmpChan.setClientId(clientId);
@@ -1918,8 +1927,8 @@ public class DeviceRegistrySteps extends TestBase {
         Account tmpAccount = (Account) stepData.get(LAST_ACCOUNT);
         Device tmpDev;
         List<String> tmpSemParts = new ArrayList<>();
-        KapuaDisconnectMessage tmpMsg = lifecycleMessageFactory.newKapuaDisconnectMessage();
-        KapuaDisconnectChannel tmpChan = lifecycleMessageFactory.newKapuaDisconnectChannel();
+        KapuaDisconnectMessage tmpMsg = disconnectMessageFactory.newMessage();
+        KapuaDisconnectChannel tmpChan = disconnectMessageFactory.newChannel();
         KapuaDisconnectPayload tmpPayload = prepareDefaultDeathPayload();
 
         tmpChan.setClientId(clientId);
@@ -1957,8 +1966,8 @@ public class DeviceRegistrySteps extends TestBase {
         Account tmpAccount = (Account) stepData.get(LAST_ACCOUNT);
         Device tmpDev;
         List<String> tmpSemParts = new ArrayList<>();
-        KapuaMissingMessage tmpMsg = lifecycleMessageFactory.newKapuaMissingMessage();
-        KapuaMissingChannel tmpChan = lifecycleMessageFactory.newKapuaMissingChannel();
+        KapuaMissingMessage tmpMsg = missingMessageFactory.newMessage();
+        KapuaMissingChannel tmpChan = missingMessageFactory.newChannel();
         KapuaMissingPayload tmpPayload = prepareDefaultMissingPayload();
 
         tmpChan.setClientId(clientId);
@@ -1995,8 +2004,8 @@ public class DeviceRegistrySteps extends TestBase {
         Account tmpAccount = (Account) stepData.get(LAST_ACCOUNT);
         Device tmpDev;
         List<String> tmpSemParts = new ArrayList<>();
-        KapuaAppsMessage tmpMsg = lifecycleMessageFactory.newKapuaAppsMessage();
-        KapuaAppsChannel tmpChan = lifecycleMessageFactory.newKapuaAppsChannel();
+        KapuaAppsMessage tmpMsg = appsMessageFactory.newMessage();
+        KapuaAppsChannel tmpChan = appsMessageFactory.newChannel();
         KapuaAppsPayload tmpPayload = prepareDefaultApplicationPayload();
 
         tmpChan.setClientId(clientId);
@@ -2401,7 +2410,7 @@ public class DeviceRegistrySteps extends TestBase {
 
     private KapuaBirthPayload prepareDefaultBirthPayload() {
 
-        KapuaBirthPayload payload = lifecycleMessageFactory.newKapuaBirthPayload();
+        KapuaBirthPayload payload = birthMessageFactory.newPayload();
         payload.setUptime("500");
         payload.setDisplayName(RELIAGATE_10_20);
         payload.setModelName("ReliaGate");
@@ -2437,7 +2446,7 @@ public class DeviceRegistrySteps extends TestBase {
 
     private KapuaDisconnectPayload prepareDefaultDeathPayload() {
 
-        KapuaDisconnectPayload payload = lifecycleMessageFactory.newKapuaDisconnectPayload();
+        KapuaDisconnectPayload payload = disconnectMessageFactory.newPayload();
         payload.setUptime("1000");
         payload.setDisplayName(RELIAGATE_10_20);
 
@@ -2446,13 +2455,12 @@ public class DeviceRegistrySteps extends TestBase {
 
     private KapuaMissingPayload prepareDefaultMissingPayload() {
 
-        KapuaMissingPayload tmpPayload = lifecycleMessageFactory.newKapuaMissingPayload();
-        return tmpPayload;
+        return missingMessageFactory.newPayload();
     }
 
     private KapuaAppsPayload prepareDefaultApplicationPayload() {
 
-        KapuaAppsPayload payload = lifecycleMessageFactory.newKapuaAppsPayload();
+        KapuaAppsPayload payload = appsMessageFactory.newPayload();
         payload.setUptime("500");
         payload.setDisplayName(RELIAGATE_10_20);
         payload.setModelName("ReliaGate");
@@ -2758,7 +2766,7 @@ public class DeviceRegistrySteps extends TestBase {
     }
 
     @When("^I remove device \"([^\"]*)\" from all groups$")
-    public void iChangeDevicesGroupToNoGroup(String deviceName) throws Exception{
+    public void iChangeDevicesGroupToNoGroup(String deviceName) throws Exception {
 
         try {
             DeviceQuery tmpQuery = deviceFactory.newQuery(getCurrentScopeId());
@@ -2794,7 +2802,7 @@ public class DeviceRegistrySteps extends TestBase {
         assertEquals(group.getName(), groupName);
 
         try {
-            for(int i = 0; i < numberOfDevices; i++) {
+            for (int i = 0; i < numberOfDevices; i++) {
                 iCreateADeviceWithName(String.format("Device%02d", i));
                 iAddDeviceToGroup(String.format("Device%02d", i), group.getName());
             }
@@ -2935,73 +2943,73 @@ public class DeviceRegistrySteps extends TestBase {
         } else if (deviceParams.getClientId() != null && deviceParams.getDisplayName() != null && deviceParams.getSerialNumber() == null && deviceParams.getStatus() == null) {
             DeviceQuery tmpQuery = deviceFactory.newQuery(getCurrentScopeId());
             tmpQuery.setPredicate(tmpQuery.andPredicate(tmpQuery.attributePredicate(DeviceAttributes.CLIENT_ID, deviceParams.getClientId(), AttributePredicate.Operator.LIKE),
-                                                        tmpQuery.attributePredicate(DeviceAttributes.DISPLAY_NAME, deviceParams.getDisplayName(), AttributePredicate.Operator.LIKE)));
+                    tmpQuery.attributePredicate(DeviceAttributes.DISPLAY_NAME, deviceParams.getDisplayName(), AttributePredicate.Operator.LIKE)));
             devices = deviceRegistryService.query(tmpQuery);
             stepData.put("DeviceList", devices);
         } else if (deviceParams.getClientId() != null && deviceParams.getDisplayName() == null && deviceParams.getSerialNumber() != null && deviceParams.getStatus() == null) {
             DeviceQuery tmpQuery = deviceFactory.newQuery(getCurrentScopeId());
             tmpQuery.setPredicate(tmpQuery.andPredicate(tmpQuery.attributePredicate(DeviceAttributes.CLIENT_ID, deviceParams.getClientId(), AttributePredicate.Operator.LIKE),
-                                                        tmpQuery.attributePredicate(DeviceAttributes.SERIAL_NUMBER, deviceParams.getSerialNumber(), AttributePredicate.Operator.LIKE)));
+                    tmpQuery.attributePredicate(DeviceAttributes.SERIAL_NUMBER, deviceParams.getSerialNumber(), AttributePredicate.Operator.LIKE)));
             devices = deviceRegistryService.query(tmpQuery);
             stepData.put("DeviceList", devices);
         } else if (deviceParams.getClientId() != null && deviceParams.getDisplayName() == null && deviceParams.getSerialNumber() == null && deviceParams.getStatus() != null) {
             DeviceQuery tmpQuery = deviceFactory.newQuery(getCurrentScopeId());
             tmpQuery.setPredicate(tmpQuery.andPredicate(tmpQuery.attributePredicate(DeviceAttributes.CLIENT_ID, deviceParams.getClientId(), AttributePredicate.Operator.LIKE),
-                                                        tmpQuery.attributePredicate(DeviceAttributes.STATUS, deviceParams.getStatus(), AttributePredicate.Operator.LIKE)));
+                    tmpQuery.attributePredicate(DeviceAttributes.STATUS, deviceParams.getStatus(), AttributePredicate.Operator.LIKE)));
             devices = deviceRegistryService.query(tmpQuery);
             stepData.put("DeviceList", devices);
         } else if (deviceParams.getClientId() == null && deviceParams.getDisplayName() != null && deviceParams.getSerialNumber() != null && deviceParams.getStatus() == null) {
             DeviceQuery tmpQuery = deviceFactory.newQuery(getCurrentScopeId());
             tmpQuery.setPredicate(tmpQuery.andPredicate(tmpQuery.attributePredicate(DeviceAttributes.SERIAL_NUMBER, deviceParams.getSerialNumber(), AttributePredicate.Operator.LIKE),
-                                                        tmpQuery.attributePredicate(DeviceAttributes.DISPLAY_NAME, deviceParams.getDisplayName(), AttributePredicate.Operator.LIKE)));
+                    tmpQuery.attributePredicate(DeviceAttributes.DISPLAY_NAME, deviceParams.getDisplayName(), AttributePredicate.Operator.LIKE)));
             devices = deviceRegistryService.query(tmpQuery);
             stepData.put("DeviceList", devices);
         } else if (deviceParams.getClientId() == null && deviceParams.getDisplayName() != null && deviceParams.getSerialNumber() == null && deviceParams.getStatus() != null) {
             DeviceQuery tmpQuery = deviceFactory.newQuery(getCurrentScopeId());
             tmpQuery.setPredicate(tmpQuery.andPredicate(tmpQuery.attributePredicate(DeviceAttributes.STATUS, deviceParams.getStatus(), AttributePredicate.Operator.LIKE),
-                                                        tmpQuery.attributePredicate(DeviceAttributes.DISPLAY_NAME, deviceParams.getDisplayName(), AttributePredicate.Operator.LIKE)));
+                    tmpQuery.attributePredicate(DeviceAttributes.DISPLAY_NAME, deviceParams.getDisplayName(), AttributePredicate.Operator.LIKE)));
             devices = deviceRegistryService.query(tmpQuery);
             stepData.put("DeviceList", devices);
         } else if (deviceParams.getClientId() == null && deviceParams.getDisplayName() == null && deviceParams.getSerialNumber() != null && deviceParams.getStatus() != null) {
             DeviceQuery tmpQuery = deviceFactory.newQuery(getCurrentScopeId());
             tmpQuery.setPredicate(tmpQuery.andPredicate(tmpQuery.attributePredicate(DeviceAttributes.SERIAL_NUMBER, deviceParams.getSerialNumber(), AttributePredicate.Operator.LIKE),
-                                                        tmpQuery.attributePredicate(DeviceAttributes.STATUS, deviceParams.getStatus(), AttributePredicate.Operator.LIKE)));
+                    tmpQuery.attributePredicate(DeviceAttributes.STATUS, deviceParams.getStatus(), AttributePredicate.Operator.LIKE)));
             devices = deviceRegistryService.query(tmpQuery);
             stepData.put("DeviceList", devices);
         } else if (deviceParams.getClientId() != null && deviceParams.getDisplayName() != null && deviceParams.getSerialNumber() != null && deviceParams.getStatus() == null) {
             DeviceQuery tmpQuery = deviceFactory.newQuery(getCurrentScopeId());
             tmpQuery.setPredicate(tmpQuery.andPredicate(tmpQuery.attributePredicate(DeviceAttributes.CLIENT_ID, deviceParams.getClientId(), AttributePredicate.Operator.LIKE),
-                                                        tmpQuery.attributePredicate(DeviceAttributes.DISPLAY_NAME, deviceParams.getDisplayName(), AttributePredicate.Operator.LIKE),
-                                                        tmpQuery.attributePredicate(DeviceAttributes.SERIAL_NUMBER, deviceParams.getSerialNumber(), AttributePredicate.Operator.LIKE)));
+                    tmpQuery.attributePredicate(DeviceAttributes.DISPLAY_NAME, deviceParams.getDisplayName(), AttributePredicate.Operator.LIKE),
+                    tmpQuery.attributePredicate(DeviceAttributes.SERIAL_NUMBER, deviceParams.getSerialNumber(), AttributePredicate.Operator.LIKE)));
             devices = deviceRegistryService.query(tmpQuery);
             stepData.put("DeviceList", devices);
         } else if (deviceParams.getClientId() != null && deviceParams.getDisplayName() != null && deviceParams.getSerialNumber() == null && deviceParams.getStatus() != null) {
             DeviceQuery tmpQuery = deviceFactory.newQuery(getCurrentScopeId());
             tmpQuery.setPredicate(tmpQuery.andPredicate(tmpQuery.attributePredicate(DeviceAttributes.CLIENT_ID, deviceParams.getClientId(), AttributePredicate.Operator.LIKE),
-                                                        tmpQuery.attributePredicate(DeviceAttributes.DISPLAY_NAME, deviceParams.getDisplayName(), AttributePredicate.Operator.LIKE),
-                                                        tmpQuery.attributePredicate(DeviceAttributes.STATUS, deviceParams.getStatus(), AttributePredicate.Operator.LIKE)));
+                    tmpQuery.attributePredicate(DeviceAttributes.DISPLAY_NAME, deviceParams.getDisplayName(), AttributePredicate.Operator.LIKE),
+                    tmpQuery.attributePredicate(DeviceAttributes.STATUS, deviceParams.getStatus(), AttributePredicate.Operator.LIKE)));
             devices = deviceRegistryService.query(tmpQuery);
             stepData.put("DeviceList", devices);
         } else if (deviceParams.getClientId() != null && deviceParams.getDisplayName() == null && deviceParams.getSerialNumber() != null && deviceParams.getStatus() != null) {
             DeviceQuery tmpQuery = deviceFactory.newQuery(getCurrentScopeId());
             tmpQuery.setPredicate(tmpQuery.andPredicate(tmpQuery.attributePredicate(DeviceAttributes.CLIENT_ID, deviceParams.getClientId(), AttributePredicate.Operator.LIKE),
-                                                        tmpQuery.attributePredicate(DeviceAttributes.SERIAL_NUMBER, deviceParams.getSerialNumber(), AttributePredicate.Operator.LIKE),
-                                                        tmpQuery.attributePredicate(DeviceAttributes.STATUS, deviceParams.getStatus(), AttributePredicate.Operator.LIKE)));
+                    tmpQuery.attributePredicate(DeviceAttributes.SERIAL_NUMBER, deviceParams.getSerialNumber(), AttributePredicate.Operator.LIKE),
+                    tmpQuery.attributePredicate(DeviceAttributes.STATUS, deviceParams.getStatus(), AttributePredicate.Operator.LIKE)));
             devices = deviceRegistryService.query(tmpQuery);
             stepData.put("DeviceList", devices);
         } else if (deviceParams.getClientId() == null && deviceParams.getDisplayName() != null && deviceParams.getSerialNumber() != null && deviceParams.getStatus() != null) {
             DeviceQuery tmpQuery = deviceFactory.newQuery(getCurrentScopeId());
             tmpQuery.setPredicate(tmpQuery.andPredicate(tmpQuery.attributePredicate(DeviceAttributes.SERIAL_NUMBER, deviceParams.getSerialNumber(), AttributePredicate.Operator.LIKE),
-                                                        tmpQuery.attributePredicate(DeviceAttributes.DISPLAY_NAME, deviceParams.getDisplayName(), AttributePredicate.Operator.LIKE),
-                                                        tmpQuery.attributePredicate(DeviceAttributes.STATUS, deviceParams.getStatus(), AttributePredicate.Operator.LIKE)));
+                    tmpQuery.attributePredicate(DeviceAttributes.DISPLAY_NAME, deviceParams.getDisplayName(), AttributePredicate.Operator.LIKE),
+                    tmpQuery.attributePredicate(DeviceAttributes.STATUS, deviceParams.getStatus(), AttributePredicate.Operator.LIKE)));
             devices = deviceRegistryService.query(tmpQuery);
             stepData.put("DeviceList", devices);
         } else if (deviceParams.getClientId() != null && deviceParams.getDisplayName() != null && deviceParams.getSerialNumber() != null && deviceParams.getStatus() != null) {
             DeviceQuery tmpQuery = deviceFactory.newQuery(getCurrentScopeId());
             tmpQuery.setPredicate(tmpQuery.andPredicate(tmpQuery.attributePredicate(DeviceAttributes.SERIAL_NUMBER, deviceParams.getSerialNumber(), AttributePredicate.Operator.LIKE),
-                                                        tmpQuery.attributePredicate(DeviceAttributes.DISPLAY_NAME, deviceParams.getDisplayName(), AttributePredicate.Operator.LIKE),
-                                                        tmpQuery.attributePredicate(DeviceAttributes.CLIENT_ID, deviceParams.getClientId(), AttributePredicate.Operator.LIKE),
-                                                        tmpQuery.attributePredicate(DeviceAttributes.STATUS, deviceParams.getStatus(), AttributePredicate.Operator.LIKE)));
+                    tmpQuery.attributePredicate(DeviceAttributes.DISPLAY_NAME, deviceParams.getDisplayName(), AttributePredicate.Operator.LIKE),
+                    tmpQuery.attributePredicate(DeviceAttributes.CLIENT_ID, deviceParams.getClientId(), AttributePredicate.Operator.LIKE),
+                    tmpQuery.attributePredicate(DeviceAttributes.STATUS, deviceParams.getStatus(), AttributePredicate.Operator.LIKE)));
             devices = deviceRegistryService.query(tmpQuery);
             stepData.put("DeviceList", devices);
         }
@@ -3024,7 +3032,7 @@ public class DeviceRegistrySteps extends TestBase {
     }
 
     @Given("^I create a device with null clientID$")
-    public void iCreateADeviceWithNullClientID() throws Throwable{
+    public void iCreateADeviceWithNullClientID() throws Throwable {
         DeviceCreator deviceCreator = deviceFactory.newCreator(getCurrentScopeId());
         deviceCreator.setClientId(null);
         stepData.put("DeviceCreator", deviceCreator);
