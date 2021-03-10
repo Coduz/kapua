@@ -13,10 +13,10 @@
 package org.eclipse.kapua.app.api.resources.v1.resources;
 
 import org.eclipse.kapua.KapuaException;
-import org.eclipse.kapua.app.api.core.resources.AbstractKapuaResource;
-import org.eclipse.kapua.app.api.resources.v1.resources.marker.JsonSerializationFixed;
 import org.eclipse.kapua.app.api.core.model.ScopeId;
 import org.eclipse.kapua.app.api.core.model.data.JsonKapuaDataMessage;
+import org.eclipse.kapua.app.api.core.resources.AbstractKapuaResource;
+import org.eclipse.kapua.app.api.resources.v1.resources.marker.JsonSerializationFixed;
 import org.eclipse.kapua.locator.KapuaLocator;
 import org.eclipse.kapua.message.device.data.KapuaDataMessage;
 import org.eclipse.kapua.message.device.data.KapuaDataMessageFactory;
@@ -97,7 +97,7 @@ public class StreamsJson extends AbstractKapuaResource implements JsonSerializat
             @QueryParam("timeout") Long timeout,
             JsonKapuaDataMessage jsonKapuaDataMessage) throws KapuaException {
 
-        KapuaDataMessage kapuaDataMessage = KAPUA_DATA_MESSAGE_FACTORY.newKapuaDataMessage();
+        KapuaDataMessage kapuaDataMessage = KAPUA_DATA_MESSAGE_FACTORY.newMessage();
 
         kapuaDataMessage.setId(jsonKapuaDataMessage.getId());
         kapuaDataMessage.setScopeId(scopeId);
@@ -109,7 +109,7 @@ public class StreamsJson extends AbstractKapuaResource implements JsonSerializat
         kapuaDataMessage.setPosition(jsonKapuaDataMessage.getPosition());
         kapuaDataMessage.setChannel(jsonKapuaDataMessage.getChannel());
 
-        KapuaDataPayload kapuaDataPayload = KAPUA_DATA_MESSAGE_FACTORY.newKapuaDataPayload();
+        KapuaDataPayload kapuaDataPayload = KAPUA_DATA_MESSAGE_FACTORY.newPayload();
 
         if (jsonKapuaDataMessage.getPayload() != null) {
             kapuaDataPayload.setBody(jsonKapuaDataMessage.getPayload().getBody());

@@ -13,16 +13,20 @@
 package org.eclipse.kapua.message.device.data;
 
 import org.eclipse.kapua.message.KapuaPayload;
-import org.eclipse.kapua.message.device.data.xml.DataMessageXmlRegistry;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * {@link KapuaDataPayload} definition.
+ * Data {@link KapuaPayload} definition.
  *
  * @since 1.0.0
  */
-@XmlType(factoryClass = DataMessageXmlRegistry.class, factoryMethod = "newKapuaDataPayload")
+@XmlRootElement(name = "payload")
+@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlType(factoryClass = KapuaDataMessageXmlFactory.class, factoryMethod = "newPayload")
 public interface KapuaDataPayload extends KapuaPayload {
 
 }

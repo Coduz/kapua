@@ -66,7 +66,7 @@ public class TranslatorDataKuraKapua extends Translator<KuraDataMessage, KapuaDa
 
             Device device = DEVICE_REGISTRY_SERVICE.findByClientId(account.getId(), kuraMessage.getChannel().getClientId());
 
-            KapuaDataMessage kapuaDataMessage = DATA_MESSAGE_FACTORY.newKapuaDataMessage();
+            KapuaDataMessage kapuaDataMessage = DATA_MESSAGE_FACTORY.newMessage();
             kapuaDataMessage.setScopeId(account.getId());
             kapuaDataMessage.setDeviceId(device != null ? device.getId() : null);
             kapuaDataMessage.setClientId(kuraMessage.getChannel().getClientId());
@@ -87,7 +87,7 @@ public class TranslatorDataKuraKapua extends Translator<KuraDataMessage, KapuaDa
     }
 
     private KapuaDataChannel translate(KuraDataChannel kuraChannel) {
-        KapuaDataChannel kapuaChannel = DATA_MESSAGE_FACTORY.newKapuaDataChannel();
+        KapuaDataChannel kapuaChannel = DATA_MESSAGE_FACTORY.newChannel();
         kapuaChannel.setSemanticParts(kuraChannel.getSemanticParts());
 
         // Return Kapua Channel
@@ -95,7 +95,7 @@ public class TranslatorDataKuraKapua extends Translator<KuraDataMessage, KapuaDa
     }
 
     private KapuaDataPayload translate(KuraDataPayload kuraPayload) {
-        KapuaDataPayload kapuaPayload = DATA_MESSAGE_FACTORY.newKapuaDataPayload();
+        KapuaDataPayload kapuaPayload = DATA_MESSAGE_FACTORY.newPayload();
 
         if (!kuraPayload.getMetrics().isEmpty()) {
             kapuaPayload.setMetrics(kuraPayload.getMetrics());

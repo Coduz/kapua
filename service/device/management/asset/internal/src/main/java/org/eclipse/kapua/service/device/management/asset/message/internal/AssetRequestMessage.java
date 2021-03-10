@@ -13,8 +13,8 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.asset.message.internal;
 
-import org.eclipse.kapua.message.internal.KapuaMessageImpl;
 import org.eclipse.kapua.service.device.management.asset.DeviceAsset;
+import org.eclipse.kapua.service.device.management.commons.message.request.KapuaRequestMessageImpl;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestMessage;
 
 /**
@@ -22,7 +22,7 @@ import org.eclipse.kapua.service.device.management.message.request.KapuaRequestM
  *
  * @since 1.0.0
  */
-public class AssetRequestMessage extends KapuaMessageImpl<AssetRequestChannel, AssetRequestPayload>
+public class AssetRequestMessage extends KapuaRequestMessageImpl<AssetRequestChannel, AssetRequestPayload>
         implements KapuaRequestMessage<AssetRequestChannel, AssetRequestPayload> {
 
     private static final long serialVersionUID = 590225089986525842L;

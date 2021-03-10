@@ -13,7 +13,7 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.snapshot.message.internal;
 
-import org.eclipse.kapua.message.internal.KapuaMessageImpl;
+import org.eclipse.kapua.service.device.management.commons.message.request.KapuaRequestMessageImpl;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestMessage;
 import org.eclipse.kapua.service.device.management.snapshot.DeviceSnapshot;
 
@@ -22,7 +22,7 @@ import org.eclipse.kapua.service.device.management.snapshot.DeviceSnapshot;
  *
  * @since 1.0.0
  */
-public class SnapshotRequestMessage extends KapuaMessageImpl<SnapshotRequestChannel, SnapshotRequestPayload>
+public class SnapshotRequestMessage extends KapuaRequestMessageImpl<SnapshotRequestChannel, SnapshotRequestPayload>
         implements KapuaRequestMessage<SnapshotRequestChannel, SnapshotRequestPayload> {
 
     private static final long serialVersionUID = 3420116819861725484L;

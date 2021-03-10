@@ -15,7 +15,7 @@ package org.eclipse.kapua.service.device.management.message;
 import org.eclipse.kapua.message.KapuaChannel;
 
 /**
- * Control {@link KapuaChannel}
+ * Control {@link KapuaChannel} definition.
  *
  * @since 1.0.0
  */

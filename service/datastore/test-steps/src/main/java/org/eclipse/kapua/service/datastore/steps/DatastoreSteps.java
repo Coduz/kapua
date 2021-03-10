@@ -164,7 +164,7 @@ public class DatastoreSteps extends TestBase {
 
         for (CucMetric tmpMet : metLst) {
             KapuaDataMessage tmpMsg = tmpMsgLst.get(tmpMet.getMessage());
-            tmpMsg.setPayload(dataMessageFactory.newKapuaDataPayload());
+            tmpMsg.setPayload(dataMessageFactory.newPayload());
 
             switch (tmpMet.getType().trim().toLowerCase()) {
                 case "string": {
@@ -610,7 +610,7 @@ public class DatastoreSteps extends TestBase {
         List<KapuaDataMessage> tmpMsgLst = (List<KapuaDataMessage>) stepData.get(lstKey);
         KapuaDataMessage tmpMsg = tmpMsgLst.get(idx);
 
-        tmpMsg.setPayload(dataMessageFactory.newKapuaDataPayload());
+        tmpMsg.setPayload(dataMessageFactory.newPayload());
 
         for (CucMetric tmpMet : metLst) {
             switch (tmpMet.getType().trim().toLowerCase()) {
@@ -1801,7 +1801,7 @@ public class DatastoreSteps extends TestBase {
 
     private KapuaDataPayload createRandomTestPayload() throws Exception {
 
-        KapuaDataPayload tmpTestPayload = dataMessageFactory.newKapuaDataPayload();
+        KapuaDataPayload tmpTestPayload = dataMessageFactory.newPayload();
 
         byte[] randomPayload = new byte[128];
         random.nextBytes(randomPayload);
@@ -1861,7 +1861,7 @@ public class DatastoreSteps extends TestBase {
 
         String tmpTopic = ((topic != null) && !topic.isEmpty()) ? topic : "default/test/topic";
         String tmpClientId = (clientId != null) ? clientId : ((Device) stepData.get(LAST_DEVICE)).getClientId();
-        KapuaDataMessage tmpMessage = dataMessageFactory.newKapuaDataMessage();
+        KapuaDataMessage tmpMessage = dataMessageFactory.newMessage();
 
         Date tmpRecDate = new Date();
         Calendar tmpCal = Calendar.getInstance();
@@ -1880,7 +1880,7 @@ public class DatastoreSteps extends TestBase {
         tmpMessage.setDeviceId(deviceId);
         tmpMessage.setScopeId(scopeId);
 
-        KapuaDataChannel tmpChannel = dataMessageFactory.newKapuaDataChannel();
+        KapuaDataChannel tmpChannel = dataMessageFactory.newChannel();
         tmpChannel.setSemanticParts(new ArrayList<>(Arrays.asList(tmpTopic.split("/"))));
         tmpMessage.setChannel(tmpChannel);
 
@@ -1895,7 +1895,7 @@ public class DatastoreSteps extends TestBase {
 
         String tmpTopic = (topic != null) ? topic : "default/test/topic";
         String tmpClientId = (clientId != null) ? clientId : ((Device) stepData.get(LAST_DEVICE)).getClientId();
-        KapuaDataMessage tmpMessage = dataMessageFactory.newKapuaDataMessage();
+        KapuaDataMessage tmpMessage = dataMessageFactory.newMessage();
 
         Date tmpCaptured = (captured != null) ? captured : new Date();
         Calendar tmpCal = Calendar.getInstance();
@@ -1910,7 +1910,7 @@ public class DatastoreSteps extends TestBase {
         tmpMessage.setDeviceId(deviceId);
         tmpMessage.setScopeId(scopeId);
 
-        KapuaDataChannel tmpChannel = dataMessageFactory.newKapuaDataChannel();
+        KapuaDataChannel tmpChannel = dataMessageFactory.newChannel();
         tmpChannel.setSemanticParts(new ArrayList<>(Arrays.asList(tmpTopic.split("/"))));
         tmpMessage.setChannel(tmpChannel);
 

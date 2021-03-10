@@ -33,7 +33,7 @@ public class KapuaDeviceDataTest extends Assert {
 
     @Test
     public void kapuaDataChanneltoString() throws Exception {
-        KapuaDataChannel kapuaDataChannel = KAPUA_DATA_MESSAGE_FACTORY.newKapuaDataChannel();
+        KapuaDataChannel kapuaDataChannel = KAPUA_DATA_MESSAGE_FACTORY.newChannel();
         List<String> semanticParts = new ArrayList<>();
         semanticParts.add("part1");
         semanticParts.add("part2");
@@ -45,7 +45,7 @@ public class KapuaDeviceDataTest extends Assert {
 
     @Test
     public void kapuaDataMesssageGetterSetters() {
-        KapuaDataMessage kapuaDataMessage = KAPUA_DATA_MESSAGE_FACTORY.newKapuaDataMessage();
+        KapuaDataMessage kapuaDataMessage = KAPUA_DATA_MESSAGE_FACTORY.newMessage();
 
         kapuaDataMessage.setClientId("clientId-1");
         assertEquals("clientId-1", kapuaDataMessage.getClientId());
@@ -53,7 +53,7 @@ public class KapuaDeviceDataTest extends Assert {
 
     @Test
     public void kapuaDataPayloadDefaultConstructor() {
-        KapuaDataPayload kapuaDataPayload = KAPUA_DATA_MESSAGE_FACTORY.newKapuaDataPayload();
+        KapuaDataPayload kapuaDataPayload = KAPUA_DATA_MESSAGE_FACTORY.newPayload();
 
         assertNotNull(kapuaDataPayload);
     }

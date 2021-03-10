@@ -12,8 +12,8 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.commons.message.notification;
 
-import org.eclipse.kapua.message.internal.KapuaPayloadImpl;
 import org.eclipse.kapua.model.id.KapuaId;
+import org.eclipse.kapua.service.device.management.commons.message.KapuaAppPayloadImpl;
 import org.eclipse.kapua.service.device.management.message.notification.KapuaNotifyPayload;
 import org.eclipse.kapua.service.device.management.message.notification.OperationStatus;
 
@@ -22,7 +22,7 @@ import org.eclipse.kapua.service.device.management.message.notification.Operatio
  *
  * @since 1.0.0
  */
-public class KapuaNotifyPayloadImpl extends KapuaPayloadImpl implements KapuaNotifyPayload {
+public class KapuaNotifyPayloadImpl extends KapuaAppPayloadImpl implements KapuaNotifyPayload {
 
     private KapuaId operationId;
     private String resource;

@@ -15,9 +15,9 @@ package org.eclipse.kapua.translator.kura.kapua;
 import org.eclipse.kapua.locator.KapuaLocator;
 import org.eclipse.kapua.service.device.call.message.kura.app.response.KuraResponseChannel;
 import org.eclipse.kapua.service.device.call.message.kura.app.response.KuraResponsePayload;
-import org.eclipse.kapua.service.device.management.request.GenericRequestFactory;
 import org.eclipse.kapua.service.device.management.request.internal.GenericAppProperties;
 import org.eclipse.kapua.service.device.management.request.message.response.GenericResponseChannel;
+import org.eclipse.kapua.service.device.management.request.message.response.GenericResponseFactory;
 import org.eclipse.kapua.service.device.management.request.message.response.GenericResponseMessage;
 import org.eclipse.kapua.service.device.management.request.message.response.GenericResponsePayload;
 import org.eclipse.kapua.translator.exception.InvalidChannelException;
@@ -41,13 +41,13 @@ public class TranslatorAppResponseKuraKapua extends AbstractSimpleTranslatorResp
     @Override
     protected GenericResponseChannel translateChannel(KuraResponseChannel kuraResponseChannel) throws InvalidChannelException {
         try {
-            GenericRequestFactory genericRequestFactory = LOCATOR.getFactory(GenericRequestFactory.class);
+            GenericResponseFactory genericRequestFactory = LOCATOR.getFactory(GenericResponseFactory.class);
 
             if (!getControlMessageClassifier().equals(kuraResponseChannel.getMessageClassification())) {
                 throw new TranslatorException(TranslatorErrorCodes.INVALID_CHANNEL_CLASSIFIER, null, kuraResponseChannel.getMessageClassification());
             }
 
-            GenericResponseChannel genericResponseChannel = genericRequestFactory.newResponseChannel();
+            GenericResponseChannel genericResponseChannel = genericRequestFactory.newChannel();
             String[] appIdTokens = kuraResponseChannel.getAppId().split("-");
 
             if (appIdTokens.length < 1) {

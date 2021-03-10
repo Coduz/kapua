@@ -23,7 +23,8 @@ import org.eclipse.kapua.service.device.management.request.message.response.Gene
  *
  * @since 1.0.0
  */
-public class GenericResponseMessageImpl extends KapuaResponseMessageImpl<GenericResponseChannel, GenericResponsePayload>
+public class GenericResponseMessageImpl
+        extends KapuaResponseMessageImpl<GenericResponseChannel, GenericResponsePayload>
         implements GenericResponseMessage {
 
     private static final long serialVersionUID = 4792106537414206216L;

@@ -62,11 +62,11 @@
         <api>org.eclipse.kapua.service.device.call.DeviceCallFactory</api>
 
         <api>org.eclipse.kapua.service.device.management.message.request.KapuaRequestMessageFactory</api>
-        <api>org.eclipse.kapua.service.device.management.request.GenericRequestFactory</api>
+        <api>org.eclipse.kapua.service.device.management.request.message.request.GenericRequestFactory</api>
+        <api>org.eclipse.kapua.service.device.management.request.message.response.GenericResponseFactory</api>
 
         <api>org.eclipse.kapua.service.device.management.asset.DeviceAssetManagementService</api>
         <api>org.eclipse.kapua.service.device.management.asset.DeviceAssetFactory</api>
-        <!-- <api>org.eclipse.kapua.service.device.management.channel.DeviceChannelFactory</api> -->
 
         <api>org.eclipse.kapua.service.device.management.bundle.DeviceBundleManagementService</api>
         <api>org.eclipse.kapua.service.device.management.bundle.DeviceBundleFactory</api>

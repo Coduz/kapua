@@ -12,13 +12,13 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.message.notification;
 
-import org.eclipse.kapua.message.KapuaMessage;
+import org.eclipse.kapua.service.device.management.message.KapuaAppMessage;
 
 /**
- * Notify {@link KapuaMessage} definition.
+ * Notify {@link KapuaAppMessage} definition.
  *
  * @since 1.0.0
  */
-public interface KapuaNotifyMessage extends KapuaMessage<KapuaNotifyChannel, KapuaNotifyPayload> {
+public interface KapuaNotifyMessage extends KapuaAppMessage<KapuaNotifyChannel, KapuaNotifyPayload> {
 
 }

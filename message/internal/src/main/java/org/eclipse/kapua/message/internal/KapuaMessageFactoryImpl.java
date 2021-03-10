@@ -13,7 +13,6 @@
  *******************************************************************************/
 package org.eclipse.kapua.message.internal;
 
-import org.eclipse.kapua.locator.KapuaProvider;
 import org.eclipse.kapua.message.KapuaChannel;
 import org.eclipse.kapua.message.KapuaMessage;
 import org.eclipse.kapua.message.KapuaMessageFactory;
@@ -21,26 +20,22 @@ import org.eclipse.kapua.message.KapuaPayload;
 import org.eclipse.kapua.message.KapuaPosition;
 
 /**
- * {@link KapuaMessageFactory} implementation
+ * {@link KapuaMessageFactory} implementation.
  *
  * @since 1.0.0
  */
-@KapuaProvider
-public class KapuaMessageFactoryImpl implements KapuaMessageFactory {
+public abstract class KapuaMessageFactoryImpl<C extends KapuaChannel, P extends KapuaPayload, M extends KapuaMessage<C, P>, F extends KapuaMessageFactory<C, P, M>>
+        extends MessageFactoryImpl<C, P, M, F>
+        implements KapuaMessageFactory<C, P, M> {
 
-    @Override
-    public KapuaMessage newMessage() {
-        return new KapuaMessageImpl<>();
-    }
-
-    @Override
-    public KapuaChannel newChannel() {
-        return new KapuaChannelImpl();
-    }
-
-    @Override
-    public KapuaPayload newPayload() {
-        return new KapuaPayloadImpl();
+    /**
+     * Constructor.
+     *
+     * @param messageFactoryClass The {@link KapuaMessageFactory} type.
+     * @since 1.5.0
+     */
+    public KapuaMessageFactoryImpl(Class<F> messageFactoryClass) {
+        super(messageFactoryClass);
     }
 
     @Override

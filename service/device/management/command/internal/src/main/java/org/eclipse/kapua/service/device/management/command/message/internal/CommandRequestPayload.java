@@ -12,10 +12,10 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.command.message.internal;
 
-import org.eclipse.kapua.message.internal.KapuaPayloadImpl;
 import org.eclipse.kapua.service.device.management.command.DeviceCommand;
 import org.eclipse.kapua.service.device.management.command.DeviceCommandInput;
 import org.eclipse.kapua.service.device.management.command.internal.CommandAppProperties;
+import org.eclipse.kapua.service.device.management.commons.message.request.KapuaRequestPayloadImpl;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestPayload;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ import java.util.List;
  *
  * @since 1.0.0
  */
-public class CommandRequestPayload extends KapuaPayloadImpl implements KapuaRequestPayload {
+public class CommandRequestPayload extends KapuaRequestPayloadImpl implements KapuaRequestPayload {
 
     private static final long serialVersionUID = 2272153023534866045L;
 

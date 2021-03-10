@@ -18,6 +18,11 @@ import org.eclipse.kapua.service.KapuaService;
 import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestMessage;
 import org.eclipse.kapua.service.device.management.request.message.response.GenericResponseMessage;
 
+/**
+ * Generic Request {@link KapuaService} definition.
+ *
+ * @since 1.0.0
+ */
 public interface DeviceRequestManagementService extends KapuaService {
 
     /**

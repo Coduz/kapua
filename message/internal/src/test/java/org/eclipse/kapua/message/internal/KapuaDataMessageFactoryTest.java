@@ -36,21 +36,21 @@ public class KapuaDataMessageFactoryTest extends Assert {
 
     @Test
     public void newMessage() throws Exception {
-        KapuaDataMessage message = kapuaDataMessageFactory.newKapuaDataMessage();
+        KapuaDataMessage message = kapuaDataMessageFactory.newMessage();
 
         assertNotNull(message);
     }
 
     @Test
     public void newChannel() throws Exception {
-        KapuaDataChannel channel = kapuaDataMessageFactory.newKapuaDataChannel();
+        KapuaDataChannel channel = kapuaDataMessageFactory.newChannel();
 
         assertNotNull(channel);
     }
 
     @Test
     public void newPayload() throws Exception {
-        KapuaDataPayload payload = kapuaDataMessageFactory.newKapuaDataPayload();
+        KapuaDataPayload payload = kapuaDataMessageFactory.newPayload();
 
         assertNotNull(payload);
     }

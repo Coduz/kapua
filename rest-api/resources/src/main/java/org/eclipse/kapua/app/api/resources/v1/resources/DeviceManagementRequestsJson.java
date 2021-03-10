@@ -13,16 +13,16 @@
 package org.eclipse.kapua.app.api.resources.v1.resources;
 
 import org.eclipse.kapua.KapuaException;
-import org.eclipse.kapua.app.api.core.resources.AbstractKapuaResource;
-import org.eclipse.kapua.app.api.resources.v1.resources.marker.JsonSerializationFixed;
 import org.eclipse.kapua.app.api.core.model.EntityId;
 import org.eclipse.kapua.app.api.core.model.ScopeId;
 import org.eclipse.kapua.app.api.core.model.device.management.JsonGenericRequestMessage;
 import org.eclipse.kapua.app.api.core.model.device.management.JsonGenericResponseMessage;
+import org.eclipse.kapua.app.api.core.resources.AbstractKapuaResource;
+import org.eclipse.kapua.app.api.resources.v1.resources.marker.JsonSerializationFixed;
 import org.eclipse.kapua.locator.KapuaLocator;
 import org.eclipse.kapua.model.type.ObjectValueConverter;
 import org.eclipse.kapua.service.KapuaService;
-import org.eclipse.kapua.service.device.management.request.GenericRequestFactory;
+import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestFactory;
 import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestMessage;
 import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestPayload;
 import org.eclipse.kapua.service.device.management.request.message.response.GenericResponseMessage;
@@ -60,15 +60,15 @@ public class DeviceManagementRequestsJson extends AbstractKapuaResource implemen
      * @throws KapuaException Whenever something bad happens. See specific {@link KapuaService} exceptions.
      */
     @POST
-    @Consumes({ MediaType.APPLICATION_JSON })
-    @Produces({ MediaType.APPLICATION_JSON })
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public JsonGenericResponseMessage sendRequest(
             @PathParam("scopeId") ScopeId scopeId,
             @PathParam("deviceId") EntityId deviceId,
             @QueryParam("timeout") Long timeout,
             JsonGenericRequestMessage jsonGenericRequestMessage) throws KapuaException {
 
-        GenericRequestMessage genericRequestMessage = GENERIC_REQUEST_FACTORY.newRequestMessage();
+        GenericRequestMessage genericRequestMessage = GENERIC_REQUEST_FACTORY.newMessage();
 
         genericRequestMessage.setId(jsonGenericRequestMessage.getId());
         genericRequestMessage.setScopeId(scopeId);
@@ -80,7 +80,7 @@ public class DeviceManagementRequestsJson extends AbstractKapuaResource implemen
         genericRequestMessage.setPosition(jsonGenericRequestMessage.getPosition());
         genericRequestMessage.setChannel(jsonGenericRequestMessage.getChannel());
 
-        GenericRequestPayload kapuaDataPayload = GENERIC_REQUEST_FACTORY.newRequestPayload();
+        GenericRequestPayload kapuaDataPayload = GENERIC_REQUEST_FACTORY.newPayload();
 
         if (jsonGenericRequestMessage.getPayload() != null) {
             kapuaDataPayload.setBody(jsonGenericRequestMessage.getPayload().getBody());

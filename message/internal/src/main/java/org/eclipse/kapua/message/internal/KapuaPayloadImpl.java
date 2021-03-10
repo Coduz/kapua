@@ -29,7 +29,9 @@ public class KapuaPayloadImpl implements KapuaPayload {
     private byte[] body;
 
     /**
-     * Constructor
+     * Constructor.
+     *
+     * @since 1.0.0
      */
     public KapuaPayloadImpl() {
     }

@@ -10,7 +10,7 @@
  * Contributors:
  *     Eurotech - initial API and implementation
  *******************************************************************************/
-package org.eclipse.kapua.message.internal;
+package org.eclipse.kapua.message.internal.exception;
 
 import org.eclipse.kapua.KapuaErrorCode;
 

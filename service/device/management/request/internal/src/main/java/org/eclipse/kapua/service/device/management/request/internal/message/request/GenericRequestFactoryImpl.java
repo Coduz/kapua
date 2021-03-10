@@ -10,27 +10,31 @@
  * Contributors:
  *     Eurotech - initial API and implementation
  *******************************************************************************/
-package org.eclipse.kapua.service.device.management.request;
+package org.eclipse.kapua.service.device.management.request.internal.message.request;
 
-import org.eclipse.kapua.model.KapuaObjectFactory;
+import org.eclipse.kapua.locator.KapuaProvider;
+import org.eclipse.kapua.message.internal.MessageFactoryImpl;
 import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestChannel;
+import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestFactory;
 import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestMessage;
 import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestPayload;
-import org.eclipse.kapua.service.device.management.request.message.response.GenericResponseChannel;
-import org.eclipse.kapua.service.device.management.request.message.response.GenericResponseMessage;
-import org.eclipse.kapua.service.device.management.request.message.response.GenericResponsePayload;
 
-public interface GenericRequestFactory extends KapuaObjectFactory {
+/**
+ * {@link GenericRequestFactory} implementation.
+ *
+ * @since 1.0.0
+ */
+@KapuaProvider
+public class GenericRequestFactoryImpl
+        extends MessageFactoryImpl<GenericRequestChannel, GenericRequestPayload, GenericRequestMessage, GenericRequestFactory>
+        implements GenericRequestFactory {
 
-    GenericRequestChannel newRequestChannel();
-
-    GenericRequestPayload newRequestPayload();
-
-    GenericRequestMessage newRequestMessage();
-
-    GenericResponseChannel newResponseChannel();
-
-    GenericResponsePayload newResponsePayload();
-
-    GenericResponseMessage newResponseMessage();
+    /**
+     * Constructor.
+     *
+     * @since 1.5.0
+     */
+    public GenericRequestFactoryImpl() {
+        super(GenericRequestFactory.class);
+    }
 }

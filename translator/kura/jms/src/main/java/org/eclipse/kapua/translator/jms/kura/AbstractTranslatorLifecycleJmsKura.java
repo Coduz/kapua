@@ -12,7 +12,7 @@
  *******************************************************************************/
 package org.eclipse.kapua.translator.jms.kura;
 
-import org.eclipse.kapua.message.internal.MessageException;
+import org.eclipse.kapua.message.internal.exception.MessageException;
 import org.eclipse.kapua.service.device.call.kura.Kura;
 import org.eclipse.kapua.service.device.call.message.kura.KuraPayload;
 import org.eclipse.kapua.service.device.call.message.kura.lifecycle.AbstractKuraLifecycleChannel;

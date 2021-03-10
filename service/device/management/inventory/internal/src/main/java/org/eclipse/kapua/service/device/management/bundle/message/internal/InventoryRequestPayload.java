@@ -12,7 +12,7 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.bundle.message.internal;
 
-import org.eclipse.kapua.message.internal.KapuaPayloadImpl;
+import org.eclipse.kapua.service.device.management.commons.message.request.KapuaRequestPayloadImpl;
 import org.eclipse.kapua.service.device.management.inventory.model.inventory.DeviceInventory;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestPayload;
 
@@ -21,7 +21,7 @@ import org.eclipse.kapua.service.device.management.message.request.KapuaRequestP
  *
  * @since 1.5.0
  */
-public class InventoryRequestPayload extends KapuaPayloadImpl implements KapuaRequestPayload {
+public class InventoryRequestPayload extends KapuaRequestPayloadImpl implements KapuaRequestPayload {
 
     private static final long serialVersionUID = 837931637524736407L;
 }

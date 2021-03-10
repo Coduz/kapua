@@ -12,23 +12,32 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.packages.message.internal;
 
+import org.eclipse.kapua.service.device.management.packages.model.DevicePackage;
+
 /**
- * Packages resource operation type.
+ * {@link DevicePackage} reource types..
  *
- * @since 1.0
- *
+ * @since 1.0.0
  */
 public enum PackageResource {
     /**
-     * Download
+     * Download.
+     *
+     * @since 1.0.0
      */
     DOWNLOAD,
+
     /**
-     * Install
+     * Install.
+     *
+     * @since 1.0.0
      */
     INSTALL,
+
     /**
-     * Uninstall
+     * Uninstall.
+     *
+     * @since 1.0.0
      */
     UNINSTALL
 }

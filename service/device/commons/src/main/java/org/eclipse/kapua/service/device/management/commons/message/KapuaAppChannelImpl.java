@@ -12,33 +12,21 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.commons.message;
 
+import org.eclipse.kapua.message.internal.KapuaChannelImpl;
 import org.eclipse.kapua.service.device.management.message.KapuaAppChannel;
 import org.eclipse.kapua.service.device.management.message.KapuaAppProperties;
-
-import java.util.List;
 
 /**
  * {@link KapuaAppChannel} implementation.
  *
  * @since 1.0.0
  */
-public abstract class KapuaAppChannelImpl implements KapuaAppChannel {
+public abstract class KapuaAppChannelImpl extends KapuaChannelImpl implements KapuaAppChannel {
 
     private static final long serialVersionUID = 3755325191379812125L;
 
-    private List<String> semanticParts;
     private KapuaAppProperties appName;
     private KapuaAppProperties appVersion;
-
-    @Override
-    public List<String> getSemanticParts() {
-        return semanticParts;
-    }
-
-    @Override
-    public void setSemanticParts(List<String> semanticParts) {
-        this.semanticParts = semanticParts;
-    }
 
     @Override
     public KapuaAppProperties getAppName() {

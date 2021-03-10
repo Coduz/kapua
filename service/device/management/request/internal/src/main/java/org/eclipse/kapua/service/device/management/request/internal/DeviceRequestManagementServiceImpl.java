@@ -25,8 +25,8 @@ import org.eclipse.kapua.service.device.management.DeviceManagementDomains;
 import org.eclipse.kapua.service.device.management.commons.AbstractDeviceManagementServiceImpl;
 import org.eclipse.kapua.service.device.management.commons.call.DeviceCallExecutor;
 import org.eclipse.kapua.service.device.management.request.DeviceRequestManagementService;
-import org.eclipse.kapua.service.device.management.request.GenericRequestFactory;
 import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestChannel;
+import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestFactory;
 import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestMessage;
 import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestPayload;
 import org.eclipse.kapua.service.device.management.request.message.response.GenericResponseMessage;
@@ -80,17 +80,17 @@ public class DeviceRequestManagementServiceImpl extends AbstractDeviceManagement
 
         //
         // Prepare the request
-        GenericRequestChannel genericRequestChannel = FACTORY.newRequestChannel();
+        GenericRequestChannel genericRequestChannel = FACTORY.newChannel();
         genericRequestChannel.setAppName(requestInput.getChannel().getAppName());
         genericRequestChannel.setVersion(requestInput.getChannel().getVersion());
         genericRequestChannel.setMethod(requestInput.getChannel().getMethod());
         genericRequestChannel.setResources(requestInput.getChannel().getResources());
 
-        GenericRequestPayload genericRequestPayload = FACTORY.newRequestPayload();
+        GenericRequestPayload genericRequestPayload = FACTORY.newPayload();
         genericRequestPayload.setMetrics(requestInput.getPayload().getMetrics());
         genericRequestPayload.setBody(requestInput.getPayload().getBody());
 
-        GenericRequestMessage genericRequestMessage = FACTORY.newRequestMessage();
+        GenericRequestMessage genericRequestMessage = FACTORY.newMessage();
         genericRequestMessage.setScopeId(requestInput.getScopeId());
         genericRequestMessage.setDeviceId(requestInput.getDeviceId());
         genericRequestMessage.setCapturedOn(new Date());
