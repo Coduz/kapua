@@ -166,13 +166,16 @@ import org.eclipse.kapua.service.device.management.configuration.DeviceConfigura
 import org.eclipse.kapua.service.device.management.configuration.DeviceConfigurationXmlFactory;
 import org.eclipse.kapua.service.device.management.inventory.model.bundle.inventory.DeviceInventoryBundle;
 import org.eclipse.kapua.service.device.management.inventory.model.bundle.inventory.DeviceInventoryBundles;
+import org.eclipse.kapua.service.device.management.inventory.model.bundle.inventory.DeviceInventoryBundlesXmlFactory;
 import org.eclipse.kapua.service.device.management.inventory.model.inventory.DeviceInventory;
 import org.eclipse.kapua.service.device.management.inventory.model.inventory.DeviceInventoryItem;
 import org.eclipse.kapua.service.device.management.inventory.model.inventory.DeviceInventoryXmlFactory;
 import org.eclipse.kapua.service.device.management.inventory.model.inventory.packages.DeviceInventoryPackage;
 import org.eclipse.kapua.service.device.management.inventory.model.inventory.packages.DeviceInventoryPackages;
+import org.eclipse.kapua.service.device.management.inventory.model.inventory.packages.DeviceInventoryPackagesXmlFactory;
 import org.eclipse.kapua.service.device.management.inventory.model.inventory.system.DeviceInventorySystemPackage;
 import org.eclipse.kapua.service.device.management.inventory.model.inventory.system.DeviceInventorySystemPackages;
+import org.eclipse.kapua.service.device.management.inventory.model.inventory.system.DeviceInventorySystemPackagesXmlFactory;
 import org.eclipse.kapua.service.device.management.message.notification.OperationStatus;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestChannel;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestMessage;
@@ -445,21 +448,24 @@ public class JaxbContextResolver implements ContextResolver<JAXBContext> {
                     // Device Management Inventory
                     DeviceInventory.class,
                     DeviceInventoryItem.class,
+                    DeviceInventoryXmlFactory.class,
                     KuraInventoryItems.class,
                     KuraInventoryItem.class,
                     DeviceInventoryBundles.class,
                     DeviceInventoryBundle.class,
+                    DeviceInventoryBundlesXmlFactory.class,
                     KuraInventoryBundles.class,
                     KuraInventoryBundle.class,
                     DeviceInventoryPackages.class,
                     DeviceInventoryPackage.class,
+                    DeviceInventoryPackagesXmlFactory.class,
                     KuraInventoryPackages.class,
                     KuraInventoryPackage.class,
                     DeviceInventorySystemPackages.class,
                     DeviceInventorySystemPackage.class,
+                    DeviceInventorySystemPackagesXmlFactory.class,
                     KuraInventorySystemPackages.class,
                     KuraInventorySystemPackage.class,
-                    DeviceInventoryXmlRegistry.class,
 
                     // Device Management Snapshots
                     KuraSnapshotIds.class,
