@@ -27,7 +27,8 @@ import org.eclipse.kapua.message.internal.MessageFactoryImpl;
  */
 @KapuaProvider
 public abstract class KapuaLifecycleMessageFactoryImpl<C extends KapuaLifecycleChannel, P extends KapuaLifecyclePayload, M extends KapuaLifecycleMessage<C, P>, F extends KapuaLifecycleMessageFactory<C, P, M>>
-        extends MessageFactoryImpl<C, P, M, F> implements KapuaLifecycleMessageFactory<C, P, M> {
+        extends MessageFactoryImpl<C, P, M, F>
+        implements KapuaLifecycleMessageFactory<C, P, M> {
 
     /**
      * Constructor.

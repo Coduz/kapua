@@ -19,8 +19,6 @@ import org.eclipse.kapua.service.device.call.kura.model.snapshot.SnapshotMetrics
 import org.eclipse.kapua.service.device.call.message.kura.app.response.KuraResponseChannel;
 import org.eclipse.kapua.service.device.call.message.kura.app.response.KuraResponseMessage;
 import org.eclipse.kapua.service.device.call.message.kura.app.response.KuraResponsePayload;
-import org.eclipse.kapua.service.device.management.commons.setting.DeviceManagementSetting;
-import org.eclipse.kapua.service.device.management.commons.setting.DeviceManagementSettingKey;
 import org.eclipse.kapua.service.device.management.snapshot.DeviceSnapshot;
 import org.eclipse.kapua.service.device.management.snapshot.DeviceSnapshotFactory;
 import org.eclipse.kapua.service.device.management.snapshot.DeviceSnapshots;
@@ -38,8 +36,6 @@ import java.util.List;
  * @since 1.0.0
  */
 public class TranslatorAppSnapshotKuraKapua extends AbstractSimpleTranslatorResponseKuraKapua<SnapshotResponseChannel, SnapshotResponsePayload, SnapshotResponseMessage> {
-
-    private static final String CHAR_ENCODING = DeviceManagementSetting.getInstance().getString(DeviceManagementSettingKey.CHAR_ENCODING);
 
     private static final KapuaLocator LOCATOR = KapuaLocator.getInstance();
 

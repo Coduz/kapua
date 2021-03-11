@@ -22,8 +22,6 @@ import org.eclipse.kapua.model.id.KapuaId;
 import org.eclipse.kapua.service.device.management.DeviceManagementDomains;
 import org.eclipse.kapua.service.device.management.commons.AbstractDeviceManagementServiceImpl;
 import org.eclipse.kapua.service.device.management.commons.call.DeviceCallExecutor;
-import org.eclipse.kapua.service.device.management.commons.setting.DeviceManagementSetting;
-import org.eclipse.kapua.service.device.management.commons.setting.DeviceManagementSettingKey;
 import org.eclipse.kapua.service.device.management.configuration.DeviceComponentConfiguration;
 import org.eclipse.kapua.service.device.management.configuration.DeviceConfiguration;
 import org.eclipse.kapua.service.device.management.configuration.DeviceConfigurationFactory;
@@ -51,8 +49,6 @@ import java.util.Date;
  */
 @KapuaProvider
 public class DeviceConfigurationManagementServiceImpl extends AbstractDeviceManagementServiceImpl implements DeviceConfigurationManagementService {
-
-    private static final String CHAR_ENCODING = DeviceManagementSetting.getInstance().getString(DeviceManagementSettingKey.CHAR_ENCODING);
 
     private static final DeviceConfigurationFactory DEVICE_CONFIGURATION_FACTORY = LOCATOR.getFactory(DeviceConfigurationFactory.class);
 
@@ -91,8 +87,8 @@ public class DeviceConfigurationManagementServiceImpl extends AbstractDeviceMana
 
         //
         // Do get
-        DeviceCallExecutor deviceApplicationCall = new DeviceCallExecutor(configurationRequestMessage, timeout);
-        ConfigurationResponseMessage responseMessage = (ConfigurationResponseMessage) deviceApplicationCall.send();
+        DeviceCallExecutor<?, ?, ?, ConfigurationResponseMessage> deviceApplicationCall = new DeviceCallExecutor<>(configurationRequestMessage, timeout);
+        ConfigurationResponseMessage responseMessage = deviceApplicationCall.send();
 
         //
         // Create event
@@ -157,8 +153,8 @@ public class DeviceConfigurationManagementServiceImpl extends AbstractDeviceMana
 
         //
         // Do put
-        DeviceCallExecutor deviceApplicationCall = new DeviceCallExecutor(configurationRequestMessage, timeout);
-        ConfigurationResponseMessage responseMessage = (ConfigurationResponseMessage) deviceApplicationCall.send();
+        DeviceCallExecutor<?, ?, ?, ConfigurationResponseMessage> deviceApplicationCall = new DeviceCallExecutor<>(configurationRequestMessage, timeout);
+        ConfigurationResponseMessage responseMessage = deviceApplicationCall.send();
 
         //
         // Create event
@@ -224,8 +220,8 @@ public class DeviceConfigurationManagementServiceImpl extends AbstractDeviceMana
 
         //
         // Do put
-        DeviceCallExecutor deviceApplicationCall = new DeviceCallExecutor(configurationRequestMessage, timeout);
-        ConfigurationResponseMessage responseMessage = (ConfigurationResponseMessage) deviceApplicationCall.send();
+        DeviceCallExecutor<?, ?, ?, ConfigurationResponseMessage> deviceApplicationCall = new DeviceCallExecutor<>(configurationRequestMessage, timeout);
+        ConfigurationResponseMessage responseMessage = deviceApplicationCall.send();
 
         //
         // Create event

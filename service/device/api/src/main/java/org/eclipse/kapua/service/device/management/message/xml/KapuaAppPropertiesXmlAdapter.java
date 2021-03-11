@@ -29,12 +29,12 @@ public class KapuaAppPropertiesXmlAdapter extends XmlAdapter<String, KapuaAppPro
     private static final KapuaRequestMessageFactory REQUEST_MESSAGE_FACTORY = LOCATOR.getFactory(KapuaRequestMessageFactory.class);
 
     @Override
-    public String marshal(KapuaAppProperties kapuaAppProperties) throws Exception {
+    public String marshal(KapuaAppProperties kapuaAppProperties) {
         return kapuaAppProperties.getValue();
     }
 
     @Override
-    public KapuaAppProperties unmarshal(String string) throws Exception {
+    public KapuaAppProperties unmarshal(String string) {
         return REQUEST_MESSAGE_FACTORY.newAppProperties(string);
     }
 }
