@@ -17,8 +17,6 @@ import org.eclipse.kapua.locator.KapuaLocator;
 import org.eclipse.kapua.service.device.management.asset.DeviceAssetFactory;
 import org.eclipse.kapua.service.device.management.asset.DeviceAssets;
 import org.eclipse.kapua.service.device.management.commons.message.request.KapuaRequestPayloadImpl;
-import org.eclipse.kapua.service.device.management.commons.setting.DeviceManagementSetting;
-import org.eclipse.kapua.service.device.management.commons.setting.DeviceManagementSettingKey;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestPayload;
 
 import javax.validation.constraints.NotNull;
@@ -34,8 +32,6 @@ public class AssetRequestPayload extends KapuaRequestPayloadImpl implements Kapu
 
     private static final DeviceAssetFactory DEVICE_ASSET_FACTORY = KapuaLocator.getInstance().getFactory(DeviceAssetFactory.class);
 
-    private static final String CHAR_ENCODING = DeviceManagementSetting.getInstance().getString(DeviceManagementSettingKey.CHAR_ENCODING);
-
     /**
      * Gets the {@link DeviceAssets} from the {@link #getBody()}.
      *
@@ -48,7 +44,7 @@ public class AssetRequestPayload extends KapuaRequestPayloadImpl implements Kapu
             return DEVICE_ASSET_FACTORY.newAssetListResult();
         }
 
-        String bodyString = new String(getBody(), CHAR_ENCODING);
+        String bodyString = new String(getBody(), getCharEncoding());
         return XmlUtil.unmarshal(bodyString, DeviceAssets.class);
     }
 
@@ -61,7 +57,7 @@ public class AssetRequestPayload extends KapuaRequestPayloadImpl implements Kapu
      */
     public void setDeviceAssets(@NotNull DeviceAssets deviceAssets) throws Exception {
         String bodyString = XmlUtil.marshal(deviceAssets);
-        setBody(bodyString.getBytes(CHAR_ENCODING));
+        setBody(bodyString.getBytes(getCharEncoding()));
     }
 
 }

@@ -11,11 +11,11 @@
  *     Eurotech - initial API and implementation
  *     Red Hat Inc
  *******************************************************************************/
-package org.eclipse.kapua.service.device.management.commons.message;
+package org.eclipse.kapua.service.device.management.commons.message.request;
 
+import org.eclipse.kapua.locator.KapuaProvider;
 import org.eclipse.kapua.message.internal.MessageFactoryImpl;
 import org.eclipse.kapua.service.device.management.commons.KapuaAppPropertiesImpl;
-import org.eclipse.kapua.service.device.management.commons.message.request.KapuaRequestMessageImpl;
 import org.eclipse.kapua.service.device.management.message.KapuaAppProperties;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestChannel;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestMessageFactory;
@@ -26,7 +26,8 @@ import org.eclipse.kapua.service.device.management.message.request.KapuaRequestP
  *
  * @since 1.0.0
  */
-public abstract class KapuaRequestMessageFactoryImpl<C extends KapuaRequestChannel, P extends KapuaRequestPayload, M extends KapuaRequestMessageImpl<C, P>, F extends KapuaRequestMessageFactory<C, P, M>>
+@KapuaProvider
+public class KapuaRequestMessageFactoryImpl<C extends KapuaRequestChannel, P extends KapuaRequestPayload, M extends KapuaRequestMessageImpl<C, P>, F extends KapuaRequestMessageFactory<C, P, M>>
         extends MessageFactoryImpl<C, P, M, F>
         implements KapuaRequestMessageFactory<C, P, M> {
 

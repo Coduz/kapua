@@ -107,7 +107,7 @@ public abstract class AbstractSimpleTranslatorResponseKuraKapua<TO_C extends Kap
 
             TO_P appResponsePayload;
             if (payloadClazz.equals(GenericResponsePayload.class)) {
-                appResponsePayload = this.payloadClazz.cast(genericRequestFactory.newResponsePayload());
+                appResponsePayload = this.payloadClazz.cast(genericRequestFactory.newPayload());
             } else {
                 appResponsePayload = payloadClazz.newInstance();
             }

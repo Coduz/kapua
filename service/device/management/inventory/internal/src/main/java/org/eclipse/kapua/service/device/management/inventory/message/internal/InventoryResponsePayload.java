@@ -15,8 +15,6 @@ package org.eclipse.kapua.service.device.management.bundle.message.internal;
 import org.eclipse.kapua.commons.util.xml.XmlUtil;
 import org.eclipse.kapua.locator.KapuaLocator;
 import org.eclipse.kapua.service.device.management.commons.message.response.KapuaResponsePayloadImpl;
-import org.eclipse.kapua.service.device.management.commons.setting.DeviceManagementSetting;
-import org.eclipse.kapua.service.device.management.commons.setting.DeviceManagementSettingKey;
 import org.eclipse.kapua.service.device.management.inventory.DeviceInventoryManagementFactory;
 import org.eclipse.kapua.service.device.management.inventory.model.bundle.inventory.DeviceInventoryBundles;
 import org.eclipse.kapua.service.device.management.inventory.model.inventory.DeviceInventory;
@@ -35,8 +33,6 @@ public class InventoryResponsePayload extends KapuaResponsePayloadImpl implement
 
     private static final long serialVersionUID = 4380715272822080425L;
 
-    private static final String CHAR_ENCODING = DeviceManagementSetting.getInstance().getString(DeviceManagementSettingKey.CHAR_ENCODING);
-
     private static final DeviceInventoryManagementFactory DEVICE_INVENTORY_MANAGEMENT_FACTORY = KapuaLocator.getInstance().getFactory(DeviceInventoryManagementFactory.class);
 
     /**
@@ -51,7 +47,7 @@ public class InventoryResponsePayload extends KapuaResponsePayloadImpl implement
             return DEVICE_INVENTORY_MANAGEMENT_FACTORY.newDeviceInventory();
         }
 
-        String bodyString = new String(getBody(), CHAR_ENCODING);
+        String bodyString = new String(getBody(), getCharEncoding());
         return XmlUtil.unmarshal(bodyString, DeviceInventory.class);
     }
 
@@ -64,7 +60,7 @@ public class InventoryResponsePayload extends KapuaResponsePayloadImpl implement
      */
     public void setDeviceInventory(@NotNull DeviceInventory deviceInventory) throws Exception {
         String bodyString = XmlUtil.marshal(deviceInventory);
-        setBody(bodyString.getBytes(CHAR_ENCODING));
+        setBody(bodyString.getBytes(getCharEncoding()));
     }
 
     /**
@@ -79,7 +75,7 @@ public class InventoryResponsePayload extends KapuaResponsePayloadImpl implement
             return DEVICE_INVENTORY_MANAGEMENT_FACTORY.newDeviceInventoryBundles();
         }
 
-        String bodyString = new String(getBody(), CHAR_ENCODING);
+        String bodyString = new String(getBody(), getCharEncoding());
         return XmlUtil.unmarshal(bodyString, DeviceInventoryBundles.class);
     }
 
@@ -92,7 +88,7 @@ public class InventoryResponsePayload extends KapuaResponsePayloadImpl implement
      */
     public void setDeviceInventoryBundles(@NotNull DeviceInventoryBundles inventoryBundles) throws Exception {
         String bodyString = XmlUtil.marshal(inventoryBundles);
-        setBody(bodyString.getBytes(CHAR_ENCODING));
+        setBody(bodyString.getBytes(getCharEncoding()));
     }
 
     /**
@@ -107,7 +103,7 @@ public class InventoryResponsePayload extends KapuaResponsePayloadImpl implement
             return DEVICE_INVENTORY_MANAGEMENT_FACTORY.newDeviceInventorySystemPackages();
         }
 
-        String bodyString = new String(getBody(), CHAR_ENCODING);
+        String bodyString = new String(getBody(), getCharEncoding());
         return XmlUtil.unmarshal(bodyString, DeviceInventorySystemPackages.class);
     }
 
@@ -120,7 +116,7 @@ public class InventoryResponsePayload extends KapuaResponsePayloadImpl implement
      */
     public void setDeviceInventorySystemPackages(@NotNull DeviceInventorySystemPackages systemPackages) throws Exception {
         String bodyString = XmlUtil.marshal(systemPackages);
-        setBody(bodyString.getBytes(CHAR_ENCODING));
+        setBody(bodyString.getBytes(getCharEncoding()));
     }
 
     /**
@@ -135,7 +131,7 @@ public class InventoryResponsePayload extends KapuaResponsePayloadImpl implement
             return DEVICE_INVENTORY_MANAGEMENT_FACTORY.newDeviceInventoryPackages();
         }
 
-        String bodyString = new String(getBody(), CHAR_ENCODING);
+        String bodyString = new String(getBody(), getCharEncoding());
         return XmlUtil.unmarshal(bodyString, DeviceInventoryPackages.class);
     }
 
@@ -148,6 +144,6 @@ public class InventoryResponsePayload extends KapuaResponsePayloadImpl implement
      */
     public void setDeviceInventoryPackages(@NotNull DeviceInventoryPackages packages) throws Exception {
         String bodyString = XmlUtil.marshal(packages);
-        setBody(bodyString.getBytes(CHAR_ENCODING));
+        setBody(bodyString.getBytes(getCharEncoding()));
     }
 }

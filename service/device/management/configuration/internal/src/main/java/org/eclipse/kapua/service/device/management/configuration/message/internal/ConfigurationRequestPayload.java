@@ -15,8 +15,6 @@ package org.eclipse.kapua.service.device.management.configuration.message.intern
 import org.eclipse.kapua.commons.util.xml.XmlUtil;
 import org.eclipse.kapua.locator.KapuaLocator;
 import org.eclipse.kapua.service.device.management.commons.message.request.KapuaRequestPayloadImpl;
-import org.eclipse.kapua.service.device.management.commons.setting.DeviceManagementSetting;
-import org.eclipse.kapua.service.device.management.commons.setting.DeviceManagementSettingKey;
 import org.eclipse.kapua.service.device.management.configuration.DeviceConfiguration;
 import org.eclipse.kapua.service.device.management.configuration.DeviceConfigurationFactory;
 import org.eclipse.kapua.service.device.management.message.request.KapuaRequestPayload;
@@ -32,8 +30,6 @@ public class ConfigurationRequestPayload extends KapuaRequestPayloadImpl impleme
 
     private static final long serialVersionUID = 1400605735748313538L;
 
-    private static final String CHAR_ENCODING = DeviceManagementSetting.getInstance().getString(DeviceManagementSettingKey.CHAR_ENCODING);
-
     private static final DeviceConfigurationFactory DEVICE_CONFIGURATION_FACTORY = KapuaLocator.getInstance().getFactory(DeviceConfigurationFactory.class);
 
     /**
@@ -48,7 +44,7 @@ public class ConfigurationRequestPayload extends KapuaRequestPayloadImpl impleme
             return DEVICE_CONFIGURATION_FACTORY.newConfigurationInstance();
         }
 
-        String bodyString = new String(getBody(), CHAR_ENCODING);
+        String bodyString = new String(getBody(), getCharEncoding());
         return XmlUtil.unmarshal(bodyString, DeviceConfiguration.class);
     }
 
@@ -61,6 +57,6 @@ public class ConfigurationRequestPayload extends KapuaRequestPayloadImpl impleme
      */
     public void setDeviceConfigurations(@NotNull DeviceConfiguration deviceConfiguration) throws Exception {
         String bodyString = XmlUtil.marshal(deviceConfiguration);
-        setBody(bodyString.getBytes(CHAR_ENCODING));
+        setBody(bodyString.getBytes(getCharEncoding()));
     }
 }

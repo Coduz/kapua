@@ -16,8 +16,6 @@ import org.eclipse.kapua.commons.util.xml.XmlUtil;
 import org.eclipse.kapua.locator.KapuaLocator;
 import org.eclipse.kapua.model.id.KapuaId;
 import org.eclipse.kapua.service.device.management.commons.message.response.KapuaResponsePayloadImpl;
-import org.eclipse.kapua.service.device.management.commons.setting.DeviceManagementSetting;
-import org.eclipse.kapua.service.device.management.commons.setting.DeviceManagementSettingKey;
 import org.eclipse.kapua.service.device.management.message.response.KapuaResponsePayload;
 import org.eclipse.kapua.service.device.management.packages.DevicePackageFactory;
 import org.eclipse.kapua.service.device.management.packages.model.DevicePackages;
@@ -35,8 +33,6 @@ import javax.validation.constraints.NotNull;
 public class PackageResponsePayload extends KapuaResponsePayloadImpl implements KapuaResponsePayload {
 
     private static final long serialVersionUID = -2100712552502696907L;
-
-    private static final String CHAR_ENCODING = DeviceManagementSetting.getInstance().getString(DeviceManagementSettingKey.CHAR_ENCODING);
 
     private static final DevicePackageFactory DEVICE_PACKAGE_FACTORY = KapuaLocator.getInstance().getFactory(DevicePackageFactory.class);
 
@@ -140,7 +136,7 @@ public class PackageResponsePayload extends KapuaResponsePayloadImpl implements 
             return DEVICE_PACKAGE_FACTORY.newDeviceDeploymentPackages();
         }
 
-        String bodyString = new String(getBody(), CHAR_ENCODING);
+        String bodyString = new String(getBody(), getCharEncoding());
         return XmlUtil.unmarshal(bodyString, DevicePackages.class);
     }
 
@@ -153,7 +149,7 @@ public class PackageResponsePayload extends KapuaResponsePayloadImpl implements 
      */
     public void setDeploymentPackages(@NotNull DevicePackages devicePackages) throws Exception {
         String bodyString = XmlUtil.marshal(devicePackages);
-        setBody(bodyString.getBytes(CHAR_ENCODING));
+        setBody(bodyString.getBytes(getCharEncoding()));
     }
 
     /**
@@ -168,7 +164,7 @@ public class PackageResponsePayload extends KapuaResponsePayloadImpl implements 
             return DEVICE_PACKAGE_FACTORY.newPackageInstallOperation();
         }
 
-        String bodyString = new String(getBody(), CHAR_ENCODING);
+        String bodyString = new String(getBody(), getCharEncoding());
         return XmlUtil.unmarshal(bodyString, DevicePackageInstallOperation.class);
     }
 
@@ -181,7 +177,7 @@ public class PackageResponsePayload extends KapuaResponsePayloadImpl implements 
      */
     public void setDevicePackageInstallOperations(@NotNull DevicePackageInstallOperation devicePackageInstallOperation) throws Exception {
         String bodyString = XmlUtil.marshal(devicePackageInstallOperation);
-        setBody(bodyString.getBytes(CHAR_ENCODING));
+        setBody(bodyString.getBytes(getCharEncoding()));
     }
 
     /**
@@ -196,7 +192,7 @@ public class PackageResponsePayload extends KapuaResponsePayloadImpl implements 
             return DEVICE_PACKAGE_FACTORY.newPackageUninstallOperation();
         }
 
-        String bodyString = new String(getBody(), CHAR_ENCODING);
+        String bodyString = new String(getBody(), getCharEncoding());
         return XmlUtil.unmarshal(bodyString, DevicePackageUninstallOperation.class);
     }
 
@@ -209,6 +205,6 @@ public class PackageResponsePayload extends KapuaResponsePayloadImpl implements 
      */
     public void setDevicePackageUninstallOperations(@NotNull DevicePackageUninstallOperation devicePackageUninstallOperation) throws Exception {
         String bodyString = XmlUtil.marshal(devicePackageUninstallOperation);
-        setBody(bodyString.getBytes(CHAR_ENCODING));
+        setBody(bodyString.getBytes(getCharEncoding()));
     }
 }
