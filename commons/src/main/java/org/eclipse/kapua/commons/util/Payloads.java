@@ -29,9 +29,21 @@ public final class Payloads {
 
     private static final Comparator<Entry<String, Object>> ENTRY_COMPARATOR = Comparator.comparing(Map.Entry<String, Object>::getKey);
 
+    /**
+     * Constructor.
+     *
+     * @since 1.0.0
+     */
     private Payloads() {
     }
 
+    /**
+     * Returns the given {@link Map} of properties formatted for display.
+     *
+     * @param properties The properties to display.
+     * @return The properties formatted for display.
+     * @since 1.0.0
+     */
     public static String toDisplayString(Map<String, Object> properties) {
         if (properties == null) {
             return "";
@@ -63,6 +75,19 @@ public final class Payloads {
         return sb.toString();
     }
 
+    /**
+     * Returns the given object as more displayable object.
+     *
+     * <ul>
+     *     <li>byte[] gets URL encoded</li>
+     *     <li>Primitive types are returned as is</li>
+     *     <li>All others ends up as an empty {@link String}</li>
+     * </ul>
+     *
+     * @param value The value to make displayable.
+     * @return The displayable value.
+     * @since 1.0.0
+     */
     private static Object forDisplay(Object value) {
         if (value instanceof byte[]) {
             return Base64.getUrlEncoder().withoutPadding().encodeToString((byte[]) value);
