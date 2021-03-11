@@ -177,6 +177,7 @@ public abstract class AbstractSimpleTranslatorResponseKuraKapua<TO_C extends Kap
      * @return The {@link String} representing the {@code byte[]}.
      * @throws InvalidBodyEncodingException if the given {@code byte[]} cannot be read using the given encoding.
      * @see String#String(byte[], String)
+     * @since 1.5.0
      */
     protected String readBodyAsString(@NotNull byte[] body, @NotNull String encoding) throws InvalidBodyEncodingException {
         try {
