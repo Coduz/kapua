@@ -34,8 +34,13 @@ public class TranslatorAppResponseKuraKapua extends AbstractSimpleTranslatorResp
 
     private static final KapuaLocator LOCATOR = KapuaLocator.getInstance();
 
+    /**
+     * Constructor.
+     *
+     * @since 1.5.0
+     */
     public TranslatorAppResponseKuraKapua() {
-        super(GenericResponseMessage.class, GenericResponsePayload.class);
+        super(GenericResponseMessage.class, GenericResponsePayload.class, GenericResponseFactory.class);
     }
 
     @Override

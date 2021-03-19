@@ -18,6 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.eclipse.kapua.KapuaException;
 import org.eclipse.kapua.commons.util.xml.XmlUtil;
 import org.eclipse.kapua.locator.KapuaLocator;
+import org.eclipse.kapua.message.MessageFactory;
 import org.eclipse.kapua.service.device.call.message.kura.app.response.KuraResponseChannel;
 import org.eclipse.kapua.service.device.call.message.kura.app.response.KuraResponseMessage;
 import org.eclipse.kapua.service.device.call.message.kura.app.response.KuraResponseMetrics;
@@ -27,9 +28,6 @@ import org.eclipse.kapua.service.device.management.commons.setting.DeviceManagem
 import org.eclipse.kapua.service.device.management.message.response.KapuaResponseChannel;
 import org.eclipse.kapua.service.device.management.message.response.KapuaResponseMessage;
 import org.eclipse.kapua.service.device.management.message.response.KapuaResponsePayload;
-import org.eclipse.kapua.service.device.management.request.message.request.GenericRequestFactory;
-import org.eclipse.kapua.service.device.management.request.message.response.GenericResponseMessage;
-import org.eclipse.kapua.service.device.management.request.message.response.GenericResponsePayload;
 import org.eclipse.kapua.translator.exception.InvalidBodyContentException;
 import org.eclipse.kapua.translator.exception.InvalidBodyEncodingException;
 import org.eclipse.kapua.translator.exception.InvalidBodyException;
@@ -57,6 +55,7 @@ public abstract class AbstractSimpleTranslatorResponseKuraKapua<TO_C extends Kap
 
     private static final KapuaLocator LOCATOR = KapuaLocator.getInstance();
 
+    private MessageFactory<TO_C, TO_P, TO_M> messageFactory;
     private final Class<TO_M> messageClazz;
     private final Class<TO_P> payloadClazz;
 
@@ -72,15 +71,31 @@ public abstract class AbstractSimpleTranslatorResponseKuraKapua<TO_C extends Kap
         this.payloadClazz = payloadClazz;
     }
 
+    /**
+     * Constructor.
+     * <p>
+     * This constructor is {@link MessageFactory} based.
+     * If {@link #messageClazz} or {@link #payloadClazz} are {@code interfaces}, the {@link #messageFactory} MUST be specified.
+     *
+     * @param messageClazz The {@link Class} of the {@link KapuaResponseMessage}. It must have a 0-arguments constructor.
+     * @param payloadClazz The {@link Class} of the {@link KapuaResponsePayload}. It must have a 0-arguments constructor.
+     * @param factoryClass The {@link Class} of the {@link MessageFactory} that can instantiates the given types.
+     * @since 1.5.0
+     */
+    public <F extends MessageFactory<TO_C, TO_P, TO_M>> AbstractSimpleTranslatorResponseKuraKapua(Class<TO_M> messageClazz, Class<TO_P> payloadClazz, Class<F> factoryClass) {
+        this.messageClazz = messageClazz;
+        this.payloadClazz = payloadClazz;
+
+        this.messageFactory = LOCATOR.getFactory(factoryClass);
+    }
+
     @Override
     protected TO_M createMessage() throws KapuaException {
-        GenericRequestFactory genericRequestFactory = LOCATOR.getFactory(GenericRequestFactory.class);
-
         try {
-            if (this.messageClazz.equals(GenericResponseMessage.class)) {
-                return this.messageClazz.cast(genericRequestFactory.newMessage());
+            if (messageClazz.isInterface()) {
+                return messageFactory.newMessage();
             } else {
-                return this.messageClazz.newInstance();
+                return messageClazz.newInstance();
             }
         } catch (InstantiationException | IllegalAccessException e) {
             throw KapuaException.internalError(e);
@@ -103,11 +118,9 @@ public abstract class AbstractSimpleTranslatorResponseKuraKapua<TO_C extends Kap
     @Override
     protected TO_P translatePayload(KuraResponsePayload kuraResponsePayload) throws InvalidPayloadException {
         try {
-            GenericRequestFactory genericRequestFactory = LOCATOR.getFactory(GenericRequestFactory.class);
-
             TO_P appResponsePayload;
-            if (payloadClazz.equals(GenericResponsePayload.class)) {
-                appResponsePayload = this.payloadClazz.cast(genericRequestFactory.newPayload());
+            if (payloadClazz.isInterface()) {
+                appResponsePayload = messageFactory.newPayload();
             } else {
                 appResponsePayload = payloadClazz.newInstance();
             }
