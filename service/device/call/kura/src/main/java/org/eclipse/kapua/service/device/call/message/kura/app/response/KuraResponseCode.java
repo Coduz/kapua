@@ -12,10 +12,11 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.call.message.kura.app.response;
 
+import org.eclipse.kapua.service.device.call.kura.Kura;
 import org.eclipse.kapua.service.device.call.message.app.response.DeviceResponseCode;
 
 /**
- * {@link DeviceResponseCode} {@link org.eclipse.kapua.service.device.call.kura.Kura} implementation
+ * {@link DeviceResponseCode} {@link Kura} implementation
  *
  * @since 1.0.0
  */
@@ -54,7 +55,7 @@ public enum KuraResponseCode implements DeviceResponseCode {
      *
      * @since 1.0.0
      */
-    private int code;
+    private final int code;
 
     /**
      * Constructor.
@@ -84,7 +85,7 @@ public enum KuraResponseCode implements DeviceResponseCode {
      * @since 1.0.0
      */
     public static KuraResponseCode fromResponseCode(String responseCode) {
-        return fromResponseCode(Integer.valueOf(responseCode));
+        return fromResponseCode(Integer.parseInt(responseCode));
     }
 
     /**

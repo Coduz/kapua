@@ -12,67 +12,29 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.call.kura.model.inventory;
 
-import org.eclipse.kapua.service.device.call.message.DeviceMetrics;
 import org.eclipse.kapua.service.device.call.message.app.DeviceAppMetrics;
 
 /**
- * Inventory {@link DeviceMetrics}.
+ * {@link KuraInventoryItems} {@link DeviceAppMetrics} implementation.
  *
  * @since 1.5.0
  */
-public enum InventoryMetrics implements DeviceAppMetrics {
+public class InventoryMetrics implements DeviceAppMetrics {
+
+    private InventoryMetrics() {
+    }
 
     /**
      * Application identifier.
      *
      * @since 1.5.0
      */
-    APP_ID("INVENTORY"),
+    public static final String APP_ID = "INVENTORY";
 
     /**
      * Application version.
      *
      * @since 1.5.0
      */
-    APP_VERSION("V1"),
-    ;
-
-    /**
-     * The name of the metric.
-     *
-     * @since 1.5.0
-     */
-    private final String name;
-
-    /**
-     * Constructor.
-     *
-     * @param name The name of the metric.
-     * @since 1.5.0
-     */
-    InventoryMetrics(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Gets the value property associated to this specific enumeration key.
-     *
-     * @return the value property associated to this specific enumeration key.
-     * @since 1.5.0
-     * @deprecated Since 1.2.0. Renamed to {@link #getName()}.
-     */
-    @Deprecated
-    public String getValue() {
-        return getName();
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String toString() {
-        return getName();
-    }
+    public static final String APP_VERSION = "V1";
 }

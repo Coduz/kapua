@@ -13,44 +13,54 @@
 package org.eclipse.kapua.service.device.management.packages.message.internal;
 
 import org.eclipse.kapua.service.device.management.message.KapuaAppProperties;
+import org.eclipse.kapua.service.device.management.packages.DevicePackageManagementService;
 
 /**
- * {@link KapuaAppProperties} definition for {@link org.eclipse.kapua.service.device.management.packages.DevicePackageManagementService}.
+ * {@link KapuaAppProperties} definition for {@link DevicePackageManagementService}.
  *
  * @since 1.0.0
  */
-public enum PackageAppProperties implements KapuaAppProperties {
+public class PackageAppProperties implements KapuaAppProperties {
 
     /**
-     * Application name
+     * Constructor.
      *
-     * @since 1.0.0
+     * @since 1.5.0
      */
-    APP_NAME("DEPLOY"),
+    private PackageAppProperties() {
+    }
+
     /**
-     * Application version
+     * Application name.
      *
      * @since 1.0.0
      */
-    APP_VERSION("1.0.0"),
+    public static final String APP_NAME = "DEPLOY";
+
+    /**
+     * Application version.
+     *
+     * @since 1.0.0
+     */
+    public static final String APP_VERSION = "1.0.0";
 
     // Commons exec properties
     /**
      * Operation identifier
      */
-    APP_PROPERTY_PACKAGE_OPERATION_ID("kapua.package.operation.id"),
+    public static final String PACKAGE_OPERATION_ID = "package.operation.id";
     /**
      * Device reboot
      *
      * @since 1.0.0
      */
-    APP_PROPERTY_PACKAGE_REBOOT("kapua.package.reboot"),
+    public static final String PACKAGE_REBOOT = "package.reboot";
     /**
      * Reboot delay
      *
      * @since 1.0.0
      */
-    APP_PROPERTY_PACKAGE_REBOOT_DELAY("kapua.package.reboot.delay"),
+    public static final String PACKAGE_REBOOT_DELAY = "package.reboot.delay";
 
     // Request exec download
     /**
@@ -58,91 +68,91 @@ public enum PackageAppProperties implements KapuaAppProperties {
      *
      * @since 1.0.0
      */
-    APP_PROPERTY_PACKAGE_DOWNLOAD_PACKAGE_URI("kapua.package.download.uri"),
+    public static final String PACKAGE_DOWNLOAD_PACKAGE_URI = "package.download.uri";
     /**
      * Package name
      *
      * @since 1.0.0
      */
-    APP_PROPERTY_PACKAGE_DOWNLOAD_PACKAGE_NAME("kapua.package.download.name"),
+    public static final String PACKAGE_DOWNLOAD_PACKAGE_NAME = "package.download.name";
     /**
      * Package version
      *
      * @since 1.0.0
      */
-    APP_PROPERTY_PACKAGE_DOWNLOAD_PACKAGE_VERSION("kapua.package.download.version"),
+    public static final String PACKAGE_DOWNLOAD_PACKAGE_VERSION = "package.download.version";
     /**
      * URI username
      *
      * @since 1.1.0
      */
-    APP_PROPERTY_PACKAGE_DOWNLOAD_USERNAME("kapua.package.download.username"),
+    public static final String PACKAGE_DOWNLOAD_USERNAME = "package.download.username";
     /**
      * URI password
      *
      * @since 1.1.0
      */
-    APP_PROPERTY_PACKAGE_DOWNLOAD_PASSWORD("kapua.package.download.password"),
+    public static final String PACKAGE_DOWNLOAD_PASSWORD = "package.download.password";
     /**
      * File hash
      *
      * @since 1.1.0
      */
-    APP_PROPERTY_PACKAGE_DOWNLOAD_FILE_HASH("kapua.package.download.file.hash"),
+    public static final String PACKAGE_DOWNLOAD_FILE_HASH = "package.download.file.hash";
     /**
      * File type
      *
      * @since 1.1.0
      */
-    APP_PROPERTY_PACKAGE_DOWNLOAD_FILE_TYPE("kapua.package.download.file.type"),
+    public static final String PACKAGE_DOWNLOAD_FILE_TYPE = "package.download.file.type";
     /**
      * Package install
      *
      * @since 1.0.0
      */
-    APP_PROPERTY_PACKAGE_DOWNLOAD_PACKAGE_INSTALL("kapua.package.download.install"),
+    public static final String PACKAGE_DOWNLOAD_PACKAGE_INSTALL = "package.download.install";
 
     /**
      * File download restart
      *
      * @since 1.1.0
      */
-    APP_PROPERTY_PACKAGE_DOWNLOAD_RESTART("kapua.package.download.restart"),
+    public static final String PACKAGE_DOWNLOAD_RESTART = "package.download.restart";
 
     /**
      * File download block size
      *
      * @since 1.1.0
      */
-    APP_PROPERTY_PACKAGE_DOWNLOAD_BLOCK_SIZE("kapua.package.download.block.size"),
+    public static final String PACKAGE_DOWNLOAD_BLOCK_SIZE = "package.download.block.size";
 
     /**
      * File download block delay
      *
      * @since 1.1.0
      */
-    APP_PROPERTY_PACKAGE_DOWNLOAD_BLOCK_DELAY("kapua.package.download.block.delay"),
+    public static final String PACKAGE_DOWNLOAD_BLOCK_DELAY = "package.download.block.delay";
 
     /**
      * File download block timeout
      *
      * @since 1.1.0
      */
-    APP_PROPERTY_PACKAGE_DOWNLOAD_BLOCK_TIMEOUT("kapua.package.download.block.timeout"),
+    public static final String PACKAGE_DOWNLOAD_BLOCK_TIMEOUT = "package.download.block.timeout";
 
     /**
      * File download notify block size
      *
      * @since 1.1.0
      */
-    APP_PROPERTY_PACKAGE_DOWNLOAD_NOTIFY_BLOCK_SIZE("kapua.package.download.notify.block.size"),
+    public static final String PACKAGE_DOWNLOAD_NOTIFY_BLOCK_SIZE = "package.download.notify.block.size";
 
     /**
      * File download install verifier URI
      *
      * @since 1.1.0
      */
-    APP_PROPERTY_PACKAGE_DOWNLOAD_INSTALL_VERIFIER_URI("kapua.package.download.install.verifier.uri"),
+    public static final String PACKAGE_DOWNLOAD_INSTALL_VERIFIER_URI = "package.download.install.verifier.uri";
 
     // Response get download
     /**
@@ -150,19 +160,19 @@ public enum PackageAppProperties implements KapuaAppProperties {
      *
      * @since 1.0.0
      */
-    APP_PROPERTY_PACKAGE_DOWNLOAD_SIZE("kapua.package.download.size"),
+    public static final String PACKAGE_DOWNLOAD_SIZE = "package.download.size";
     /**
      * Package download status
      *
      * @since 1.0.0
      */
-    APP_PROPERTY_PACKAGE_DOWNLOAD_STATUS("kapua.package.download.status"),
+    public static final String PACKAGE_DOWNLOAD_STATUS = "package.download.status";
     /**
      * Package download progress
      *
      * @since 1.0.0
      */
-    APP_PROPERTY_PACKAGE_DOWNLOAD_PROGRESS("kapua.package.download.progress"),
+    public static final String PACKAGE_DOWNLOAD_PROGRESS = "package.download.progress";
 
     // Request exec install
     /**
@@ -170,13 +180,13 @@ public enum PackageAppProperties implements KapuaAppProperties {
      *
      * @since 1.0.0
      */
-    APP_PROPERTY_PACKAGE_INSTALL_PACKAGE_NAME("kapua.package.install.name"),
+    public static final String PACKAGE_INSTALL_PACKAGE_NAME = "package.install.name";
     /**
      * Package install version
      *
      * @since 1.0.0
      */
-    APP_PROPERTY_PACKAGE_INSTALL_PACKAGE_VERSION("kapua.package.install.version"),
+    public static final String PACKAGE_INSTALL_PACKAGE_VERSION = "package.install.version";
 
     // Request exec uninstall
     /**
@@ -184,36 +194,11 @@ public enum PackageAppProperties implements KapuaAppProperties {
      *
      * @since 1.0.0
      */
-    APP_PROPERTY_PACKAGE_UNINSTALL_PACKAGE_NAME("kapua.package.uninstall.name"),
+    public static final String PACKAGE_UNINSTALL_PACKAGE_NAME = "package.uninstall.name";
     /**
      * Package uninstall version
      *
      * @since 1.0.0
      */
-    APP_PROPERTY_PACKAGE_UNINSTALL_PACKAGE_VERSION("kapua.package.uninstall.version"),
-    ;
-
-    private String value;
-
-    /**
-     * Label for the {@link KapuaAppProperties} properties.
-     *
-     * @param value The property name of the {@link KapuaAppProperties}.
-     * @since 1.0.0
-     */
-    PackageAppProperties(String value) {
-        this.value = value;
-    }
-
-    /**
-     * Gets the {@link KapuaAppProperties} name.
-     *
-     * @return The {@link KapuaAppProperties} name.
-     * @since 1.0.0
-     */
-    @Override
-    public String getValue() {
-        return value;
-    }
-
+    public static final String PACKAGE_UNINSTALL_PACKAGE_VERSION = "package.uninstall.version";
 }

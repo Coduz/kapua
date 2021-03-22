@@ -12,11 +12,12 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.call.message.kura.data;
 
+import org.eclipse.kapua.service.device.call.kura.Kura;
 import org.eclipse.kapua.service.device.call.message.data.DeviceDataPayload;
 import org.eclipse.kapua.service.device.call.message.kura.KuraPayload;
 
 /**
- * {@link DeviceDataPayload} {@link org.eclipse.kapua.service.device.call.kura.Kura} implementation
+ * {@link DeviceDataPayload} {@link Kura} implementation.
  *
  * @since 1.0.0
  */

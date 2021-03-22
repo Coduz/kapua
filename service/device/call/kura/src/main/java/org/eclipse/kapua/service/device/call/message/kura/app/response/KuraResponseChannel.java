@@ -12,13 +12,14 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.call.message.kura.app.response;
 
+import org.eclipse.kapua.service.device.call.kura.Kura;
 import org.eclipse.kapua.service.device.call.message.app.response.DeviceResponseChannel;
 import org.eclipse.kapua.service.device.call.message.kura.app.KuraAppChannel;
 
 import java.util.List;
 
 /**
- * {@link DeviceResponseChannel} {@link org.eclipse.kapua.service.device.call.kura.Kura} implementation.
+ * {@link DeviceResponseChannel} {@link Kura} implementation.
  *
  * @since 1.0.0
  */

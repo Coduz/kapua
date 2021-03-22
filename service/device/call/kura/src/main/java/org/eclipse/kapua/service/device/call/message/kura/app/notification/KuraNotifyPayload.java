@@ -13,11 +13,12 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.call.message.kura.app.notification;
 
+import org.eclipse.kapua.service.device.call.kura.Kura;
 import org.eclipse.kapua.service.device.call.message.app.notification.DeviceNotifyPayload;
 import org.eclipse.kapua.service.device.call.message.kura.app.KuraAppPayload;
 
 /**
- * {@link DeviceNotifyPayload} {@link org.eclipse.kapua.service.device.call.kura.Kura} implementation.
+ * {@link DeviceNotifyPayload} {@link Kura} implementation.
  *
  * @since 1.0.0
  */
@@ -25,12 +26,12 @@ public class KuraNotifyPayload extends KuraAppPayload implements DeviceNotifyPay
 
     @Override
     public Long getOperationId() {
-        if (getMetrics().containsKey(KuraNotifyMetrics.OPERATION_ID.getName())) {
-            return (Long) getMetrics().get(KuraNotifyMetrics.OPERATION_ID.getName());
+        if (getMetrics().containsKey(KuraNotifyMetrics.JOB_ID)) {
+            return (Long) getMetrics().get(KuraNotifyMetrics.JOB_ID);
         }
 
-        if (getMetrics().containsKey(KuraNotifyMetrics.OPERATION_ID_ALTERNATIVE.getName())) {
-            return (Long) getMetrics().get(KuraNotifyMetrics.OPERATION_ID_ALTERNATIVE.getName());
+        if (getMetrics().containsKey(KuraNotifyMetrics.OPERATION_ID_ALTERNATIVE)) {
+            return (Long) getMetrics().get(KuraNotifyMetrics.OPERATION_ID_ALTERNATIVE);
         }
 
         return null;
@@ -38,15 +39,15 @@ public class KuraNotifyPayload extends KuraAppPayload implements DeviceNotifyPay
 
     public String getResource() {
 
-        if (getMetrics().containsKey(KuraNotifyMetrics.DOWNLOAD_STATUS.getName())) {
+        if (getMetrics().containsKey(KuraNotifyMetrics.DP_DOWNLOAD_STATUS)) {
             return "download";
         }
 
-        if (getMetrics().containsKey(KuraNotifyMetrics.INSTALL_STATUS.getName())) {
+        if (getMetrics().containsKey(KuraNotifyMetrics.DP_INSTALL_STATUS)) {
             return "install";
         }
 
-        if (getMetrics().containsKey(KuraNotifyMetrics.UNINSTALL_PROGRESS.getName())) {
+        if (getMetrics().containsKey(KuraNotifyMetrics.DP_UNINSTALL_PROGRESS)) {
             return "uninstall";
         }
 
@@ -55,18 +56,18 @@ public class KuraNotifyPayload extends KuraAppPayload implements DeviceNotifyPay
 
     @Override
     public String getStatus() {
-        Object status = getMetrics().get(KuraNotifyMetrics.DOWNLOAD_STATUS.getName());
+        Object status = getMetrics().get(KuraNotifyMetrics.DP_DOWNLOAD_STATUS);
 
         if (status == null) {
-            status = getMetrics().get(KuraNotifyMetrics.INSTALL_STATUS.getName());
+            status = getMetrics().get(KuraNotifyMetrics.DP_INSTALL_STATUS);
         }
 
         if (status == null) {
-            status = getMetrics().get(KuraNotifyMetrics.UNINSTALL_STATUS.getName());
+            status = getMetrics().get(KuraNotifyMetrics.DP_UNINSTALL_STATUS);
         }
 
         if (status == null) {
-            status = getMetrics().get(KuraNotifyMetrics.STATUS.getName());
+            status = getMetrics().get(KuraNotifyMetrics.STATUS);
         }
 
         return (String) status;
@@ -74,18 +75,18 @@ public class KuraNotifyPayload extends KuraAppPayload implements DeviceNotifyPay
 
     @Override
     public Integer getProgress() {
-        Object progress = getMetrics().get(KuraNotifyMetrics.DOWNLOAD_PROGRESS.getName());
+        Object progress = getMetrics().get(KuraNotifyMetrics.DP_DOWNLOAD_PROGRESS);
 
         if (progress == null) {
-            progress = getMetrics().get(KuraNotifyMetrics.INSTALL_PROGRESS.getName());
+            progress = getMetrics().get(KuraNotifyMetrics.DP_INSTALL_PROGRESS);
         }
 
         if (progress == null) {
-            progress = getMetrics().get(KuraNotifyMetrics.UNINSTALL_PROGRESS.getName());
+            progress = getMetrics().get(KuraNotifyMetrics.DP_UNINSTALL_PROGRESS);
         }
 
         if (progress == null) {
-            progress = getMetrics().get(KuraNotifyMetrics.PROGRESS.getName());
+            progress = getMetrics().get(KuraNotifyMetrics.PROGRESS);
         }
 
         return (Integer) progress;
@@ -93,34 +94,34 @@ public class KuraNotifyPayload extends KuraAppPayload implements DeviceNotifyPay
 
     @Override
     public String getMessage() {
-        Object message = getMetrics().get(KuraNotifyMetrics.NOTIFY_MESSAGE.getName());
+        Object message = getMetrics().get(KuraNotifyMetrics.DP_NOTIFY_MESSAGE);
 
         if (message == null) {
-            message = getMetrics().get(KuraNotifyMetrics.MESSAGE.getName());
+            message = getMetrics().get(KuraNotifyMetrics.MESSAGE);
         }
 
         if (message == null) {
-            message = getMetrics().get(KuraNotifyMetrics.DOWNLOAD_MESSAGE.getName());
+            message = getMetrics().get(KuraNotifyMetrics.DP_DOWNLOAD_MESSAGE);
         }
 
         if (message == null) {
-            message = getMetrics().get(KuraNotifyMetrics.DOWNLOAD_ERROR_MESSAGE.getName());
+            message = getMetrics().get(KuraNotifyMetrics.DP_DOWNLOAD_ERROR_MESSAGE);
         }
 
         if (message == null) {
-            message = getMetrics().get(KuraNotifyMetrics.INSTALL_MESSAGE.getName());
+            message = getMetrics().get(KuraNotifyMetrics.DP_INSTALL_MESSAGE);
         }
 
         if (message == null) {
-            message = getMetrics().get(KuraNotifyMetrics.INSTALL_ERROR_MESSAGE.getName());
+            message = getMetrics().get(KuraNotifyMetrics.DP_INSTALL_ERROR_MESSAGE);
         }
 
         if (message == null) {
-            message = getMetrics().get(KuraNotifyMetrics.UNINSTALL_MESSAGE.getName());
+            message = getMetrics().get(KuraNotifyMetrics.DP_UNINSTALL_MESSAGE);
         }
 
         if (message == null) {
-            message = getMetrics().get(KuraNotifyMetrics.UNINSTALL_ERROR_MESSAGE.getName());
+            message = getMetrics().get(KuraNotifyMetrics.DP_UNINSTALL_ERROR_MESSAGE);
         }
 
         return (String) message;

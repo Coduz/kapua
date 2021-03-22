@@ -14,7 +14,7 @@ package org.eclipse.kapua.service.device.management.commons.message.response;
 
 import org.eclipse.kapua.service.device.management.commons.message.KapuaAppPayloadImpl;
 import org.eclipse.kapua.service.device.management.message.response.KapuaResponsePayload;
-import org.eclipse.kapua.service.device.management.message.response.ResponseProperties;
+import org.eclipse.kapua.service.device.management.message.response.KapuaResponseProperties;
 
 /**
  * {@link KapuaResponsePayload} implementation.
@@ -25,22 +25,22 @@ public class KapuaResponsePayloadImpl extends KapuaAppPayloadImpl implements Kap
 
     @Override
     public String getExceptionMessage() {
-        return (String) getMetrics().get(ResponseProperties.RESP_PROPERTY_EXCEPTION_MESSAGE.getValue());
+        return (String) getMetrics().get(KapuaResponseProperties.RESP_PROPERTY_EXCEPTION_MESSAGE);
     }
 
     @Override
     public void setExceptionMessage(String exceptionMessage) {
-        getMetrics().put(ResponseProperties.RESP_PROPERTY_EXCEPTION_MESSAGE.getValue(), exceptionMessage);
+        getMetrics().put(KapuaResponseProperties.RESP_PROPERTY_EXCEPTION_MESSAGE, exceptionMessage);
     }
 
     @Override
     public String getExceptionStack() {
-        return (String) getMetrics().get(ResponseProperties.RESP_PROPERTY_EXCEPTION_STACK.getValue());
+        return (String) getMetrics().get(KapuaResponseProperties.RESP_PROPERTY_EXCEPTION_STACK);
     }
 
     @Override
     public void setExceptionStack(String setExecptionStack) {
-        getMetrics().put(ResponseProperties.RESP_PROPERTY_EXCEPTION_STACK.getValue(), setExecptionStack);
+        getMetrics().put(KapuaResponseProperties.RESP_PROPERTY_EXCEPTION_STACK, setExecptionStack);
     }
 
 }

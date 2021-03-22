@@ -12,116 +12,106 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.call.message.kura.app.notification;
 
-import org.eclipse.kapua.service.device.call.message.app.request.DeviceRequestMetrics;
+import org.eclipse.kapua.service.device.call.kura.Kura;
+import org.eclipse.kapua.service.device.call.message.app.notification.DeviceNotifyMetrics;
 
 /**
- * {@link DeviceRequestMetrics} {@link org.eclipse.kapua.service.device.call.kura.Kura} implementation.
+ * {@link DeviceNotifyMetrics} {@link Kura} implementation.
  *
  * @since 1.0.0
  */
-public enum KuraNotifyMetrics implements DeviceRequestMetrics {
+public class KuraNotifyMetrics implements DeviceNotifyMetrics {
 
-    /**
-     * @since 1.0.0
-     */
-    OPERATION_ID("job.id"),
-    /**
-     * @since 1.2.0
-     */
-    OPERATION_ID_ALTERNATIVE("operation.id"),
-
-    /**
-     * @since 1.2.0
-     */
-    STATUS("status"),
-    /**
-     * @since 1.0.0
-     */
-    DOWNLOAD_STATUS("dp.download.status"),
-    /**
-     * @since 1.0.0
-     */
-    INSTALL_STATUS("dp.install.status"),
-    /**
-     * @since 1.0.0
-     */
-    UNINSTALL_STATUS("dp.uninstall.status"),
-
-    /**
-     * @since 1.2.0
-     */
-    PROGRESS("progress"),
-    /**
-     * @since 1.0.0
-     */
-    DOWNLOAD_PROGRESS("dp.download.progress"),
-    /**
-     * @since 1.0.0
-     */
-    INSTALL_PROGRESS("dp.install.progress"),
-    /**
-     * @since 1.0.0
-     */
-    UNINSTALL_PROGRESS("dp.uninstall.progress"),
-
-    /**
-     * @since 1.2.0
-     */
-    MESSAGE("message"),
-    /**
-     * @since 1.2.0
-     */
-    NOTIFY_MESSAGE("dp.notify.message"),
-    /**
-     * @since 1.2.0
-     */
-    DOWNLOAD_MESSAGE("dp.download.message"),
-    /**
-     * @since 1.2.0
-     */
-    DOWNLOAD_ERROR_MESSAGE("dp.download.error.message"),
-    /**
-     * @since 1.2.0
-     */
-    INSTALL_MESSAGE("dp.install.message"),
-    /**
-     * @since 1.2.0
-     */
-    INSTALL_ERROR_MESSAGE("dp.install.error.message"),
-    /**
-     * @since 1.2.0
-     */
-    UNINSTALL_MESSAGE("dp.uninstall.message"),
-    /**
-     * @since 1.2.0
-     */
-    UNINSTALL_ERROR_MESSAGE("dp.uninstall.error.message"),
-    ;
-
-    /**
-     * The metric name
-     *
-     * @since 1.0.0
-     */
-    private final String name;
-
-    /**
-     * Constructor.
-     *
-     * @param name The metric name
-     * @since 1.0.0
-     */
-    KuraNotifyMetrics(String name) {
-        this.name = name;
+    private KuraNotifyMetrics() {
     }
 
-    @Override
-    public String getName() {
-        return name;
-    }
+    /**
+     * @since 1.0.0
+     */
+    public static final String JOB_ID = "job.id";
 
-    @Override
-    public String getValue() {
-        return getName();
-    }
+    /**
+     * @since 1.2.0
+     */
+    public static final String OPERATION_ID_ALTERNATIVE = "operation.id";
+
+    /**
+     * @since 1.2.0
+     */
+    public static final String STATUS = "status";
+
+    /**
+     * @since 1.0.0
+     */
+    public static final String DP_DOWNLOAD_STATUS = "dp.download.status";
+
+    /**
+     * @since 1.0.0
+     */
+    public static final String DP_INSTALL_STATUS = "dp.install.status";
+
+    /**
+     * @since 1.0.0
+     */
+    public static final String DP_UNINSTALL_STATUS = "dp.uninstall.status";
+
+    /**
+     * @since 1.2.0
+     */
+    public static final String PROGRESS = "progress";
+
+    /**
+     * @since 1.0.0
+     */
+    public static final String DP_DOWNLOAD_PROGRESS = "dp.download.progress";
+
+    /**
+     * @since 1.0.0
+     */
+    public static final String DP_INSTALL_PROGRESS = "dp.install.progress";
+
+    /**
+     * @since 1.0.0
+     */
+    public static final String DP_UNINSTALL_PROGRESS = "dp.uninstall.progress";
+
+    /**
+     * @since 1.2.0
+     */
+    public static final String MESSAGE = "message";
+
+    /**
+     * @since 1.2.0
+     */
+    public static final String DP_NOTIFY_MESSAGE = "dp.notify.message";
+
+    /**
+     * @since 1.2.0
+     */
+    public static final String DP_DOWNLOAD_MESSAGE = "dp.download.message";
+
+    /**
+     * @since 1.2.0
+     */
+    public static final String DP_DOWNLOAD_ERROR_MESSAGE = "dp.download.error.message";
+
+    /**
+     * @since 1.2.0
+     */
+    public static final String DP_INSTALL_MESSAGE = "dp.install.message";
+
+    /**
+     * @since 1.2.0
+     */
+    public static final String DP_INSTALL_ERROR_MESSAGE = "dp.install.error.message";
+
+    /**
+     * @since 1.2.0
+     */
+    public static final String DP_UNINSTALL_MESSAGE = "dp.uninstall.message";
+
+    /**
+     * @since 1.2.0
+     */
+    public static final String DP_UNINSTALL_ERROR_MESSAGE = "dp.uninstall.error.message";
 }

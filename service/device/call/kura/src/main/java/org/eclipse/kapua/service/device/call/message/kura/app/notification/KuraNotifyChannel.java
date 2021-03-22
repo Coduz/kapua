@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.call.message.kura.app.notification;
 
+import org.eclipse.kapua.service.device.call.kura.Kura;
 import org.eclipse.kapua.service.device.call.message.app.notification.DeviceNotifyChannel;
 import org.eclipse.kapua.service.device.call.message.kura.app.KuraAppChannel;
 
@@ -19,7 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * {@link DeviceNotifyChannel} {@link org.eclipse.kapua.service.device.call.kura.Kura} implementation.
+ * {@link DeviceNotifyChannel} {@link Kura} implementation.
  *
  * @since 1.0.0
  */

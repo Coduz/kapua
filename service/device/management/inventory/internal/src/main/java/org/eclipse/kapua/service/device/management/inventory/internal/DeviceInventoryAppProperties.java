@@ -20,26 +20,27 @@ import org.eclipse.kapua.service.device.management.message.KapuaAppProperties;
  *
  * @since 1.5.0
  */
-public enum DeviceInventoryAppProperties implements KapuaAppProperties {
+public class DeviceInventoryAppProperties implements KapuaAppProperties {
+
+    /**
+     * Constructor.
+     *
+     * @since 1.5.0
+     */
+    private DeviceInventoryAppProperties() {
+    }
+
     /**
      * Application name
+     *
+     * @since 1.5.0
      */
-    APP_NAME("INVENTORY"),
+    public static final String APP_NAME = "INVENTORY";
+
     /**
-     * Version
+     * Application version.
+     *
+     * @since 1.5.0
      */
-    APP_VERSION("1.0.0"),
-    ;
-
-    private final String value;
-
-    DeviceInventoryAppProperties(String value) {
-        this.value = value;
-    }
-
-    @Override
-    public String getValue() {
-        return value;
-    }
-
+    public static final String APP_VERSION = "1.0.0";
 }

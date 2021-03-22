@@ -12,10 +12,11 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.call.message.kura.lifecycle;
 
+import org.eclipse.kapua.service.device.call.kura.Kura;
 import org.eclipse.kapua.service.device.call.message.lifecycle.DeviceLifecycleChannel;
 
 /**
- * {@link DeviceLifecycleChannel} {@link org.eclipse.kapua.service.device.call.kura.Kura} implementation.
+ * {@link DeviceLifecycleChannel} {@link Kura} implementation.
  *
  * @see KuraAppsMessage
  * @since 1.0.0

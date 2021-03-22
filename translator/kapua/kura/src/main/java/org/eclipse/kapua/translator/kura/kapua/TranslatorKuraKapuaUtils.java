@@ -19,7 +19,6 @@ import org.eclipse.kapua.locator.KapuaLocator;
 import org.eclipse.kapua.message.KapuaMessageFactory;
 import org.eclipse.kapua.message.KapuaPosition;
 import org.eclipse.kapua.service.device.call.message.DevicePosition;
-import org.eclipse.kapua.service.device.call.message.app.DeviceAppMetrics;
 import org.eclipse.kapua.service.device.call.message.kura.app.response.KuraResponseChannel;
 import org.eclipse.kapua.service.device.call.message.kura.app.response.KuraResponseCode;
 import org.eclipse.kapua.service.device.management.message.response.KapuaResponseCode;
@@ -35,7 +34,7 @@ import org.eclipse.kapua.translator.exception.TranslatorException;
 public final class TranslatorKuraKapuaUtils {
 
     private static final KapuaLocator LOCATOR = KapuaLocator.getInstance();
-    private static final KapuaMessageFactory KAPUA_MESSAGE_FACTORY = LOCATOR.getFactory(KapuaMessageFactory.class);
+    private static final KapuaMessageFactory<?, ?, ?> KAPUA_MESSAGE_FACTORY = LOCATOR.getFactory(KapuaMessageFactory.class);
 
     private static final String CONTROL_MESSAGE_CLASSIFIER = SystemSetting.getInstance().getMessageClassifier();
 
@@ -59,7 +58,7 @@ public final class TranslatorKuraKapuaUtils {
      * @throws TranslatorException The any of the constraints fails.
      * @since 1.2.0
      */
-    public static void validateKuraResponseChannel(KuraResponseChannel kuraResponseChannel, DeviceAppMetrics appName, DeviceAppMetrics appVersion) throws TranslatorException {
+    public static void validateKuraResponseChannel(KuraResponseChannel kuraResponseChannel, String appName, String appVersion) throws TranslatorException {
         if (!CONTROL_MESSAGE_CLASSIFIER.equals(kuraResponseChannel.getMessageClassification())) {
             throw new TranslatorException(TranslatorErrorCodes.INVALID_CHANNEL_CLASSIFIER, null, kuraResponseChannel.getMessageClassification());
         }
@@ -70,11 +69,11 @@ public final class TranslatorKuraKapuaUtils {
             throw new TranslatorException(TranslatorErrorCodes.INVALID_CHANNEL_APP_NAME, null, (Object) appIdTokens);
         }
 
-        if (!appName.getName().equals(appIdTokens[0])) {
+        if (!appName.equals(appIdTokens[0])) {
             throw new TranslatorException(TranslatorErrorCodes.INVALID_CHANNEL_APP_NAME, null, appIdTokens[0]);
         }
 
-        if (!appVersion.getName().equals(appIdTokens[1])) {
+        if (!appVersion.equals(appIdTokens[1])) {
             throw new TranslatorException(TranslatorErrorCodes.INVALID_CHANNEL_APP_VERSION, null, appIdTokens[1]);
         }
     }

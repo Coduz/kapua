@@ -25,5 +25,4 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "genericRequestMessage")
 @XmlType(factoryClass = GenericRequestXmlFactory.class, factoryMethod = "newMessage")
 public interface GenericRequestMessage extends KapuaRequestMessage<GenericRequestChannel, GenericRequestPayload> {
-
 }

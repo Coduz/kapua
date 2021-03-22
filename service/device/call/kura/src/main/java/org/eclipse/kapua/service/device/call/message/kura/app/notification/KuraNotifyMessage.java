@@ -13,15 +13,14 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.call.message.kura.app.notification;
 
+import org.eclipse.kapua.service.device.call.kura.Kura;
 import org.eclipse.kapua.service.device.call.message.app.notification.DeviceNotifyMessage;
 import org.eclipse.kapua.service.device.call.message.kura.app.KuraAppMessage;
 
 import java.util.Date;
 
 /**
- * {@link DeviceNotifyMessage} {@link org.eclipse.kapua.service.device.call.kura.Kura} implementation.
- * <p>
- * The {@link KuraNotifyMessage} is sent by the {@link org.eclipse.kapua.service.device.registry.Device} to notify the platform about the DeviceManagementOperation progress.
+ * {@link DeviceNotifyMessage} {@link Kura} implementation.
  *
  * @since 1.0.0
  */

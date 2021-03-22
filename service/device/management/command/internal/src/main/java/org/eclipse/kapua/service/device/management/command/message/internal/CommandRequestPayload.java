@@ -40,7 +40,7 @@ public class CommandRequestPayload extends KapuaRequestPayloadImpl implements Ka
         List<String> argumentsList = new ArrayList<>();
 
         for (int i = 0; ; i++) {
-            String value = (String) getMetrics().get(CommandAppProperties.APP_PROPERTY_ARG.getValue() + i);
+            String value = (String) getMetrics().get(CommandAppProperties.ARG + i);
             if (value != null) {
                 argumentsList.add(value);
             } else {
@@ -60,7 +60,7 @@ public class CommandRequestPayload extends KapuaRequestPayloadImpl implements Ka
     public void setArguments(String[] arguments) {
         if (arguments != null) {
             for (int i = 0; i < arguments.length; i++) {
-                getMetrics().put(CommandAppProperties.APP_PROPERTY_ARG.getValue() + i, arguments[i]);
+                getMetrics().put(CommandAppProperties.ARG + i, arguments[i]);
             }
         }
     }
@@ -75,7 +75,7 @@ public class CommandRequestPayload extends KapuaRequestPayloadImpl implements Ka
         List<String> v = new ArrayList<>();
 
         for (int i = 0; ; i++) {
-            String value = (String) getMetrics().get(CommandAppProperties.APP_PROPERTY_ENVP.getValue() + i);
+            String value = (String) getMetrics().get(CommandAppProperties.ENVP + i);
             if (value != null) {
                 v.add(value);
             } else {
@@ -95,7 +95,7 @@ public class CommandRequestPayload extends KapuaRequestPayloadImpl implements Ka
     public void setEnvironmentPairs(String[] environmentPairs) {
         if (environmentPairs != null) {
             for (int i = 0; i < environmentPairs.length; i++) {
-                getMetrics().put(CommandAppProperties.APP_PROPERTY_ENVP.getValue() + i, environmentPairs[i]);
+                getMetrics().put(CommandAppProperties.ENVP + i, environmentPairs[i]);
             }
         }
     }
@@ -107,7 +107,7 @@ public class CommandRequestPayload extends KapuaRequestPayloadImpl implements Ka
      * @since 1.0.0
      */
     public String getWorkingDir() {
-        return (String) getMetrics().get(CommandAppProperties.APP_PROPERTY_DIR.getValue());
+        return (String) getMetrics().get(CommandAppProperties.DIR);
     }
 
     /**
@@ -118,7 +118,7 @@ public class CommandRequestPayload extends KapuaRequestPayloadImpl implements Ka
      */
     public void setWorkingDir(String workingDir) {
         if (workingDir != null) {
-            getMetrics().put(CommandAppProperties.APP_PROPERTY_DIR.getValue(), workingDir);
+            getMetrics().put(CommandAppProperties.DIR, workingDir);
         }
     }
 
@@ -129,7 +129,7 @@ public class CommandRequestPayload extends KapuaRequestPayloadImpl implements Ka
      * @since 1.0.0
      */
     public String getStdin() {
-        return (String) getMetrics().get(CommandAppProperties.APP_PROPERTY_STDIN.getValue());
+        return (String) getMetrics().get(CommandAppProperties.STDIN);
     }
 
     /**
@@ -140,7 +140,7 @@ public class CommandRequestPayload extends KapuaRequestPayloadImpl implements Ka
      */
     public void setStdin(String stdin) {
         if (stdin != null) {
-            getMetrics().put(CommandAppProperties.APP_PROPERTY_STDIN.getValue(), stdin);
+            getMetrics().put(CommandAppProperties.STDIN, stdin);
         }
     }
 
@@ -151,7 +151,7 @@ public class CommandRequestPayload extends KapuaRequestPayloadImpl implements Ka
      * @since 1.0.0
      */
     public Integer getTimeout() {
-        return (Integer) getMetrics().get(CommandAppProperties.APP_PROPERTY_TOUT.getValue());
+        return (Integer) getMetrics().get(CommandAppProperties.TOUT);
     }
 
     /**
@@ -161,7 +161,7 @@ public class CommandRequestPayload extends KapuaRequestPayloadImpl implements Ka
      * @since 1.0.0
      */
     public void setTimeout(int timeout) {
-        getMetrics().put(CommandAppProperties.APP_PROPERTY_TOUT.getValue(), timeout);
+        getMetrics().put(CommandAppProperties.TOUT, timeout);
     }
 
     /**
@@ -170,7 +170,7 @@ public class CommandRequestPayload extends KapuaRequestPayloadImpl implements Ka
      * @return The {@link DeviceCommandInput#isRunAsynch()}.
      */
     public Boolean isRunAsync() {
-        return (Boolean) getMetrics().get(CommandAppProperties.APP_PROPERTY_ASYNC.getValue());
+        return (Boolean) getMetrics().get(CommandAppProperties.ASYNC);
     }
 
     /**
@@ -180,7 +180,7 @@ public class CommandRequestPayload extends KapuaRequestPayloadImpl implements Ka
      * @since 1.0.0
      */
     public void setRunAsync(boolean runAsync) {
-        getMetrics().put(CommandAppProperties.APP_PROPERTY_ASYNC.getValue(), runAsync);
+        getMetrics().put(CommandAppProperties.ASYNC, runAsync);
     }
 
     /**
@@ -190,7 +190,7 @@ public class CommandRequestPayload extends KapuaRequestPayloadImpl implements Ka
      * @since 1.0.0
      */
     public String getCommand() {
-        return (String) getMetrics().get(CommandAppProperties.APP_PROPERTY_CMD.getValue());
+        return (String) getMetrics().get(CommandAppProperties.CMD);
     }
 
     /**
@@ -200,7 +200,7 @@ public class CommandRequestPayload extends KapuaRequestPayloadImpl implements Ka
      * @since 1.0.0
      */
     public void setCommand(String command) {
-        getMetrics().put(CommandAppProperties.APP_PROPERTY_CMD.getValue(), command);
+        getMetrics().put(CommandAppProperties.CMD, command);
     }
 
     /**
@@ -210,7 +210,7 @@ public class CommandRequestPayload extends KapuaRequestPayloadImpl implements Ka
      * @since 1.0.0
      */
     public String getPassword() {
-        return (String) getMetrics().get(CommandAppProperties.APP_PROPERTY_PASSWORD.getValue());
+        return (String) getMetrics().get(CommandAppProperties.PASSWORD);
     }
 
     /**
@@ -220,6 +220,6 @@ public class CommandRequestPayload extends KapuaRequestPayloadImpl implements Ka
      * @since 1.0.0
      */
     public void setPassword(String password) {
-        getMetrics().put(CommandAppProperties.APP_PROPERTY_PASSWORD.getValue(), password);
+        getMetrics().put(CommandAppProperties.PASSWORD, password);
     }
 }

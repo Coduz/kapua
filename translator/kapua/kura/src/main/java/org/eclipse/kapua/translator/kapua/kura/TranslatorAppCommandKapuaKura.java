@@ -24,7 +24,7 @@ import org.eclipse.kapua.service.device.management.command.message.internal.Comm
 import org.eclipse.kapua.translator.exception.InvalidChannelException;
 import org.eclipse.kapua.translator.exception.InvalidPayloadException;
 
-import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -34,17 +34,17 @@ import java.util.Map;
  */
 public class TranslatorAppCommandKapuaKura extends AbstractTranslatorKapuaKura<CommandRequestChannel, CommandRequestPayload, CommandRequestMessage> {
 
-    private static final Map<CommandAppProperties, CommandMetrics> PROPERTIES_DICTIONARY = new EnumMap<>(CommandAppProperties.class);
+    private static final Map<String, String> PROPERTIES_DICTIONARY = new HashMap<>();
 
     static {
-        PROPERTIES_DICTIONARY.put(CommandAppProperties.APP_PROPERTY_CMD, CommandMetrics.APP_METRIC_CMD);
-        PROPERTIES_DICTIONARY.put(CommandAppProperties.APP_PROPERTY_ARG, CommandMetrics.APP_METRIC_ARG);
-        PROPERTIES_DICTIONARY.put(CommandAppProperties.APP_PROPERTY_ENVP, CommandMetrics.APP_METRIC_ENVP);
-        PROPERTIES_DICTIONARY.put(CommandAppProperties.APP_PROPERTY_DIR, CommandMetrics.APP_METRIC_DIR);
-        PROPERTIES_DICTIONARY.put(CommandAppProperties.APP_PROPERTY_STDIN, CommandMetrics.APP_METRIC_STDIN);
-        PROPERTIES_DICTIONARY.put(CommandAppProperties.APP_PROPERTY_TOUT, CommandMetrics.APP_METRIC_TOUT);
-        PROPERTIES_DICTIONARY.put(CommandAppProperties.APP_PROPERTY_ASYNC, CommandMetrics.APP_METRIC_ASYNC);
-        PROPERTIES_DICTIONARY.put(CommandAppProperties.APP_PROPERTY_PASSWORD, CommandMetrics.APP_METRIC_PASSWORD);
+        PROPERTIES_DICTIONARY.put(CommandAppProperties.CMD, CommandMetrics.METRIC_CMD);
+        PROPERTIES_DICTIONARY.put(CommandAppProperties.ARG, CommandMetrics.METRIC_ARG);
+        PROPERTIES_DICTIONARY.put(CommandAppProperties.ENVP, CommandMetrics.METRIC_ENV_PAIR);
+        PROPERTIES_DICTIONARY.put(CommandAppProperties.DIR, CommandMetrics.METRIC_WORKING_DIR);
+        PROPERTIES_DICTIONARY.put(CommandAppProperties.STDIN, CommandMetrics.METRIC_STDIN);
+        PROPERTIES_DICTIONARY.put(CommandAppProperties.TOUT, CommandMetrics.METRIC_TIMEOUT);
+        PROPERTIES_DICTIONARY.put(CommandAppProperties.ASYNC, CommandMetrics.METRIC_RUN_ASYNC);
+        PROPERTIES_DICTIONARY.put(CommandAppProperties.PASSWORD, CommandMetrics.METRIC_PASSWORD);
     }
 
     @Override
@@ -68,19 +68,19 @@ public class TranslatorAppCommandKapuaKura extends AbstractTranslatorKapuaKura<C
 
             // Payload translation
             Map<String, Object> metrics = kuraRequestPayload.getMetrics();
-            metrics.put(PROPERTIES_DICTIONARY.get(CommandAppProperties.APP_PROPERTY_CMD).getName(), kapuaPayload.getCommand());
-            metrics.put(PROPERTIES_DICTIONARY.get(CommandAppProperties.APP_PROPERTY_ENVP).getName(), kapuaPayload.getEnvironmentPairs());
-            metrics.put(PROPERTIES_DICTIONARY.get(CommandAppProperties.APP_PROPERTY_DIR).getName(), kapuaPayload.getWorkingDir());
-            metrics.put(PROPERTIES_DICTIONARY.get(CommandAppProperties.APP_PROPERTY_STDIN).getName(), kapuaPayload.getStdin());
-            metrics.put(PROPERTIES_DICTIONARY.get(CommandAppProperties.APP_PROPERTY_TOUT).getName(), kapuaPayload.getTimeout());
-            metrics.put(PROPERTIES_DICTIONARY.get(CommandAppProperties.APP_PROPERTY_ASYNC).getName(), kapuaPayload.isRunAsync());
-            metrics.put(PROPERTIES_DICTIONARY.get(CommandAppProperties.APP_PROPERTY_PASSWORD).getName(), kapuaPayload.getPassword());
+            metrics.put(PROPERTIES_DICTIONARY.get(CommandAppProperties.CMD), kapuaPayload.getCommand());
+            metrics.put(PROPERTIES_DICTIONARY.get(CommandAppProperties.ENVP), kapuaPayload.getEnvironmentPairs());
+            metrics.put(PROPERTIES_DICTIONARY.get(CommandAppProperties.DIR), kapuaPayload.getWorkingDir());
+            metrics.put(PROPERTIES_DICTIONARY.get(CommandAppProperties.STDIN), kapuaPayload.getStdin());
+            metrics.put(PROPERTIES_DICTIONARY.get(CommandAppProperties.TOUT), kapuaPayload.getTimeout());
+            metrics.put(PROPERTIES_DICTIONARY.get(CommandAppProperties.ASYNC), kapuaPayload.isRunAsync());
+            metrics.put(PROPERTIES_DICTIONARY.get(CommandAppProperties.PASSWORD), kapuaPayload.getPassword());
 
             // argument translation
             int i = 0;
             String[] arguments = kapuaPayload.getArguments();
             for (String argument : arguments) {
-                metrics.put(PROPERTIES_DICTIONARY.get(CommandAppProperties.APP_PROPERTY_ARG).getName() + i++, argument);
+                metrics.put(PROPERTIES_DICTIONARY.get(CommandAppProperties.ARG) + i++, argument);
             }
 
             // Body translation

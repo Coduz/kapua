@@ -24,18 +24,18 @@ public class KuraResponsePayload extends KuraAppPayload implements DeviceRespons
 
     @Override
     public KuraResponseCode getResponseCode() {
-        Integer exitCode = (Integer) getMetrics().get(KuraResponseMetrics.EXIT_CODE.getName());
+        Integer exitCode = (Integer) getMetrics().get(KuraResponseMetrics.RESPONSE_CODE);
         return exitCode != null ? KuraResponseCode.fromResponseCode(exitCode) : null;
     }
 
     @Override
     public String getExceptionMessage() {
-        return (String) getMetrics().get(KuraResponseMetrics.EXCEPTION_MESSAGE.getName());
+        return (String) getMetrics().get(KuraResponseMetrics.RESPONSE_EXCEPTION_MESSAGE);
     }
 
     @Override
     public String getExceptionStack() {
-        return (String) getMetrics().get(KuraResponseMetrics.EXCEPTION_STACK.getName());
+        return (String) getMetrics().get(KuraResponseMetrics.RESPONSE_EXCEPTION_STACK);
     }
 
     @Override

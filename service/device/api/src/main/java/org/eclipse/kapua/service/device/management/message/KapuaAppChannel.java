@@ -30,8 +30,8 @@ public interface KapuaAppChannel extends KapuaControlChannel {
      * @return The device application name.
      * @since 1.0.0
      */
-    @XmlElement(name = "appName")
-    KapuaAppProperties getAppName();
+     @XmlElement(name = "appName")
+     String getAppName();
 
     /**
      * Sets the device application name.
@@ -39,7 +39,7 @@ public interface KapuaAppChannel extends KapuaControlChannel {
      * @param appName The device application name.
      * @since 1.0.0
      */
-    void setAppName(KapuaAppProperties appName);
+    void setAppName(String appName);
 
     /**
      * Gets the device application version.
@@ -47,8 +47,8 @@ public interface KapuaAppChannel extends KapuaControlChannel {
      * @return The device application version.
      * @since 1.0.0
      */
-    @XmlElement(name = "version")
-    KapuaAppProperties getVersion();
+     @XmlElement(name = "version")
+     String getVersion();
 
     /**
      * Sets the device application version.
@@ -56,5 +56,5 @@ public interface KapuaAppChannel extends KapuaControlChannel {
      * @param appVersion The device application version.
      * @since 1.0.0
      */
-    void setVersion(KapuaAppProperties appVersion);
+    void setVersion(String appVersion);
 }

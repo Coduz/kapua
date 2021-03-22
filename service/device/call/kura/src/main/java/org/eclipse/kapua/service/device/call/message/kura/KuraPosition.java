@@ -12,13 +12,14 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.call.message.kura;
 
+import org.eclipse.kapua.service.device.call.kura.Kura;
 import org.eclipse.kapua.service.device.call.message.DevicePosition;
 
 import javax.xml.bind.annotation.XmlElement;
 import java.util.Date;
 
 /**
- * {@link DevicePosition} {@link org.eclipse.kapua.service.device.call.kura.Kura} implementation.
+ * {@link DevicePosition} {@link Kura} implementation.
  *
  * @since 1.0.0
  */

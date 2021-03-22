@@ -13,14 +13,16 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.call.message.kura.lifecycle;
 
+import org.eclipse.kapua.service.device.call.kura.Kura;
 import org.eclipse.kapua.service.device.call.message.lifecycle.DeviceLifecycleMessage;
+import org.eclipse.kapua.service.device.registry.Device;
 
 import java.util.Date;
 
 /**
- * {@link DeviceLifecycleMessage} {@link org.eclipse.kapua.service.device.call.kura.Kura} implementation.
+ * {@link DeviceLifecycleMessage} {@link Kura} implementation.
  * <p>
- * The missing message is sent by the platform to notify that a device is no more available (likely due to network error).
+ * The missing message is sent by the platform to notify that a {@link Device} is no more available (likely due to network error).
  *
  * @since 1.0.0
  */

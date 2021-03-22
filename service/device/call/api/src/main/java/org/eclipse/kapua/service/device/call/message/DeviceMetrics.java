@@ -18,12 +18,4 @@ package org.eclipse.kapua.service.device.call.message;
  * @since 1.2.0
  */
 public interface DeviceMetrics {
-
-    /**
-     * Gets the name of this {@link DeviceMetrics}.
-     *
-     * @return The name of this {@link DeviceMetrics}.
-     * @since 1.2.0
-     */
-    String getName();
 }

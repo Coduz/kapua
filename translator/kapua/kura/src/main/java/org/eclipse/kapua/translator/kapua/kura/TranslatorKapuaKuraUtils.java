@@ -14,7 +14,6 @@ package org.eclipse.kapua.translator.kapua.kura;
 
 import org.eclipse.kapua.commons.setting.system.SystemSetting;
 import org.eclipse.kapua.message.KapuaPosition;
-import org.eclipse.kapua.service.device.call.message.app.DeviceAppMetrics;
 import org.eclipse.kapua.service.device.call.message.kura.KuraPosition;
 import org.eclipse.kapua.service.device.call.message.kura.app.request.KuraRequestChannel;
 import org.eclipse.kapua.service.device.management.message.KapuaMethod;
@@ -49,7 +48,7 @@ public final class TranslatorKapuaKuraUtils {
      * @return The built base {@link KuraRequestChannel}
      * @since 1.2.0
      */
-    public static KuraRequestChannel buildBaseRequestChannel(DeviceAppMetrics appName, DeviceAppMetrics appVersion, KapuaMethod appMethod) {
+    public static KuraRequestChannel buildBaseRequestChannel(String appName, String appVersion, KapuaMethod appMethod) {
 
         KuraRequestChannel kuraRequestChannel = new KuraRequestChannel();
         kuraRequestChannel.setMessageClassification(CONTROL_MESSAGE_CLASSIFIER);

@@ -15,7 +15,6 @@ package org.eclipse.kapua.translator.kura.kapua;
 import org.eclipse.kapua.locator.KapuaLocator;
 import org.eclipse.kapua.service.device.call.message.kura.app.response.KuraResponseChannel;
 import org.eclipse.kapua.service.device.call.message.kura.app.response.KuraResponsePayload;
-import org.eclipse.kapua.service.device.management.request.internal.GenericAppProperties;
 import org.eclipse.kapua.service.device.management.request.message.response.GenericResponseChannel;
 import org.eclipse.kapua.service.device.management.request.message.response.GenericResponseFactory;
 import org.eclipse.kapua.service.device.management.request.message.response.GenericResponseMessage;
@@ -59,9 +58,9 @@ public class TranslatorAppResponseKuraKapua extends AbstractSimpleTranslatorResp
                 throw new TranslatorException(TranslatorErrorCodes.INVALID_CHANNEL_APP_NAME, null, (Object) appIdTokens);
             }
 
-            genericResponseChannel.setAppName(new GenericAppProperties(appIdTokens[0]));
+            genericResponseChannel.setAppName(appIdTokens[0]);
             if (appIdTokens.length > 1) {
-                genericResponseChannel.setVersion(new GenericAppProperties(appIdTokens[1]));
+                genericResponseChannel.setVersion(appIdTokens[1]);
             }
 
             return genericResponseChannel;

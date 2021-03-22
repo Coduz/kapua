@@ -16,31 +16,31 @@ import org.eclipse.kapua.service.device.management.asset.DeviceAsset;
 import org.eclipse.kapua.service.device.management.message.KapuaAppProperties;
 
 /**
- * {@link DeviceAsset} {@link KapuaAppProperties} implementation
+ * {@link DeviceAsset} {@link KapuaAppProperties} implementation.
  *
  * @since 1.0.0
  */
-public enum DeviceAssetAppProperties implements KapuaAppProperties {
+public class DeviceAssetAppProperties implements KapuaAppProperties {
 
     /**
-     * Application name
+     * Constructor.
+     *
+     * @since 1.5.0
      */
-    APP_NAME("ASSET"),
+    private DeviceAssetAppProperties() {
+    }
+
     /**
-     * Version
+     * Application name.
+     *
+     * @since 1.0.0
      */
-    APP_VERSION("1.0.0"),
-    ;
+    public static final String APP_NAME = "ASSET";
 
-    private final String value;
-
-    DeviceAssetAppProperties(String value) {
-        this.value = value;
-    }
-
-    @Override
-    public String getValue() {
-        return value;
-    }
-
+    /**
+     * Version.
+     *
+     * @since 1.0.0
+     */
+    public static final String APP_VERSION = "1.0.0";
 }

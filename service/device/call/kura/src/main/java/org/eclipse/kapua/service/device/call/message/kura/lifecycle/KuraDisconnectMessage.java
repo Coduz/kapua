@@ -13,14 +13,16 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.call.message.kura.lifecycle;
 
+import org.eclipse.kapua.service.device.call.kura.Kura;
 import org.eclipse.kapua.service.device.call.message.lifecycle.DeviceLifecycleMessage;
+import org.eclipse.kapua.service.device.registry.Device;
 
 import java.util.Date;
 
 /**
- * {@link DeviceLifecycleMessage} {@link org.eclipse.kapua.service.device.call.kura.Kura} implementation.
+ * {@link DeviceLifecycleMessage} {@link Kura} implementation.
  * <p>
- * The {@link KuraDisconnectMessage} is sent by the {@link org.eclipse.kapua.service.device.registry.Device} to notify to the platform that it is no more available.
+ * The {@link KuraDisconnectMessage} is sent by the {@link Device} to notify to the platform that it is no more available.
  *
  * @since 1.0.0
  */

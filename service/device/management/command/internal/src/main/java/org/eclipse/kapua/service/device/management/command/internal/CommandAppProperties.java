@@ -12,83 +12,114 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.command.internal;
 
+import org.eclipse.kapua.service.device.management.command.DeviceCommand;
 import org.eclipse.kapua.service.device.management.message.KapuaAppProperties;
 
 /**
- * Device command properties definition.
+ * {@link DeviceCommand} {@link KapuaAppProperties} implementation.
  *
- * @since 1.0
+ * @since 1.0.0
  */
-public enum CommandAppProperties implements KapuaAppProperties {
+public class CommandAppProperties implements KapuaAppProperties {
+
     /**
-     * Application name
+     * Constructor.
+     *
+     * @since 1.5.0
      */
-    APP_NAME("COMMAND"),
+    private CommandAppProperties() {
+    }
+
     /**
-     * Application version
+     * Application name.
+     *
+     * @since 1.0.0
      */
-    APP_VERSION("1.0.0"),
+    public static final String APP_NAME = "COMMAND";
+
+    /**
+     * Application version.
+     *
+     * @since 1.0.0
+     */
+    public static final String APP_VERSION = "1.0.0";
 
     // Request
     /**
-     * Command
+     * Command.
+     *
+     * @since 1.0.0
      */
-    APP_PROPERTY_CMD("kapua.cmd.command"),
+    public static final String CMD = "cmd.command";
+
     /**
-     * Arguments
+     * Arguments.
+     *
+     * @since 1.0.0
      */
-    APP_PROPERTY_ARG("kapua.cmd.arguments"),
+    public static final String ARG = "cmd.arguments";
+
     /**
-     * Environment
+     * Environment.
+     *
+     * @since 1.0.0
      */
-    APP_PROPERTY_ENVP("kapua.cmd.environment.pair"),
+    public static final String ENVP = "cmd.environment.pair";
     /**
-     * Working directory
+     * Working directory.
+     *
+     * @since 1.0.0
      */
-    APP_PROPERTY_DIR("kapua.cmd.working.directory"),
+    public static final String DIR = "cmd.working.directory";
     /**
-     * Standard input
+     * Standard input.
+     *
+     * @since 1.0.0
      */
-    APP_PROPERTY_STDIN("kapua.cmd.stdin"),
+    public static final String STDIN = "cmd.stdin";
     /**
-     * Command timeout
+     * Command timeout.
+     *
+     * @since 1.0.0
      */
-    APP_PROPERTY_TOUT("kapua.cmd.timeout"),
+    public static final String TOUT = "cmd.timeout";
     /**
-     * Asynchronous running
+     * Asynchronous running.
+     *
+     * @since 1.0.0
      */
-    APP_PROPERTY_ASYNC("kapua.cmd.run.async"),
+    public static final String ASYNC = "cmd.run.async";
     /**
-     * Password
+     * Password.
+     *
+     * @since 1.0.0
      */
-    APP_PROPERTY_PASSWORD("kapua.cmd.password"),
+    public static final String PASSWORD = "cmd.password";
 
     // Response
     /**
-     * Standard error
+     * Standard error.
+     *
+     * @since 1.0.0
      */
-    APP_PROPERTY_STDERR("kapua.cmd.stderr"),
+    public static final String STDERR = "cmd.stderr";
     /**
-     * Standard output
+     * Standard output.
+     *
+     * @since 1.0.0
      */
-    APP_PROPERTY_STDOUT("kapua.cmd.stdout"),
+    public static final String STDOUT = "cmd.stdout";
     /**
-     * Command exit code
+     * Command exit code.
+     *
+     * @since 1.0.0
      */
-    APP_PROPERTY_EXIT_CODE("kapua.cmd.exit.code"),
+    public static final String EXIT_CODE = "cmd.exit.code";
     /**
-     * Command timed out flag
+     * Command timed out flag.
+     *
+     * @since 1.0.0
      */
-    APP_PROPERTY_TIMED_OUT("kapua.cmd.timed.out"),;
+    public static final String TIMED_OUT = "cmd.timed.out";
 
-    private String value;
-
-    CommandAppProperties(String value) {
-        this.value = value;
-    }
-
-    @Override
-    public String getValue() {
-        return value;
-    }
 }

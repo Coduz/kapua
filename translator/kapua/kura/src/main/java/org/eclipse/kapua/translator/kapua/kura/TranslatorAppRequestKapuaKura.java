@@ -39,10 +39,10 @@ public class TranslatorAppRequestKapuaKura extends AbstractTranslatorKapuaKura<G
             kuraRequestChannel.setMessageClassification(CONTROL_MESSAGE_CLASSIFIER);
 
             StringBuilder appIdSb = new StringBuilder();
-            appIdSb.append(kapuaChannel.getAppName().getValue());
+            appIdSb.append(kapuaChannel.getAppName());
 
-            if (kapuaChannel.getVersion() != null && !Strings.isNullOrEmpty(kapuaChannel.getVersion().getValue())) {
-                appIdSb.append("-").append(kapuaChannel.getVersion().getValue());
+            if (kapuaChannel.getVersion() != null && !Strings.isNullOrEmpty(kapuaChannel.getVersion())) {
+                appIdSb.append("-").append(kapuaChannel.getVersion());
             }
 
             kuraRequestChannel.setAppId(appIdSb.toString());

@@ -16,6 +16,8 @@ import org.eclipse.kapua.service.device.call.message.app.DeviceAppMessage;
 
 /**
  * {@link DeviceNotifyMessage} definition.
+ * <p>
+ * The {@link DeviceNotifyMessage} is sent by the Device to notify the platform about the DeviceManagementOperation progress.
  *
  * @param <C> The {@link DeviceNotifyChannel} type.
  * @param <P> The {@link DeviceNotifyPayload} type.

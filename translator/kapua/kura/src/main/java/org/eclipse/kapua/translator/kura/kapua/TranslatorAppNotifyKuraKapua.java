@@ -32,7 +32,6 @@ import org.eclipse.kapua.service.device.management.commons.message.notification.
 import org.eclipse.kapua.service.device.management.commons.message.notification.KapuaNotifyMessageImpl;
 import org.eclipse.kapua.service.device.management.commons.message.notification.KapuaNotifyPayloadImpl;
 import org.eclipse.kapua.service.device.management.configuration.internal.DeviceConfigurationAppProperties;
-import org.eclipse.kapua.service.device.management.message.KapuaAppProperties;
 import org.eclipse.kapua.service.device.management.message.notification.KapuaNotifyChannel;
 import org.eclipse.kapua.service.device.management.message.notification.KapuaNotifyMessage;
 import org.eclipse.kapua.service.device.management.message.notification.KapuaNotifyPayload;
@@ -64,25 +63,25 @@ public class TranslatorAppNotifyKuraKapua extends Translator<KuraNotifyMessage, 
 
     private static final KapuaIdFactory KAPUA_ID_FACTORY = LOCATOR.getFactory(KapuaIdFactory.class);
 
-    private static final Map<String, KapuaAppProperties> APP_NAME_DICTIONARY;
-    private static final Map<String, KapuaAppProperties> APP_VERSION_DICTIONARY;
+    private static final Map<String, String> APP_NAME_DICTIONARY;
+    private static final Map<String, String> APP_VERSION_DICTIONARY;
 
     static {
         APP_NAME_DICTIONARY = new HashMap<>();
 
-        APP_NAME_DICTIONARY.put(AssetMetrics.APP_ID.getName(), DeviceAssetAppProperties.APP_NAME);
-        APP_NAME_DICTIONARY.put(BundleMetrics.APP_ID.getName(), DeviceBundleAppProperties.APP_NAME);
-        APP_NAME_DICTIONARY.put(CommandMetrics.APP_ID.getName(), CommandAppProperties.APP_NAME);
-        APP_NAME_DICTIONARY.put(ConfigurationMetrics.APP_ID.getName(), DeviceConfigurationAppProperties.APP_NAME);
-        APP_NAME_DICTIONARY.put(PackageMetrics.APP_ID.getName(), PackageAppProperties.APP_NAME);
+        APP_NAME_DICTIONARY.put(AssetMetrics.APP_ID, DeviceAssetAppProperties.APP_NAME);
+        APP_NAME_DICTIONARY.put(BundleMetrics.APP_ID, DeviceBundleAppProperties.APP_NAME);
+        APP_NAME_DICTIONARY.put(CommandMetrics.APP_ID, CommandAppProperties.APP_NAME);
+        APP_NAME_DICTIONARY.put(ConfigurationMetrics.APP_ID, DeviceConfigurationAppProperties.APP_NAME);
+        APP_NAME_DICTIONARY.put(PackageMetrics.APP_ID, PackageAppProperties.APP_NAME);
 
         APP_VERSION_DICTIONARY = new HashMap<>();
 
-        APP_VERSION_DICTIONARY.put(AssetMetrics.APP_ID.getName(), DeviceAssetAppProperties.APP_VERSION);
-        APP_VERSION_DICTIONARY.put(BundleMetrics.APP_ID.getName(), DeviceBundleAppProperties.APP_VERSION);
-        APP_VERSION_DICTIONARY.put(CommandMetrics.APP_ID.getName(), CommandAppProperties.APP_VERSION);
-        APP_VERSION_DICTIONARY.put(ConfigurationMetrics.APP_ID.getName(), DeviceConfigurationAppProperties.APP_VERSION);
-        APP_VERSION_DICTIONARY.put(PackageMetrics.APP_ID.getName(), PackageAppProperties.APP_VERSION);
+        APP_VERSION_DICTIONARY.put(AssetMetrics.APP_VERSION, DeviceAssetAppProperties.APP_VERSION);
+        APP_VERSION_DICTIONARY.put(BundleMetrics.APP_VERSION, DeviceBundleAppProperties.APP_VERSION);
+        APP_VERSION_DICTIONARY.put(CommandMetrics.APP_VERSION, CommandAppProperties.APP_VERSION);
+        APP_VERSION_DICTIONARY.put(ConfigurationMetrics.APP_VERSION, DeviceConfigurationAppProperties.APP_VERSION);
+        APP_VERSION_DICTIONARY.put(PackageMetrics.APP_VERSION, PackageAppProperties.APP_VERSION);
     }
 
     @Override

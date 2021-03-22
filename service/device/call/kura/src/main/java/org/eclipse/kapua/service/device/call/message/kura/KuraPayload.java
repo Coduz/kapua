@@ -17,6 +17,7 @@ import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import org.eclipse.kapua.message.internal.exception.MessageErrorCodes;
 import org.eclipse.kapua.message.internal.exception.MessageException;
+import org.eclipse.kapua.service.device.call.kura.Kura;
 import org.eclipse.kapua.service.device.call.message.DevicePayload;
 import org.eclipse.kapua.service.device.call.message.DevicePosition;
 import org.eclipse.kapua.service.device.call.message.kura.proto.KuraPayloadProto;
@@ -30,7 +31,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * {@link DevicePayload} {@link org.eclipse.kapua.service.device.call.kura.Kura} implementation.
+ * {@link DevicePayload} {@link Kura} implementation.
  *
  * @since 1.0.0
  */

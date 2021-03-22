@@ -13,13 +13,14 @@
 package org.eclipse.kapua.service.device.call.message.kura;
 
 import com.google.common.collect.Lists;
+import org.eclipse.kapua.service.device.call.kura.Kura;
 import org.eclipse.kapua.service.device.call.message.DeviceChannel;
 
 import java.util.Arrays;
 import java.util.List;
 
 /**
- * {@link DeviceChannel} {@link org.eclipse.kapua.service.device.call.kura.Kura} implementation.
+ * {@link DeviceChannel} {@link Kura} implementation.
  *
  * @since 1.0.0
  */

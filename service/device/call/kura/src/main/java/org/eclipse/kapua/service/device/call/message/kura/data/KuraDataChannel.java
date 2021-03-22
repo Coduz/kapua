@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.call.message.kura.data;
 
+import org.eclipse.kapua.service.device.call.kura.Kura;
 import org.eclipse.kapua.service.device.call.message.data.DeviceDataChannel;
 import org.eclipse.kapua.service.device.call.message.kura.KuraChannel;
 
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * {@link DeviceDataChannel} {@link org.eclipse.kapua.service.device.call.kura.Kura} implementation.
+ * {@link DeviceDataChannel} {@link Kura} implementation.
  *
  * @since 1.0.0
  */

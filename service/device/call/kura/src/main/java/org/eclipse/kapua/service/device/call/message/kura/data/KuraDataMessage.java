@@ -13,13 +13,14 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.call.message.kura.data;
 
+import org.eclipse.kapua.service.device.call.kura.Kura;
 import org.eclipse.kapua.service.device.call.message.data.DeviceDataMessage;
 import org.eclipse.kapua.service.device.call.message.kura.KuraMessage;
 
 import java.util.Date;
 
 /**
- * {@link DeviceDataMessage} {@link org.eclipse.kapua.service.device.call.kura.Kura} implementation.
+ * {@link DeviceDataMessage} {@link Kura} implementation.
  *
  * @since 1.0.0
  */

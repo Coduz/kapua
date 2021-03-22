@@ -15,19 +15,9 @@ package org.eclipse.kapua.service.device.call.message.app.response;
 import org.eclipse.kapua.service.device.call.message.DeviceMetrics;
 
 /**
- * {@link DeviceResponseMetrics} definition.
+ * Device response {@link DeviceMetrics} definition.
  *
  * @since 1.0.0
  */
 public interface DeviceResponseMetrics extends DeviceMetrics {
-
-    /**
-     * Gets the value of this {@link DeviceResponseMetrics}.
-     *
-     * @return The value of this {@link DeviceResponseMetrics}.
-     * @since 1.0.0
-     * @deprecated Since 1.2.0. Renamed to {@link #getName()}.
-     */
-    @Deprecated
-    String getValue();
 }

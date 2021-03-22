@@ -12,23 +12,10 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.message;
 
-import org.eclipse.kapua.service.device.management.message.xml.KapuaAppPropertiesXmlAdapter;
-
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
 /**
  * Device Application property definition.
  *
  * @since 1.0.0
  */
-@XmlJavaTypeAdapter(KapuaAppPropertiesXmlAdapter.class)
 public interface KapuaAppProperties {
-
-    /**
-     * Gets the property value.
-     *
-     * @return The property value.
-     * @since 1.0.0
-     */
-    String getValue();
 }

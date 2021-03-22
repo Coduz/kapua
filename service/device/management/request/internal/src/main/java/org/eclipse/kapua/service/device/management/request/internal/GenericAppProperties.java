@@ -12,21 +12,35 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.request.internal;
 
-import org.eclipse.kapua.service.device.management.commons.KapuaAppPropertiesImpl;
+import org.eclipse.kapua.service.device.management.message.KapuaAppProperties;
 
-public class GenericAppProperties extends KapuaAppPropertiesImpl {
+public class GenericAppProperties implements KapuaAppProperties {
 
-    public GenericAppProperties(String value) {
-        super(value);
+    private String appName;
+    private String appVersion;
+
+    public GenericAppProperties(String appName) {
+        this.appName = appName;
     }
 
-    @Override
-    public String getValue() {
-        return super.getValue();
+    public GenericAppProperties(String appName, String appVersion) {
+        this.appName = appName;
+        this.appVersion = appVersion;
     }
 
-    @Override
-    public void setValue(String value) {
-        super.setValue(value);
+    public String getAppName() {
+        return appName;
+    }
+
+    public void setAppName(String appName) {
+        this.appName = appName;
+    }
+
+    public String getAppVersion() {
+        return appVersion;
+    }
+
+    public void setAppVersion(String appVersion) {
+        this.appVersion = appVersion;
     }
 }

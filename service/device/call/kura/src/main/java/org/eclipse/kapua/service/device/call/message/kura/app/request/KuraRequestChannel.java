@@ -13,6 +13,7 @@
 package org.eclipse.kapua.service.device.call.message.kura.app.request;
 
 import org.eclipse.kapua.service.device.call.DeviceMethod;
+import org.eclipse.kapua.service.device.call.kura.Kura;
 import org.eclipse.kapua.service.device.call.kura.KuraMethod;
 import org.eclipse.kapua.service.device.call.message.app.request.DeviceRequestChannel;
 import org.eclipse.kapua.service.device.call.message.kura.app.KuraAppChannel;
@@ -21,7 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * {@link DeviceRequestChannel} {@link org.eclipse.kapua.service.device.call.kura.Kura} implementation.
+ * {@link DeviceRequestChannel} {@link Kura} implementation.
  *
  * @since 1.0.0
  */
@@ -70,7 +71,6 @@ public class KuraRequestChannel extends KuraAppChannel implements DeviceRequestC
      * @param messageClassification The message classification.
      * @param scopeNamespace        The scope namespace.
      * @param clientId              The clientId
-     * @see org.eclipse.kapua.service.device.call.message.DeviceChannel
      * @since 1.0.0
      */
     public KuraRequestChannel(String messageClassification, String scopeNamespace, String clientId) {

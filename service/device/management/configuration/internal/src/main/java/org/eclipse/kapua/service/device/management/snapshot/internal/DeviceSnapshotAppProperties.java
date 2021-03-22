@@ -13,31 +13,35 @@
 package org.eclipse.kapua.service.device.management.snapshot.internal;
 
 import org.eclipse.kapua.service.device.management.message.KapuaAppProperties;
+import org.eclipse.kapua.service.device.management.snapshot.DeviceSnapshot;
 
 /**
- * Device snapshot properties definition.
+ * {@link DeviceSnapshot} {@link KapuaAppProperties} implementation.
  *
- * @since 1.0
+ * @since 1.0.0
  */
-public enum DeviceSnapshotAppProperties implements KapuaAppProperties {
-    /**
-     * Application name
-     */
-    APP_NAME("SNAPSHOT"),
-    /**
-     * Application version
-     */
-    APP_VERSION("1.0.0"),;
+public class DeviceSnapshotAppProperties implements KapuaAppProperties {
 
-    private String value;
-
-    DeviceSnapshotAppProperties(String value) {
-        this.value = value;
+    /**
+     * Constructor.
+     *
+     * @since 1.5.0
+     */
+    private DeviceSnapshotAppProperties() {
     }
 
-    @Override
-    public String getValue() {
-        return value;
-    }
+    /**
+     * Application name.
+     *
+     * @since 1.0.0
+     */
+    public static final String APP_NAME = "SNAPSHOT";
+
+    /**
+     * Application version.
+     *
+     * @since 1.0.0
+     */
+    public static final String APP_VERSION = "1.0.0";
 
 }

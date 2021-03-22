@@ -12,33 +12,36 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.configuration.internal;
 
+import org.eclipse.kapua.service.device.management.configuration.DeviceConfiguration;
 import org.eclipse.kapua.service.device.management.message.KapuaAppProperties;
 
 /**
- * /**
- * Device application configuration properties definition.
+ * {@link DeviceConfiguration} {@link KapuaAppProperties} implementation..
  *
- * @since 1.0
+ * @since 1.0.0
  */
-public enum DeviceConfigurationAppProperties implements KapuaAppProperties {
-    /**
-     * Application name
-     */
-    APP_NAME("CONFIGURATION"),
-    /**
-     * Application version
-     */
-    APP_VERSION("1.0.0"),;
+public class DeviceConfigurationAppProperties implements KapuaAppProperties {
 
-    private String value;
-
-    DeviceConfigurationAppProperties(String value) {
-        this.value = value;
+    /**
+     * Constructor.
+     *
+     * @since 1.5.0
+     */
+    private DeviceConfigurationAppProperties() {
     }
 
-    @Override
-    public String getValue() {
-        return value;
-    }
+    /**
+     * Application name.
+     *
+     * @since 1.0.0
+     */
+    public static final String APP_NAME = "CONFIGURATION";
+
+    /**
+     * Application version.
+     *
+     * @since 1.0.0
+     */
+    public static final String APP_VERSION = "1.0.0";
 
 }

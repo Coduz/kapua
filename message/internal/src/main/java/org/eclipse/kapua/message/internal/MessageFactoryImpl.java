@@ -30,7 +30,7 @@ import org.eclipse.kapua.message.Payload;
 public abstract class MessageFactoryImpl<C extends Channel, P extends Payload, M extends Message<C, P>, F extends MessageFactory<C, P, M>>
         implements MessageFactory<C, P, M> {
 
-    final F messageFactory;
+    private final F messageFactory;
 
     /**
      * Constructor.

@@ -42,7 +42,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      * @since 1.0.0
      */
     public KapuaId getOperationId() {
-        return (KapuaId) getMetrics().get(PackageAppProperties.APP_PROPERTY_PACKAGE_OPERATION_ID.getValue());
+        return (KapuaId) getMetrics().get(PackageAppProperties.PACKAGE_OPERATION_ID);
     }
 
     /**
@@ -53,7 +53,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      */
     public void setOperationId(KapuaId operationId) {
         if (operationId != null) {
-            getMetrics().put(PackageAppProperties.APP_PROPERTY_PACKAGE_OPERATION_ID.getValue(), operationId);
+            getMetrics().put(PackageAppProperties.PACKAGE_OPERATION_ID, operationId);
         }
     }
 
@@ -63,7 +63,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      * @since 1.0.0
      */
     public Boolean isReboot() {
-        return (Boolean) getMetrics().get(PackageAppProperties.APP_PROPERTY_PACKAGE_REBOOT.getValue());
+        return (Boolean) getMetrics().get(PackageAppProperties.PACKAGE_REBOOT);
     }
 
     /**
@@ -73,7 +73,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      */
     public void setReboot(Boolean reboot) {
         if (reboot != null) {
-            getMetrics().put(PackageAppProperties.APP_PROPERTY_PACKAGE_REBOOT.getValue(), reboot);
+            getMetrics().put(PackageAppProperties.PACKAGE_REBOOT, reboot);
         }
     }
 
@@ -83,7 +83,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      * @since 1.0.0
      */
     public Integer getRebootDelay() {
-        return (Integer) getMetrics().get(PackageAppProperties.APP_PROPERTY_PACKAGE_REBOOT_DELAY.getValue());
+        return (Integer) getMetrics().get(PackageAppProperties.PACKAGE_REBOOT_DELAY);
     }
 
     /**
@@ -93,7 +93,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      */
     public void setRebootDelay(Integer rebootDelay) {
         if (rebootDelay != null) {
-            getMetrics().put(PackageAppProperties.APP_PROPERTY_PACKAGE_REBOOT_DELAY.getValue(), rebootDelay);
+            getMetrics().put(PackageAppProperties.PACKAGE_REBOOT_DELAY, rebootDelay);
         }
     }
 
@@ -107,7 +107,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      * @since 1.0.0
      */
     public URI getPackageDownloadURI() {
-        return (URI) getMetrics().get(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_PACKAGE_URI.getValue());
+        return (URI) getMetrics().get(PackageAppProperties.PACKAGE_DOWNLOAD_PACKAGE_URI);
     }
 
     /**
@@ -117,7 +117,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      */
     public void setPackageDownloadURI(URI uri) {
         if (uri != null) {
-            getMetrics().put(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_PACKAGE_URI.getValue(), uri);
+            getMetrics().put(PackageAppProperties.PACKAGE_DOWNLOAD_PACKAGE_URI, uri);
         }
     }
 
@@ -127,7 +127,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      * @since 1.0.0
      */
     public String getPackageDownloadName() {
-        return (String) getMetrics().get(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_PACKAGE_NAME.getValue());
+        return (String) getMetrics().get(PackageAppProperties.PACKAGE_DOWNLOAD_PACKAGE_NAME);
     }
 
     /**
@@ -137,7 +137,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      */
     public void setPackageDownloadName(String packageName) {
         if (packageName != null) {
-            getMetrics().put(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_PACKAGE_NAME.getValue(), packageName);
+            getMetrics().put(PackageAppProperties.PACKAGE_DOWNLOAD_PACKAGE_NAME, packageName);
         }
     }
 
@@ -147,7 +147,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      * @since 1.0.0
      */
     public String getPackageDownloadVersion() {
-        return (String) getMetrics().get(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_PACKAGE_VERSION.getValue());
+        return (String) getMetrics().get(PackageAppProperties.PACKAGE_DOWNLOAD_PACKAGE_VERSION);
     }
 
     /**
@@ -157,7 +157,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      */
     public void setPackageDownloadVersion(String packageVersion) {
         if (packageVersion != null) {
-            getMetrics().put(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_PACKAGE_VERSION.getValue(), packageVersion);
+            getMetrics().put(PackageAppProperties.PACKAGE_DOWNLOAD_PACKAGE_VERSION, packageVersion);
         }
     }
 
@@ -167,7 +167,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      * @since 1.1.0
      */
     public String getPackageDownloadUsername() {
-        return (String) getMetrics().get(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_USERNAME.getValue());
+        return (String) getMetrics().get(PackageAppProperties.PACKAGE_DOWNLOAD_USERNAME);
     }
 
     /**
@@ -177,7 +177,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      */
     public void setPackageDownloadUsername(String username) {
         if (username != null) {
-            getMetrics().put(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_USERNAME.getValue(), username);
+            getMetrics().put(PackageAppProperties.PACKAGE_DOWNLOAD_USERNAME, username);
         }
     }
 
@@ -187,7 +187,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      * @since 1.1.0
      */
     public String getPackageDownloadPassword() {
-        return (String) getMetrics().get(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_PASSWORD.getValue());
+        return (String) getMetrics().get(PackageAppProperties.PACKAGE_DOWNLOAD_PASSWORD);
     }
 
     /**
@@ -197,7 +197,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      */
     public void setPackageDownloadPassword(String password) {
         if (password != null) {
-            getMetrics().put(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_PASSWORD.getValue(), password);
+            getMetrics().put(PackageAppProperties.PACKAGE_DOWNLOAD_PASSWORD, password);
         }
     }
 
@@ -207,7 +207,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      * @since 1.1.0
      */
     public String getPackageDownloadFileHash() {
-        return (String) getMetrics().get(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_FILE_HASH.getValue());
+        return (String) getMetrics().get(PackageAppProperties.PACKAGE_DOWNLOAD_FILE_HASH);
     }
 
     /**
@@ -217,7 +217,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      */
     public void setPackageDownloadFileHash(String fileHash) {
         if (fileHash != null) {
-            getMetrics().put(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_FILE_HASH.getValue(), fileHash);
+            getMetrics().put(PackageAppProperties.PACKAGE_DOWNLOAD_FILE_HASH, fileHash);
         }
     }
 
@@ -227,7 +227,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      * @since 1.1.0
      */
     public FileType getPackageDownloadFileType() {
-        String fileType = (String) getMetrics().get(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_FILE_TYPE.getValue());
+        String fileType = (String) getMetrics().get(PackageAppProperties.PACKAGE_DOWNLOAD_FILE_TYPE);
 
         return Strings.isNullOrEmpty(fileType) ? null : FileType.valueOf(fileType);
     }
@@ -239,7 +239,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      */
     public void setPackageDownloadFileType(FileType fileType) {
         if (fileType != null) {
-            getMetrics().put(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_FILE_TYPE.getValue(), fileType.name());
+            getMetrics().put(PackageAppProperties.PACKAGE_DOWNLOAD_FILE_TYPE, fileType.name());
         }
     }
 
@@ -251,7 +251,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      * @since 1.0.0
      */
     public Boolean isPackageDownloadInstall() {
-        return (Boolean) getMetrics().get(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_PACKAGE_INSTALL.getValue());
+        return (Boolean) getMetrics().get(PackageAppProperties.PACKAGE_DOWNLOAD_PACKAGE_INSTALL);
     }
 
     /**
@@ -262,7 +262,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      */
     public void setPackageDownloadnstall(Boolean packageDownloadInstall) {
         if (packageDownloadInstall != null) {
-            getMetrics().put(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_PACKAGE_INSTALL.getValue(), packageDownloadInstall);
+            getMetrics().put(PackageAppProperties.PACKAGE_DOWNLOAD_PACKAGE_INSTALL, packageDownloadInstall);
         }
     }
 
@@ -273,7 +273,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      * @since 1.2.0
      */
     public Boolean getPackageDownloadRestart() {
-        return (Boolean) getMetrics().get(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_RESTART.getValue());
+        return (Boolean) getMetrics().get(PackageAppProperties.PACKAGE_DOWNLOAD_RESTART);
     }
 
     /**
@@ -284,7 +284,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      */
     public void setPackageDownloadRestart(Boolean restart) {
         if (restart != null) {
-            getMetrics().put(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_RESTART.getValue(), restart);
+            getMetrics().put(PackageAppProperties.PACKAGE_DOWNLOAD_RESTART, restart);
         }
     }
 
@@ -295,7 +295,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      * @since 1.1.0
      */
     public Integer getPackageDownloadBlockSize() {
-        return (Integer) getMetrics().get(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_BLOCK_SIZE.getValue());
+        return (Integer) getMetrics().get(PackageAppProperties.PACKAGE_DOWNLOAD_BLOCK_SIZE);
     }
 
     /**
@@ -306,7 +306,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      */
     public void setPackageDownloadBlockSize(Integer blockSize) {
         if (blockSize != null) {
-            getMetrics().put(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_BLOCK_SIZE.getValue(), blockSize);
+            getMetrics().put(PackageAppProperties.PACKAGE_DOWNLOAD_BLOCK_SIZE, blockSize);
         }
     }
 
@@ -316,7 +316,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      * @since 1.1.0
      */
     public Integer getPackageDownloadBlockDelay() {
-        return (Integer) getMetrics().get(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_BLOCK_DELAY.getValue());
+        return (Integer) getMetrics().get(PackageAppProperties.PACKAGE_DOWNLOAD_BLOCK_DELAY);
     }
 
     /**
@@ -326,7 +326,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      */
     public void setPackageDownloadBlockDelay(Integer blockDelay) {
         if (blockDelay != null) {
-            getMetrics().put(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_BLOCK_DELAY.getValue(), blockDelay);
+            getMetrics().put(PackageAppProperties.PACKAGE_DOWNLOAD_BLOCK_DELAY, blockDelay);
         }
     }
 
@@ -336,7 +336,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      * @since 1.1.0
      */
     public Integer getPackageDownloadBlockTimeout() {
-        return (Integer) getMetrics().get(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_BLOCK_TIMEOUT.getValue());
+        return (Integer) getMetrics().get(PackageAppProperties.PACKAGE_DOWNLOAD_BLOCK_TIMEOUT);
     }
 
     /**
@@ -346,7 +346,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      */
     public void setPackageDownloadBlockTimeout(Integer blockTimeout) {
         if (blockTimeout != null) {
-            getMetrics().put(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_BLOCK_TIMEOUT.getValue(), blockTimeout);
+            getMetrics().put(PackageAppProperties.PACKAGE_DOWNLOAD_BLOCK_TIMEOUT, blockTimeout);
         }
     }
 
@@ -356,7 +356,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      * @since 1.1.0
      */
     public Integer getPackageDownloadNotifyBlockSize() {
-        return (Integer) getMetrics().get(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_NOTIFY_BLOCK_SIZE.getValue());
+        return (Integer) getMetrics().get(PackageAppProperties.PACKAGE_DOWNLOAD_NOTIFY_BLOCK_SIZE);
     }
 
     /**
@@ -366,7 +366,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      */
     public void setPackageDownloadNotifyBlockSize(Integer notifyBlockSize) {
         if (notifyBlockSize != null) {
-            getMetrics().put(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_NOTIFY_BLOCK_SIZE.getValue(), notifyBlockSize);
+            getMetrics().put(PackageAppProperties.PACKAGE_DOWNLOAD_NOTIFY_BLOCK_SIZE, notifyBlockSize);
         }
     }
 
@@ -376,7 +376,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      * @since 1.1.0
      */
     public String getPackageDownloadInstallVerifierURI() {
-        return (String) getMetrics().get(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_INSTALL_VERIFIER_URI.getValue());
+        return (String) getMetrics().get(PackageAppProperties.PACKAGE_DOWNLOAD_INSTALL_VERIFIER_URI);
     }
 
     /**
@@ -386,7 +386,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      */
     public void setPackageDownloadInstallVerifierURI(String installVerifierURI) {
         if (installVerifierURI != null) {
-            getMetrics().put(PackageAppProperties.APP_PROPERTY_PACKAGE_DOWNLOAD_INSTALL_VERIFIER_URI.getValue(), installVerifierURI);
+            getMetrics().put(PackageAppProperties.PACKAGE_DOWNLOAD_INSTALL_VERIFIER_URI, installVerifierURI);
         }
     }
 
@@ -402,7 +402,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      * @since 1.0.0
      */
     public String getPackageInstallName() {
-        return (String) getMetrics().get(PackageAppProperties.APP_PROPERTY_PACKAGE_INSTALL_PACKAGE_NAME.getValue());
+        return (String) getMetrics().get(PackageAppProperties.PACKAGE_INSTALL_PACKAGE_NAME);
     }
 
     /**
@@ -413,7 +413,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      */
     public void setPackageInstallName(String packageName) {
         if (packageName != null) {
-            getMetrics().put(PackageAppProperties.APP_PROPERTY_PACKAGE_INSTALL_PACKAGE_NAME.getValue(), packageName);
+            getMetrics().put(PackageAppProperties.PACKAGE_INSTALL_PACKAGE_NAME, packageName);
         }
     }
 
@@ -424,7 +424,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      * @since 1.0.0
      */
     public String getPackageInstallVersion() {
-        return (String) getMetrics().get(PackageAppProperties.APP_PROPERTY_PACKAGE_INSTALL_PACKAGE_VERSION.getValue());
+        return (String) getMetrics().get(PackageAppProperties.PACKAGE_INSTALL_PACKAGE_VERSION);
     }
 
     /**
@@ -435,7 +435,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      */
     public void setPackageInstallVersion(String packageVersion) {
         if (packageVersion != null) {
-            getMetrics().put(PackageAppProperties.APP_PROPERTY_PACKAGE_INSTALL_PACKAGE_VERSION.getValue(), packageVersion);
+            getMetrics().put(PackageAppProperties.PACKAGE_INSTALL_PACKAGE_VERSION, packageVersion);
         }
     }
 
@@ -450,7 +450,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      * @since 1.0.0
      */
     public String getPackageUninstallName() {
-        return (String) getMetrics().get(PackageAppProperties.APP_PROPERTY_PACKAGE_UNINSTALL_PACKAGE_NAME.getValue());
+        return (String) getMetrics().get(PackageAppProperties.PACKAGE_UNINSTALL_PACKAGE_NAME);
     }
 
     /**
@@ -461,7 +461,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      */
     public void setPackageUninstallName(String packageName) {
         if (packageName != null) {
-            getMetrics().put(PackageAppProperties.APP_PROPERTY_PACKAGE_UNINSTALL_PACKAGE_NAME.getValue(), packageName);
+            getMetrics().put(PackageAppProperties.PACKAGE_UNINSTALL_PACKAGE_NAME, packageName);
         }
     }
 
@@ -472,7 +472,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      * @since 1.0.0
      */
     public String getPackageUninstallVersion() {
-        return (String) getMetrics().get(PackageAppProperties.APP_PROPERTY_PACKAGE_UNINSTALL_PACKAGE_VERSION.getValue());
+        return (String) getMetrics().get(PackageAppProperties.PACKAGE_UNINSTALL_PACKAGE_VERSION);
     }
 
     /**
@@ -483,7 +483,7 @@ public class PackageRequestPayload extends KapuaPayloadImpl implements KapuaRequ
      */
     public void setPackageUninstallVersion(String packageVersion) {
         if (packageVersion != null) {
-            getMetrics().put(PackageAppProperties.APP_PROPERTY_PACKAGE_UNINSTALL_PACKAGE_VERSION.getValue(), packageVersion);
+            getMetrics().put(PackageAppProperties.PACKAGE_UNINSTALL_PACKAGE_VERSION, packageVersion);
         }
     }
 

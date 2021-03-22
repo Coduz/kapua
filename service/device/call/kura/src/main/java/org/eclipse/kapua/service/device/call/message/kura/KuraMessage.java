@@ -12,12 +12,13 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.call.message.kura;
 
+import org.eclipse.kapua.service.device.call.kura.Kura;
 import org.eclipse.kapua.service.device.call.message.DeviceMessage;
 
 import java.util.Date;
 
 /**
- * {@link DeviceMessage} {@link org.eclipse.kapua.service.device.call.kura.Kura} implementation.
+ * {@link DeviceMessage} {@link Kura} implementation.
  *
  * @param <C> The {@link KuraChannel} type.
  * @param <P> The {@link KuraPayload} type.

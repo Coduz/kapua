@@ -129,7 +129,7 @@ public abstract class AbstractSimpleTranslatorResponseKuraKapua<TO_C extends Kap
 
             if (SHOW_STACKTRACE) {
                 appResponsePayload.setExceptionStack(kuraResponsePayload.getExceptionStack());
-                kuraResponsePayload.getMetrics().remove(KuraResponseMetrics.EXCEPTION_STACK.getName());
+                kuraResponsePayload.getMetrics().remove(KuraResponseMetrics.RESPONSE_EXCEPTION_STACK);
             }
 
             return appResponsePayload;

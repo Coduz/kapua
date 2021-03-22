@@ -12,11 +12,12 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.call.message.kura.app.request;
 
+import org.eclipse.kapua.service.device.call.kura.Kura;
 import org.eclipse.kapua.service.device.call.message.app.request.DeviceRequestPayload;
 import org.eclipse.kapua.service.device.call.message.kura.app.KuraAppPayload;
 
 /**
- * {@link DeviceRequestPayload} {@link org.eclipse.kapua.service.device.call.kura.Kura} implementation.
+ * {@link DeviceRequestPayload} {@link Kura} implementation.
  *
  * @since 1.0.0
  */
@@ -24,21 +25,21 @@ public class KuraRequestPayload extends KuraAppPayload implements DeviceRequestP
 
     @Override
     public void setRequestId(String requestId) {
-        getMetrics().put(KuraRequestMetrics.REQUEST_ID.getName(), requestId);
+        getMetrics().put(KuraRequestMetrics.REQUEST_ID, requestId);
     }
 
     @Override
     public String getRequestId() {
-        return (String) getMetrics().get(KuraRequestMetrics.REQUEST_ID.getName());
+        return (String) getMetrics().get(KuraRequestMetrics.REQUEST_ID);
     }
 
     @Override
     public void setRequesterClientId(String requesterClientId) {
-        getMetrics().put(KuraRequestMetrics.REQUESTER_CLIENT_ID.getName(), requesterClientId);
+        getMetrics().put(KuraRequestMetrics.REQUESTER_CLIENT_ID, requesterClientId);
     }
 
     @Override
     public String getRequesterClientId() {
-        return (String) getMetrics().get(KuraRequestMetrics.REQUESTER_CLIENT_ID.getName());
+        return (String) getMetrics().get(KuraRequestMetrics.REQUESTER_CLIENT_ID);
     }
 }

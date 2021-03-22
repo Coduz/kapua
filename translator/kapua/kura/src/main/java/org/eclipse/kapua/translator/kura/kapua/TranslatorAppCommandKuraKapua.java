@@ -53,13 +53,13 @@ public class TranslatorAppCommandKuraKapua extends AbstractSimpleTranslatorRespo
 
         try {
             Map<String, Object> metrics = kuraResponsePayload.getMetrics();
-            commandResponsePayload.setStderr((String) metrics.get(CommandMetrics.APP_METRIC_STDERR.getName()));
-            commandResponsePayload.setStdout((String) metrics.get(CommandMetrics.APP_METRIC_STDOUT.getName()));
-            commandResponsePayload.setExitCode((Integer) metrics.get(CommandMetrics.APP_METRIC_EXIT_CODE.getName()));
+            commandResponsePayload.setStderr((String) metrics.get(CommandMetrics.METRIC_STDERR));
+            commandResponsePayload.setStdout((String) metrics.get(CommandMetrics.METRIC_STDOUT));
+            commandResponsePayload.setExitCode((Integer) metrics.get(CommandMetrics.METRIC_EXIT_CODE));
 
-            Boolean timedout = (Boolean) metrics.get(CommandMetrics.APP_METRIC_TIMED_OUT.getName());
+            Boolean timedout = (Boolean) metrics.get(CommandMetrics.METRIC_TIMEDOUT);
             if (timedout != null) {
-                commandResponsePayload.setTimedout(timedout);
+                commandResponsePayload.setTimedOut(timedout);
             }
 
             // Return Kapua Payload

@@ -14,7 +14,6 @@ package org.eclipse.kapua.service.device.management.commons.message;
 
 import org.eclipse.kapua.message.internal.KapuaChannelImpl;
 import org.eclipse.kapua.service.device.management.message.KapuaAppChannel;
-import org.eclipse.kapua.service.device.management.message.KapuaAppProperties;
 
 /**
  * {@link KapuaAppChannel} implementation.
@@ -25,26 +24,26 @@ public abstract class KapuaAppChannelImpl extends KapuaChannelImpl implements Ka
 
     private static final long serialVersionUID = 3755325191379812125L;
 
-    private KapuaAppProperties appName;
-    private KapuaAppProperties appVersion;
+    private String appName;
+    private String appVersion;
 
     @Override
-    public KapuaAppProperties getAppName() {
+    public String getAppName() {
         return appName;
     }
 
     @Override
-    public void setAppName(KapuaAppProperties appName) { // do I have to keep it as a KapuaAppProperties?
+    public void setAppName(String appName) { // do I have to keep it as a KapuaAppProperties?
         this.appName = appName;
     }
 
     @Override
-    public KapuaAppProperties getVersion() {
+    public String getVersion() {
         return appVersion;
     }
 
     @Override
-    public void setVersion(KapuaAppProperties appVersion) {
+    public void setVersion(String appVersion) {
         this.appVersion = appVersion;
     }
 

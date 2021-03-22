@@ -12,14 +12,14 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.call.message.kura.app;
 
+import org.eclipse.kapua.service.device.call.kura.Kura;
 import org.eclipse.kapua.service.device.call.message.app.DeviceAppPayload;
 import org.eclipse.kapua.service.device.call.message.kura.KuraPayload;
 
 /**
- * {@link DeviceAppPayload} {@link org.eclipse.kapua.service.device.call.kura.Kura} implementation.
+ * {@link DeviceAppPayload} {@link Kura} implementation.
  *
  * @since 1.0.0
  */
 public class KuraAppPayload extends KuraPayload implements DeviceAppPayload {
-
 }

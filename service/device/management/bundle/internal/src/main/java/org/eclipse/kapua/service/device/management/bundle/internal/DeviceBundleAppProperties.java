@@ -12,32 +12,35 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.management.bundle.internal;
 
+import org.eclipse.kapua.service.device.management.bundle.DeviceBundle;
 import org.eclipse.kapua.service.device.management.message.KapuaAppProperties;
 
 /**
- * Device bundle properties definition.
+ * {@link DeviceBundle} {@link KapuaAppProperties} implementation.
  *
- * @since 1.0
+ * @since 1.0.0
  */
-public enum DeviceBundleAppProperties implements KapuaAppProperties {
+public class DeviceBundleAppProperties implements KapuaAppProperties {
+
+    /**
+     * Constructor.
+     *
+     * @since 1.5.0
+     */
+    private DeviceBundleAppProperties() {
+    }
+
     /**
      * Application name
+     *
+     * @since 1.0.0
      */
-    APP_NAME("BUNDLE"),
+    public static final String APP_NAME = "BUNDLE";
+
     /**
-     * Version
+     * Application Version
+     *
+     * @since 1.0.0
      */
-    APP_VERSION("1.0.0"),;
-
-    private String value;
-
-    DeviceBundleAppProperties(String value) {
-        this.value = value;
-    }
-
-    @Override
-    public String getValue() {
-        return value;
-    }
-
+    public static final String APP_VERSION = "1.0.0";
 }

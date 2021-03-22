@@ -89,7 +89,7 @@ public abstract class AbstractDeviceManagementServiceImpl {
                         scopeId,
                         deviceId,
                         responseMessage.getReceivedOn(),
-                        requestMessage.getChannel().getAppName().getValue());
+                        requestMessage.getChannel().getAppName());
 
         deviceEventCreator.setPosition(responseMessage.getPosition());
         deviceEventCreator.setSentOn(responseMessage.getSentOn());
@@ -106,7 +106,7 @@ public abstract class AbstractDeviceManagementServiceImpl {
         deviceManagementOperationCreator.setDeviceId(deviceId);
         deviceManagementOperationCreator.setOperationId(operationId);
         deviceManagementOperationCreator.setStartedOn(new Date());
-        deviceManagementOperationCreator.setAppId(requestMessage.getChannel().getAppName().getValue());
+        deviceManagementOperationCreator.setAppId(requestMessage.getChannel().getAppName());
         deviceManagementOperationCreator.setAction(requestMessage.getChannel().getMethod());
         deviceManagementOperationCreator.setResource(!requestMessage.getChannel().getSemanticParts().isEmpty() ? requestMessage.getChannel().getSemanticParts().get(0) : null);
         deviceManagementOperationCreator.setStatus(OperationStatus.RUNNING);
