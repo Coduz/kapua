@@ -155,6 +155,7 @@
 
     <build>
         <defaultGoal>clean install</defaultGoal>
+        <!-- Saadssd -->
         <pluginManagement>
             <plugins>
                 <plugin>
