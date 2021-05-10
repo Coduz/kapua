@@ -316,25 +316,25 @@ public class DatastoreSteps extends TestBase {
 
         // Get instance of services used in different scenarios
         KapuaLocator locator = KapuaLocator.getInstance();
-        deviceRegistryService = locator.getService(DeviceRegistryService.class);
-        deviceFactory = locator.getFactory(DeviceFactory.class);
-        messageStoreService = locator.getService(MessageStoreService.class);
-        messageFactory = locator.getFactory(KapuaMessageFactory.class);
-        elasticsearchClient = DatastoreClientFactory.getInstance().getElasticsearchClient();
+
         channelInfoFactory = locator.getFactory(ChannelInfoFactory.class);
-        clientInfoFactory = locator.getFactory(ClientInfoFactory.class);
-        messageStoreFactory = locator.getFactory(MessageStoreFactory.class);
-        metricInfoFactory = locator.getFactory(MetricInfoFactory.class);
-        datastorePredicateFactory = locator.getFactory(DatastorePredicateFactory.class);
-        storableIdFactory = locator.getFactory(StorableIdFactory.class);
         channelInfoRegistryService = locator.getService(ChannelInfoRegistryService.class);
         channelInfoRegistryServiceProxy = new ChannelInfoRegistryServiceProxy();
-        metricInfoRegistryService = locator.getService(MetricInfoRegistryService.class);
-        metricInfoRegistryServiceProxy = new MetricInfoRegistryServiceProxy();
+        clientInfoFactory = locator.getFactory(ClientInfoFactory.class);
         clientInfoRegistryService = locator.getService(ClientInfoRegistryService.class);
         clientInfoRegistryServiceProxy = new ClientInfoRegistryServiceProxy();
-        messageFactory = locator.getFactory(KapuaMessageFactory.class);
         dataMessageFactory = locator.getFactory(KapuaDataMessageFactory.class);
+        datastorePredicateFactory = locator.getFactory(DatastorePredicateFactory.class);
+        deviceFactory = locator.getFactory(DeviceFactory.class);
+        deviceRegistryService = locator.getService(DeviceRegistryService.class);
+        elasticsearchClient = DatastoreClientFactory.getInstance().getElasticsearchClient();
+        messageFactory = locator.getFactory(KapuaMessageFactory.class);
+        messageStoreFactory = locator.getFactory(MessageStoreFactory.class);
+        messageStoreService = locator.getService(MessageStoreService.class);
+        metricInfoFactory = locator.getFactory(MetricInfoFactory.class);
+        metricInfoRegistryService = locator.getService(MetricInfoRegistryService.class);
+        metricInfoRegistryServiceProxy = new MetricInfoRegistryServiceProxy();
+        storableIdFactory = locator.getFactory(StorableIdFactory.class);
 
         // JAXB Context
         XmlUtil.setContextProvider(new TestJAXBContextProvider());

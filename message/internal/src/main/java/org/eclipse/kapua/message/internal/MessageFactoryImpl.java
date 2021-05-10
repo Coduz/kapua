@@ -30,7 +30,8 @@ import org.eclipse.kapua.message.Payload;
 public abstract class MessageFactoryImpl<C extends Channel, P extends Payload, M extends Message<C, P>, F extends MessageFactory<C, P, M>>
         implements MessageFactory<C, P, M> {
 
-    private final F messageFactory;
+    private final Class<F> messageFactoryClass;
+    private F messageFactory;
 
     /**
      * Constructor.
@@ -39,21 +40,46 @@ public abstract class MessageFactoryImpl<C extends Channel, P extends Payload, M
      * @since 1.5.0
      */
     public MessageFactoryImpl(Class<F> messageFactoryClass) {
-        this.messageFactory = KapuaLocator.getInstance().getFactory(messageFactoryClass);
+        this.messageFactoryClass = messageFactoryClass;
     }
 
     @Override
     public C newChannel() {
-        return messageFactory.newChannel();
+        return getMessageFactory().newChannel();
     }
 
     @Override
     public P newPayload() {
-        return messageFactory.newPayload();
+        return getMessageFactory().newPayload();
     }
 
     @Override
     public M newMessage() {
-        return messageFactory.newMessage();
+        return getMessageFactory().newMessage();
+    }
+
+    /**
+     * Gets the implementing instance of {@link #messageFactoryClass}.
+     *
+     * @return The implementing instance of {@link #messageFactoryClass}.
+     * @since 1.5.0
+     */
+    private synchronized F getMessageFactory() {
+        if (messageFactory == null) {
+            initMessageFactory();
+        }
+
+        return messageFactory;
+    }
+
+    /**
+     * Initializes the @{@link MessageFactory}.
+     *
+     * @since 1.5.0
+     */
+    private synchronized void initMessageFactory() {
+        if (messageFactory == null) {
+            messageFactory = KapuaLocator.getInstance().getFactory(messageFactoryClass);
+        }
     }
 }
