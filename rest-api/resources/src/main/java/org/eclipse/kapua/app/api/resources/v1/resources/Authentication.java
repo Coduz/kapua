@@ -20,10 +20,10 @@ import org.eclipse.kapua.service.authentication.ApiKeyCredentials;
 import org.eclipse.kapua.service.authentication.AuthenticationService;
 import org.eclipse.kapua.service.authentication.JwtCredentials;
 import org.eclipse.kapua.service.authentication.LoginCredentials;
+import org.eclipse.kapua.service.authentication.LoginInfo;
 import org.eclipse.kapua.service.authentication.RefreshTokenCredentials;
 import org.eclipse.kapua.service.authentication.UsernamePasswordCredentials;
 import org.eclipse.kapua.service.authentication.token.AccessToken;
-import org.eclipse.kapua.service.authentication.token.LoginInfo;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -64,7 +64,7 @@ public class Authentication extends AbstractKapuaResource {
      * It also enable the trusted machine key if the {@code enableTrust} parameter is 'true'.
      *
      * @param authenticationCredentials The username, password and code authentication credential of a user.
-     * @param enableTrust If true the machine trust key is enabled.
+     * @param enableTrust               If true the machine trust key is enabled.
      * @return The authentication token.
      * @throws KapuaException Whenever something bad happens. See specific {@link KapuaService} exceptions.
      * @since 1.4.0

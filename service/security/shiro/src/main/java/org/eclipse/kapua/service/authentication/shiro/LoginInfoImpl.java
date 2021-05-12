@@ -10,14 +10,14 @@
  * Contributors:
  *     Eurotech - initial API and implementation
  *******************************************************************************/
-package org.eclipse.kapua.service.authentication.token.shiro;
+package org.eclipse.kapua.service.authentication.shiro;
 
-import java.util.Set;
-
+import org.eclipse.kapua.service.authentication.LoginInfo;
 import org.eclipse.kapua.service.authentication.token.AccessToken;
-import org.eclipse.kapua.service.authentication.token.LoginInfo;
 import org.eclipse.kapua.service.authorization.access.AccessPermission;
 import org.eclipse.kapua.service.authorization.role.RolePermission;
+
+import java.util.Set;
 
 public class LoginInfoImpl implements LoginInfo {
 

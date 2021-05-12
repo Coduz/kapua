@@ -15,7 +15,6 @@ package org.eclipse.kapua.service.authentication;
 import org.eclipse.kapua.KapuaException;
 import org.eclipse.kapua.service.KapuaService;
 import org.eclipse.kapua.service.authentication.token.AccessToken;
-import org.eclipse.kapua.service.authentication.token.LoginInfo;
 
 /**
  * AuthenticationService exposes APIs to manage User object under an Account.<br>
@@ -64,8 +63,8 @@ public interface AuthenticationService extends KapuaService {
      * Return the {@link AccessToken} identified by the provided token identifier. Expired {@link AccessToken}s are
      * excluded.
      *
-     * @param tokenId           The ID of the {@link AccessToken}
-     * @return                  The desired {@link AccessToken} object
+     * @param tokenId The ID of the {@link AccessToken}
+     * @return The desired {@link AccessToken} object
      * @throws KapuaException if no {@link AccessToken} is found for that token identifier
      */
     AccessToken findAccessToken(String tokenId) throws KapuaException;
@@ -74,8 +73,8 @@ public interface AuthenticationService extends KapuaService {
      * Return a Refreshable {@link AccessToken} identified by the provided token identifier. A Refreshable token may be
      * already expired or not, but its Refresh Token is still valid
      *
-     * @param tokenId               The ID of the {@link AccessToken}
-     * @return                      The desired {@link AccessToken} object
+     * @param tokenId The ID of the {@link AccessToken}
+     * @return The desired {@link AccessToken} object
      * @throws KapuaException if no {@link AccessToken} is found for that token identifier
      */
     AccessToken findRefreshableAccessToken(String tokenId) throws KapuaException;
@@ -92,6 +91,7 @@ public interface AuthenticationService extends KapuaService {
 
     /**
      * Return the {@link LoginInfo} related to the current session
+     *
      * @return the {@link LoginInfo} object containing all the permissions related to the current session and the current {@link AccessToken}
      * @throws KapuaException
      */

@@ -17,14 +17,14 @@ import org.eclipse.kapua.service.authentication.AccessTokenCredentials;
 import org.eclipse.kapua.service.authentication.ApiKeyCredentials;
 import org.eclipse.kapua.service.authentication.CredentialsFactory;
 import org.eclipse.kapua.service.authentication.JwtCredentials;
+import org.eclipse.kapua.service.authentication.LoginInfo;
 import org.eclipse.kapua.service.authentication.RefreshTokenCredentials;
 import org.eclipse.kapua.service.authentication.UsernamePasswordCredentials;
 
 /**
- * {@link CredentialsFactory} factory implementation.
+ * {@link CredentialsFactory} implementation.
  *
- * @since 1.0
- *
+ * @since 1.0.0
  */
 @KapuaProvider
 public class CredentialsFactoryImpl implements CredentialsFactory {
@@ -54,4 +54,8 @@ public class CredentialsFactoryImpl implements CredentialsFactory {
         return new RefreshTokenCredentialsImpl(tokenId, refreshToken);
     }
 
+    @Override
+    public LoginInfo newLoginInfo() {
+        return new LoginInfoImpl();
+    }
 }

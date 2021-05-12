@@ -71,4 +71,11 @@ public interface CredentialsFactory extends KapuaObjectFactory {
      */
     RefreshTokenCredentials newRefreshTokenCredentials(String tokenId, String refreshToken);
 
+    /**
+     * Instantiates a new {@link LoginInfo}.
+     *
+     * @return The newly instantiated {@link LoginInfo}.
+     * @since 1.0.0
+     */
+    LoginInfo newLoginInfo();
 }

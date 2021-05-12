@@ -17,10 +17,9 @@ import org.eclipse.kapua.commons.model.id.KapuaEid;
 import org.eclipse.kapua.model.id.KapuaId;
 import org.eclipse.kapua.qa.markers.junit.JUnitTests;
 import org.eclipse.kapua.service.authentication.token.AccessToken;
-import org.eclipse.kapua.service.authentication.token.AccessTokenQuery;
-import org.eclipse.kapua.service.authentication.token.LoginInfo;
-import org.eclipse.kapua.service.authentication.token.AccessTokenListResult;
 import org.eclipse.kapua.service.authentication.token.AccessTokenCreator;
+import org.eclipse.kapua.service.authentication.token.AccessTokenListResult;
+import org.eclipse.kapua.service.authentication.token.AccessTokenQuery;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -142,10 +141,5 @@ public class AccessTokenFactoryImplTest extends Assert {
     @Test(expected = KapuaEntityCloneException.class)
     public void cloneNullTest() {
         accessTokenFactoryImpl.clone(null);
-    }
-
-    @Test
-    public void newLoginInfoTest() {
-        assertTrue("True expected.", accessTokenFactoryImpl.newLoginInfo() instanceof LoginInfo);
     }
 }

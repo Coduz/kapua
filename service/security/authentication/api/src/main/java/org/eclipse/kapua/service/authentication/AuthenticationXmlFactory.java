@@ -27,7 +27,7 @@ public class AuthenticationXmlFactory implements KapuaXmlFactory {
     private static final CredentialsFactory CREDENTIALS_FACTORY = LOCATOR.getFactory(CredentialsFactory.class);
 
     /**
-     * Instatiates a new {@link UsernamePasswordCredentials}.
+     * Instantiates a new {@link UsernamePasswordCredentials}.
      *
      * @return The newly instantiated {@link UsernamePasswordCredentials}.
      * @since 1.0.0
@@ -37,7 +37,7 @@ public class AuthenticationXmlFactory implements KapuaXmlFactory {
     }
 
     /**
-     * Instatiates a new {@link ApiKeyCredentials}.
+     * Instantiates a new {@link ApiKeyCredentials}.
      *
      * @return The newly instantiated {@link ApiKeyCredentials}.
      * @since 1.0.0
@@ -47,7 +47,7 @@ public class AuthenticationXmlFactory implements KapuaXmlFactory {
     }
 
     /**
-     * Instatiates a new {@link JwtCredentials}.
+     * Instantiates a new {@link JwtCredentials}.
      *
      * @return The newly instantiated {@link JwtCredentials}.
      * @since 1.0.0
@@ -57,7 +57,7 @@ public class AuthenticationXmlFactory implements KapuaXmlFactory {
     }
 
     /**
-     * Instatiates a new {@link AccessTokenCredentials}.
+     * Instantiates a new {@link AccessTokenCredentials}.
      *
      * @return The newly instantiated {@link AccessTokenCredentials}.
      * @since 1.0.0
@@ -67,12 +67,22 @@ public class AuthenticationXmlFactory implements KapuaXmlFactory {
     }
 
     /**
-     * Instatiates a new {@link RefreshTokenCredentials}.
+     * Instantiates a new {@link RefreshTokenCredentials}.
      *
      * @return The newly instantiated {@link RefreshTokenCredentials}.
      * @since 1.0.0
      */
     public RefreshTokenCredentials newRefreshTokenCredentials() {
         return CREDENTIALS_FACTORY.newRefreshTokenCredentials(null, null);
+    }
+
+    /**
+     * Instantiates a new {@link LoginInfo}.
+     *
+     * @return The newly instantiated {@link LoginInfo}.
+     * @since 1.5.0
+     */
+    public LoginInfo newLoginInfo() {
+        return CREDENTIALS_FACTORY.newLoginInfo();
     }
 }

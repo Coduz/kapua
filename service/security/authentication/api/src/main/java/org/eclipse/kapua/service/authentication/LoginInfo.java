@@ -10,9 +10,10 @@
  * Contributors:
  *     Eurotech - initial API and implementation
  *******************************************************************************/
-package org.eclipse.kapua.service.authentication.token;
+package org.eclipse.kapua.service.authentication;
 
 import org.eclipse.kapua.KapuaSerializable;
+import org.eclipse.kapua.service.authentication.token.AccessToken;
 import org.eclipse.kapua.service.authorization.access.AccessPermission;
 import org.eclipse.kapua.service.authorization.role.RolePermission;
 
@@ -25,7 +26,7 @@ import java.util.Set;
 
 @XmlRootElement(name = "loginInfo")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = AccessTokenXmlFactory.class, factoryMethod = "newLoginInfo")
+@XmlType(factoryClass = AuthenticationXmlFactory.class, factoryMethod = "newLoginInfo")
 public interface LoginInfo extends KapuaSerializable {
 
     @XmlElement(name = "accessToken")
