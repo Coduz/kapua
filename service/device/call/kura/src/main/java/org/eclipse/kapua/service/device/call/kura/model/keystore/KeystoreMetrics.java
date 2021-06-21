@@ -20,59 +20,27 @@ import org.eclipse.kapua.service.device.call.message.app.DeviceAppMetrics;
  *
  * @since 1.5.0
  */
-public enum KeystoreMetrics implements DeviceAppMetrics {
+public class KeystoreMetrics implements DeviceAppMetrics {
+
+    /**
+     * Constructor.
+     *
+     * @since 1.5.0
+     */
+    private KeystoreMetrics() {
+    }
 
     /**
      * Application identifier.
      *
      * @since 1.5.0
      */
-    APP_ID("KEYS"),
+    public static final String APP_ID = "KEYS";
 
     /**
      * Application version.
      *
      * @since 1.5.0
      */
-    APP_VERSION("V1"),
-    ;
-
-    /**
-     * The name of the metric.
-     *
-     * @since 1.5.0
-     */
-    private final String name;
-
-    /**
-     * Constructor.
-     *
-     * @param name The name of the metric.
-     * @since 1.5.0
-     */
-    KeystoreMetrics(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Gets the value property associated to this specific enumeration key.
-     *
-     * @return the value property associated to this specific enumeration key.
-     * @since 1.5.0
-     * @deprecated Since 1.2.0. Renamed to {@link #getName()}.
-     */
-    @Deprecated
-    public String getValue() {
-        return getName();
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String toString() {
-        return getName();
-    }
+    public static final String APP_VERSION = "V1";
 }

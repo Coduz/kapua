@@ -20,26 +20,23 @@ import org.eclipse.kapua.service.device.management.message.KapuaAppProperties;
  *
  * @since 1.5.0
  */
-public enum DeviceKeystoreAppProperties implements KapuaAppProperties {
+public class DeviceKeystoreAppProperties implements KapuaAppProperties {
+
+    /**
+     * Constructor.
+     *
+     * @since 1.5.0
+     */
+    private DeviceKeystoreAppProperties() {
+    }
+
     /**
      * Application name
      */
-    APP_NAME("KEYS"),
+    public static final String APP_NAME = "KEYS";
+
     /**
      * Version
      */
-    APP_VERSION("1.0.0"),
-    ;
-
-    private final String value;
-
-    DeviceKeystoreAppProperties(String value) {
-        this.value = value;
-    }
-
-    @Override
-    public String getValue() {
-        return value;
-    }
-
+    public static final String APP_VERSION = "1.0.0";
 }
