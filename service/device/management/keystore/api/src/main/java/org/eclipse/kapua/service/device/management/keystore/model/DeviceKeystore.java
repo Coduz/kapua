@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "deviceKeystore")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = DeviceKeystoreXmlRegistry.class, factoryMethod = "newDeviceKeystore")
+@XmlType(factoryClass = DeviceKeystoreXmlFactory.class, factoryMethod = "newDeviceKeystore")
 public interface DeviceKeystore {
 
     /**

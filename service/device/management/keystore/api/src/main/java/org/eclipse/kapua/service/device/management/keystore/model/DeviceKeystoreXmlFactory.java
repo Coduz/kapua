@@ -13,14 +13,15 @@
 package org.eclipse.kapua.service.device.management.keystore.model;
 
 import org.eclipse.kapua.locator.KapuaLocator;
+import org.eclipse.kapua.model.xml.KapuaXmlFactory;
 import org.eclipse.kapua.service.device.management.keystore.DeviceKeystoreManagementFactory;
 
 /**
- * {@link DeviceKeystore} XmlFactory definition.
+ * {@link DeviceKeystore} {@link KapuaXmlFactory} implementation.
  *
  * @since 1.5.0
  */
-public class DeviceKeystoreXmlRegistry {
+public class DeviceKeystoreXmlFactory implements KapuaXmlFactory {
 
     private final KapuaLocator locator = KapuaLocator.getInstance();
     private final DeviceKeystoreManagementFactory factory = locator.getFactory(DeviceKeystoreManagementFactory.class);

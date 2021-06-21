@@ -33,7 +33,7 @@ import java.util.List;
  */
 @XmlRootElement(name = "deviceKeystoreItem")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = DeviceKeystoreXmlRegistry.class, factoryMethod = "newDeviceKeystoreItem")
+@XmlType(factoryClass = DeviceKeystoreXmlFactory.class, factoryMethod = "newDeviceKeystoreItem")
 public interface DeviceKeystoreItem {
 
     /**

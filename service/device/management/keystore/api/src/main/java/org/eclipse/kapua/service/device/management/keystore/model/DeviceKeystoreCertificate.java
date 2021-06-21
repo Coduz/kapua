@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "deviceKeystoreCertificate")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = DeviceKeystoreXmlRegistry.class, factoryMethod = "newDeviceKeystoreCertificate")
+@XmlType(factoryClass = DeviceKeystoreXmlFactory.class, factoryMethod = "newDeviceKeystoreCertificate")
 public interface DeviceKeystoreCertificate extends KapuaSerializable {
 
     /**

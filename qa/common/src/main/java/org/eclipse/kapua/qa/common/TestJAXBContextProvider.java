@@ -57,7 +57,7 @@ import org.eclipse.kapua.service.device.management.keystore.model.DeviceKeystore
 import org.eclipse.kapua.service.device.management.keystore.model.DeviceKeystoreItemQuery;
 import org.eclipse.kapua.service.device.management.keystore.model.DeviceKeystoreItems;
 import org.eclipse.kapua.service.device.management.keystore.model.DeviceKeystoreKeypair;
-import org.eclipse.kapua.service.device.management.keystore.model.DeviceKeystoreXmlRegistry;
+import org.eclipse.kapua.service.device.management.keystore.model.DeviceKeystoreXmlFactory;
 import org.eclipse.kapua.service.device.management.keystore.model.DeviceKeystores;
 import org.eclipse.kapua.service.device.management.packages.model.DevicePackages;
 import org.eclipse.kapua.service.device.management.packages.model.download.DevicePackageDownloadRequest;
@@ -144,7 +144,7 @@ public class TestJAXBContextProvider implements JAXBContextProvider {
                         DeviceKeystoreKeypair.class,
                         DeviceKeystoreCSRInfo.class,
                         DeviceKeystoreCSR.class,
-                        DeviceKeystoreXmlRegistry.class,
+                        DeviceKeystoreXmlFactory.class,
 
                         // Device Management Package
                         DevicePackages.class,
