@@ -61,7 +61,7 @@ public class CryptoUtil {
     static {
         String defaultSecretKey = SECRET_KEY_LEGACY;
 
-        if (Strings.isNullOrEmpty(defaultSecretKey)) {
+        if (Strings.isNullOrEmpty(SECRET_KEY)) {
             defaultSecretKey = SECRET_KEY;
         }
 
