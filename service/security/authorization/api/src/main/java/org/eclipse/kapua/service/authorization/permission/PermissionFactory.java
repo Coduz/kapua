@@ -37,7 +37,7 @@ public interface PermissionFactory extends KapuaObjectFactory {
      * @return A instance of the implementing class of {@link Permission}.
      */
     default Permission newPermission(Domain domain, Actions action, KapuaId targetScopeId) {
-        return newPermission(domain, action, targetScopeId, null);
+        return newPermission(domain, action, targetScopeId, Group.ANY);
     }
 
     /**
