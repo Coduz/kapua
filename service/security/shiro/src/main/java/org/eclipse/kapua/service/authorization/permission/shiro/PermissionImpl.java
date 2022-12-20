@@ -40,6 +40,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.PrePersist;
 import java.io.Serializable;
 
 /**
@@ -156,7 +157,7 @@ public class PermissionImpl extends WildcardPermission implements Permission, or
 
     @Override
     public void setTargetScopeId(KapuaId targetScopeId) {
-        this.targetScopeId = KapuaId.ANY.equals(targetScopeId) ? null : KapuaEid.parseKapuaId(targetScopeId);
+        this.targetScopeId = KapuaEid.parseKapuaId(targetScopeId);
     }
 
     @Override
@@ -166,7 +167,7 @@ public class PermissionImpl extends WildcardPermission implements Permission, or
 
     @Override
     public void setGroupId(KapuaId groupId) {
-        this.groupId = Group.ANY.equals(groupId) ? null : KapuaEid.parseKapuaId(groupId);
+        this.groupId = KapuaEid.parseKapuaId(groupId);
     }
 
     @Override
@@ -280,6 +281,13 @@ public class PermissionImpl extends WildcardPermission implements Permission, or
         }
 
         return false;
+    }
+
+    @PrePersist
+    protected void prePersistsAction() {
+        if (Group.ANY.equals(getGroupId())) {
+            setGroupId(null);
+        }
     }
 
     @Override
