@@ -52,7 +52,7 @@ public class PermissionValidator {
                         if (domain.getName().equals(p.getDomain())) {
                             matched = true;
 
-                            checkPermissionGroupAny(p);
+//                            checkPermissionGroupAny(p);
 
                             if (!domain.getGroupable() && p.getGroupId() != null) {
                                 throw new KapuaIllegalArgumentException(PermissionAttributes.GROUP_ID, p.getGroupId().toStringId());
