@@ -20,6 +20,7 @@ import org.eclipse.kapua.service.authorization.domain.Domain;
 import org.eclipse.kapua.service.authorization.domain.DomainFactory;
 import org.eclipse.kapua.service.authorization.domain.DomainListResult;
 import org.eclipse.kapua.service.authorization.domain.DomainRegistryService;
+import org.eclipse.kapua.service.authorization.group.Group;
 import org.eclipse.kapua.service.authorization.permission.Permission;
 import org.eclipse.kapua.service.authorization.permission.PermissionAttributes;
 
@@ -50,6 +51,9 @@ public class PermissionValidator {
                     for (Domain domain : domains.getItems()) {
                         if (domain.getName().equals(p.getDomain())) {
                             matched = true;
+
+                            checkPermissionGroupAny(p);
+
                             if (!domain.getGroupable() && p.getGroupId() != null) {
                                 throw new KapuaIllegalArgumentException(PermissionAttributes.GROUP_ID, p.getGroupId().toStringId());
                             }
@@ -62,6 +66,18 @@ public class PermissionValidator {
                     }
                 }
             }
+        }
+    }
+
+    /**
+     * If Group has been set to {@link Group#ANY} it must be converted to {@code null} to make it persistable and to make permission check work.
+     *
+     * @param permission The {@link Permission} to check.
+     * @since 2.0.0
+     */
+    private static void checkPermissionGroupAny(Permission permission) {
+        if (Group.ANY.equals(permission.getGroupId())) {
+            permission.setGroupId(null);
         }
     }
 }
