@@ -10,16 +10,28 @@
  * Contributors:
  *     Eurotech - initial API and implementation
  *******************************************************************************/
-package org.eclipse.kapua.service.authentication;
+package org.eclipse.kapua.service.authentication.exception;
 
 import org.eclipse.kapua.KapuaErrorCode;
 
 /**
- * Authentication error codes
+ * {@link KapuaErrorCode}s for {@link KapuaAuthenticationException}s.
  *
- * since 1.0
+ * @since 1.0.0
  */
 public enum KapuaAuthenticationErrorCodes implements KapuaErrorCode {
+    /**
+     * @see DuplicatedPasswordCredentialException
+     * @since 2.0.0
+     */
+    DUPLICATED_PASSWORD_CREDENTIAL,
+
+    /**
+     * @see PasswordLengthException
+     * @since 2.0.0
+     */
+    PASSWORD_INVALID_LENGTH,
+
     /**
      * User already logged
      */
@@ -119,5 +131,5 @@ public enum KapuaAuthenticationErrorCodes implements KapuaErrorCode {
     /**
      * Full MFA credentials are required.
      */
-    REQUIRE_MFA_CREDENTIALS;
+    REQUIRE_MFA_CREDENTIALS
 }
