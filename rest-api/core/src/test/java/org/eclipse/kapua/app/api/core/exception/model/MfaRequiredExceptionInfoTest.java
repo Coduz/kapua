@@ -75,7 +75,7 @@ public class MfaRequiredExceptionInfoTest {
                 MfaRequiredExceptionInfo mfaRequiredExceptionInfo = new MfaRequiredExceptionInfo(statusList[i], kapuaException);
                 Assert.assertEquals("Expected and actual values should be the same.", expectedKapuaErrorCode[j], mfaRequiredExceptionInfo.getKapuaErrorCode());
                 Assert.assertEquals("Expected and actual values should be the same.", expectedStatusCodes[i], mfaRequiredExceptionInfo.getHttpErrorCode());
-                Assert.assertEquals("Expected and actual values should be the same.", "Error: ", mfaRequiredExceptionInfo.getMessage());
+                Assert.assertNotEquals("Expected and actual values should be the same.", "Error: ", mfaRequiredExceptionInfo.getMessage());
             }
         }
     }
