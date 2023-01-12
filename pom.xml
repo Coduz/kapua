@@ -2758,10 +2758,11 @@
                         </executions>
                         <configuration>
                             <assemblyAnalyzerEnabled>false</assemblyAnalyzerEnabled> <!-- This disables the .NET Assembly Analyzer -->
-                            <!-- The following is commented because we have a lot of CVEs. Check Kapua Issue https://github.com/eclipse/kapua/issues/3691 -->
-                            <!-- <failBuildOnCVSS>9.0</failBuildOnCVSS> --><!-- Fails if there is any score above 9 -->
-                            <format>ALL</format> <!-- Defines output file formats. ALL will produce .csv, .html, .json, .sarif, .xml -->
+                            <failBuildOnCVSS>9.0</failBuildOnCVSS>
+                            <!-- Fails if there is any score above 9 -->
+                            <format>ALL</format> <!-- Defines output file formats. ALL will produce .csv, .html, .json, .sarif, .xml-->
                             <outputDirectory>target/security-scan/</outputDirectory> <!-- Group all reports under the same directory -->
+                            <suppressionFile>build-tools/src/main/dependency-scan/dependency-scan-suppressions.xml</suppressionFile>
                         </configuration>
                     </plugin>
                 </plugins>
