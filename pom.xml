@@ -75,7 +75,8 @@
         <hamcrest-core.version>2.2</hamcrest-core.version>
         <h2.version>1.4.199</h2.version>
         <hikaricp.version>4.0.3</hikaricp.version>
-        <hk2-api.version>2.6.1</hk2-api.version>
+        <hk2.version>2.6.1</hk2.version>
+        <hk2-osgi-resource-locator.version>1.0.3</hk2-osgi-resource-locator.version>
         <httpcomponents-asyncclient.version>4.1.5</httpcomponents-asyncclient.version>
         <httpcomponents-client.version>4.5.13</httpcomponents-client.version>
         <httpcomponents-core.version>4.4.15</httpcomponents-core.version>
@@ -2077,22 +2078,6 @@
                 <version>${javax-servlet-api.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.glassfish.hk2</groupId>
-                <artifactId>hk2-api</artifactId>
-                <version>${hk2-api.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.glassfish.hk2</groupId>
-                <artifactId>hk2-utils</artifactId>
-                <version>${hk2-api.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.glassfish.hk2</groupId>
-                <artifactId>hk2-locator</artifactId>
-                <version>${hk2-api.version}</version>
-            </dependency>
-
             <!-- -->
             <!-- Jackson -->
             <dependency>
@@ -2355,6 +2340,35 @@
                 <groupId>org.eclipse.jetty.websocket</groupId>
                 <artifactId>websocket-servlet</artifactId>
                 <version>${jetty.version}</version>
+            </dependency>
+
+            <!-- -->
+            <!-- HK2 -->
+            <dependency>
+                <groupId>org.glassfish.hk2</groupId>
+                <artifactId>hk2-api</artifactId>
+                <version>${hk2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.hk2</groupId>
+                <artifactId>hk2-locator</artifactId>
+                <version>${hk2.version}</version>
+            </dependency>
+            <dependency>
+                <!-- jersey-commons 2.38 depends on this-->
+                <groupId>org.glassfish.hk2</groupId>
+                <artifactId>osgi-resource-locator</artifactId>
+                <version>${hk2-osgi-resource-locator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.hk2</groupId>
+                <artifactId>hk2-utils</artifactId>
+                <version>${hk2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.hk2.external</groupId>
+                <artifactId>aopalliance-repackaged</artifactId>
+                <version>${hk2.version}</version>
             </dependency>
 
             <!-- -->

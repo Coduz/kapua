@@ -24,18 +24,8 @@
     <artifactId>kapua-qa-integration</artifactId>
 
     <dependencies>
-
-        <dependency>
-            <groupId>org.glassfish.hk2</groupId>
-            <artifactId>hk2-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.bundles</groupId>
-            <artifactId>jaxrs-ri</artifactId>
-            <version>${jersey.version}</version>
-        </dependency>
-
-        <!-- Required service interfaces -->
+        <!-- -->
+        <!-- Kapua dependencies -->
         <dependency>
             <groupId>org.eclipse.kapua</groupId>
             <artifactId>kapua-security-authentication-api</artifactId>
@@ -52,8 +42,6 @@
             <groupId>org.eclipse.kapua</groupId>
             <artifactId>kapua-security-shiro</artifactId>
         </dependency>
-
-        <!-- Internal dependencies -->
         <dependency>
             <groupId>org.eclipse.kapua</groupId>
             <artifactId>kapua-qa-common</artifactId>
@@ -74,7 +62,6 @@
             <groupId>org.eclipse.kapua</groupId>
             <artifactId>kapua-device-management-job-internal</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.eclipse.kapua</groupId>
             <artifactId>kapua-user-internal</artifactId>
@@ -294,34 +281,50 @@
             <groupId>org.eclipse.kapua</groupId>
             <artifactId>kapua-consumer-telemetry</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.eclipse.kapua</groupId>
             <artifactId>kapua-qa-markers</artifactId>
             <scope>compile</scope>
         </dependency>
 
+        <!-- -->
         <!-- External dependencies -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
+
+        <!-- HK2 -->
+        <dependency>
+            <groupId>org.glassfish.hk2</groupId>
+            <artifactId>hk2-api</artifactId>
+        </dependency>
+
+        <!-- Jersey -->
+        <dependency>
+            <groupId>org.glassfish.jersey.bundles</groupId>
+            <artifactId>jaxrs-ri</artifactId>
+        </dependency>
+
+        <!-- -->
+        <!-- Test dependencies -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
         </dependency>
-
-        <!-- Test dependencies -->
         <dependency>
             <groupId>javax.batch</groupId>
             <artifactId>javax.batch-api</artifactId>
             <scope>test</scope>
         </dependency>
 
+        <!-- Cucumber -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-core</artifactId>
@@ -343,7 +346,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- activemq -->
+        <!-- ActiveMQ -->
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-broker</artifactId>
@@ -372,9 +375,10 @@
         <dependency>
             <groupId>org.eclipse.paho</groupId>
             <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+            <scope>test</scope>
         </dependency>
 
-        <!-- camel -->
+        <!-- Camel -->
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-core</artifactId>
@@ -386,7 +390,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- misc -->
+        <!-- Logback -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -403,7 +407,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- needed by Elasticsearch -->
+        <!-- Elasticsearch -->
         <dependency>
             <groupId>org.elasticsearch</groupId>
             <artifactId>elasticsearch</artifactId>
