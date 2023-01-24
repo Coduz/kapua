@@ -60,6 +60,11 @@
 
         <dependency>
             <groupId>org.eclipse.kapua</groupId>
+            <artifactId>kapua-commons</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.kapua</groupId>
             <artifactId>kapua-datastore-internal</artifactId>
         </dependency>
 
@@ -224,15 +229,6 @@
         <dependency>
             <groupId>com.allen-sauer.gwt.log</groupId>
             <artifactId>gwt-log</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.eclipse.kapua</groupId>
-            <artifactId>kapua-commons</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.kapua</groupId>
-            <artifactId>kapua-service-api</artifactId>
         </dependency>
 
         <dependency>
