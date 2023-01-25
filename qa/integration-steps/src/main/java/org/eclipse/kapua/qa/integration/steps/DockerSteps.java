@@ -67,7 +67,7 @@ public class DockerSteps {
 
     private static final String NETWORK_PREFIX = "kapua-net";
     private static final String KAPUA_VERSION = "2.0.0-SNAPSHOT";
-    private static final String ES_IMAGE = "elasticsearch:7.8.1";
+    private static final String ES_IMAGE = "elasticsearch:7.13.4";
     private static final List<String> DEFAULT_DEPLOYMENT_CONTAINERS_NAME;
     private static final List<String> DEFAULT_BASE_DEPLOYMENT_CONTAINERS_NAME;
     private static final int WAIT_COUNT = 120;//total wait time = 240 secs (120 * 2000ms)

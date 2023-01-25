@@ -27,7 +27,7 @@ removed in 7.0, so in Kapua 1.4 a change to make the Datastore compatible with t
 
 ## Changes in Kapua 1.5
 
-Kapua 1.5 upgrades its Elasticsearch version to 7.8.1. In Elasticsearch 7, all non-internal indices starting with a `.`
+Kapua 1.5 upgrades its Elasticsearch version to 7.13.4. In Elasticsearch 7, all non-internal indices starting with a `.`
 are being deprecated so that only internal indices can start with a `.`. As a result, all the indices will be renamed
 according to the following pattern:
 

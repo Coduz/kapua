@@ -150,7 +150,7 @@ Feature: Device Management Inventory Service Tests
     And Inventory Containers has Container named "db" has version "kapua/kapua-sql:latest"
     And Inventory Containers has Container named "db" has type "DOCKER"
     And Inventory Containers has Container named "es" is present
-    And Inventory Containers has Container named "es" has version "docker.elastic.co/elasticsearch/elasticsearch:7.8.1"
+    And Inventory Containers has Container named "es" has version "docker.elastic.co/elasticsearch/elasticsearch:7.13.4"
     And Inventory Containers has Container named "es" has type "DOCKER"
     Then KuraMock is disconnected
     And I logout
