@@ -16,7 +16,7 @@ FROM @docker.base.image@
 
 ENV JAVA_HOME=/usr/lib/jvm/jre-openjdk
 
-RUN yum install -y java-11-openjdk && \
+RUN yum install -y java-17-openjdk && \
     yum install -y curl && \
     yum install -y openssl && \
     mkdir -p /opt/jolokia && \
