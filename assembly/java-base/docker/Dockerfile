@@ -18,14 +18,14 @@ ENV JAVA_HOME=/usr/lib/jvm/jre-openjdk
 
 # Install packages
 #
-# Java 11: well is Java
+# Java 17: well is Java
 # curl: required to download jetty, H2 and others
 # openssl: SSL support
 # tar: Unpack archives
 # gzip: Unpack archives
 # shadow-utils: To run useradd command
 RUN microdnf install -y \
-    java-11-openjdk-headless \
+    java-17-openjdk-headless \
     curl \
     openssl \
     tar \
