@@ -29,12 +29,12 @@
         <!-- Compiler level and JDK for all modules -->
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.toolchain.jdk.version>11</maven.toolchain.jdk.version>
+        <maven.toolchain.jdk.version>17</maven.toolchain.jdk.version>
 
         <!-- Kapua Client compiler level and JDK -->
-        <kapua-client.maven.compiler.source>11</kapua-client.maven.compiler.source>
-        <kapua-client.maven.compiler.target>11</kapua-client.maven.compiler.target>
-        <kapua-client.maven.toolchain.jdk.version>11</kapua-client.maven.toolchain.jdk.version>
+        <kapua-client.maven.compiler.source>17</kapua-client.maven.compiler.source>
+        <kapua-client.maven.compiler.target>17</kapua-client.maven.compiler.target>
+        <kapua-client.maven.toolchain.jdk.version>17</kapua-client.maven.toolchain.jdk.version>
 
         <!-- Maven Javadoc Plugin compiler level -->
         <!-- See: https://bugs.openjdk.org/browse/JDK-8212233 -->
