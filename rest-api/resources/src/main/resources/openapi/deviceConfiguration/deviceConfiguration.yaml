@@ -11,18 +11,33 @@ info:
     name: Eclipse Public License 2.0
     url: https://www.eclipse.org/legal/epl-2.0
 
-paths: { }
+paths: {}
 
 components:
   parameters:
     componentId:
       name: componentId
       in: path
-      description: The ID of the Component on which to perform the operation
+      description: The ID of the ComponentConfiguration on which to perform the operation
       schema:
         $ref: '../openapi.yaml#/components/schemas/kapuaId'
       required: true
   schemas:
+    option:
+      type: object
+      properties:
+        label:
+          type: string
+        value:
+          type: string
+    icon:
+      type: object
+      description: The icon associated with this DeviceComponent definition
+      properties:
+        resource:
+          type: string
+        size:
+          type: integer
     attributeDefinition:
       type: object
       properties:
@@ -78,6 +93,36 @@ components:
         type: String
         value:
           - org.eclipse.kura.wire.graph.WireGraphService
+    componentConfigurationInput:
+      type: object
+      properties:
+        id:
+          type: string
+        properties:
+          type: object
+          properties:
+            property:
+              type: array
+              items:
+                $ref: '#/components/schemas/propertyDefinition'
+    componentConfigurationsInput:
+      type: object
+      properties:
+        configuration:
+          type: array
+          items:
+            $ref: '#/components/schemas/componentConfigurationInput'
+      example:
+        configuration:
+          - id: org.eclipse.kura.wire.graph.WireGraphService
+            properties:
+              property:
+                - name: kura.service.pid
+                  array: false
+                  encrypted: false
+                  type: String
+                  value:
+                    - org.eclipse.kura.wire.graph.WireGraphService
     componentConfiguration:
       type: object
       properties:
@@ -142,18 +187,6 @@ components:
               type: String
               value:
                 - org.eclipse.kura.wire.graph.WireGraphService
-    componentConfigurationInput:
-      type: object
-      properties:
-        id:
-          type: string
-        properties:
-          type: object
-          properties:
-            property:
-              type: array
-              items:
-                $ref: '#/components/schemas/propertyDefinition'
     componentConfigurations:
       type: object
       properties:
@@ -198,39 +231,8 @@ components:
                   type: String
                   value:
                     - org.eclipse.kura.wire.graph.WireGraphService
-    componentConfigurationsInput:
-      type: object
-      properties:
-        configuration:
-          type: array
-          items:
-            $ref: '#/components/schemas/componentConfigurationInput'
-      example:
-        configuration:
-          - id: org.eclipse.kura.wire.graph.WireGraphService
-            properties:
-              property:
-                - name: kura.service.pid
-                  array: false
-                  encrypted: false
-                  type: String
-                  value:
-                    - org.eclipse.kura.wire.graph.WireGraphService
-    icon:
-      type: object
-      properties:
-        resource:
-          type: string
-        size:
-          type: integer
-    option:
-      type: object
-      properties:
-        label:
-          type: string
-        value:
-          type: string
     deviceConfigurationStoreEnablementPolicy:
+      type: string
       description: The policy for which the Device Configuration Store Application is enabled or not for this device. 'INHERITED' means that it inherits the setting from the Account-wide Configuration Store Service Configuration
       enum:
         - ENABLED
@@ -243,6 +245,8 @@ components:
           properties:
             enablementPolicy:
               $ref: '#/components/schemas/deviceConfigurationStoreEnablementPolicy'
+          required:
+            - enablementPolicy
           example:
             scopeId: AQ
             deviceId: dIVxI5QpFUI
