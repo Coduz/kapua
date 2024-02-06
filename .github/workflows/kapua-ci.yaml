@@ -17,7 +17,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
-          java-version: 11
+          java-version: 17
       - uses: actions/setup-node@v4 # Installs Node and NPM
         with:
           node-version: 16
@@ -336,6 +336,15 @@ jobs:
     steps:
       - name: Clones Kapua repo inside the runner
         uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: 17
+      - uses: actions/setup-node@v4 # Installs Node and NPM
+        with:
+          node-version: 16
+      - name: Install Swagger CLI # Installs Swagger CLI to bundle OpenAPI files
+        run: 'npm install -g @apidevtools/swagger-cli'
       - uses: ./.github/actions/runTestsTaggedAs
         with:
           needs-docker-images: 'false'
@@ -349,7 +358,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
-          java-version: 11
+          java-version: 17
       - uses: actions/setup-node@v4 # Installs Node and NPM
         with:
           node-version: 16
