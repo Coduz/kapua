@@ -13,16 +13,30 @@
 package org.eclipse.kapua.service.job.step.definition.internal;
 
 import org.eclipse.kapua.commons.jpa.SecretAttributeConverter;
+import org.eclipse.kapua.commons.model.id.KapuaEid;
 import org.eclipse.kapua.service.job.step.definition.JobStepProperty;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Convert;
-import javax.persistence.Embeddable;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Embeddable
-public class JobStepPropertyImpl implements JobStepProperty {
+@Entity(name = "JobStepDefinition")
+@Table(name = "job_job_step_definition_properties")
+public class JobStepPropertyForAlignerImpl implements JobStepProperty {
 
+    @EmbeddedId
+    @AttributeOverrides({
+            @AttributeOverride(name = "eid", column = @Column(name = "step_definition_id"))
+    })
+    protected KapuaEid stepDefinitionId;
+
+    @Id
     @Basic
     @Column(name = "name", nullable = false, updatable = false)
     private String name;
@@ -68,28 +82,15 @@ public class JobStepPropertyImpl implements JobStepProperty {
     @Column(name = "validation_regex", nullable = true, updatable = true)
     private String validationRegex;
 
-    public JobStepPropertyImpl() {
+    public JobStepPropertyForAlignerImpl() {
     }
 
-    private JobStepPropertyImpl(JobStepProperty jobStepProperty) {
-        setName(jobStepProperty.getName());
-        setPropertyType(jobStepProperty.getPropertyType());
-        setPropertyValue(jobStepProperty.getPropertyValue());
-        setRequired(jobStepProperty.getRequired());
-        setSecret(jobStepProperty.getSecret());
-        setExampleValue(jobStepProperty.getExampleValue());
-        setMinLength(jobStepProperty.getMinLength());
-        setMaxLength(jobStepProperty.getMaxLength());
-        setMinValue(jobStepProperty.getMinValue());
-        setMaxValue(jobStepProperty.getMaxValue());
-        setValidationRegex(jobStepProperty.getValidationRegex());
+    public KapuaEid getStepDefinitionId() {
+        return stepDefinitionId;
     }
 
-    public JobStepPropertyImpl(String name, String propertyType, String propertyValue, String propertyExampleValue) {
-        setName(name);
-        setPropertyType(propertyType);
-        setPropertyValue(propertyValue);
-        setExampleValue(propertyExampleValue);
+    public void setStepDefinitionId(KapuaEid stepDefinitionId) {
+        this.stepDefinitionId = stepDefinitionId;
     }
 
     @Override
@@ -206,7 +207,9 @@ public class JobStepPropertyImpl implements JobStepProperty {
         this.validationRegex = validationRegex;
     }
 
-    public static JobStepPropertyImpl parse(JobStepProperty jobStepProperty) {
-        return jobStepProperty != null ? (jobStepProperty instanceof JobStepPropertyImpl ? (JobStepPropertyImpl) jobStepProperty : new JobStepPropertyImpl(jobStepProperty)) : null;
+    public static JobStepPropertyForAlignerImpl parse(JobStepProperty jobStepProperty) {
+        return jobStepProperty != null ? (jobStepProperty instanceof JobStepPropertyForAlignerImpl
+                ? (JobStepPropertyForAlignerImpl) jobStepProperty
+                : new JobStepPropertyForAlignerImpl(jobStepProperty)) : null;
     }
 }
