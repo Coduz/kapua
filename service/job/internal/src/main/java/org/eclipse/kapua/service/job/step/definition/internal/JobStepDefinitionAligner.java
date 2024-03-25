@@ -138,7 +138,7 @@ public class JobStepDefinitionAligner {
                 return false;
             }
 
-            if (jobStepPropertiesAreEquals(dbJobStepDefinitionProperty, wiredJobStepDefinitionProperty)) {
+            if (!jobStepPropertiesAreEquals(dbJobStepDefinitionProperty, wiredJobStepDefinitionProperty)) {
                 logger.warn("Database JobStepProperty '{}' of JobStepDefinition '{}' is not aligned with the wired one",
                         dbJobStepDefinitionProperty.getName(),
                         dbJobStepDefinitionEntry.getName());
@@ -200,22 +200,28 @@ public class JobStepDefinitionAligner {
         EntityManager entityManager = JpaAwareTxContext.extractEntityManager(txContext);
 
         for (JobStepProperty wiredJobStepProperty : wiredJobStepDefinition.getStepProperties()) {
-            JobStepProperty dbJobStepProperty = dbJobStepDefinition.getStepProperty(wiredJobStepProperty.getName());
+            JobStepPropertyForAlignerId jobStepPropertyForAlignerId = new JobStepPropertyForAlignerId(dbJobStepDefinition.getId(), wiredJobStepProperty.getName());
 
-            if (dbJobStepProperty == null) {
-                dbJobStepDefinition.getStepProperties().add(JobStepPropertyImpl.parse(wiredJobStepProperty));
+            JobStepPropertyForAlignerImpl dbJobStepPropertyAligner = entityManager.find(JobStepPropertyForAlignerImpl.class, jobStepPropertyForAlignerId);
+
+            if (dbJobStepPropertyAligner == null) {
+                JobStepPropertyForAlignerImpl dbMissingJobStepProperty = JobStepPropertyForAlignerImpl.parse(wiredJobStepProperty);
+                dbMissingJobStepProperty.setJobStepPropertyForAlignerId(jobStepPropertyForAlignerId);
+
+                entityManager.persist(dbMissingJobStepProperty);
             } else {
-                dbJobStepProperty.setName(wiredJobStepProperty.getName()); // Useless ?
-                dbJobStepProperty.setPropertyType(wiredJobStepProperty.getPropertyType());
-                dbJobStepProperty.setPropertyValue(wiredJobStepProperty.getPropertyValue());
-                dbJobStepProperty.setRequired(wiredJobStepProperty.getRequired());
-                dbJobStepProperty.setSecret(wiredJobStepProperty.getSecret());
-                dbJobStepProperty.setExampleValue(wiredJobStepProperty.getExampleValue());
-                dbJobStepProperty.setMinLength(wiredJobStepProperty.getMinLength());
-                dbJobStepProperty.setMaxLength(wiredJobStepProperty.getMaxLength());
-                dbJobStepProperty.setMinValue(wiredJobStepProperty.getMinValue());
-                dbJobStepProperty.setMaxValue(wiredJobStepProperty.getMaxValue());
-                dbJobStepProperty.setValidationRegex(wiredJobStepProperty.getValidationRegex());
+                dbJobStepPropertyAligner.setPropertyType(wiredJobStepProperty.getPropertyType());
+                dbJobStepPropertyAligner.setPropertyValue(wiredJobStepProperty.getPropertyValue());
+                dbJobStepPropertyAligner.setRequired(wiredJobStepProperty.getRequired());
+                dbJobStepPropertyAligner.setSecret(wiredJobStepProperty.getSecret());
+                dbJobStepPropertyAligner.setExampleValue(wiredJobStepProperty.getExampleValue());
+                dbJobStepPropertyAligner.setMinLength(wiredJobStepProperty.getMinLength());
+                dbJobStepPropertyAligner.setMaxLength(wiredJobStepProperty.getMaxLength());
+                dbJobStepPropertyAligner.setMinValue(wiredJobStepProperty.getMinValue());
+                dbJobStepPropertyAligner.setMaxValue(wiredJobStepProperty.getMaxValue());
+                dbJobStepPropertyAligner.setValidationRegex(wiredJobStepProperty.getValidationRegex());
+
+                entityManager.merge(dbJobStepPropertyAligner);
             }
         }
 

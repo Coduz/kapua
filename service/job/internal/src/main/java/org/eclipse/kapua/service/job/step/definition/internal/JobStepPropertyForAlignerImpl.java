@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2022 Eurotech and/or its affiliates and others
+ * Copyright (c) 2024, 2022 Eurotech and/or its affiliates and others
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -13,33 +13,26 @@
 package org.eclipse.kapua.service.job.step.definition.internal;
 
 import org.eclipse.kapua.commons.jpa.SecretAttributeConverter;
-import org.eclipse.kapua.commons.model.id.KapuaEid;
 import org.eclipse.kapua.service.job.step.definition.JobStepProperty;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity(name = "JobStepDefinition")
+@Entity(name = "JobStepPropertyForAligner")
 @Table(name = "job_job_step_definition_properties")
 public class JobStepPropertyForAlignerImpl implements JobStepProperty {
 
     @EmbeddedId
-    @AttributeOverrides({
-            @AttributeOverride(name = "eid", column = @Column(name = "step_definition_id"))
-    })
-    protected KapuaEid stepDefinitionId;
-
-    @Id
-    @Basic
-    @Column(name = "name", nullable = false, updatable = false)
-    private String name;
+    private JobStepPropertyForAlignerId jobStepPropertyForAlignerId;
+    //
+    //    @Id
+    //    @Basic
+    //    @Column(name = "name", nullable = false, updatable = false)
+    //    private String name;
 
     @Basic
     @Column(name = "property_type", nullable = false, updatable = false)
@@ -85,22 +78,36 @@ public class JobStepPropertyForAlignerImpl implements JobStepProperty {
     public JobStepPropertyForAlignerImpl() {
     }
 
-    public KapuaEid getStepDefinitionId() {
-        return stepDefinitionId;
+    private JobStepPropertyForAlignerImpl(JobStepProperty jobStepProperty) {
+        setName(jobStepProperty.getName());
+        setPropertyType(jobStepProperty.getPropertyType());
+        setPropertyValue(jobStepProperty.getPropertyValue());
+        setRequired(jobStepProperty.getRequired());
+        setSecret(jobStepProperty.getSecret());
+        setExampleValue(jobStepProperty.getExampleValue());
+        setMinLength(jobStepProperty.getMinLength());
+        setMaxLength(jobStepProperty.getMaxLength());
+        setMinValue(jobStepProperty.getMinValue());
+        setMaxValue(jobStepProperty.getMaxValue());
+        setValidationRegex(jobStepProperty.getValidationRegex());
     }
 
-    public void setStepDefinitionId(KapuaEid stepDefinitionId) {
-        this.stepDefinitionId = stepDefinitionId;
+    public JobStepPropertyForAlignerId getJobStepPropertyForAlignerId() {
+        return jobStepPropertyForAlignerId;
+    }
+
+    public void setJobStepPropertyForAlignerId(JobStepPropertyForAlignerId jobStepPropertyForAlignerId) {
+        this.jobStepPropertyForAlignerId = jobStepPropertyForAlignerId;
     }
 
     @Override
     public String getName() {
-        return name;
+        return null;//        return jobStepPropertyForAlignerId.getName();
     }
 
     @Override
     public void setName(String name) {
-        this.name = name;
+        //        this.jobStepPropertyForAlignerId.setName(name);
     }
 
     @Override
