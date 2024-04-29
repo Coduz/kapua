@@ -14,6 +14,7 @@ package org.eclipse.kapua.service.job.step.definition.internal;
 
 import java.util.Optional;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -37,7 +38,7 @@ public class JobStepDefinitionPropertyImpl {
     @JoinColumns({
             @JoinColumn(name = "step_definition_id", referencedColumnName = "id"),
     })
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     public JobStepDefinitionImpl jobStepDefinition;
 
     @Embedded
