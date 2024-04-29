@@ -70,7 +70,7 @@ public class JobStepDefinitionImpl extends AbstractKapuaNamedEntity implements J
     @Column(name = "writer_name", nullable = false, updatable = false)
     private String writerName;
 
-    @OneToMany(mappedBy = "jobStepDefinition", cascade = CascadeType.MERGE)
+    @OneToMany(mappedBy = "jobStepDefinition", cascade = CascadeType.PERSIST)
     private List<JobStepDefinitionPropertyImpl> jobStepProperties;
 
     /**

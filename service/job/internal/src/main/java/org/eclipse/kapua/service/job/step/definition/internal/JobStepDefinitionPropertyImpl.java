@@ -26,7 +26,7 @@ import javax.persistence.Table;
 import org.eclipse.kapua.model.id.KapuaId;
 import org.eclipse.kapua.service.job.step.definition.JobStepProperty;
 
-@Entity(name = "JobStepPropertyForAligner")
+@Entity(name = "JobStepDefinitionProperty")
 @Table(name = "job_job_step_definition_properties")
 public class JobStepDefinitionPropertyImpl {
 
