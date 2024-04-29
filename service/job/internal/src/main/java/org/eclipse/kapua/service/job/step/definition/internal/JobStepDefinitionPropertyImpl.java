@@ -38,7 +38,7 @@ public class JobStepDefinitionPropertyImpl {
     @JoinColumns({
             @JoinColumn(name = "step_definition_id", referencedColumnName = "id"),
     })
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     public JobStepDefinitionImpl jobStepDefinition;
 
     @Embedded
