@@ -14,7 +14,6 @@ package org.eclipse.kapua.service.job.step.definition.internal;
 
 import java.util.Optional;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
