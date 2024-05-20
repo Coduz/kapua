@@ -27,6 +27,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>core</module>
         <module>resources</module>
         <module>web</module>
     </modules>
