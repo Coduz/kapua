@@ -43,6 +43,7 @@ public class CredentialMapperImpl implements CredentialMapper {
                 cryptedCredential = cryptApiKey(credentialCreator.getCredentialPlainKey());
                 break;
             case PASSWORD:
+            case CERTIFICATE:
             default:
                 cryptedCredential = cryptPassword(credentialCreator.getCredentialPlainKey());
                 break;

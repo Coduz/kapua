@@ -156,6 +156,7 @@ public class CredentialServiceImpl extends KapuaConfigurableServiceBase implemen
                             credentialCreator.getExpirationDate());
                     break;
                 case PASSWORD:
+                case CERTIFICATE:
                 default:
                     // Don't do anything special
                     break;
