@@ -1016,12 +1016,12 @@
             </dependency>
             <dependency>
                 <groupId>org.eclipse.kapua</groupId>
-                <artifactId>kapua-commons-web-rest</artifactId>
+                <artifactId>kapua-commons-jersey-rest</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.kapua</groupId>
-                <artifactId>kapua-commons-web-jersey</artifactId>
+                <artifactId>kapua-commons-jersey-web</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -2679,7 +2679,7 @@
 
         <!-- Core -->
         <module>commons</module>
-        <module>commons-web</module>
+        <module>commons-jersey</module>
         <module>locator</module>
         <module>service</module>
         <module>message</module>
