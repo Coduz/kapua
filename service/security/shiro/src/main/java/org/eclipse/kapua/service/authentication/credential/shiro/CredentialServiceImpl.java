@@ -256,14 +256,37 @@ public class CredentialServiceImpl extends KapuaConfigurableServiceBase implemen
     @Override
     public CredentialListResult findByUserId(KapuaId scopeId, KapuaId userId)
             throws KapuaException {
+        return findByUserId(scopeId, userId, null);
+    }
+
+    @Override
+    public CredentialListResult findByUserId(KapuaId scopeId, KapuaId userId, CredentialType credentialType) throws KapuaException {
         // Argument Validation
         ArgumentValidator.notNull(scopeId, KapuaEntityAttributes.SCOPE_ID);
         ArgumentValidator.notNull(userId, "userId");
         // Check Access
         authorizationService.checkPermission(permissionFactory.newPermission(Domains.CREDENTIAL, Actions.read, scopeId));
 
-        final CredentialListResult credentials = txManager.execute(tx -> credentialRepository.findByUserId(tx, scopeId, userId));
+        final CredentialListResult credentials = txManager.execute(tx -> {
+            CredentialQuery query = new CredentialQueryImpl(scopeId);
+
+            AndPredicate andPredicate = query.andPredicate(
+                    query.attributePredicate(CredentialAttributes.USER_ID, userId)
+            );
+
+            if (credentialType != null) {
+                andPredicate.and(query.attributePredicate(CredentialAttributes.CREDENTIAL_TYPE, credentialType));
+            }
+
+            query.setPredicate(andPredicate);
+
+            return credentialRepository.query(tx,query);
+        });
+
+        // Clearing up secret key
         credentials.getItems().forEach(credential -> credential.setCredentialKey(null));
+
+        // Return results
         return credentials;
     }
 

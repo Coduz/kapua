@@ -19,6 +19,7 @@ import org.eclipse.kapua.service.KapuaEntityService;
 import org.eclipse.kapua.service.KapuaUpdatableEntityService;
 import org.eclipse.kapua.service.authentication.user.PasswordResetRequest;
 import org.eclipse.kapua.service.config.KapuaConfigurableService;
+import org.eclipse.kapua.service.user.User;
 
 /**
  * Credential service definition.
@@ -30,15 +31,28 @@ public interface CredentialService extends KapuaEntityService<Credential, Creden
         KapuaConfigurableService {
 
     /**
-     * Return the credential list result looking by user identifier (and also scope identifier)
+     * Gets all {@link Credential}s by the {@link User#getId()}.
      *
-     * @param scopeId
-     * @param userId
-     * @return
+     * @param scopeId The {@link Credential#getScopeId()}
+     * @param userId The {@link User#getId()}
+     * @return The {@link CredentialListResult}.
      * @throws KapuaException
-     * @since 1.0
+     * @since 1.0.0
      */
     CredentialListResult findByUserId(KapuaId scopeId, KapuaId userId)
+            throws KapuaException;
+
+    /**
+     * Gets all {@link Credential}s by the {@link User#getId()} filtered by {@link CredentialType}.
+     *
+     * @param scopeId The {@link Credential#getScopeId()}
+     * @param userId The {@link User#getId()}
+     * @param credentialType The {@link CredentialType} to filter. {@code null} to not filter. In this case better use {@link #findByUserId(KapuaId, KapuaId)}
+     * @return The {@link CredentialListResult}.
+     * @throws KapuaException
+     * @since 2.1.0
+     */
+    CredentialListResult findByUserId(KapuaId scopeId, KapuaId userId, CredentialType credentialType)
             throws KapuaException;
 
     /**
