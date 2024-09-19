@@ -60,7 +60,7 @@ public enum CommonsValidationRegex implements ValidationRegex {
      * ^[a-zA-Z0-9\ \_\-\.\:]{3,}$
      * @since 2.1.0
      */
-    EXTENDED_NAME_REGEXP("^[a-zA-Z0-9\\ \\_\\-\\+\\.\\:]{3,}$"),
+    EXTENDED_NAME_REGEXP("^[a-zA-Z0-9\\ \\_\\-\\.\\:]{3,}$"),
 
     /**
      * ^.*(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&amp;+=!\~\|]).*$
