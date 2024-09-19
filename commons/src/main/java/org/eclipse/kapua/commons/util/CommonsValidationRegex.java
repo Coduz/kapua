@@ -41,7 +41,7 @@ public enum CommonsValidationRegex implements ValidationRegex {
      * @deprecated Since 2.1.0. Please make use of {@link #EXTENDED_NAME_REGEXP}
      */
     @Deprecated
-    NAME_SPACE_REGEXP("^[a-zA-Z0-9\\ \\_\\-\\.]{3,}$"),
+    NAME_SPACE_REGEXP("^[a-zA-Z0-9\\ \\_\\-]{3,}$"),
 
     /**
      * Alphanumeric chars, whitespace, underscore, dash and column. Min 3 chars.
@@ -60,7 +60,7 @@ public enum CommonsValidationRegex implements ValidationRegex {
      * ^[a-zA-Z0-9\ \_\-\.\:]{3,}$
      * @since 2.1.0
      */
-    EXTENDED_NAME_REGEXP("^[a-zA-Z0-9\\ \\_\\-\\.\\:]{3,}$"),
+    EXTENDED_NAME_REGEXP("^[a-zA-Z0-9\\ \\_\\-\\+\\.\\:]{3,}$"),
 
     /**
      * ^.*(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&amp;+=!\~\|]).*$
