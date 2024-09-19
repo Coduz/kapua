@@ -290,7 +290,7 @@ public class ArgumentValidator {
      * <ul>
      *     <li>{@link #notEmptyOrNull(String, String)}</li>
      *     <li>{@link #lengthRange(String, Integer, Integer, String)}</li>
-     *     <li>{@link #match(String, ValidationRegex, String)} with {@link CommonsValidationRegex#NAME_SPACE_REGEXP} </li>
+     *     <li>{@link #match(String, ValidationRegex, String)} with {@link CommonsValidationRegex#EXTENDED_NAME_REGEXP} </li>
      * </ul>
      *
      * @param name         The value to validate. Usually would be the {@link KapuaNamedEntity#getName()} or {@link KapuaNamedEntityCreator#getName()}, but other values could be provided
@@ -307,7 +307,7 @@ public class ArgumentValidator {
     public static void validateEntityName(@Nullable String name, @Nullable Integer minLength, @Nullable Integer maxLength, @NotNull String argumentName) throws KapuaIllegalNullArgumentException, KapuaIllegalArgumentException {
         notEmptyOrNull(name, argumentName);
         lengthRange(name, minLength, maxLength, argumentName);
-        match(name, CommonsValidationRegex.NAME_SPACE_REGEXP, argumentName);
+        match(name, CommonsValidationRegex.EXTENDED_NAME_REGEXP, argumentName);
     }
 
 
@@ -336,7 +336,7 @@ public class ArgumentValidator {
      * <ul>
      *     <li>{@link #notEmptyOrNull(String, String)}</li>
      *     <li>{@link #lengthRange(String, Integer, Integer, String)}</li>
-     *     <li>{@link #match(String, ValidationRegex, String)} with {@link CommonsValidationRegex#NAME_SPACE_COLON_REGEXP} </li>
+     *     <li>{@link #match(String, ValidationRegex, String)} with {@link CommonsValidationRegex#EXTENDED_NAME_REGEXP} </li>
      * </ul>
      *
      * @param name        The value to validate. Usually would be the {@link KapuaNamedEntity#getName()} or {@link KapuaNamedEntityCreator#getName()}, but other values could be provided
@@ -353,6 +353,6 @@ public class ArgumentValidator {
     public static void validateJobName(@Nullable String name, @Nullable Integer minLength, @Nullable Integer maxLength, @NotNull String argumentName) throws KapuaIllegalNullArgumentException, KapuaIllegalArgumentException {
         notEmptyOrNull(name, argumentName);
         lengthRange(name, minLength, maxLength, argumentName);
-        match(name, CommonsValidationRegex.NAME_SPACE_COLON_REGEXP, argumentName);
+        match(name, CommonsValidationRegex.EXTENDED_NAME_REGEXP, argumentName);
     }
 }

@@ -17,24 +17,50 @@ import java.util.regex.Pattern;
 public enum CommonsValidationRegex implements ValidationRegex {
 
     /**
+     * Alphanumeric chars and dash. Min 3 chars.
+     * <p>
      * ^[a-zA-Z0-9\-]{3,}$
+     *
+     * @since 1.0.0
      */
     SIMPLE_NAME_REGEXP("^[a-zA-Z0-9\\-]{3,}$"),
 
     /**
+     * Alphanumeric chars, underscore and dash. Min 3 chars.
+     * <p>
      * ^[a-zA-Z0-9\_\-]{3,}$
+     * @since 1.0.0
      */
     NAME_REGEXP("^[a-zA-Z0-9\\_\\-]{3,}$"),
 
     /**
+     * Alphanumeric chars, whitespace, underscore and dash. Min 3 chars.
+     * <p>
      * ^[a-zA-Z0-9\ \_\-]{3,}$
+     *
+     * @deprecated Since 2.1.0. Please make use of {@link #EXTENDED_NAME_REGEXP}
      */
+    @Deprecated
     NAME_SPACE_REGEXP("^[a-zA-Z0-9\\ \\_\\-\\.]{3,}$"),
 
     /**
+     * Alphanumeric chars, whitespace, underscore, dash and column. Min 3 chars.
+     * <p>
      * ^[a-zA-Z0-9\ \_\-\:]{3,}$
+     *
+     * @deprecated Since 2.1.0. Please make use of {@link #EXTENDED_NAME_REGEXP}
+     * @since 2.0.0
      */
+    @Deprecated
     NAME_SPACE_COLON_REGEXP("^[a-zA-Z0-9\\ \\_\\-\\:]{3,}$"),
+
+    /**
+     * Alphanumeric chars, whitespace, underscore, dash, dot and column. Min 3 chars.
+     * <p>
+     * ^[a-zA-Z0-9\ \_\-\.\:]{3,}$
+     * @since 2.1.0
+     */
+    EXTENDED_NAME_REGEXP("^[a-zA-Z0-9\\ \\_\\-\\.\\:]{3,}$"),
 
     /**
      * ^.*(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&amp;+=!\~\|]).*$
