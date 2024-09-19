@@ -29,7 +29,7 @@ public enum CommonsValidationRegex implements ValidationRegex {
     /**
      * ^[a-zA-Z0-9\ \_\-]{3,}$
      */
-    NAME_SPACE_REGEXP("^[a-zA-Z0-9\\ \\_\\-]{3,}$"),
+    NAME_SPACE_REGEXP("^[a-zA-Z0-9\\ \\_\\-\\.]{3,}$"),
 
     /**
      * ^[a-zA-Z0-9\ \_\-\:]{3,}$
