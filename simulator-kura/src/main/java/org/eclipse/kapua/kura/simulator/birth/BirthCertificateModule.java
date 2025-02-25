@@ -21,8 +21,12 @@ import org.eclipse.kapua.kura.simulator.Module;
 import org.eclipse.kapua.kura.simulator.Transport;
 import org.eclipse.kapua.kura.simulator.app.Sender;
 import org.eclipse.kapua.kura.simulator.topic.Topic;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class BirthCertificateModule implements Module {
+
+    private static final Logger LOG = LoggerFactory.getLogger(BirthCertificateModule.class);
 
     private final BirthCertificateBuilder birthCertificateBuilder;
 
@@ -33,6 +37,11 @@ public class BirthCertificateModule implements Module {
 
     @Override
     public void connected(final Transport transport) {
-        Sender.transportSender(Topic.device("MQTT/BIRTH"), transport).send(birthCertificateBuilder.build());
+        try {
+            Sender.transportSender(Topic.device("MQTT/BIRTH"), transport).send(birthCertificateBuilder.build());
+        }
+        catch (RuntimeException e) {
+            LOG.warn("Cannot publish BIRTH message. Error: {}", e.getMessage());
+        }
     }
 }
