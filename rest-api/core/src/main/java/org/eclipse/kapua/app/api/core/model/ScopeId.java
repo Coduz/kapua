@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2022 Eurotech and/or its affiliates and others
+ * Copyright (c) 2016, 2025 Eurotech and/or its affiliates and others
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -16,11 +16,13 @@ import org.eclipse.kapua.commons.security.KapuaSecurityUtils;
 import org.eclipse.kapua.commons.security.KapuaSession;
 import org.eclipse.kapua.model.id.KapuaId;
 
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.PathParam;
 import java.math.BigInteger;
+import java.util.Base64;
 
 /**
- * {@link KapuaId} implementation to be used on REST API to parse the {@link PathParam} scopeId.
+ * {@link KapuaId} implementation to be used on REST API to parse the {@link PathParam} named 'scopeId'.
  * <p>
  * If the {@link PathParam} is equals to "_" the scopeId used will be set to {@link KapuaSession#getScopeId()} of {@link KapuaSecurityUtils#getSession()},
  * which means that the scope of the current request will be the same of the current session scope.
@@ -33,8 +35,37 @@ public class ScopeId implements KapuaId {
 
     private BigInteger id;
 
+    /**
+     * Constructor.
+     *
+     * @param id The {@link BigInteger} representation of the {@link ScopeId}
+     * @since 1.0.0
+     * @deprecated Since 2.1.0. Use the other constructors.
+     */
+    @Deprecated
     public ScopeId(BigInteger id) {
         this.id = id;
+    }
+
+    /**
+     * Constructor.
+     *
+     * @param kapuaId The {@link KapuaId} to parse
+     * @since 2.1.0
+     */
+    public ScopeId(@NotNull KapuaId kapuaId) {
+        setId(kapuaId.getId());
+    }
+
+    /**
+     * Constructor.
+     *
+     * @param compactScopeId The {@link KapuaId} in compact form.
+     * @since 2.1.0
+     */
+    public ScopeId(String compactScopeId) {
+        byte[] bytes = Base64.getUrlDecoder().decode(compactScopeId);
+        setId(new BigInteger(bytes));
     }
 
     @Override
@@ -42,7 +73,7 @@ public class ScopeId implements KapuaId {
         return id;
     }
 
-    public void setId(BigInteger id) {
+    private void setId(BigInteger id) {
         this.id = id;
     }
 

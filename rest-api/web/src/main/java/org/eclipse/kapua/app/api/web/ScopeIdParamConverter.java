@@ -36,10 +36,9 @@ public class ScopeIdParamConverter implements ParamConverter<ScopeId> {
                 throw new SessionNotPopulatedException();
             }
 
-            return new ScopeId(session.getScopeId().getId());
+            return new ScopeId(session.getScopeId());
         } else {
-            byte[] bytes = Base64.getUrlDecoder().decode(compactScopeId);
-            return new ScopeId(new BigInteger(bytes));
+            return new ScopeId(compactScopeId);
         }
     }
 

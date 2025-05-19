@@ -37,7 +37,7 @@ public class AbstractKapuaResourceTest {
     @Before
     public void initialize() {
         abstractKapuaResource = new TestKapuaResource();
-        objects = new Object[]{new Object(), "", "string", 10, 'c', KapuaId.ONE, new Throwable(), new ScopeId(BigInteger.valueOf(111))};
+        objects = new Object[]{new Object(), "", "string", 10, 'c', KapuaId.ONE, new Throwable()};
     }
 
     @Test
