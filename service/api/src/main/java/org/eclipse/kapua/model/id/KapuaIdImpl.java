@@ -17,19 +17,37 @@ import java.math.BigInteger;
 public final class KapuaIdImpl implements KapuaId {
 
     private static final long serialVersionUID = 8660393054811025101L;
-    private final BigInteger value;
+    private final BigInteger id;
 
-    public KapuaIdImpl(BigInteger value) {
-        if (null == value) {
+    /**
+     * Constructor.
+     *
+     * @param id The {@link BigInteger} representation of the {@link KapuaId}.
+     * @since 1.0.0
+     * @deprecated Since 2.1.0. Use the other constructors.
+     */
+    @Deprecated
+    public KapuaIdImpl(BigInteger id) {
+        if (null == id) {
             throw new IllegalArgumentException();
         }
 
-        this.value = value;
+        this.id = id;
+    }
+
+    /**
+     * Constructor.
+     *
+     * @param numericKapuaId The {@link KapuaId} in numeric form.
+     * @since 2.1.0
+     */
+    public KapuaIdImpl(long numericKapuaId) {
+        this.id = BigInteger.valueOf(numericKapuaId);
     }
 
     @Override
     public BigInteger getId() {
-        return value;
+        return id;
     }
 
     @Override

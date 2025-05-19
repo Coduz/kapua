@@ -38,7 +38,7 @@ public interface KapuaId extends KapuaSerializable {
      */
     // FIXME: This is maybe worth to be moved to a ScopeId class
     @XmlTransient
-    KapuaId ANY = new KapuaIdImpl(BigInteger.ONE.negate());
+    KapuaId ANY = new KapuaIdImpl(-1);
 
     /**
      * Identifies the {@link KapuaId} represented by 1.
@@ -47,7 +47,7 @@ public interface KapuaId extends KapuaSerializable {
      */
     // FIXME: This is maybe worth to be moved to a ScopeId class
     @XmlTransient
-    KapuaId ONE = new KapuaIdImpl(BigInteger.ONE);
+    KapuaId ONE = new KapuaIdImpl(1);
 
     /**
      * Gets the numeric representation of the KapuaId.

@@ -19,9 +19,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import java.math.BigInteger;
-
-
 @Category(JUnitTests.class)
 public class EventStoreQueryImplTest {
 
@@ -34,7 +31,7 @@ public class EventStoreQueryImplTest {
 
     @Test
     public void eventStoreQueryImplTest2() {
-        KapuaId scopeId = new KapuaIdImpl(BigInteger.ONE);
+        KapuaId scopeId = new KapuaIdImpl(1);
 
         EventStoreQueryImpl eventStoreQueryImpl1 = new EventStoreQueryImpl(null);
         Assert.assertNull("query.sortCriteria", eventStoreQueryImpl1.getSortCriteria());

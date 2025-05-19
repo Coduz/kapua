@@ -20,7 +20,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import java.math.BigInteger;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -34,12 +33,12 @@ import java.util.stream.Stream;
 public class JobEngineExceptionTest {
 
     private final Throwable aCause = new Throwable("This is the cause");
-    private final KapuaId aScopeId = new KapuaIdImpl(new BigInteger("1"));
-    private final KapuaId aJobId = new KapuaIdImpl(new BigInteger("2"));
-    private final KapuaId aJobExecutionId = new KapuaIdImpl(new BigInteger("3"));
+    private final KapuaId aScopeId = new KapuaIdImpl(1);
+    private final KapuaId aJobId = new KapuaIdImpl(2);
+    private final KapuaId aJobExecutionId = new KapuaIdImpl(3);
     private final Set<KapuaId> aJobTargetIdSet = Stream.of(
-                    new KapuaIdImpl(new BigInteger("4")),
-                    new KapuaIdImpl(new BigInteger("5")))
+                    new KapuaIdImpl(4),
+                    new KapuaIdImpl(5))
             .collect(Collectors.toSet());
 
 

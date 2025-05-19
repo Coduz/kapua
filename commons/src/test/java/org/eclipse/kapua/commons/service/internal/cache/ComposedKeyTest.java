@@ -20,7 +20,6 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.Objects;
 
 
@@ -29,7 +28,7 @@ public class ComposedKeyTest {
 
     @Test
     public void constructorTest() {
-        KapuaId kapuaId = new KapuaIdImpl(BigInteger.ONE);
+        KapuaId kapuaId = new KapuaIdImpl(1);
         Serializable key = new ComposedKey(kapuaId, null);
         ComposedKey composedKey = new ComposedKey(kapuaId, key);
         Assert.assertNotNull(composedKey);
@@ -37,8 +36,8 @@ public class ComposedKeyTest {
 
     @Test
     public void hasCodeTest() {
-        KapuaId[] kapuaIdList = {new KapuaIdImpl(BigInteger.ONE), new KapuaIdImpl(BigInteger.TEN), new KapuaIdImpl(BigInteger.ZERO),};
-        KapuaId[] kapuaIdForKeyList = {new KapuaIdImpl(BigInteger.ONE), new KapuaIdImpl(BigInteger.TEN), new KapuaIdImpl(BigInteger.ZERO),};
+        KapuaId[] kapuaIdList = {new KapuaIdImpl(1), new KapuaIdImpl(10), new KapuaIdImpl(0),};
+        KapuaId[] kapuaIdForKeyList = {new KapuaIdImpl(1), new KapuaIdImpl(10), new KapuaIdImpl(0),};
 
         for (int i = 0; i < kapuaIdList.length; i++) {
             for (int j = 0; j < kapuaIdForKeyList.length; j++) {
@@ -57,8 +56,8 @@ public class ComposedKeyTest {
 
     @Test
     public void equalsTest() {
-        KapuaId kapuaId1 = new KapuaIdImpl(BigInteger.ONE);
-        KapuaId kapuaId2 = new KapuaIdImpl(BigInteger.TEN);
+        KapuaId kapuaId1 = new KapuaIdImpl(1);
+        KapuaId kapuaId2 = new KapuaIdImpl(10);
         Serializable key1 = new ComposedKey(kapuaId1, null);
         Serializable key2 = new ComposedKey(kapuaId2, null);
         ComposedKey composedKey1 = new ComposedKey(kapuaId1, key1);
@@ -79,7 +78,7 @@ public class ComposedKeyTest {
 
     @Test
     public void getScopeIdTest() {
-        KapuaId kapuaId = new KapuaIdImpl(BigInteger.ONE);
+        KapuaId kapuaId = new KapuaIdImpl(1);
         ComposedKey composedKey1 = new ComposedKey(kapuaId, null);
         Serializable key = new ComposedKey(kapuaId, null);
         ComposedKey composedKey2 = new ComposedKey(kapuaId, key);
@@ -92,7 +91,7 @@ public class ComposedKeyTest {
 
     @Test
     public void getKeyTest() {
-        KapuaId kapuaId = new KapuaIdImpl(BigInteger.ONE);
+        KapuaId kapuaId = new KapuaIdImpl(1);
         Serializable key = new ComposedKey(kapuaId, null);
         ComposedKey composedKey1 = new ComposedKey(kapuaId, key);
         ComposedKey composedKey2 = new ComposedKey(null, null);

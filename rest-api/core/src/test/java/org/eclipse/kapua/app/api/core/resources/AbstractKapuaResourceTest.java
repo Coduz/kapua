@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.kapua.app.api.core.resources;
 
-import org.eclipse.kapua.app.api.core.model.ScopeId;
 import org.eclipse.kapua.model.id.KapuaId;
 import org.eclipse.kapua.qa.markers.junit.JUnitTests;
 import org.junit.Assert;
@@ -21,8 +20,6 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 import javax.ws.rs.NotFoundException;
-import java.math.BigInteger;
-
 
 @Category(JUnitTests.class)
 public class AbstractKapuaResourceTest {

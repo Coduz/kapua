@@ -59,7 +59,7 @@ public class EventStoreRecordImplTest {
 
     @Test
     public void eventStoreRecordImplTest2() {
-        KapuaId[] scopeIdList = {null, new KapuaIdImpl(BigInteger.ONE)};
+        KapuaId[] scopeIdList = {null, new KapuaIdImpl(1)};
 
         for (KapuaId scopeId : scopeIdList) {
             EventStoreRecordImpl eventStoreRecordImpl = new EventStoreRecordImpl(scopeId);
@@ -87,7 +87,7 @@ public class EventStoreRecordImplTest {
     @Test
     public void setAndGetContextIdTest() throws KapuaException {
         String contextId = "ContextId";
-        KapuaId[] scopeIdList = {null, new KapuaIdImpl(BigInteger.ONE)};
+        KapuaId[] scopeIdList = {null, new KapuaIdImpl(1)};
 
         for (KapuaId scopeId : scopeIdList) {
             EventStoreRecordImpl eventStoreRecordImpl1 = new EventStoreRecordImpl(scopeId);
@@ -116,7 +116,7 @@ public class EventStoreRecordImplTest {
     @Test
     public void setAndGetTimestampTest() throws KapuaException {
         Date timeStamp = new Date();
-        KapuaId[] scopeIdList = {null, new KapuaIdImpl(BigInteger.ONE)};
+        KapuaId[] scopeIdList = {null, new KapuaIdImpl(1)};
 
         for (KapuaId scopeId : scopeIdList) {
             EventStoreRecordImpl eventStoreRecordImpl1 = new EventStoreRecordImpl(scopeId);
@@ -144,8 +144,8 @@ public class EventStoreRecordImplTest {
 
     @Test
     public void setAndGetUserIdTest() throws KapuaException {
-        KapuaId userId = new KapuaIdImpl(BigInteger.ONE);
-        KapuaId[] scopeIdList = {null, new KapuaIdImpl(BigInteger.ONE)};
+        KapuaId userId = new KapuaIdImpl(1);
+        KapuaId[] scopeIdList = {null, new KapuaIdImpl(1)};
 
         for (KapuaId scopeId : scopeIdList) {
             EventStoreRecordImpl eventStoreRecordImpl1 = new EventStoreRecordImpl(scopeId);
@@ -174,7 +174,7 @@ public class EventStoreRecordImplTest {
     @Test
     public void setAndGetServiceTest() throws KapuaException {
         String service = "Service";
-        KapuaId[] scopeIdList = {null, new KapuaIdImpl(BigInteger.ONE)};
+        KapuaId[] scopeIdList = {null, new KapuaIdImpl(1)};
 
         for (KapuaId scopeId : scopeIdList) {
             EventStoreRecordImpl eventStoreRecordImpl1 = new EventStoreRecordImpl(scopeId);
@@ -203,7 +203,7 @@ public class EventStoreRecordImplTest {
     @Test
     public void setAndGetEntityTypeTest() throws KapuaException {
         String entityType = "EntityType";
-        KapuaId[] scopeIdList = {null, new KapuaIdImpl(BigInteger.ONE)};
+        KapuaId[] scopeIdList = {null, new KapuaIdImpl(1)};
 
         for (KapuaId scopeId : scopeIdList) {
             EventStoreRecordImpl eventStoreRecordImpl1 = new EventStoreRecordImpl(scopeId);
@@ -231,8 +231,8 @@ public class EventStoreRecordImplTest {
 
     @Test
     public void setAndGetScopeIdTest() throws KapuaException {
-        KapuaId scopeId1 = new KapuaIdImpl(BigInteger.ONE);
-        KapuaId scopeId2 = new KapuaIdImpl(BigInteger.TEN);
+        KapuaId scopeId1 = new KapuaIdImpl(1);
+        KapuaId scopeId2 = new KapuaIdImpl(10);
 
         EventStoreRecordImpl eventStoreRecordImpl1 = new EventStoreRecordImpl(scopeId1);
         Assert.assertEquals("Expected and actual values should be the same.", scopeId1, eventStoreRecordImpl1.getScopeId());
@@ -258,8 +258,8 @@ public class EventStoreRecordImplTest {
 
     @Test
     public void setAndEntityIdTest() throws KapuaException {
-        KapuaId entityId = new KapuaIdImpl(BigInteger.ONE);
-        KapuaId[] scopeIdList = {null, new KapuaIdImpl(BigInteger.ONE)};
+        KapuaId entityId = new KapuaIdImpl(1);
+        KapuaId[] scopeIdList = {null, new KapuaIdImpl(1)};
 
         for (KapuaId scopeId : scopeIdList) {
             EventStoreRecordImpl eventStoreRecordImpl1 = new EventStoreRecordImpl(scopeId);
@@ -288,7 +288,7 @@ public class EventStoreRecordImplTest {
     @Test
     public void setAndGetOperationIdTest() throws KapuaException {
         String operation = "Operation";
-        KapuaId[] scopeIdList = {null, new KapuaIdImpl(BigInteger.ONE)};
+        KapuaId[] scopeIdList = {null, new KapuaIdImpl(1)};
 
         for (KapuaId scopeId : scopeIdList) {
             EventStoreRecordImpl eventStoreRecordImpl1 = new EventStoreRecordImpl(scopeId);
@@ -317,7 +317,7 @@ public class EventStoreRecordImplTest {
     @Test
     public void setAndGetInputsTest() throws KapuaException {
         String inputs = "Inputs";
-        KapuaId[] scopeIdList = {null, new KapuaIdImpl(BigInteger.ONE)};
+        KapuaId[] scopeIdList = {null, new KapuaIdImpl(1)};
 
         for (KapuaId scopeId : scopeIdList) {
             EventStoreRecordImpl eventStoreRecordImpl1 = new EventStoreRecordImpl(scopeId);
@@ -346,7 +346,7 @@ public class EventStoreRecordImplTest {
     @Test
     public void setAndGetOutputsTest() throws KapuaException {
         String outputs = "Outputs";
-        KapuaId[] scopeIdList = {null, new KapuaIdImpl(BigInteger.ONE)};
+        KapuaId[] scopeIdList = {null, new KapuaIdImpl(1)};
 
         for (KapuaId scopeId : scopeIdList) {
             EventStoreRecordImpl eventStoreRecordImpl1 = new EventStoreRecordImpl(scopeId);
@@ -385,7 +385,7 @@ public class EventStoreRecordImplTest {
         eventStoreRecordImpl1.setStatus(null);
         Assert.assertNull("Null expected.", eventStoreRecordImpl1.getStatus());
 
-        EventStoreRecordImpl eventStoreRecordImpl2 = new EventStoreRecordImpl(new KapuaIdImpl(BigInteger.ONE));
+        EventStoreRecordImpl eventStoreRecordImpl2 = new EventStoreRecordImpl(new KapuaIdImpl(1));
         Assert.assertNull("Null expected.", eventStoreRecordImpl2.getStatus());
         eventStoreRecordImpl2.setStatus(ServiceEvent.EventStatus.SENT);
         Assert.assertEquals("Expected and actual values should be the same.", ServiceEvent.EventStatus.SENT, eventStoreRecordImpl2.getStatus());
@@ -411,7 +411,7 @@ public class EventStoreRecordImplTest {
     @Test
     public void setAndGetNoteTest() throws KapuaException {
         String note = "Note";
-        KapuaId[] scopeIdList = {null, new KapuaIdImpl(BigInteger.ONE)};
+        KapuaId[] scopeIdList = {null, new KapuaIdImpl(1)};
 
         for (KapuaId scopeId : scopeIdList) {
             EventStoreRecordImpl eventStoreRecordImpl1 = new EventStoreRecordImpl(scopeId);

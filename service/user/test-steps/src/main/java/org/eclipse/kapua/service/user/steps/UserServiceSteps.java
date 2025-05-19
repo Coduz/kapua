@@ -20,6 +20,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.eclipse.kapua.KapuaEntityNotFoundException;
 import org.eclipse.kapua.KapuaException;
 import org.eclipse.kapua.commons.model.id.KapuaEid;
 import org.eclipse.kapua.commons.security.KapuaSecurityUtils;
@@ -27,7 +28,6 @@ import org.eclipse.kapua.locator.KapuaLocator;
 import org.eclipse.kapua.model.config.metatype.KapuaTocd;
 import org.eclipse.kapua.model.domain.Actions;
 import org.eclipse.kapua.model.id.KapuaId;
-import org.eclipse.kapua.model.id.KapuaIdImpl;
 import org.eclipse.kapua.model.query.KapuaQuery;
 import org.eclipse.kapua.model.query.predicate.AttributePredicate;
 import org.eclipse.kapua.qa.common.BasicSteps;
@@ -1234,16 +1234,15 @@ public class UserServiceSteps extends TestBase {
 
     @Then("mfa repository can get mfa for user \"([^\"]*)\"$")
     public void mfaRepositoryCanGetMfaForUser(String username) throws KapuaException {
-        BigInteger userId = null;
-        BigInteger scopeId = null;
-        try {
-            userId = KapuaSecurityUtils.doPrivileged(() -> userService.findByName(username).getId().getId());
-            scopeId = KapuaSecurityUtils.doPrivileged(() -> userService.findByName(username).getScopeId().getId());
-        } catch (KapuaException e) {
-            e.printStackTrace();
+        User user = KapuaSecurityUtils.doPrivileged(() -> userService.findByName(username));
+
+        if (user == null) {
+            throw new KapuaEntityNotFoundException(User.TYPE, username);
         }
+
         final MfaOptionService mfaOptionService = KapuaLocator.getInstance().getService(MfaOptionService.class);
-        final MfaOption mfaOption = mfaOptionService.findByUserId(new KapuaIdImpl(scopeId), new KapuaIdImpl(userId));
+        final MfaOption mfaOption = mfaOptionService.findByUserId(user.getScopeId(), user.getId());
+
         Assert.assertNotNull(mfaOption);
     }
 

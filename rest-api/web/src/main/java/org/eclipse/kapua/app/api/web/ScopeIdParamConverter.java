@@ -21,7 +21,6 @@ import org.eclipse.kapua.commons.security.KapuaSession;
 import org.eclipse.kapua.locator.KapuaLocator;
 
 import javax.ws.rs.ext.ParamConverter;
-import java.math.BigInteger;
 import java.util.Base64;
 
 public class ScopeIdParamConverter implements ParamConverter<ScopeId> {

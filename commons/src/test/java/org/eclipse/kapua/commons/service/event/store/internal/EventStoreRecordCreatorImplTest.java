@@ -19,14 +19,11 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import java.math.BigInteger;
-
-
 @Category(JUnitTests.class)
 public class EventStoreRecordCreatorImplTest {
     @Test
     public void eventStoreRecordCreatorImplTest() {
-        KapuaId[] scopeIdList = {null, new KapuaIdImpl(BigInteger.ONE)};
+        KapuaId[] scopeIdList = {null, new KapuaIdImpl(1)};
 
         for (KapuaId scopeId : scopeIdList) {
             EventStoreRecordCreatorImpl eventStoreRecordCreatorImpl = new EventStoreRecordCreatorImpl(scopeId);

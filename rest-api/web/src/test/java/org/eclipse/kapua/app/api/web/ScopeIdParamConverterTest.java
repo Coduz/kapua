@@ -37,9 +37,9 @@ public class ScopeIdParamConverterTest {
     @Test
     public void scopeIdEqualIdsTest() {
         final KapuaSession kapuaSession = Mockito.mock(KapuaSession.class);
-        KapuaSecurityUtils.setSession(kapuaSession);
-
         Mockito.when(kapuaSession.getScopeId()).thenReturn(KapuaId.ONE);
+
+        KapuaSecurityUtils.setSession(kapuaSession);
         ScopeId scopeId = new ScopeIdParamConverter().fromString("_");
 
         Assert.assertEquals("Expected and actual values should be the same.", BigInteger.ONE, scopeId.getId());
@@ -60,21 +60,15 @@ public class ScopeIdParamConverterTest {
 
     @Test
     public void setAndGetIdToStringTest() {
-        final ScopeId scopeId = new ScopeIdParamConverter().fromString("scopeID");
+        final ScopeId scopeId = new ScopeIdParamConverter().fromString("AQ");
 
-        scopeId.setId(BigInteger.TEN);
-        Assert.assertEquals("Expected and actual values should be the same.", BigInteger.TEN, scopeId.getId());
-        Assert.assertEquals("Expected and actual values should be the same.", "10", scopeId.toString());
-
-        scopeId.setId(null);
-        Assert.assertNull("Null expected.", scopeId.getId());
+        Assert.assertEquals("Expected and actual values should be the same.", 1, scopeId.getId().intValue());
+        Assert.assertEquals("Expected and actual values should be the same.", "1", scopeId.toString());
     }
 
     @Test(expected = NullPointerException.class)
     public void toStringNullIdTest() {
-        ScopeId scopeId = new ScopeIdParamConverter().fromString("scopeID");
-        scopeId.setId(null);
-        scopeId.toString();
+        new ScopeIdParamConverter().fromString(null);
     }
 
 

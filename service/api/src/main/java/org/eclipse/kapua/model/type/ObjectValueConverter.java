@@ -15,8 +15,6 @@ package org.eclipse.kapua.model.type;
 import org.eclipse.kapua.model.id.KapuaId;
 import org.eclipse.kapua.model.id.KapuaIdImpl;
 
-import java.math.BigInteger;
-
 /**
  * Utilities to convert the value of objects to serialize them.
  *
@@ -88,7 +86,7 @@ public class ObjectValueConverter {
             } else if (type == byte[].class || type == Byte[].class) {
                 value = ByteArrayConverter.fromString(stringValue);
             } else if (type == KapuaId.class || KapuaId.class.isAssignableFrom(type)) {
-                value = new KapuaIdImpl(new BigInteger(stringValue));
+                value = new KapuaIdImpl(Long.parseLong(stringValue));
             } else if (type.isEnum()) {
                 Class<? extends Enum> enumType = (Class<? extends Enum>) type;
 

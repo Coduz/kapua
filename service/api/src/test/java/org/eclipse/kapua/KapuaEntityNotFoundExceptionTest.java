@@ -20,10 +20,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import java.math.BigInteger;
-
-
-
 @Category(JUnitTests.class)
 public class KapuaEntityNotFoundExceptionTest {
     String[] entityType;
@@ -34,7 +30,7 @@ public class KapuaEntityNotFoundExceptionTest {
     public void initialize() {
         entityType = new String[]{"Entity Type", "1234", "!@#$%^&*(", null};
         entityName = new String[]{"Entity Name", "1234", "!@#$%^&*(", null};
-        entityId = new KapuaIdImpl(BigInteger.ONE);
+        entityId = new KapuaIdImpl(1);
     }
 
     @Test

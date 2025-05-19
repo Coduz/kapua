@@ -24,7 +24,6 @@ import org.eclipse.kapua.model.query.KapuaQuery;
 import org.eclipse.kapua.storage.KapuaEntityRepository;
 import org.eclipse.kapua.storage.TxContext;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -56,7 +55,7 @@ public class KapuaEntityInMemoryRepository<E extends KapuaEntity, L extends Kapu
     @Override
     public E create(TxContext txContext, E entity) throws KapuaException {
         if (entity.getId() == null) {
-            entity.setId(new KapuaIdImpl(BigInteger.valueOf(RandomUtils.nextLong(2, Long.MAX_VALUE))));
+            entity.setId(new KapuaIdImpl(RandomUtils.nextLong(2, Long.MAX_VALUE)));
         }
         this.entities.add(entity);
         return entity;

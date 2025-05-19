@@ -19,7 +19,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import java.math.BigInteger;
 import java.util.Date;
 
 
@@ -65,7 +64,7 @@ public class ServiceEventTest {
     @Test
     public void setAndGetUserIdTest() {
         ServiceEvent serviceEvent = new ServiceEvent();
-        KapuaId[] userIds = {new KapuaIdImpl(BigInteger.ONE), null};
+        KapuaId[] userIds = {new KapuaIdImpl(1), null};
 
         Assert.assertNull("Null expected.", serviceEvent.getUserId());
         for (KapuaId userId : userIds) {
@@ -101,7 +100,7 @@ public class ServiceEventTest {
     @Test
     public void setAndGetScopeIdTest() {
         ServiceEvent serviceEvent = new ServiceEvent();
-        KapuaId[] scopeIds = {new KapuaIdImpl(BigInteger.ONE), null};
+        KapuaId[] scopeIds = {new KapuaIdImpl(1), null};
 
         Assert.assertNull("Null expected.", serviceEvent.getScopeId());
         for (KapuaId scopeId : scopeIds) {
@@ -113,7 +112,7 @@ public class ServiceEventTest {
     @Test
     public void setAndGetEntityScopeIdTest() {
         ServiceEvent serviceEvent = new ServiceEvent();
-        KapuaId[] entityScopeIds = {new KapuaIdImpl(BigInteger.ONE), null};
+        KapuaId[] entityScopeIds = {new KapuaIdImpl(1), null};
 
         Assert.assertNull("Null expected.", serviceEvent.getEntityScopeId());
         for (KapuaId entityScopeId : entityScopeIds) {
@@ -125,7 +124,7 @@ public class ServiceEventTest {
     @Test
     public void setAndGetEntityIdTest() {
         ServiceEvent serviceEvent = new ServiceEvent();
-        KapuaId[] entityIds = {new KapuaIdImpl(BigInteger.ONE), null};
+        KapuaId[] entityIds = {new KapuaIdImpl(1), null};
 
         Assert.assertNull("Null expected", serviceEvent.getEntityId());
         for (KapuaId entityId : entityIds) {

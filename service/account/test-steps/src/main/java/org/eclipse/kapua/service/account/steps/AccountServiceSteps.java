@@ -320,7 +320,7 @@ public class AccountServiceSteps extends TestBase {
     @When("I change the scope Id for account {string} to {int}")
     public void changeParentPathForAccount(String name, int scopeId) throws Exception {
         Account tmpAcc = accountService.findByName(name);
-        tmpAcc.setScopeId(new KapuaIdImpl(BigInteger.valueOf(scopeId)));
+        tmpAcc.setScopeId(new KapuaIdImpl(scopeId));
 
         try {
             primeException();

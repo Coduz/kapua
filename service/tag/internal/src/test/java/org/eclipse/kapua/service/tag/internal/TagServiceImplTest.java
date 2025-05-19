@@ -32,7 +32,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.MockSettings;
 import org.mockito.Mockito;
 
-import java.math.BigInteger;
 import java.util.function.BiConsumer;
 
 @org.junit.jupiter.api.Tag("org.eclipse.kapua.qa.markers.junit.JUnitTests")
@@ -42,7 +41,7 @@ public class TagServiceImplTest {
             .defaultAnswer(invocation -> {
                 throw new UnsupportedOperationException(invocation.toString());
             });
-    public static final Permission FAKE_PERMISSION = new StubPermission("fakeDomain", Actions.execute, new KapuaIdImpl(BigInteger.ONE), new KapuaIdImpl(BigInteger.TEN), true);
+    public static final Permission FAKE_PERMISSION = new StubPermission("fakeDomain", Actions.execute, new KapuaIdImpl(1), new KapuaIdImpl(10), true);
     private PermissionFactory permissionFactory;
     private AuthorizationService authorizationService;
     private ServiceConfigurationManager serviceConfigurationManager;
@@ -96,7 +95,7 @@ public class TagServiceImplTest {
                 () -> instance.create(new TagCreatorImpl(null, "testTag")),
                 "Does not accept tagCreator with null scope id");
         Assertions.assertThrows(KapuaIllegalNullArgumentException.class,
-                () -> instance.create(new TagCreatorImpl(new KapuaIdImpl(BigInteger.ONE), null)),
+                () -> instance.create(new TagCreatorImpl(new KapuaIdImpl(1), null)),
                 "Does not accept tagCreator with null name");
     }
 }

@@ -19,7 +19,6 @@ import org.junit.experimental.categories.Category;
 
 import java.math.BigInteger;
 
-
 @Category(JUnitTests.class)
 public class EntityIdTest {
 

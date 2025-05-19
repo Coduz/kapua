@@ -25,18 +25,13 @@ public class KapuaIdImplTest {
 
     @Test
     public void kapuaIdImplTest() {
-        KapuaIdImpl kapuaIdImpl = new KapuaIdImpl(BigInteger.ONE);
+        KapuaIdImpl kapuaIdImpl = new KapuaIdImpl(1);
         Assert.assertEquals("Expected and actual values should be the same.", BigInteger.ONE, kapuaIdImpl.getId());
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void kapuaIdImplNullParameterTest() {
-        KapuaIdImpl kapuaIdImpl = new KapuaIdImpl(null);
     }
 
     @Test
     public void hashCodeTest() {
-        BigInteger[] bigInteger = {BigInteger.ZERO, BigInteger.ONE, BigInteger.TEN};
+        long[] bigInteger = {0, 1, 10};
         int[] expectedResult = {31, 32, 41};
 
         for (int i = 0; i < bigInteger.length; i++) {
@@ -47,9 +42,9 @@ public class KapuaIdImplTest {
 
     @Test
     public void equalsTest() {
-        KapuaIdImpl kapuaIdImpl1 = new KapuaIdImpl(BigInteger.ONE);
-        KapuaIdImpl kapuaIdImpl2 = new KapuaIdImpl(BigInteger.TEN);
-        KapuaIdImpl kapuaIdImpl3 = new KapuaIdImpl(BigInteger.ONE);
+        KapuaIdImpl kapuaIdImpl1 = new KapuaIdImpl(1);
+        KapuaIdImpl kapuaIdImpl2 = new KapuaIdImpl(10);
+        KapuaIdImpl kapuaIdImpl3 = new KapuaIdImpl(1);
         Object[] objects = {0, 10, 100000, "String", 'c', -10, -1000000000, -100000000000L, 10L, 10.0f, null, 10.10d, true, false};
 
         Assert.assertEquals("True expected.", kapuaIdImpl1, kapuaIdImpl1);

@@ -21,9 +21,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import java.math.BigInteger;
-
-
 @Category(JUnitTests.class)
 public class KapuaIdAdapterTest {
 
@@ -34,7 +31,7 @@ public class KapuaIdAdapterTest {
     @Before
     public void initialize() {
         kapuaIdAdapter = new KapuaIdAdapter();
-        kapuaId = new KapuaId[]{new KapuaIdImpl(BigInteger.ZERO), new KapuaIdImpl(BigInteger.ONE), new KapuaIdImpl(BigInteger.TEN), null};
+        kapuaId = new KapuaId[]{new KapuaIdImpl(0), new KapuaIdImpl(1), new KapuaIdImpl(10), null};
         stringValue = new String[]{"AA", "AQ", "Cg", null};
     }
 

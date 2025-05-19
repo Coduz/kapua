@@ -20,9 +20,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import java.math.BigInteger;
-
-
 @Category(JUnitTests.class)
 public class KapuaEntityExistsExceptionTest {
 
@@ -32,7 +29,7 @@ public class KapuaEntityExistsExceptionTest {
     @Before
     public void initialize() {
         throwables = new Throwable[]{new Throwable(), null};
-        ids = new KapuaId[]{new KapuaIdImpl(BigInteger.ONE), null};
+        ids = new KapuaId[]{new KapuaIdImpl(1), null};
     }
 
     @Test
