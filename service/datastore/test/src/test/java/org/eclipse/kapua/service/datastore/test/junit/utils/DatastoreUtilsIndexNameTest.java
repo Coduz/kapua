@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.datastore.test.junit.utils;
 
-import java.math.BigInteger;
 import java.time.Instant;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
@@ -29,7 +28,7 @@ import org.junit.experimental.categories.Category;
 @Category(JUnitTests.class)
 public class DatastoreUtilsIndexNameTest {
 
-    private static final KapuaId ONE = new KapuaEid(BigInteger.ONE);
+    private static final KapuaId ONE = new KapuaEid(1);
 
     private DatastoreUtils datastoreUtils = new DatastoreUtils(new DatastoreSettings());
 

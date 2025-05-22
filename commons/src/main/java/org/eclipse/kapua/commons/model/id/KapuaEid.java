@@ -50,7 +50,9 @@ public class KapuaEid implements KapuaId, Serializable {
      *
      * @param id The id in {@link BigInteger} form.
      * @since 1.0.0
+     * @deprecated Since 2.1.0. Use the other constructors.
      */
+    @Deprecated
     public KapuaEid(BigInteger id) {
         eid = id;
     }
@@ -63,6 +65,16 @@ public class KapuaEid implements KapuaId, Serializable {
      */
     public KapuaEid(KapuaId id) {
         eid = id.getId();
+    }
+
+    /**
+     * Constructor.
+     *
+     * @param numericKapuaId The {@link KapuaId} in numeric form.
+     * @since 2.1.0
+     */
+    public KapuaEid(long numericKapuaId) {
+        this.eid = BigInteger.valueOf(numericKapuaId);
     }
 
     /**

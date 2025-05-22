@@ -27,9 +27,6 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
 
-import java.math.BigInteger;
-
-
 @Category(JUnitTests.class)
 //TODO: rewrite this
 public class EventStoreServiceImplTest {
@@ -42,9 +39,10 @@ public class EventStoreServiceImplTest {
                 Mockito.mock(TxManager.class),
                 Mockito.mock(EventStoreFactory.class),
                 Mockito.mock(EventStoreRecordRepository.class));
-        EventStoreRecordCreator[] creator = {null, new EventStoreRecordCreatorImpl(new KapuaEid(BigInteger.ONE))};
-        UnsupportedOperationException unsupportedOperationException = new UnsupportedOperationException();
 
+        EventStoreRecordCreator[] creator = {null, new EventStoreRecordCreatorImpl(new KapuaEid(1))};
+
+        UnsupportedOperationException unsupportedOperationException = new UnsupportedOperationException();
         for (EventStoreRecordCreator eventStoreRecordCreator : creator) {
             try {
                 eventStoreServiceImpl.create(eventStoreRecordCreator);

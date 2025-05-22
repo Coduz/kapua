@@ -24,7 +24,6 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
 
-import java.math.BigInteger;
 import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
@@ -108,10 +107,9 @@ public class AbstractKapuaUpdatableEntityTest {
     @Test
     public void prePersistsActionTest() {
         KapuaId scopeId = new KapuaEid();
-        BigInteger eid = new BigInteger(64, RANDOM);
         AbstractKapuaUpdatableEntity updatableEntity = new ActualKapuaUpdatableEntity(scopeId);
         KapuaSession mockedSession = Mockito.mock(KapuaSession.class);
-        Mockito.when(mockedSession.getUserId()).thenReturn(new KapuaEid(eid));
+        Mockito.when(mockedSession.getUserId()).thenReturn(new KapuaEid(RANDOM.nextLong()));
         KapuaSecurityUtils.setSession(mockedSession);
         updatableEntity.prePersistsAction();
         Assert.assertNotNull("Expected true", updatableEntity.getModifiedBy());
@@ -120,10 +118,9 @@ public class AbstractKapuaUpdatableEntityTest {
 
     @Test
     public void preUpdateActionTest() {
-        BigInteger eid = new BigInteger(64, RANDOM);
         AbstractKapuaUpdatableEntity updatableEntity = new ActualKapuaUpdatableEntity();
         KapuaSession mockedSession = Mockito.mock(KapuaSession.class);
-        Mockito.when(mockedSession.getUserId()).thenReturn(new KapuaEid(eid));
+        Mockito.when(mockedSession.getUserId()).thenReturn(new KapuaEid(RANDOM.nextLong()));
         KapuaSecurityUtils.setSession(mockedSession);
         updatableEntity.preUpdateAction();
         Assert.assertNotNull("Expected true", updatableEntity.getModifiedBy());

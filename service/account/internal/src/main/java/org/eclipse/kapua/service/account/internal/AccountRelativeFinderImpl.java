@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.account.internal;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -80,7 +79,7 @@ public class AccountRelativeFinderImpl implements AccountRelativeFinder, KapuaSe
             String id = splitIds[i];
 
             if(id != null && !id.isEmpty() && !id.equals(accountIdStr)) {
-                parentAccountIds.add(new KapuaEid(new BigInteger(id)));
+                parentAccountIds.add(new KapuaEid(Long.parseLong(id)));
             }
         }
 

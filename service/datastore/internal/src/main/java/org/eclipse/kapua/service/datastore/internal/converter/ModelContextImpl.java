@@ -43,7 +43,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
-import java.math.BigInteger;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.HashMap;
@@ -143,12 +142,12 @@ public class ModelContextImpl implements ModelContext {
             message.setId(UUID.fromString(messageId));
         }
 
-        KapuaId scopeId = new KapuaEid(new BigInteger((String) messageMap.get(MessageSchema.MESSAGE_SCOPE_ID)));
+        KapuaId scopeId = new KapuaEid(Long.parseLong((String) messageMap.get(MessageSchema.MESSAGE_SCOPE_ID)));
         message.setScopeId(scopeId);
         KapuaId deviceId = null;
         String deviceIdStr = (String) messageMap.get(MessageSchema.MESSAGE_DEVICE_ID);
         if (deviceIdStr != null) {
-            deviceId = new KapuaEid(new BigInteger(deviceIdStr));
+            deviceId = new KapuaEid(Long.parseLong(deviceIdStr));
         }
 
         message.setDeviceId(deviceId);
@@ -250,7 +249,7 @@ public class ModelContextImpl implements ModelContext {
     }
 
     private MetricInfo unmarshalMetricInfo(Map<String, Object> metricInfoMap) throws ParseException {
-        KapuaId scopeId = new KapuaEid(new BigInteger((String) metricInfoMap.get(MetricInfoSchema.METRIC_SCOPE_ID)));
+        KapuaId scopeId = new KapuaEid(Long.parseLong((String) metricInfoMap.get(MetricInfoSchema.METRIC_SCOPE_ID)));
         String id = (String) metricInfoMap.get(getIdKeyName());
 
         Map<String, Object> metricMap = (Map<String, Object>) metricInfoMap.get(MetricInfoSchema.METRIC_MTR);
@@ -276,7 +275,7 @@ public class ModelContextImpl implements ModelContext {
     }
 
     private ChannelInfo unmarshalChannelInfo(Map<String, Object> channelInfoMap) throws ParseException {
-        KapuaId scopeId = new KapuaEid(new BigInteger((String) channelInfoMap.get(ChannelInfoSchema.CHANNEL_SCOPE_ID)));
+        KapuaId scopeId = new KapuaEid(Long.parseLong((String) channelInfoMap.get(ChannelInfoSchema.CHANNEL_SCOPE_ID)));
         String id = (String) channelInfoMap.get(getIdKeyName());
 
         ChannelInfo channelInfo = new ChannelInfoImpl(scopeId);
@@ -290,7 +289,7 @@ public class ModelContextImpl implements ModelContext {
     }
 
     private ClientInfo unmarshalClientInfo(Map<String, Object> clientInfoMap) throws ParseException {
-        KapuaId scopeId = new KapuaEid(new BigInteger((String) clientInfoMap.get(ClientInfoSchema.CLIENT_SCOPE_ID)));
+        KapuaId scopeId = new KapuaEid(Long.parseLong((String) clientInfoMap.get(ClientInfoSchema.CLIENT_SCOPE_ID)));
         String id = (String) clientInfoMap.get(getIdKeyName());
 
         ClientInfo clientInfo = new ClientInfoImpl(scopeId);

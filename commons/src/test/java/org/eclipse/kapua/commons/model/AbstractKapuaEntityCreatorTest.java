@@ -24,7 +24,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -35,14 +34,14 @@ public class AbstractKapuaEntityCreatorTest {
 
     private final static Random RANDOM = RandomUtils.getInstance();
 
-    private final BigInteger eid;
+    private final Long eid;
 
     @Parameters
     public static Iterable<Object[]> eids() {
-        return Arrays.asList(new Object[]{new BigInteger(64, RANDOM)}, new Object[]{null});
+        return Arrays.asList(new Object[]{RANDOM.nextLong()}, new Object[]{null});
     }
 
-    public AbstractKapuaEntityCreatorTest(BigInteger eid) {
+    public AbstractKapuaEntityCreatorTest(Long eid) {
         this.eid = eid;
     }
 

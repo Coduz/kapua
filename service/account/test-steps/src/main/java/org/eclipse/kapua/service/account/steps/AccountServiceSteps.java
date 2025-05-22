@@ -198,7 +198,7 @@ public class AccountServiceSteps extends TestBase {
     @Given("I create {int} childs for account with Id {int}")
     public void createANumberOfAccounts(int num, int parentId) throws Exception {
         for (int i = 0; i < num; i++) {
-            AccountCreator accountCreator = prepareRegularAccountCreator(new KapuaEid(BigInteger.valueOf(parentId)), TMP_ACC + String.format("%d", i));
+            AccountCreator accountCreator = prepareRegularAccountCreator(new KapuaEid(parentId), TMP_ACC + String.format("%d", i));
             try {
                 primeException();
                 accountService.create(accountCreator);
@@ -769,7 +769,7 @@ public class AccountServiceSteps extends TestBase {
      */
     private AccountCreator accountCreatorCreator(String name, BigInteger scopeId, Date expiration) {
 
-        AccountCreator accountCreator = accountFactory.newCreator(new KapuaEid(scopeId));
+        AccountCreator accountCreator = accountFactory.newCreator(new KapuaEid(scopeId.longValue()));
         accountCreator.setName(name);
         accountCreator.setOrganizationName("ACME Inc.");
         accountCreator.setOrganizationEmail("some@one.com");

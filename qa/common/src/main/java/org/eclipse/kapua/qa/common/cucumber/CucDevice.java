@@ -16,8 +16,6 @@ import org.eclipse.kapua.commons.model.id.KapuaEid;
 import org.eclipse.kapua.model.id.KapuaId;
 import org.eclipse.kapua.service.device.registry.DeviceStatus;
 
-import java.math.BigInteger;
-
 /**
  * Data object used in Gherkin to input Device parameters.
  * The data setters intentionally use only cucumber-friendly data types and
@@ -125,24 +123,25 @@ public class CucDevice {
 
     public void parse() {
         if (scopeId != null) {
-            kScopeId = new KapuaEid(BigInteger.valueOf(scopeId));
+            kScopeId = new KapuaEid(scopeId);
         }
 
         if (groupId != null) {
-            kGroupId = new KapuaEid(BigInteger.valueOf(groupId));
+            kGroupId = new KapuaEid(groupId);
         }
 
         if (connectionId != null) {
-            kConnectionId = new KapuaEid(BigInteger.valueOf(connectionId));
+            kConnectionId = new KapuaEid(connectionId);
         }
 
         if (lastEventId != null) {
-            klastEventId = new KapuaEid(BigInteger.valueOf(lastEventId));
+            klastEventId = new KapuaEid(lastEventId);
         }
 
         if (preferredUserId != null) {
-            kPreferredUserId = new KapuaEid(BigInteger.valueOf(preferredUserId));
+            kPreferredUserId = new KapuaEid(preferredUserId);
         }
+
         setStatus(this.status);
     }
 

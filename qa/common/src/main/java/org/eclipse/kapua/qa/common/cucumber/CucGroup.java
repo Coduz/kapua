@@ -12,8 +12,6 @@
  *******************************************************************************/
 package org.eclipse.kapua.qa.common.cucumber;
 
-import java.math.BigInteger;
-
 import org.eclipse.kapua.commons.model.id.KapuaEid;
 import org.eclipse.kapua.model.id.KapuaId;
 
@@ -31,7 +29,7 @@ public class CucGroup {
 
     public void doParse() {
         if (this.scope != null) {
-            this.scopeId = new KapuaEid(BigInteger.valueOf(scope.longValue()));
+            this.scopeId = new KapuaEid(scope.longValue());
         }
     }
 

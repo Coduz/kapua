@@ -25,7 +25,6 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
 
-import java.math.BigInteger;
 import java.util.Date;
 
 
@@ -40,10 +39,10 @@ public class EventStoreRecordImplTest {
 
         Mockito.when(eventStoreRecord.getContextId()).thenReturn("contextId");
         Mockito.when(eventStoreRecord.getTimestamp()).thenReturn(new Date());
-        Mockito.when(eventStoreRecord.getUserId()).thenReturn(new KapuaEid(BigInteger.TEN));
+        Mockito.when(eventStoreRecord.getUserId()).thenReturn(new KapuaEid(10));
         Mockito.when(eventStoreRecord.getService()).thenReturn("service");
         Mockito.when(eventStoreRecord.getEntityType()).thenReturn("entityType");
-        Mockito.when(eventStoreRecord.getEntityId()).thenReturn(new KapuaEid(BigInteger.TEN));
+        Mockito.when(eventStoreRecord.getEntityId()).thenReturn(new KapuaEid(10));
         Mockito.when(eventStoreRecord.getOperation()).thenReturn("operation");
         Mockito.when(eventStoreRecord.getInputs()).thenReturn("input");
         Mockito.when(eventStoreRecord.getOutputs()).thenReturn("output");
@@ -73,10 +72,10 @@ public class EventStoreRecordImplTest {
 
         Assert.assertEquals("Expected and actual values should be the same.", "contextId", eventStoreRecordImpl.getContextId());
         Assert.assertEquals("Expected and actual values should be the same.", new Date().toString(), eventStoreRecordImpl.getTimestamp().toString());
-        Assert.assertEquals("Expected and actual values should be the same.", new KapuaEid(BigInteger.TEN), eventStoreRecordImpl.getUserId());
+        Assert.assertEquals("Expected and actual values should be the same.", new KapuaEid(10), eventStoreRecordImpl.getUserId());
         Assert.assertEquals("Expected and actual values should be the same.", "service", eventStoreRecordImpl.getService());
         Assert.assertEquals("Expected and actual values should be the same.", "entityType", eventStoreRecordImpl.getEntityType());
-        Assert.assertEquals("Expected and actual values should be the same.", new KapuaEid(BigInteger.TEN), eventStoreRecordImpl.getEntityId());
+        Assert.assertEquals("Expected and actual values should be the same.", new KapuaEid(10), eventStoreRecordImpl.getEntityId());
         Assert.assertEquals("Expected and actual values should be the same.", "operation", eventStoreRecordImpl.getOperation());
         Assert.assertEquals("Expected and actual values should be the same.", "input", eventStoreRecordImpl.getInputs());
         Assert.assertEquals("Expected and actual values should be the same.", "output", eventStoreRecordImpl.getOutputs());
@@ -164,7 +163,7 @@ public class EventStoreRecordImplTest {
         Assert.assertNull("Null expected.", eventStoreRecordImpl2.getUserId());
 
         EventStoreRecord eventStoreRecordImpl3 = new EventStoreRecordImpl(eventStoreRecord);
-        Assert.assertEquals("Expected and actual values should be the same.", new KapuaEid(BigInteger.TEN), eventStoreRecordImpl3.getUserId());
+        Assert.assertEquals("Expected and actual values should be the same.", new KapuaEid(10), eventStoreRecordImpl3.getUserId());
         eventStoreRecordImpl3.setUserId(userId);
         Assert.assertEquals("Expected and actual values should be the same.", userId, eventStoreRecordImpl3.getUserId());
         eventStoreRecordImpl3.setUserId(null);
@@ -278,7 +277,7 @@ public class EventStoreRecordImplTest {
         Assert.assertNull("Null expected.", eventStoreRecordImpl2.getEntityId());
 
         EventStoreRecord eventStoreRecordImpl3 = new EventStoreRecordImpl(eventStoreRecord);
-        Assert.assertEquals("Expected and actual values should be the same.", new KapuaEid(BigInteger.TEN), eventStoreRecordImpl3.getEntityId());
+        Assert.assertEquals("Expected and actual values should be the same.", new KapuaEid(10), eventStoreRecordImpl3.getEntityId());
         eventStoreRecordImpl3.setEntityId(entityId);
         Assert.assertEquals("Expected and actual values should be the same.", entityId, eventStoreRecordImpl3.getEntityId());
         eventStoreRecordImpl3.setEntityId(null);

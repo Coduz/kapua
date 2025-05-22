@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.kapua.qa.common;
 
-import java.math.BigInteger;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -55,9 +54,9 @@ public class TestBase {
      */
     protected static final String KURA_DEVICES = "kuraDevices";
     protected static final KapuaId SYS_SCOPE_ID = KapuaId.ONE;
-    protected static final KapuaId SYS_USER_ID = new KapuaEid(BigInteger.ONE);
+    protected static final KapuaId SYS_USER_ID = new KapuaEid(1);
     protected static final int DEFAULT_SCOPE_ID = 42;
-    protected static final KapuaId DEFAULT_ID = new KapuaEid(BigInteger.valueOf(DEFAULT_SCOPE_ID));
+    protected static final KapuaId DEFAULT_ID = new KapuaEid(DEFAULT_SCOPE_ID);
 
     protected TestBase(StepData stepData) {
         this.stepData = stepData;
@@ -68,15 +67,15 @@ public class TestBase {
     }
 
     public KapuaId getKapuaId() {
-        return new KapuaEid(BigInteger.valueOf(random.nextLong()).abs());
+        return new KapuaEid(random.nextLong());
     }
 
     public KapuaId getKapuaId(int id) {
-        return new KapuaEid(BigInteger.valueOf(id));
+        return new KapuaEid(id);
     }
 
     public KapuaId getKapuaId(String id) {
-        return new KapuaEid(new BigInteger(id));
+        return new KapuaEid(Long.parseLong(id));
     }
 
     public KapuaId getCurrentScopeId() {

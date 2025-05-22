@@ -16,8 +16,6 @@ import org.eclipse.kapua.commons.model.id.KapuaEid;
 import org.eclipse.kapua.model.domain.Actions;
 import org.eclipse.kapua.model.id.KapuaId;
 
-import java.math.BigInteger;
-
 public class CucRolePermission {
 
     private KapuaId scope;
@@ -45,11 +43,13 @@ public class CucRolePermission {
 
     public void doParse() {
         if (this.scopeId != null) {
-            this.scope = new KapuaEid(BigInteger.valueOf(scopeId));
+            this.scope = new KapuaEid(scopeId);
         }
+
         if (this.roleId != null) {
-            this.role = new KapuaEid(BigInteger.valueOf(roleId));
+            this.role = new KapuaEid(roleId);
         }
+
         if (this.actionName != null) {
             switch (actionName.trim().toLowerCase()) {
             case "read":
@@ -69,8 +69,9 @@ public class CucRolePermission {
                 break;
             }
         }
+
         if (this.targetScopeId != null) {
-            this.targetScope = new KapuaEid(BigInteger.valueOf(targetScopeId));
+            this.targetScope = new KapuaEid(targetScopeId);
         }
     }
 

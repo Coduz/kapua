@@ -16,8 +16,6 @@ import org.eclipse.kapua.commons.model.id.KapuaEid;
 import org.eclipse.kapua.model.domain.Actions;
 import org.eclipse.kapua.model.domain.Domain;
 
-import java.math.BigInteger;
-
 /**
  * Data object used for PermissionData configuration.
  */
@@ -61,9 +59,5 @@ public class AclPermission {
 
     public void setTargetScopeId(KapuaEid targetScopeId) {
         this.targetScopeId = targetScopeId;
-    }
-
-    public void setTargetScopeId(BigInteger targetScopeId) {
-        this.targetScopeId = new KapuaEid(targetScopeId);
     }
 }

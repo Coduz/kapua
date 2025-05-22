@@ -115,8 +115,8 @@ public class KapuaEidTest {
         KapuaEid kapuaEid = new KapuaEid(eid);
         short shortNum = 10000;
         KapuaEid kapuaEidNull = new KapuaEid();
-        BigInteger otherId = new BigInteger(64, RANDOM);
-        KapuaEid kapuaEidOtherId = new KapuaEid(otherId);
+
+        KapuaEid kapuaEidOtherId = new KapuaEid(RANDOM.nextLong());
         KapuaEid kapuaEidSameId = new KapuaEid(eid);
 
         Assert.assertTrue("Expected true", kapuaEid.equals(kapuaEid));

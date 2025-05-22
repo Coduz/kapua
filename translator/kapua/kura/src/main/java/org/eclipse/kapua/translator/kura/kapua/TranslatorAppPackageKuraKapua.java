@@ -38,7 +38,6 @@ import org.eclipse.kapua.translator.exception.TranslatorErrorCodes;
 import org.eclipse.kapua.translator.exception.TranslatorException;
 
 import javax.inject.Inject;
-import java.math.BigInteger;
 import java.util.Map;
 
 /**
@@ -77,7 +76,7 @@ public class TranslatorAppPackageKuraKapua extends AbstractSimpleTranslatorRespo
             Map<String, Object> metrics = kuraResponsePayload.getMetrics();
             if (!KuraResponseCode.INTERNAL_ERROR.equals(responseCode)) {
                 if (metrics.get(PackageMetrics.APP_METRIC_PACKAGE_OPERATION_ID.getName()) != null) {
-                    responsePayload.setPackageDownloadOperationId(new KapuaEid(new BigInteger(metrics.get(PackageMetrics.APP_METRIC_PACKAGE_OPERATION_ID.getName()).toString())));
+                    responsePayload.setPackageDownloadOperationId(new KapuaEid(Long.parseLong(metrics.get(PackageMetrics.APP_METRIC_PACKAGE_OPERATION_ID.getName()).toString())));
 
                     if (metrics.get(PackageMetrics.APP_METRIC_PACKAGE_DOWNLOAD_STATUS.getName()) != null) {
                         DevicePackageDownloadStatus status;

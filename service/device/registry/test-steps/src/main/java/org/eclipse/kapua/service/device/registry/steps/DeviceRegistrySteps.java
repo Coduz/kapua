@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.device.registry.steps;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -539,8 +538,8 @@ public class DeviceRegistrySteps extends TestBase {
         primeException();
         try {
             for (int i = 0; i < number; i++) {
-                tmpId = new KapuaEid(BigInteger.valueOf(scope));
-                tmpClient = "test_" + String.valueOf(random.nextInt());
+                tmpId = new KapuaEid(scope);
+                tmpClient = "test_" + random.nextInt();
                 tmpDevCr = deviceFactory.newCreator(tmpId, tmpClient);
                 deviceRegistryService.create(tmpDevCr);
             }
@@ -2766,7 +2765,7 @@ public class DeviceRegistrySteps extends TestBase {
             if (Strings.isNullOrEmpty(connectionId)) {
                 device.setConnectionId(null);
             } else {
-                device.setConnectionId(new KapuaEid(BigInteger.valueOf(Long.parseLong(connectionId))));
+                device.setConnectionId(new KapuaEid(Long.parseLong(connectionId)));
             }
 
             device = deviceRegistryService.update(device);
@@ -2803,7 +2802,7 @@ public class DeviceRegistrySteps extends TestBase {
             if (Strings.isNullOrEmpty(lastEventId)) {
                 device.setLastEventId(null);
             } else {
-                device.setLastEventId(new KapuaEid(BigInteger.valueOf(Long.parseLong(lastEventId))));
+                device.setLastEventId(new KapuaEid(Long.parseLong(lastEventId)));
             }
 
             device = deviceRegistryService.update(device);

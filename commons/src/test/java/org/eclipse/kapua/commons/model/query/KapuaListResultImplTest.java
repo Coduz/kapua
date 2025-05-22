@@ -22,7 +22,6 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -128,7 +127,7 @@ public class KapuaListResultImplTest {
 
         for (int i = 0; i < testSize; i++) {
             AbstractKapuaEntity kapuaEntity = Mockito.mock(AbstractKapuaEntity.class);
-            Mockito.when(kapuaEntity.getId()).thenReturn(new KapuaEid(new BigInteger(String.valueOf(i))));
+            Mockito.when(kapuaEntity.getId()).thenReturn(new KapuaEid(i));
 
             kapuaListResult.addItem(kapuaEntity);
         }
@@ -148,7 +147,7 @@ public class KapuaListResultImplTest {
 
         for (int i = 0; i < testSize; i++) {
             AbstractKapuaEntity kapuaEntity = Mockito.mock(AbstractKapuaEntity.class);
-            Mockito.when(kapuaEntity.getId()).thenReturn(new KapuaEid(new BigInteger(String.valueOf(i))));
+            Mockito.when(kapuaEntity.getId()).thenReturn(new KapuaEid(i));
 
             kapuaListResult.addItem(kapuaEntity);
         }
@@ -168,7 +167,7 @@ public class KapuaListResultImplTest {
 
         for (int i = 0; i < testSize; i++) {
             AbstractKapuaEntity kapuaEntity = Mockito.mock(AbstractKapuaEntity.class);
-            Mockito.when(kapuaEntity.getId()).thenReturn(new KapuaEid(new BigInteger(String.valueOf(i))));
+            Mockito.when(kapuaEntity.getId()).thenReturn(new KapuaEid(i));
 
             kapuaListResult.addItem(kapuaEntity);
         }
@@ -255,20 +254,20 @@ public class KapuaListResultImplTest {
 
         // Add the max value
         AbstractKapuaEntity kapuaEntityMax = Mockito.mock(AbstractKapuaEntity.class);
-        Mockito.when(kapuaEntityMax.getId()).thenReturn(new KapuaEid(new BigInteger(String.valueOf(Long.MAX_VALUE))));
+        Mockito.when(kapuaEntityMax.getId()).thenReturn(new KapuaEid(Long.MAX_VALUE));
         kapuaListResult.addItem(kapuaEntityMax);
 
         // Add values between
         for (int i = 0; i < testSize; i++) {
             AbstractKapuaEntity kapuaEntity = Mockito.mock(AbstractKapuaEntity.class);
-            Mockito.when(kapuaEntity.getId()).thenReturn(new KapuaEid(new BigInteger(String.valueOf(RANDOM.nextLong()))));
+            Mockito.when(kapuaEntity.getId()).thenReturn(new KapuaEid(RANDOM.nextLong()));
 
             kapuaListResult.addItem(kapuaEntity);
         }
 
         // Add the min value
         AbstractKapuaEntity kapuaEntityMin = Mockito.mock(AbstractKapuaEntity.class);
-        Mockito.when(kapuaEntityMin.getId()).thenReturn(new KapuaEid(new BigInteger(String.valueOf(Long.MIN_VALUE))));
+        Mockito.when(kapuaEntityMin.getId()).thenReturn(new KapuaEid(Long.MIN_VALUE));
         kapuaListResult.addItem(kapuaEntityMin);
 
         // Check result are not sorted by `.getId()` ascending

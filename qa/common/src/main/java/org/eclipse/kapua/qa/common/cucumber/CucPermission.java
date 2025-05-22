@@ -55,8 +55,9 @@ public class CucPermission {
 
     public KapuaId getTargetScopeId() {
         if (targetScope != null) {
-            return targetScopeId = new KapuaEid(BigInteger.valueOf(targetScope));
+            return targetScopeId = new KapuaEid(targetScope);
         }
+
         return targetScopeId;
     }
 
@@ -65,6 +66,6 @@ public class CucPermission {
     }
 
     public void setTargetScopeId(BigInteger targetScopeId) {
-        this.targetScopeId = new KapuaEid(targetScopeId);
+        this.targetScopeId = new KapuaEid(targetScopeId.longValue());
     }
 }

@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.kapua.commons.model.misc;
 
-import java.math.BigInteger;
 import java.util.Date;
 
 import javax.persistence.Basic;
@@ -63,7 +62,7 @@ public class CollisionEntity extends AbstractKapuaNamedEntity {
         setId(new KapuaEid(collisionIdGenerator.generate()));
         setScopeId(KapuaId.ONE);
         setName("foo");
-        setCreatedBy(new KapuaEid(BigInteger.ONE));
+        setCreatedBy(new KapuaEid(1));
         setCreatedOn(new Date());
     }
 

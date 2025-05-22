@@ -76,7 +76,6 @@ import org.eclipse.kapua.service.user.UserStatus;
 import org.junit.Assert;
 
 import javax.inject.Inject;
-import java.math.BigInteger;
 import java.text.MessageFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -159,17 +158,22 @@ public class UserServiceSteps extends TestBase {
     }
 
     @Given("User with name {string} in scope with id {int}")
-    public void crateUserWithName(String userName, int scopeId) {
+    public void crateUserWithName(String userName, int intScopeId) {
         long now = (new Date()).getTime();
+
         String userEmail = MessageFormat.format("testuser_{0,number,#}@organization.com", now);
         String displayName = MessageFormat.format("User Display Name {0}", now);
-        KapuaEid scpId = new KapuaEid(BigInteger.valueOf(scopeId));
-        UserCreator uc = userFactory.newCreator(scpId, userName);
+
+        KapuaEid scopeId = new KapuaEid(intScopeId);
+
+        UserCreator uc = userFactory.newCreator(scopeId, userName);
         uc.setDisplayName(displayName);
         uc.setEmail(userEmail);
         uc.setPhoneNumber("+1 555 123 4567");
         uc.setStatus(UserStatus.ENABLED);
+
         stepData.put(USER_CREATOR, uc);
+
         scenario.log("User " + userName + " created.");
     }
 
@@ -311,8 +315,9 @@ public class UserServiceSteps extends TestBase {
 
     @When("I search for user with id {int} in scope with id {int}")
     public void searchUserWithIdAndScopeId(int userId, int scopeId) throws Exception {
-        KapuaEid scpId = new KapuaEid(BigInteger.valueOf(scopeId));
-        KapuaEid usrId = new KapuaEid(BigInteger.valueOf(userId));
+        KapuaEid scpId = new KapuaEid(scopeId);
+        KapuaEid usrId = new KapuaEid(userId);
+
         stepData.remove("User");
         User user = userService.find(scpId, usrId);
         stepData.put("User", user);
@@ -335,18 +340,22 @@ public class UserServiceSteps extends TestBase {
     @When("I query for users in scope with id {int}")
     public void queryForUsers(int scopeId) throws Exception {
         stepData.remove(USER_LIST);
-        UserQuery query = userFactory.newQuery(new KapuaEid(BigInteger.valueOf(scopeId)));
+
+        UserQuery query = userFactory.newQuery(new KapuaEid(scopeId));
         UserListResult queryResult = userService.query(query);
+
         Set<ComparableUser> iFoundUsers = new HashSet<>();
         for (User userItem : queryResult.getItems()) {
             iFoundUsers.add(new ComparableUser(userItem));
         }
+
         stepData.put(USER_LIST, iFoundUsers);
     }
 
     @When("I count users in scope {int}")
     public void countUsersInScope(int scopeId) throws Exception {
-        UserQuery query = userFactory.newQuery(new KapuaEid(BigInteger.valueOf(scopeId)));
+        UserQuery query = userFactory.newQuery(new KapuaEid(scopeId));
+
         stepData.updateCount((int) userService.count(query));
     }
 
@@ -669,15 +678,17 @@ public class UserServiceSteps extends TestBase {
 
     @When("I configure the user service for the account with the id {int}")
     public void setUserServiceConfig(int accountId, List<CucConfig> cucConfigs) throws Exception {
+        KapuaId accId = new KapuaEid(accountId);
+
         Map<String, Object> valueMap = new HashMap<>();
-        KapuaId accId = new KapuaEid(BigInteger.valueOf(accountId));
-        KapuaId scopeId = SYS_SCOPE_ID;
         for (CucConfig config : cucConfigs) {
             config.addConfigToMap(valueMap);
         }
+
         primeException();
+
         try {
-            userService.setConfigValues(accId, scopeId, valueMap);
+            userService.setConfigValues(accId, SYS_SCOPE_ID, valueMap);
         } catch (KapuaException ex) {
             verifyException(ex);
         }
@@ -760,16 +771,20 @@ public class UserServiceSteps extends TestBase {
      */
     private User createUserInstance(int userId, int scopeId) {
         long now = (new Date()).getTime();
+
         String username = MessageFormat.format("aaa_test_username_{0,number,#}", now);
         String userEmail = MessageFormat.format("testuser_{0,number,#}@organization.com", now);
         String displayName = MessageFormat.format("User Display Name {0}", now);
-        KapuaEid usrId = new KapuaEid(BigInteger.valueOf(userId));
-        KapuaEid scpId = new KapuaEid(BigInteger.valueOf(scopeId));
+
+        KapuaEid usrId = new KapuaEid(userId);
+        KapuaEid scpId = new KapuaEid(scopeId);
+
         User user = userFactory.newEntity(scpId);
         user.setId(usrId);
         user.setName(username);
         user.setDisplayName(displayName);
         user.setEmail(userEmail);
+
         return user;
     }
 

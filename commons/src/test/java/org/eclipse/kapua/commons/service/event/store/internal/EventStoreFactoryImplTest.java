@@ -24,16 +24,13 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
 
-import java.math.BigInteger;
-
-
 @Category(JUnitTests.class)
 public class EventStoreFactoryImplTest {
 
     @Test
     public void newEntityTest() {
         EventStoreFactoryImpl eventStoreFactoryImpl = new EventStoreFactoryImpl();
-        KapuaId[] scopeIdList = {null, new KapuaEid(BigInteger.ONE)};
+        KapuaId[] scopeIdList = {null, new KapuaEid(1)};
 
         for (KapuaId scopeId : scopeIdList) {
             Assert.assertNotNull("Null not expected.", eventStoreFactoryImpl.newEntity(scopeId));
@@ -44,7 +41,7 @@ public class EventStoreFactoryImplTest {
     @Test
     public void newCreatorTest() {
         EventStoreFactoryImpl eventStoreFactoryImpl = new EventStoreFactoryImpl();
-        KapuaId[] scopeIdList = {null, new KapuaEid(BigInteger.ONE)};
+        KapuaId[] scopeIdList = {null, new KapuaEid(1)};
 
         for (KapuaId scopeId : scopeIdList) {
             Assert.assertNotNull("Null not expected.", eventStoreFactoryImpl.newCreator(scopeId));
@@ -55,7 +52,7 @@ public class EventStoreFactoryImplTest {
     @Test
     public void newQueryTest() {
         EventStoreFactoryImpl eventStoreFactoryImpl = new EventStoreFactoryImpl();
-        KapuaId[] scopeIdList = {null, new KapuaEid(BigInteger.ONE)};
+        KapuaId[] scopeIdList = {null, new KapuaEid(1)};
 
         for (KapuaId scopeId : scopeIdList) {
             Assert.assertNotNull("Null not expected.", eventStoreFactoryImpl.newQuery(scopeId));

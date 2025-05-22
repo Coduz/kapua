@@ -16,7 +16,6 @@ import org.eclipse.kapua.commons.model.id.KapuaEid;
 import org.eclipse.kapua.model.domain.Actions;
 import org.eclipse.kapua.model.id.KapuaId;
 
-import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -38,8 +37,9 @@ public class CucRole {
 
     public void doParse() {
         if (scopeId != null) {
-            id = new KapuaEid(BigInteger.valueOf(scopeId));
+            id = new KapuaEid(scopeId);
         }
+
         if (actions != null) {
             String tmpAct = actions.trim().toLowerCase();
             if (tmpAct.length() != 0) {

@@ -168,7 +168,7 @@ public class AccessTokenImpl extends AbstractKapuaUpdatableEntity implements Acc
      */
     @Override
     protected void prePersistsAction() {
-        setId(new KapuaEid(IdGenerator.generate()));
+        setId(new KapuaEid(IdGenerator.generate().longValue()));
         setCreatedBy(userId);
         setCreatedOn(new Date());
         setModifiedBy(getCreatedBy());

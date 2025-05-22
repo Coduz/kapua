@@ -14,7 +14,6 @@
 package org.eclipse.kapua.message.internal;
 
 import java.io.StringWriter;
-import java.math.BigInteger;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Date;
@@ -63,8 +62,8 @@ public class KapuaMessageTest {
         KapuaMessageUtil.populateKapuaMessage(kapuaMessage, referenceDate);
 
         Assert.assertEquals(UUID.fromString("11111111-2222-3333-4444-555555555555"), kapuaMessage.getId());
-        Assert.assertEquals(new KapuaEid(BigInteger.ONE), kapuaMessage.getScopeId());
-        Assert.assertEquals(new KapuaEid(BigInteger.ONE), kapuaMessage.getDeviceId());
+        Assert.assertEquals(new KapuaEid(1), kapuaMessage.getScopeId());
+        Assert.assertEquals(new KapuaEid(1), kapuaMessage.getDeviceId());
         Assert.assertEquals(receivedDate, kapuaMessage.getReceivedOn());
         Assert.assertEquals(sentDate, kapuaMessage.getSentOn());
         Assert.assertEquals(capturedDate, kapuaMessage.getCapturedOn());

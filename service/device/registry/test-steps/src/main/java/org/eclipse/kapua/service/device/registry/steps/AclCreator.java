@@ -40,7 +40,6 @@ import org.eclipse.kapua.service.user.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -55,9 +54,9 @@ public class AclCreator {
 
     private static final Logger logger = LoggerFactory.getLogger(MqttDevice.class);
 
-    private static final KapuaId SYS_ID = new KapuaEid(BigInteger.ONE);
+    private static final KapuaId SYS_ID = new KapuaEid(1);
 
-    private static final KapuaId ROOT_SCOPE_ID = new KapuaEid(BigInteger.ONE);
+    private static final KapuaId ROOT_SCOPE_ID = new KapuaEid(1);
 
     /**
      * Credential service.

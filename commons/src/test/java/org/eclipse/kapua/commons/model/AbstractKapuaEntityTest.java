@@ -24,7 +24,6 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
 
-import java.math.BigInteger;
 import java.util.Date;
 import java.util.Random;
 
@@ -57,9 +56,8 @@ public class AbstractKapuaEntityTest {
     @Test
     public void abstractKapuaEntityScopeIdTest() {
         AbstractKapuaEntity kapuaEntity = new ActualKapuaEntity();
-        BigInteger eid = new BigInteger(64, RANDOM);
         KapuaId scopeIdNull = new KapuaEid();
-        KapuaId scopeId = new KapuaEid(eid);
+        KapuaId scopeId = new KapuaEid(RANDOM.nextLong());
         kapuaEntity.setScopeId(scopeIdNull);
         Assert.assertEquals("Expected and actual values should be the same!", scopeIdNull, kapuaEntity.getScopeId());
         kapuaEntity.setScopeId(scopeId);
@@ -84,10 +82,9 @@ public class AbstractKapuaEntityTest {
     @Test
     public void prePersistsActionTest() {
         KapuaId scopeId = new KapuaEid();
-        BigInteger eid = new BigInteger(64, RANDOM);
         AbstractKapuaEntity kapuaEntity = new ActualKapuaEntity(scopeId);
         KapuaSession kapuaSession = Mockito.mock(KapuaSession.class);
-        Mockito.when(kapuaSession.getUserId()).thenReturn(new KapuaEid(eid));
+        Mockito.when(kapuaSession.getUserId()).thenReturn(new KapuaEid(RANDOM.nextLong()));
         KapuaSecurityUtils.setSession(kapuaSession);
         kapuaEntity.prePersistsAction();
         Assert.assertNotNull("Not Null expected!", kapuaEntity.getId());

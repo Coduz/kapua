@@ -14,7 +14,6 @@
 package org.eclipse.kapua.message.internal;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -97,13 +96,15 @@ public class KapuaMessageUtil {
      */
     public static void populateKapuaMessage(KapuaMessage<?, ?> kapuaMessage, ZonedDateTime referenceDate) {
         kapuaMessage.setId(UUID.fromString("11111111-2222-3333-4444-555555555555"));
-        kapuaMessage.setScopeId(new KapuaEid(BigInteger.ONE));
-        kapuaMessage.setDeviceId(new KapuaEid(BigInteger.ONE));
+        kapuaMessage.setScopeId(new KapuaEid(1));
+        kapuaMessage.setDeviceId(new KapuaEid(1));
         kapuaMessage.setReceivedOn(Date.from(referenceDate.plusMinutes(1).toInstant()));
         kapuaMessage.setSentOn(Date.from(referenceDate.plusSeconds(10).toInstant()));
         kapuaMessage.setCapturedOn(Date.from(referenceDate.toInstant()));
+
         KapuaPosition position = new KapuaPositionImpl();
         populatePosition(position, referenceDate);
+
         kapuaMessage.setPosition(position);
     }
 
