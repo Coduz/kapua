@@ -18,6 +18,7 @@ import org.eclipse.kapua.service.KapuaService;
 import org.eclipse.kapua.service.authentication.ApiKeyCredentials;
 import org.eclipse.kapua.service.authentication.AuthenticationService;
 import org.eclipse.kapua.service.authentication.JwtCredentials;
+import org.eclipse.kapua.service.authentication.OpenIdCredentials;
 import org.eclipse.kapua.service.authentication.RefreshTokenCredentials;
 import org.eclipse.kapua.service.authentication.UsernamePasswordCredentials;
 import org.eclipse.kapua.service.authentication.token.AccessToken;
@@ -85,7 +86,7 @@ public class Authentication extends AbstractKapuaResource {
     }
 
     /**
-     * Authenticates an user with a api key and returns
+     * Authenticates a user with a api key and returns
      * the authentication token to be used in subsequent REST API calls.
      *
      * @param authenticationCredentials The API KEY authentication credential of a user.
@@ -102,18 +103,36 @@ public class Authentication extends AbstractKapuaResource {
     }
 
     /**
-     * Authenticates an user with JWT and returns
+     * Authenticates a user with OpenId access token and id token.
+     *
+     * @param openIdCredentials The JWT authentication credential of a user.
+     * @return The authentication token
+     * @throws KapuaException Whenever something bad happens. See specific {@link KapuaService} exceptions.
+     * @since 2.1.0
+     */
+    @POST
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Path("openId")
+    public AccessToken loginOpenId(OpenIdCredentials openIdCredentials) throws KapuaException {
+        return authenticationService.login(openIdCredentials);
+    }
+
+    /**
+     * Authenticates a user with JWT and returns
      * the authentication token to be used in subsequent REST API calls.
      *
      * @param authenticationCredentials The JWT authentication credential of a user.
      * @return The authentication token
      * @throws KapuaException Whenever something bad happens. See specific {@link KapuaService} exceptions.
      * @since 1.0.0
+     * @deprecated Since 2.1.0. Please use more appropriate {@link #loginOpenId(OpenIdCredentials)}
      */
     @POST
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Path("jwt")
+    @Deprecated
     public AccessToken loginJwt(JwtCredentials authenticationCredentials) throws KapuaException {
         return authenticationService.login(authenticationCredentials);
     }

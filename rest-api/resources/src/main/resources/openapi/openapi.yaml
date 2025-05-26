@@ -58,6 +58,8 @@ paths:
     $ref: './authentication/authentication-refresh.yaml#/paths/~1authentication~1refresh'
   /authentication/jwt:
     $ref: './authentication/authentication-jwt.yaml#/paths/~1authentication~1jwt'
+  /authentication/openId:
+    $ref: './authentication/authentication-openId.yaml#/paths/~1authentication~1openId'
   /authentication/info:
     $ref: './authentication/authentication-info.yaml#/paths/~1authentication~1info'
   /authentication/logout:
@@ -913,6 +915,8 @@ components:
       $ref: './authentication/authentication.yaml#/components/schemas/loginInfo'
     usernamePasswordCredentials:
       $ref: './authentication/authentication.yaml#/components/schemas/usernamePasswordCredentials'
+    openIdCredentials:
+      $ref: './authentication/authentication.yaml#/components/schemas/openIdCredentials'
     jwtCredentials:
       $ref: './authentication/authentication.yaml#/components/schemas/jwtCredentials'
     ### Credential Entities ###

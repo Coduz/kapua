@@ -47,6 +47,7 @@ import org.eclipse.kapua.service.authentication.credential.cache.CacheMetric;
 import org.eclipse.kapua.service.authentication.credential.handler.CredentialTypeHandler;
 import org.eclipse.kapua.service.authentication.credential.handler.shiro.ApiKeyCredentialTypeHandler;
 import org.eclipse.kapua.service.authentication.credential.handler.shiro.JwtCredentialTypeHandler;
+import org.eclipse.kapua.service.authentication.credential.handler.shiro.OpenIdCredentialTypeHandler;
 import org.eclipse.kapua.service.authentication.credential.handler.shiro.PasswordCredentialTypeHandler;
 import org.eclipse.kapua.service.authentication.credential.mfa.MfaOptionFactory;
 import org.eclipse.kapua.service.authentication.credential.mfa.MfaOptionRepository;
@@ -76,6 +77,7 @@ import org.eclipse.kapua.service.authentication.shiro.realm.AccessTokenCredentia
 import org.eclipse.kapua.service.authentication.shiro.realm.ApiKeyCredentialsConverter;
 import org.eclipse.kapua.service.authentication.shiro.realm.CredentialsConverter;
 import org.eclipse.kapua.service.authentication.shiro.realm.JwtCredentialsConverter;
+import org.eclipse.kapua.service.authentication.shiro.realm.OpenIdCredentialsConverter;
 import org.eclipse.kapua.service.authentication.shiro.realm.UserPassCredentialsConverter;
 import org.eclipse.kapua.service.authentication.shiro.registration.RegistrationServiceImpl;
 import org.eclipse.kapua.service.authentication.shiro.setting.KapuaAuthenticationSetting;
@@ -181,6 +183,11 @@ public class AuthenticationModule extends AbstractKapuaModule {
     @ProvidesIntoSet
     public CredentialsConverter jwtCredentialsHandler() {
         return new JwtCredentialsConverter();
+    }
+
+    @ProvidesIntoSet
+    public CredentialsConverter openIdCredentialsHandler() {
+        return new OpenIdCredentialsConverter();
     }
 
     @ProvidesIntoSet
@@ -356,5 +363,12 @@ public class AuthenticationModule extends AbstractKapuaModule {
             AuthenticationUtils authenticationUtils
     ) {
         return new JwtCredentialTypeHandler(authenticationUtils);
+    }
+
+    @ProvidesIntoSet
+    public CredentialTypeHandler openIdCredentialTypeHandler(
+            AuthenticationUtils authenticationUtils
+    ) {
+        return new OpenIdCredentialTypeHandler(authenticationUtils);
     }
 }

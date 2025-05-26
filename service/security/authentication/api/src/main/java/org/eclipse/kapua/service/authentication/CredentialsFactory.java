@@ -56,6 +56,16 @@ public interface CredentialsFactory extends KapuaObjectFactory {
     JwtCredentials newJwtCredentials(String jwt, String idToken);
 
     /**
+     * Instantiates a new {@link OpenIdCredentials} instance to be user as {@link LoginCredentials}
+     *
+     * @param accessToken The OpenID Connect <a href="https://auth0.com/blog/id-token-access-token-what-is-the-difference/#What-Is-an-Access-Token">accessToken</a>.
+     * @param idToken The OpenID Connect <a href="https://auth0.com/blog/id-token-access-token-what-is-the-difference/#What-Is-an-ID-Token">idToken</a>.
+     * @return The newly instantiated {@link OpenIdCredentials}.
+     * @since 2.1.0
+     */
+    OpenIdCredentials newOpenIdCredentials(String accessToken, String idToken);
+
+    /**
      * Creates a new {@link AccessTokenCredentials} instance based on provided tokenId
      *
      * @param tokenId
