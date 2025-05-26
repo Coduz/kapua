@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2022 Eurotech and/or its affiliates and others
+ * Copyright (c) 2016, 2025 Eurotech and/or its affiliates and others
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -16,6 +16,7 @@ import org.eclipse.kapua.service.authentication.AccessTokenCredentials;
 import org.eclipse.kapua.service.authentication.ApiKeyCredentials;
 import org.eclipse.kapua.service.authentication.CredentialsFactory;
 import org.eclipse.kapua.service.authentication.JwtCredentials;
+import org.eclipse.kapua.service.authentication.OpenIdCredentials;
 import org.eclipse.kapua.service.authentication.RefreshTokenCredentials;
 import org.eclipse.kapua.service.authentication.UsernamePasswordCredentials;
 
@@ -24,8 +25,7 @@ import javax.inject.Singleton;
 /**
  * {@link CredentialsFactory} factory implementation.
  *
- * @since 1.0
- *
+ * @since 1.0.0
  */
 @Singleton
 public class CredentialsFactoryImpl implements CredentialsFactory {
@@ -43,6 +43,11 @@ public class CredentialsFactoryImpl implements CredentialsFactory {
     @Override
     public JwtCredentials newJwtCredentials(String accessToken, String idToken) {
         return new JwtCredentialsImpl(accessToken, idToken);
+    }
+
+    @Override
+    public OpenIdCredentials newOpenIdCredentials(String accessToken, String idToken) {
+        return new OpenIdCredentialsImpl(accessToken, idToken);
     }
 
     @Override

@@ -22,10 +22,12 @@ import javax.xml.bind.annotation.XmlType;
  * JWT {@link LoginCredentials} definition.
  *
  * @since 1.0.0
+ * @deprecated Since 2.1.0. Deprecated in favour for more appropriate {@link OpenIdCredentials}
  */
 @XmlRootElement(name = "jwtCredentials")
 @XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlType(factoryClass = AuthenticationXmlRegistry.class, factoryMethod = "newJwtCredentials")
+@Deprecated
 public interface JwtCredentials extends LoginCredentials {
 
     /**

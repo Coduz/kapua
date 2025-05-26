@@ -18,6 +18,8 @@ paths:
         - Authentication
       summary: Login - JWT
       operationId: authenticationJwt
+      description: Deprecated in favour of more appropriate /authentication/openId endpoint
+      deprecated: true
       requestBody:
         content:
           application/json:

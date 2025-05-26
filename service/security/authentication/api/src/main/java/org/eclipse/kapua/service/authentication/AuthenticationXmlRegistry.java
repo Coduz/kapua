@@ -47,6 +47,16 @@ public class AuthenticationXmlRegistry {
     }
 
     /**
+     * Instantiates a new {@link OpenIdCredentials} instance.
+     *
+     * @return The newly instantiated {@link OpenIdCredentials}.
+     * @since 2.1.0
+     */
+    public OpenIdCredentials newOpenIdCredentials() {
+        return credentialsFactory.newOpenIdCredentials(null, null);
+    }
+
+    /**
      * Creates a new {@link AccessTokenCredentials} instance
      *
      * @return
