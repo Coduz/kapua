@@ -12,19 +12,17 @@ info:
     url: https://www.eclipse.org/legal/epl-2.0
 
 paths:
-  /authentication/jwt:
+  /authentication/openId:
     post:
       tags:
         - Authentication
-      summary: Login - JWT
-      operationId: authenticationJwt
-      description: Deprecated in favour of more appropriate /authentication/openId endpoint
-      deprecated: true
+      summary: Login - OpenId
+      operationId: authenticationOpenId
       requestBody:
         content:
           application/json:
             schema:
-              $ref: './authentication.yaml#/components/schemas/jwtCredentials'
+              $ref: './authentication.yaml#/components/schemas/openIdCredentials'
       responses:
         200:
           description: The new AccessToken
