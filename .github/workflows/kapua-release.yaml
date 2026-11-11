@@ -99,7 +99,7 @@ jobs:
           key: ${{ github.run_id }}-${{ github.run_number }}-maven-cache
 
       - name: Build and Publish Kapua Docker Images
-        run: mvn -B clean deploy -DskipTests -f assembly -P docker
+        run: mvn -B clean deploy -DskipTests -f assembly -P docker,release
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
           DOCKER_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
